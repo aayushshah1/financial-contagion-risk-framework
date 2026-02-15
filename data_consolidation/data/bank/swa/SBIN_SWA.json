@@ -1,0 +1,60 @@
+{
+  "bankName": "State Bank of India",
+  "yearEnded": "March 31, 2025",
+  "currency": "INR Crore",
+  "sector": {
+    "prioritySector": {
+      "agricultureAndAlliedActivities": {
+        "outstandingTotalAdvances": 347983.48,
+        "outstandingGrossNPAs": 29259.87,
+        "percentageNPAs": "8.41%"
+      },
+      "industrySectorEligibleAsPriority": {
+        "outstandingTotalAdvances": 144738.35,
+        "outstandingGrossNPAs": 6350.31,
+        "percentageNPAs": "4.39%"
+      },
+      "services": {
+        "outstandingTotalAdvances": 233888.72,
+        "outstandingGrossNPAs": 7789.36,
+        "percentageNPAs": "3.33%"
+      },
+      "personalLoans": {
+        "outstandingTotalAdvances": 207730.35,
+        "outstandingGrossNPAs": 2164.74,
+        "percentageNPAs": "1.04%"
+      },
+      "subTotalA": 934340.90
+    },
+    "nonPrioritySector": {
+      "agricultureAndAlliedActivities": {
+        "outstandingTotalAdvances": 2792.46,
+        "outstandingGrossNPAs": 129.02,
+        "percentageNPAs": "4.62%"
+      },
+      "industry": {
+        "outstandingTotalAdvances": 895714.81,
+        "outstandingGrossNPAs": 16363.29,
+        "percentageNPAs": "1.83%"
+      },
+      "services": {
+        "outstandingTotalAdvances": 1087669.43,
+        "outstandingGrossNPAs": 5834.29,
+        "percentageNPAs": "0.54%"
+      },
+      "personalLoans": {
+        "outstandingTotalAdvances": 1300185.14,
+        "outstandingGrossNPAs": 8989.32,
+        "percentageNPAs": "0.69%"
+      },
+      "subTotalB": 3286361.84
+    },
+    "totalAdvances": 4220702.74
+  },
+  "assetQualityRatios": {
+    "grossNPAtoGrossAdvances": "1.82%",
+    "netNPAtoNetAdvances": "0.47%",
+    "provisionCoverageRatioExcludingAUCA": "74.42%",
+    "provisionCoverageRatioIncludingAUCA": "92.08%"
+  }
+}
