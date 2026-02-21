@@ -69,3 +69,22 @@ dump/
 *.temp
 .cache/
 
+tor_data_worker_*
+tor_data
+tor_bundle
+*.ps1
+torrc*
+
+samples
+
+push_crisil_enriched_to_cloud.py
+mca_records.json
+
+new_task.md
+
+basel_links.json
+cin_script.py
+
+match_crisil_mca.py
+
+basel

@@ -5,8 +5,10 @@ Contains bank mappings, MongoDB configuration, and constants
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables from .env file in project root
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+dotenv_path = os.path.join(project_root, '.env')
+load_dotenv(dotenv_path)
 
 # Bank Mappings - Symbol to Full Official Name
 BANK_MAPPINGS = {
@@ -30,10 +32,19 @@ BANK_MAPPINGS = {
     }
 }
 
-# MongoDB Configuration
-MONGODB_URI = os.getenv("db_cluster_link")
-DB_NAME = "financial_knowledge_graph"
+# MongoDB Configuration - Cloud Only
+MONGODB_CLOUD_URI = os.getenv('db_cluster_link')
+
+# Use cloud URI as primary connection
+MONGODB_URI = MONGODB_CLOUD_URI
+
+# Database and Collection Names
+DB_NAME = "financial_kg"
 COLLECTION_NAME = "banks"
+
+# CRISIL Data Configuration
+CRISIL_DB_NAME = "crisil_reports"
+CRISIL_COLLECTION_NAME = "crisil_reports_nic_ice_creams"  # Latest CRISIL data with NIC codes
 
 # Data Paths (relative to data_consolidation directory)
 BASE_DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
@@ -44,7 +55,9 @@ DATA_PATHS = {
     "ratios": os.path.join(BASE_DATA_PATH, "bank", "ratios", "ratios_all_banks.xlsx"),
     "outstanding_advances": os.path.join(BASE_DATA_PATH, "bank", "outstanding_advances", "outstanding_advances.xlsx"),
     "shp_dir": os.path.join(BASE_DATA_PATH, "bank", "shp"),
-    "swa_dir": os.path.join(BASE_DATA_PATH, "bank", "swa")
+    "swa_dir": os.path.join(BASE_DATA_PATH, "bank", "swa"),
+    "integrated_xbrl_dir": os.path.join(BASE_DATA_PATH, "bank", "integrated_xbrl"),
+    "basel_dir": os.path.join(BASE_DATA_PATH, "basel")
 }
 
 # Financial Year Configuration
@@ -54,6 +67,7 @@ YEAR_LABEL = "2025"
 # XBRL Taxonomy Paths
 TAXONOMY_BASE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "taxonomies")
 SHP_TAXONOMY = os.path.join(TAXONOMY_BASE, "shareholding_pattern", "SHP Taxonomy_2025-10-31")
+INTEGRATED_BANK_TAXONOMY = os.path.join(TAXONOMY_BASE, "integrated_bank_filing")
 
 def get_bank_config(symbol):
     """Get bank configuration by symbol"""
@@ -83,3 +97,23 @@ def match_bank_from_crisil_name(lender_name):
                     return symbol
     
     return None
+
+
+def get_mongodb_cloud_uri():
+    """
+    Get MongoDB Cloud URI from environment variables
+    
+    Returns:
+        MongoDB Cloud connection URI
+    """
+    return MONGODB_CLOUD_URI
+
+
+def get_crisil_db_config():
+    """
+    Get CRISIL database configuration
+    
+    Returns:
+        Tuple of (database_name, collection_name)
+    """
+    return CRISIL_DB_NAME, CRISIL_COLLECTION_NAME

@@ -4,6 +4,7 @@ Orchestrates all data extraction tasks and consolidates into MongoDB
 """
 import sys
 import os
+import json
 
 # Add scripts directory to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'scripts'))
@@ -11,6 +12,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'scripts'))
 from pymongo import MongoClient
 from datetime import datetime
 import argparse
+from typing import List, Dict
 
 # Import all task modules
 from config import MONGODB_URI, DB_NAME, COLLECTION_NAME, get_bank_config, get_all_bank_symbols
@@ -20,6 +22,100 @@ from task3_ratios import extract_ratios_data
 from task4_outstanding_advances import extract_outstanding_advances
 from task5_shareholding_xbrl import extract_shareholding_pattern
 from task6_sector_advances import extract_sector_wise_advances
+from task7_related_party_transactions import extract_related_party_transactions
+from task8_nic_sector_mapping import aggregate_by_nic_sector
+# from task9_basel import extract_basel_data  # Commented out temporarily
+
+
+# Load bank facility mapping
+FACILITY_MAPPING_PATH = os.path.join(os.path.dirname(__file__), 'bankFacilityMapping.json')
+with open(FACILITY_MAPPING_PATH, 'r', encoding='utf-8') as f:
+    BANK_FACILITY_MAPPING = json.load(f)
+
+
+def categorize_facility_type(facility_name: str) -> str:
+    """
+    Categorize a facility into one of the three main types based on mapping
+    
+    Args:
+        facility_name: Name of the facility
+        
+    Returns:
+        Category name or 'Uncategorized'
+    """
+    for category, facility_list in BANK_FACILITY_MAPPING.items():
+        if facility_name in facility_list:
+            return category
+    return "Uncategorized"
+
+
+def aggregate_by_industry(companies: List[Dict]) -> Dict:
+    """
+    Aggregate advances by company industrial classification
+    
+    Args:
+        companies: List of company dictionaries with advances
+        
+    Returns:
+        Dictionary with industry-wise aggregation (totals only, no individual companies)
+    """
+    industry_aggregation = {}
+    
+    for company in companies:
+        industry = company.get('companyIndustrialClassification') or 'Unknown'
+        exposure = company.get('totalExposure', 0)
+        
+        if industry not in industry_aggregation:
+            industry_aggregation[industry] = {
+                "totalAdvances": 0,
+                "numberOfCompanies": 0
+            }
+        
+        industry_aggregation[industry]["totalAdvances"] += exposure
+        industry_aggregation[industry]["numberOfCompanies"] += 1
+    
+    return industry_aggregation
+
+
+def aggregate_by_facility_type(companies: List[Dict]) -> Dict:
+    """
+    Aggregate advances by facility type category
+    
+    Args:
+        companies: List of company dictionaries with advances
+        
+    Returns:
+        Dictionary with facility-type-wise aggregation
+    """
+    facility_aggregation = {}
+    
+    for company in companies:
+        for facility in company.get('facilities', []):
+            facility_name = facility.get('facilityType')
+            category = categorize_facility_type(facility_name)
+            amount = facility.get('amount', 0)
+            
+            if category not in facility_aggregation:
+                facility_aggregation[category] = {
+                    "totalAdvances": 0,
+                    "numberOfFacilities": 0,
+                    "facilityTypes": {}
+                }
+            
+            facility_aggregation[category]["totalAdvances"] += amount
+            facility_aggregation[category]["numberOfFacilities"] += 1
+            
+            # Track individual facility types within category
+            if facility_name not in facility_aggregation[category]["facilityTypes"]:
+                facility_aggregation[category]["facilityTypes"][facility_name] = {
+                    "count": 0,
+                    "totalAmount": 0
+                }
+            
+            facility_aggregation[category]["facilityTypes"][facility_name]["count"] += 1
+            facility_aggregation[category]["facilityTypes"][facility_name]["totalAmount"] += amount
+    
+    return facility_aggregation
 
 
 def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
@@ -49,22 +145,31 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         "dataYear": 2025
     }
     
-    # Task 1: Extract CRISIL loan data
-    print("\n[1/6] Extracting CRISIL loan data...")
+    # Task 1: Extract CRISIL advances data
+    print("\n[1/8] Extracting CRISIL advances data...")
     try:
-        loans = extract_bank_loans(bank_symbol)
-        consolidated_data["loans"] = {
-            "totalCompanies": len(loans),
-            "totalExposure": sum(c['totalExposure'] for c in loans if c['totalExposure']),
-            "companies": loans
+        advances_companies = extract_bank_loans(bank_symbol)
+        
+        # Calculate aggregations
+        industry_agg = aggregate_by_industry(advances_companies)
+        facility_agg = aggregate_by_facility_type(advances_companies)
+        
+        consolidated_data["advances"] = {
+            "totalCompanies": len(advances_companies),
+            "totalExposure": sum(c['totalExposure'] for c in advances_companies if c['totalExposure']),
+            "companies": advances_companies,
+            "aggregationByIndustry": industry_agg,
+            "aggregationByFacilityType": facility_agg
         }
-        print(f"  ✓ Found {len(loans)} companies with loans")
+        print(f"  ✓ Found {len(advances_companies)} companies with advances")
+        print(f"  ✓ Aggregated by {len(industry_agg)} industry classifications")
+        print(f"  ✓ Aggregated by {len(facility_agg)} facility type categories")
     except Exception as e:
         print(f"  ✗ Error: {e}")
-        consolidated_data["loans"] = {"error": str(e)}
+        consolidated_data["advances"] = {"error": str(e)}
     
     # Task 2: Extract Balance Sheet data
-    print("\n[2/6] Extracting Balance Sheet data...")
+    print("\n[2/8] Extracting Balance Sheet data...")
     try:
         balance_sheet = extract_balance_sheet_data(bank_symbol)
         consolidated_data["balanceSheet"] = balance_sheet
@@ -74,7 +179,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["balanceSheet"] = {"error": str(e)}
     
     # Task 3: Extract Ratios data
-    print("\n[3/6] Extracting Financial Ratios...")
+    print("\n[3/8] Extracting Financial Ratios...")
     try:
         ratios = extract_ratios_data(bank_symbol)
         consolidated_data["financialRatios"] = ratios
@@ -84,7 +189,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["financialRatios"] = {"error": str(e)}
     
     # Task 4: Extract Outstanding Advances
-    print("\n[4/6] Extracting Outstanding Advances...")
+    print("\n[4/8] Extracting Outstanding Advances...")
     try:
         outstanding_advances = extract_outstanding_advances(bank_symbol)
         consolidated_data["outstandingAdvances"] = outstanding_advances
@@ -94,7 +199,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["outstandingAdvances"] = {"error": str(e)}
     
     # Task 5: Extract Shareholding Pattern
-    print("\n[5/6] Extracting Shareholding Pattern...")
+    print("\n[5/8] Extracting Shareholding Pattern...")
     try:
         shareholding = extract_shareholding_pattern(bank_symbol)
         consolidated_data["shareholdingPattern"] = shareholding
@@ -104,7 +209,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["shareholdingPattern"] = {"error": str(e)}
     
     # Task 6: Extract Sector-wise Advances
-    print("\n[6/6] Extracting Sector-wise Advances...")
+    print("\n[6/8] Extracting Sector-wise Advances...")
     try:
         sector_advances = extract_sector_wise_advances(bank_symbol)
         consolidated_data["sectorWiseAdvances"] = sector_advances
@@ -112,6 +217,42 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
     except Exception as e:
         print(f"  ✗ Error: {e}")
         consolidated_data["sectorWiseAdvances"] = {"error": str(e)}
+    
+    # Task 7: Extract Related Party Transactions
+    print("\n[7/8] Extracting Related Party Transactions...")
+    try:
+        rpt_data = extract_related_party_transactions(bank_symbol)
+        consolidated_data["relatedPartyTransactions"] = rpt_data
+        print(f"  ✓ Extracted {rpt_data['transactionSummary']['totalTransactions']} transactions")
+    except Exception as e:
+        print(f"  ✗ Error: {e}")
+        consolidated_data["relatedPartyTransactions"] = {"error": str(e)}
+    
+    # Task 8: Extract NIC Sector-wise Exposure from Cloud MongoDB
+    print("\n[8/8] Mapping companies to NIC sectors...")
+    try:
+        sector_exposure = aggregate_by_nic_sector(advances_companies)
+        consolidated_data["nicSectorExposure"] = sector_exposure
+        print(f"  ✓ Mapped {sector_exposure['summary']['totalMappedCompanies']} companies to {sector_exposure['summary']['numberOfSectors']} sectors")
+        print(f"  ✓ Total sector exposure: ₹{sector_exposure['summary']['totalExposure']:,.2f} Cr")
+        if sector_exposure['summary']['totalUnmappedCompanies'] > 0:
+            print(f"  ⚠ {sector_exposure['summary']['totalUnmappedCompanies']} companies could not be mapped")
+    except Exception as e:
+        print(f"  ✗ Error: {e}")
+        consolidated_data["nicSectorExposure"] = {"error": str(e)}
+    
+    # # Task 9: Extract Basel III Data (Commented out temporarily)
+    # print("\n[9/9] Extracting Basel III Data...")
+    # try:
+    #     basel_data = extract_basel_data(bank_symbol)
+    #     consolidated_data["baselIII"] = basel_data
+    #     print(f"  ✓ Extracted Basel III compliance data")
+    # except FileNotFoundError as e:
+    #     print(f"  ⚠ Basel data not available: {e}")
+    #     consolidated_data["baselIII"] = {"error": "Data not available", "message": str(e)}
+    # except Exception as e:
+    #     print(f"  ✗ Error: {e}")
+    #     consolidated_data["baselIII"] = {"error": str(e)}
     
     # Push to MongoDB if requested
     if push_to_db:
@@ -130,38 +271,15 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
 
 
 def save_to_mongodb(data: dict):
-    """Save consolidated data to MongoDB"""
+    """Save consolidated data to MongoDB Cloud"""
     if not MONGODB_URI:
-        raise ValueError("MongoDB URI not found in environment variables")
+        raise ValueError("MongoDB URI not configured. Check .env file for db_cluster_link")
     
-    # Parse the URI and add TLS parameters if not present
-    connection_uri = MONGODB_URI
-    
-    # Check if URI already has query parameters
-    if '?' in connection_uri:
-        # Add parameters to existing query string
-        if 'tls=' not in connection_uri.lower() and 'ssl=' not in connection_uri.lower():
-            connection_uri += '&tls=true'
-        if 'tlsAllowInvalidCertificates=' not in connection_uri.lower():
-            # For development: allow invalid certificates
-            # Remove this in production and fix certificate issues properly
-            connection_uri += '&tlsAllowInvalidCertificates=true'
-        if 'retryWrites=' not in connection_uri.lower():
-            connection_uri += '&retryWrites=true'
-    else:
-        # Add query parameters
-        connection_uri += '?tls=true&tlsAllowInvalidCertificates=true&retryWrites=true'
-    
-    # Connect to MongoDB with additional options for SSL compatibility
+    # Connect to MongoDB Cloud
     try:
         client = MongoClient(
-            connection_uri,
-            serverSelectionTimeoutMS=30000,
-            connectTimeoutMS=30000,
-            socketTimeoutMS=30000,
-            # Force TLS 1.2 or higher
-            tls=True,
-            tlsAllowInvalidCertificates=True  # Development only - remove for production
+            MONGODB_URI,
+            serverSelectionTimeoutMS=5000
         )
         
         db = client[DB_NAME]
@@ -177,20 +295,7 @@ def save_to_mongodb(data: dict):
         client.close()
         
     except Exception as e:
-        # More specific error handling
-        error_msg = str(e)
-        if 'SSL' in error_msg or 'TLS' in error_msg or 'handshake' in error_msg:
-            raise ConnectionError(
-                f"MongoDB SSL/TLS Connection Failed. This may be due to:\n"
-                f"  1. Incompatible SSL/TLS version (requires TLS 1.2+)\n"
-                f"  2. Certificate validation issues\n"
-                f"  3. Network/firewall blocking MongoDB Atlas\n"
-                f"  4. Python SSL library compatibility issues\n\n"
-                f"Original error: {error_msg}\n\n"
-                f"Try running: pip install --upgrade pymongo[srv] certifi"
-            )
-        else:
-            raise
+        raise ConnectionError(f"MongoDB Cloud Connection Failed: {str(e)}")
 
 
 def main():

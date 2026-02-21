@@ -3,14 +3,11 @@
 ## Description
 This repository will soon be a large repository, for creating a knowledge graph of different Indian Banks, NBFCs and Compnaies. The aim is to map the exposure of each entity to the other, so that the risk can be measured between them.
 
-## Completed Stages:
-- Data Consolidation
+## Completed Stages
 
-## Current Status: Prototype Graph
+## Current Status: Data Consolidation
 
-The project is currently as data consolidation stage. I have gathererd data on banks and companies from various sources, and now I need to consolidate this data into a central database.
-
-### Data Sources
+### Data Sources 
 All the data is currently in `data_consolidation/data` folder.
 
 ```
@@ -229,7 +226,7 @@ As you can see here, under `bankFacilities`, HDFC is mentioned as a lender. The 
 ```                
 - Sector-wise advances are already in JSON format, so it shouldn't be much of an Issue.
 
-#### Desired Tasks
+#### Desired Tasks (COMPLETED)
 I need you to create python scripts to extract and consolidate data into a single mongodb collection. The collection should be bank-wise. These scripts should be reusable and scalable. For now there are only 3 banks, but soon there'll be more.
 
 ```json
@@ -253,12 +250,12 @@ I need you to create python scripts to extract and consolidate data into a singl
     .... and so on
 }
 ```
-##### Task 1: Filtering CRISIL Data bank-wise
-##### Task 2: Extracting Balance-Sheet data bank-wise
-##### Task 3: Extracting Ratio Data bank-wise
-##### Task 4: Extracting Outstanding Advances data bank-wise
-##### Task 5: Converting XBRL Data of Shareholding to JSON
-##### Task 6: Pulling Sector-wise advances data from the folder
+##### Task 1: Filtering CRISIL Data bank-wise (DONE)
+##### Task 2: Extracting Balance-Sheet data bank-wise (DONE)
+##### Task 3: Extracting Ratio Data bank-wise (DONE)
+##### Task 4: Extracting Outstanding Advances data bank-wise (DONE)
+##### Task 5: Converting XBRL Data of Shareholding to JSON (DONE)
+##### Task 6: Pulling Sector-wise advances data from the folder (DONE)
 
 #### Structure for scripts:
 Create six (or more) python scripts for the tasks. The scripts should be such that it can be called by a main program. All scripts will take in the bank name, and output the data that is required. 

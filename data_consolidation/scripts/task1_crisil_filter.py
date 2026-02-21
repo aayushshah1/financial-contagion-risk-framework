@@ -1,18 +1,21 @@
 """
 Task 1: Filter CRISIL Rating Reports by Bank
 Extracts companies that have taken loans from specified banks
+Now supports both MongoDB cloud and local JSON file
 """
 import json
 from typing import Dict, List
-from config import DATA_PATHS, get_bank_config, match_bank_from_crisil_name
+from pymongo import MongoClient
+from config import DATA_PATHS, get_bank_config, match_bank_from_crisil_name, get_mongodb_cloud_uri, get_crisil_db_config
 
 
-def extract_bank_loans(bank_symbol: str) -> List[Dict]:
+def extract_bank_loans(bank_symbol: str, use_cloud: bool = True) -> List[Dict]:
     """
     Filter CRISIL data to find companies with loans from the specified bank
     
     Args:
         bank_symbol: Bank symbol (e.g., 'HDFCBANK', 'SBIN', 'ICICIBANK')
+        use_cloud: Whether to use MongoDB cloud (default) or local JSON file
         
     Returns:
         List of dictionaries containing company details and loan facilities
@@ -21,6 +24,93 @@ def extract_bank_loans(bank_symbol: str) -> List[Dict]:
     if not bank_config:
         raise ValueError(f"Unknown bank symbol: {bank_symbol}")
     
+    # Try to load from MongoDB cloud first if enabled
+    if use_cloud:
+        try:
+            return extract_from_mongodb_cloud(bank_symbol, bank_config)
+        except Exception as e:
+            print(f"  ⚠ Cloud MongoDB unavailable ({e}), falling back to local JSON")
+            use_cloud = False
+    
+    # Fallback to local JSON file
+    if not use_cloud:
+        return extract_from_json_file(bank_symbol, bank_config)
+
+
+def extract_from_mongodb_cloud(bank_symbol: str, bank_config: Dict) -> List[Dict]:
+    """
+    Extract CRISIL data from MongoDB cloud
+    
+    Args:
+        bank_symbol: Bank symbol
+        bank_config: Bank configuration
+        
+    Returns:
+        List of companies with loans from this bank
+    """
+    mongodb_uri = get_mongodb_cloud_uri()
+    if not mongodb_uri:
+        raise ValueError("MongoDB cloud URI not configured in .env file")
+    
+    # Get CRISIL database configuration
+    db_name, collection_name = get_crisil_db_config()
+    
+    client = MongoClient(mongodb_uri, serverSelectionTimeoutMS=10000)
+    db = client[db_name]
+    collection = db[collection_name]
+    
+    companies_with_loans = []
+    
+    # Query companies with bankFacilities
+    companies_cursor = collection.find({
+        "bankFacilities": {"$exists": True, "$ne": []}
+    })
+    
+    for company in companies_cursor:
+        # Find facilities from our target bank
+        matching_facilities = []
+        for facility in company.get('bankFacilities', []):
+            lender_name = facility.get('lenderName')
+            
+            # Check if this lender matches our bank
+            matched_bank = match_bank_from_crisil_name(lender_name)
+            if matched_bank == bank_symbol:
+                matching_facilities.append({
+                    "facilityType": facility.get('facility'),
+                    "amount": facility.get('amount'),
+                    "rating": facility.get('rating'),
+                    "lenderName": lender_name
+                })
+        
+        # If we found matching facilities, add this company
+        if matching_facilities:
+            company_info = {
+                "companyName": company.get('companyName'),
+                "companyCode": company.get('companyCode'),
+                "industryName": company.get('industryName', ''),
+                "companyIndustrialClassification": company.get('CompanyIndustrialClassification'),
+                "nicCode": company.get('nic_code'),
+                "ratingDate": company.get('ratingDate'),
+                "facilities": matching_facilities,
+                "totalExposure": sum(f['amount'] for f in matching_facilities if f['amount'])
+            }
+            companies_with_loans.append(company_info)
+    
+    client.close()
+    return companies_with_loans
+
+
+def extract_from_json_file(bank_symbol: str, bank_config: Dict) -> List[Dict]:
+    """
+    Extract CRISIL data from local JSON file (legacy support)
+    
+    Args:
+        bank_symbol: Bank symbol
+        bank_config: Bank configuration
+        
+    Returns:
+        List of companies with loans from this bank
+    """
     # Load CRISIL data
     try:
         with open(DATA_PATHS["crisil"], 'r', encoding='utf-8') as f:
@@ -59,6 +149,8 @@ def extract_bank_loans(bank_symbol: str) -> List[Dict]:
                 "companyName": company.get('companyName'),
                 "companyCode": company.get('companyCode'),
                 "industryName": company.get('industryName', ''),
+                "companyIndustrialClassification": company.get('CompanyIndustrialClassification'),
+                "nicCode": company.get('nic_code'),
                 "ratingDate": company.get('ratingDate'),
                 "facilities": matching_facilities,
                 "totalExposure": sum(f['amount'] for f in matching_facilities if f['amount'])
