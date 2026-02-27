@@ -77,6 +77,62 @@ def _safe_float(val) -> float:
 
 
 # ---------------------------------------------------------------------------
+# Arelle format support
+# ---------------------------------------------------------------------------
+
+# Ordered hints: first matching substring wins.
+# Arelle axis names follow "DetailsOfSharesHeldBy<Category>[Axis]" convention.
+_AXIS_HINTS: list[tuple[str, str]] = [
+    ("MutualFund",                        "MutualFund"),
+    ("InsuranceCompan",                   "InsuranceCompany"),
+    ("ProvidentFund",                     "ProvidentFund"),
+    ("PensionFund",                       "ProvidentFund"),
+    ("ForeignPortfolioInvestorOne",       "FPI_Cat1"),
+    ("ForeignPortfolioInvestorTwo",       "FPI_Cat2"),
+    ("CustodianOrDRHolder",               "Custodian"),
+    ("CentralGovernment",                 "GovernmentPromoter"),
+    ("StateGovernment",                   "GovernmentPromoter"),
+    ("OtherInstitutionsForeign",          "OtherInstitutionForeign"),
+    ("OtherInstitutionForeign",           "OtherInstitutionForeign"),
+    ("OtherInstitutionsDomestic",         "OtherInstitutionDomestic"),
+    ("ResidentIndividual",                "ResidentIndividual"),
+    ("NonResidentIndian",                 "NonResidentIndian"),
+    ("BodiesCorporate",                   "BodyCorporate"),
+    ("BodyCorporate",                     "BodyCorporate"),
+    ("OtherNonInstitution",               "OtherNonInstitution"),
+    ("Banks",                             "Bank"),
+]
+
+
+def _axis_to_category(axis: str) -> str:
+    """Derive a shareholder category label from an Arelle axis name."""
+    for hint, cat in _AXIS_HINTS:
+        if hint in axis:
+            return cat
+    return "Unknown"
+
+
+def _norm_arelle_entity(e: dict) -> dict:
+    """
+    Normalise an Arelle-format entity dict to the same field names used by
+    the ElementTree path so downstream code is format-agnostic.
+
+    Arelle keys                                         → normalised keys
+    NameOfTheShareholder (camelCase)                    → name
+    ShareholdingAsAPercentageOfTotalNumberOfShares      → shareholdingPercentage
+    NumberOfShares                                      → numberOfShares  (unchanged)
+    """
+    return {
+        "name": e.get("name") or e.get("nameOfTheShareholder", ""),
+        "numberOfShares": e.get("numberOfShares", 0),
+        "shareholdingPercentage": (
+            e.get("shareholdingPercentage")
+            or e.get("shareholdingAsAPercentageOfTotalNumberOfShares", 0.0)
+        ),
+    }
+
+
+# ---------------------------------------------------------------------------
 # SHP tree walkers
 # ---------------------------------------------------------------------------
 
@@ -95,6 +151,11 @@ def _get_entities(
             continue
 
         node_type, canonical_id, _ = registry.resolve(name)
+
+        # Self-loop guard: a bank cannot be its own shareholder
+        if node_type == "Bank" and canonical_id == bank_symbol:
+            continue
+
         bank_sym    = canonical_id if node_type == "Bank"    else None
         company_cin = canonical_id if node_type == "Company" else None
 
@@ -128,7 +189,34 @@ def extract_shareholders(
     def _g(node, cat):
         return _get_entities(node, cat, bank_symbol, registry)
 
-    # Promoter holding
+    # ---- Arelle flat format: {periodEnd, aggregates, entities: {axis: [...]}} ----
+    arelle_entities = shp.get("entities")
+    if isinstance(arelle_entities, dict) and not shp.get("promoterHolding"):
+        for axis, entity_list in arelle_entities.items():
+            cat = _axis_to_category(axis)
+            for raw_entity in (entity_list or []):
+                entity = _norm_arelle_entity(raw_entity)
+                name = entity["name"]
+                if not name:
+                    continue
+                node_type, canonical_id, _ = registry.resolve(name)
+                if node_type == "Bank" and canonical_id == bank_symbol:
+                    continue  # self-loop guard
+                results.append(
+                    ExtractedShareholder(
+                        raw_name=name,
+                        normalized_name=_normalize(name),
+                        shareholderCategory=cat,
+                        bank_symbol=canonical_id if node_type == "Bank" else None,
+                        resolved_company_cin=canonical_id if node_type == "Company" else None,
+                        numberOfShares=_safe_int(entity.get("numberOfShares", 0)),
+                        shareholdingPercentage=_safe_float(entity.get("shareholdingPercentage", 0.0)),
+                        source_bank_symbol=bank_symbol,
+                    )
+                )
+        return results
+
+    # ---- ET nested format: {promoterHolding, publicHolding, ...} ----
     promoter = shp.get("promoterHolding", {})
     results += _g(promoter, "Promoter")
     results += _g(promoter.get("government", {}), "GovernmentPromoter")
@@ -249,6 +337,11 @@ def extract_company_shareholders(
             if not name:
                 continue
             node_type, canonical_id, _ = registry.resolve(name)
+
+            # Self-loop guard: a company cannot be its own shareholder
+            if node_type == "Company" and canonical_id == company_cin:
+                continue
+
             bank_sym    = canonical_id if node_type == "Bank"    else None
             company_cin_resolved = canonical_id if node_type == "Company" else None
             out.append(
@@ -265,7 +358,34 @@ def extract_company_shareholders(
             )
         return out
 
-    # Promoter holding
+    # ---- Arelle flat format ----
+    arelle_entities = shp.get("entities")
+    if isinstance(arelle_entities, dict) and not shp.get("promoterHolding"):
+        for axis, entity_list in arelle_entities.items():
+            cat = _axis_to_category(axis)
+            for raw_entity in (entity_list or []):
+                entity = _norm_arelle_entity(raw_entity)
+                name = entity["name"]
+                if not name:
+                    continue
+                node_type, canonical_id, _ = registry.resolve(name)
+                if node_type == "Company" and canonical_id == company_cin:
+                    continue  # self-loop guard
+                results.append(
+                    ExtractedCompanyShareholder(
+                        raw_name=name,
+                        normalized_name=name.lower().strip(),
+                        shareholderCategory=cat,
+                        bank_symbol=canonical_id if node_type == "Bank" else None,
+                        resolved_company_cin=canonical_id if node_type == "Company" else None,
+                        numberOfShares=_safe_int(entity.get("numberOfShares", 0)),
+                        shareholdingPercentage=_safe_float(entity.get("shareholdingPercentage", 0.0)),
+                        source_company_cin=company_cin,
+                    )
+                )
+        return results
+
+    # ---- ET nested format ----
     promoter = shp.get("promoterHolding", {})
     results += _get(promoter, "Promoter")
     results += _get(promoter.get("government", {}), "GovernmentPromoter")

@@ -32,6 +32,7 @@ Author: auto-generated  |  Date: February 2026
 import argparse
 import json
 import logging
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -39,6 +40,9 @@ from datetime import datetime
 from io import StringIO
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+from dotenv import load_dotenv
+
+load_dotenv()
 
 try:
     from arelle import Cntlr as _ArelleCntlr
@@ -47,6 +51,7 @@ except ImportError:
     _ArelleCntlr = None  # type: ignore
     ARELLE_AVAILABLE = False
 
+from collections import defaultdict
 from pymongo import MongoClient, UpdateOne
 
 try:
@@ -60,17 +65,19 @@ except ImportError:
 # Config
 # ============================================================================
 
-LOCAL_URI  = "mongodb://127.0.0.1:27108/?directConnection=true"
-CLOUD_URI  = "mongodb+srv://prabirkalwani:prabirkalwani%40123@maincluster.tvef4tx.mongodb.net/"
+CLOUD_URI  = os.getenv("db_cluster_link")
+LOCAL_URI  = os.getenv("db_cluster_link")
 
-LOCAL_DB   = "company"
-LOCAL_COL  = "mca_crisil_match"
+LOCAL_DB   = "financial_kg"
+LOCAL_COL  = "companies"
 MCA_COL    = "mca data"
 
 CLOUD_DB   = "crisil_ratings"
 CLOUD_COL  = "rating_reports"
 
-_REPO_ROOT      = Path(__file__).resolve().parents[2]
+# __file__ is scripts/company/task_company_consolidate.py
+# parents: company(0) → scripts(1) → data_consolidation(2) → Capstone(3)
+_REPO_ROOT      = Path(__file__).resolve().parents[3]
 CLEANED_TEST    = _REPO_ROOT / "data_analysis" / "outputs" / "cleaned_test.json"
 SHP_DIR         = _REPO_ROOT / "data_consolidation" / "data" / "company" / "shareholding"
 
@@ -259,7 +266,7 @@ def load_mca_data(cin_list: List[str]) -> Dict[str, Dict]:
     Returns:  {CIN: mca_record_dict}
     """
     log.info(f"Loading MCA data for {len(cin_list):,} CINs from local MongoDB …")
-    local = MongoClient(LOCAL_URI, directConnection=True)
+    local = MongoClient(LOCAL_URI)
     col   = local[LOCAL_DB][MCA_COL]
 
     records: Dict[str, Dict] = {}
@@ -303,27 +310,153 @@ def _shp_extract_context_facts(root, context_id: str) -> Optional[Dict]:
     return data if data else None
 
 
-def _shp_extract_entity_group(root, category_prefix: str) -> List[Dict]:
+def _shp_extract_arelle(model) -> Dict[str, Any]:
     """
-    Extract individual shareholder entities for a given category prefix.
-    Scans for NameOfTheShareholder facts whose contextRef matches
-    `{category_prefix}_Context<digits>`, then pulls all facts for each context.
-    """
-    entities: List[Dict] = []
-    context_pattern = re.compile(rf"^{category_prefix}_Context\d+$")
-    entity_contexts: List[Dict[str, str]] = []
+    Fully dynamic Arelle-driven SHP extraction using XBRL dimensions.
 
+    Replaces all hardcoded context-prefix logic.  See task5_shareholding_xbrl.py
+    for the canonical version and full docstring.
+
+    Returns an empty dict when Arelle resolved 0 facts (taxonomy unavailable);
+    the caller falls back to ElementTree extraction in that case.
+    """
+    if not model or not model.facts:
+        return {}
+
+    aggregates: Dict[str, Dict[str, Any]]            = defaultdict(dict)
+    entities:   Dict[str, Dict[str, Dict[str, Any]]] = defaultdict(lambda: defaultdict(dict))
+    totals:     Dict[str, Any]                       = {}
+    period_end: Optional[str]                        = None
+
+    for fact in model.facts:
+        ctx = fact.context
+        if ctx is None:
+            continue
+
+        concept_local = fact.elementQname.localName
+
+        if period_end is None:
+            dt = getattr(ctx, "endDatetime", None) or getattr(ctx, "instantDatetime", None)
+            if dt:
+                period_end = dt.strftime("%Y-%m-%d")
+
+        all_dims: Dict[Any, Any] = {}
+        for seg in ("segment", "scenario"):
+            try:
+                all_dims.update(ctx.dimValues(seg))
+            except Exception:
+                pass
+
+        raw_val = fact.value
+        try:
+            coerced: Any = int(raw_val) if raw_val and "." not in str(raw_val) else float(raw_val)
+        except (TypeError, ValueError):
+            coerced = raw_val
+
+        if not all_dims:
+            totals[concept_local] = coerced
+            continue
+
+        category_member: Optional[str] = None
+        entity_axis:     Optional[str] = None
+        entity_member:   Optional[str] = None
+
+        for dim_concept, dim_val in all_dims.items():
+            axis_local   = dim_concept.qname.localName
+
+            if axis_local == "CategoryOfShareholdersAxis":
+                mq = getattr(dim_val, "memberQname", None)
+                if mq:
+                    category_member = mq.localName
+            elif "Details" in axis_local:
+                entity_axis = axis_local
+                # SEBI SHP entity axes are TYPED dimensions — no memberQname.
+                # Use the context ID as an opaque but unique entity key.
+                # Strip the D_ duration prefix so that instant + duration facts
+                # for the same entity collapse into the same bucket.
+                mq = getattr(dim_val, "memberQname", None)
+                raw_ctx = fact.contextID
+                entity_member = mq.localName if mq else (raw_ctx[2:] if raw_ctx.startswith("D_") else raw_ctx)
+
+        if category_member and not entity_axis:
+            aggregates[category_member][concept_local] = coerced
+        elif entity_axis and entity_member:
+            entities[entity_axis][entity_member][concept_local] = coerced
+
+    if not aggregates and not entities:
+        return {}
+
+    entities_out: Dict[str, List[Dict[str, Any]]] = {}
+    for axis, members in entities.items():
+        entity_list = []
+        for member, facts in members.items():
+            entity: Dict[str, Any] = {_to_camel(k): v for k, v in facts.items() if v is not None}
+            entity["_member"] = member
+            entity_list.append(entity)
+        entity_list.sort(
+            key=lambda x: x.get("shareholdingAsAPercentageOfTotalNumberOfShares", 0),
+            reverse=True,
+        )
+        entities_out[axis] = entity_list
+
+    aggregates_out: Dict[str, Dict[str, Any]] = {
+        member: {_to_camel(k): v for k, v in facts.items()}
+        for member, facts in aggregates.items()
+    }
+
+    shp_total          = {_to_camel(k): v for k, v in aggregates.get("ShareholdingPatternMember", {}).items()}
+    total_facts_all    = {_to_camel(k): v for k, v in totals.items()}
+    total_shares       = (shp_total.get("numberOfShares")
+                          or shp_total.get("totalNumberOfShares")
+                          or total_facts_all.get("numberOfShares")
+                          or total_facts_all.get("totalNumberOfShares"))
+    total_shareholders = (shp_total.get("numberOfShareholders")
+                          or total_facts_all.get("numberOfShareholders"))
+
+    return {
+        "periodEnd":         period_end,
+        "totalShares":       total_shares,
+        "totalShareholders": total_shareholders,
+        "aggregates":        aggregates_out,
+        "entities":          entities_out,
+    }
+
+
+def _shp_discover_entity_groups(root) -> Dict[str, List[Dict]]:
+    """
+    Scan the XML root ONCE for ALL NameOfTheShareholder facts and group them
+    by their context prefix (everything before _Context<N>).
+
+    This is the single source-of-truth for entity discovery.  Calling this
+    once and passing the result down avoids repeated full-root scans and
+    ensures no entities are missed regardless of what context-prefix naming
+    convention the filer chose (e.g. 'IndividualsOrHUF' vs 'ResidentIndividuals').
+
+    Returns: {prefix: [{context, name}, ...]}
+    """
+    groups: Dict[str, List[Dict]] = {}
+    context_re = re.compile(r'^(.+)_Context\d+$')
     for elem in root:
         local = elem.tag.split("}")[1] if "}" in elem.tag else elem.tag
         if local != "NameOfTheShareholder":
             continue
-        ctx = elem.get("contextRef", "").replace("D_", "")
-        if not context_pattern.match(ctx):
+        ctx  = elem.get("contextRef", "").replace("D_", "")
+        name = (elem.text or "").strip()
+        if not name or name in ("******", "NA", "", "Not Applicable"):
             continue
-        name = elem.text
-        if name and name not in ("******", "NA", "", "Not Applicable"):
-            entity_contexts.append({"context": ctx, "name": name})
+        m = context_re.match(ctx)
+        if m:
+            prefix = m.group(1)
+            groups.setdefault(prefix, []).append({"context": ctx, "name": name})
+    return groups
 
+
+def _shp_build_entities(root, entity_contexts: List[Dict]) -> List[Dict]:
+    """
+    Build an entity list from a pre-discovered list of {context, name} dicts.
+    Extracted from _shp_extract_entity_group so the logic lives in one place.
+    """
+    entities: List[Dict] = []
     for ec in entity_contexts:
         facts = _shp_extract_context_facts(root, ec["context"])
         if not facts:
@@ -338,9 +471,7 @@ def _shp_extract_entity_group(root, category_prefix: str) -> List[Dict]:
             "dematerializedShares":   facts.get("numberOfEquitySharesHeldInDematerializedForm"),
             "numberOfShareholders":   facts.get("numberOfShareholders"),
         }
-        # Strip None values
         entity = {k: v for k, v in entity.items() if v is not None}
-        # Optional typed fields
         if facts.get("typeOfPromoterShareholding"):
             entity["type"] = facts["typeOfPromoterShareholding"]
         if facts.get("categoryOfOtherInstitutions"):
@@ -348,18 +479,56 @@ def _shp_extract_entity_group(root, category_prefix: str) -> List[Dict]:
         if facts.get("categoryOfOtherNonInstitutions"):
             entity["category"] = facts["categoryOfOtherNonInstitutions"]
         entities.append(entity)
-
     entities.sort(key=lambda x: x.get("shareholdingPercentage", 0), reverse=True)
     return entities
 
 
+def _shp_extract_entity_group(root, category_prefix: str) -> List[Dict]:
+    """
+    Backward-compatible wrapper for direct per-prefix lookups.
+    Internally delegates to _shp_discover_entity_groups + _shp_build_entities.
+    For full-file extraction prefer _shp_extract_pattern which calls
+    _shp_discover_entity_groups only once.
+    """
+    groups = _shp_discover_entity_groups(root)
+    return _shp_build_entities(root, groups.get(category_prefix, []))
+
+
 def _shp_extract_pattern(root) -> Dict:
     """
-    Build the complete hierarchical shareholding pattern — identical structure
-    to _extract_complete_shareholding_pattern() in task5_shareholding_xbrl.py.
+    Build the complete hierarchical shareholding pattern.
+
+    Uses _shp_discover_entity_groups to scan ALL NameOfTheShareholder facts
+    ONCE, so no entities are missed regardless of the context-prefix naming
+    convention used by the filer.  Any prefix not in the canonical set is
+    collected under pattern["discovered"] rather than silently dropped.
     """
     cf = _shp_extract_context_facts  # shorthand
-    eg = _shp_extract_entity_group
+
+    # Discover every entity group present in this file — one pass over the root
+    all_groups = _shp_discover_entity_groups(root)
+
+    # Canonical prefixes handled by explicit slots below; anything else → discovered
+    _KNOWN = {
+        "CentralGovernmentOrStateGovernments",
+        "MutualFundsOrUTI",
+        "InstitutionsForeignPortfolioInvestorCategoryOne",
+        "InstitutionsForeignPortfolioInvestorCategoryTwo",
+        "InsuranceCompanies",
+        "Banks",
+        "ProvidentFundsOrPensionFunds",
+        "OtherInstitutionsDomestic",
+        "OtherInstitutionsForeign",
+        "ResidentIndividuals",
+        "NonResidentIndians",
+        "BodiesCorporate",
+        "OtherNonInstitutions",
+        "CustodianOrDRHolder",
+    }
+
+    def ge(prefix: str) -> List[Dict]:
+        """Build entities for a known prefix using pre-discovered contexts."""
+        return _shp_build_entities(root, all_groups.get(prefix, []))
 
     # ------------------------------------------------------------------ #
     # 1. PROMOTER AND PROMOTER GROUP
@@ -368,7 +537,7 @@ def _shp_extract_pattern(root) -> Dict:
         "aggregate": cf(root, "ShareholdingOfPromoterAndPromoterGroup_ContextI"),
         "entities":  [],
     }
-    gov_entities = eg(root, "CentralGovernmentOrStateGovernments")
+    gov_entities = ge("CentralGovernmentOrStateGovernments")
     if gov_entities:
         promoter["government"] = {
             "aggregate": cf(root, "CentralGovernmentOrStateGovernments_ContextI"),
@@ -385,12 +554,12 @@ def _shp_extract_pattern(root) -> Dict:
     }
 
     # — Institutions — #
-    fpi1_entities = eg(root, "InstitutionsForeignPortfolioInvestorCategoryOne")
-    fpi2_entities = eg(root, "InstitutionsForeignPortfolioInvestorCategoryTwo")
+    fpi1_entities = ge("InstitutionsForeignPortfolioInvestorCategoryOne")
+    fpi2_entities = ge("InstitutionsForeignPortfolioInvestorCategoryTwo")
     institutions: Dict[str, Any] = {
         "mutualFunds": {
             "aggregate": cf(root, "MutualFundsOrUTI_ContextI"),
-            "entities":  eg(root, "MutualFundsOrUTI"),
+            "entities":  ge("MutualFundsOrUTI"),
         },
         "foreignPortfolioInvestors": {
             "category1": {
@@ -404,23 +573,23 @@ def _shp_extract_pattern(root) -> Dict:
         },
         "insuranceCompanies": {
             "aggregate": cf(root, "InsuranceCompanies_ContextI"),
-            "entities":  eg(root, "InsuranceCompanies"),
+            "entities":  ge("InsuranceCompanies"),
         },
         "banks": {
             "aggregate": cf(root, "Banks_ContextI"),
-            "entities":  eg(root, "Banks"),
+            "entities":  ge("Banks"),
         },
         "providentFunds": {
             "aggregate": cf(root, "ProvidentFundsOrPensionFunds_ContextI"),
-            "entities":  eg(root, "ProvidentFundsOrPensionFunds"),
+            "entities":  ge("ProvidentFundsOrPensionFunds"),
         },
         "otherInstitutionsDomestic": {
             "aggregate": cf(root, "OtherInstitutionsDomestic_ContextI"),
-            "entities":  eg(root, "OtherInstitutionsDomestic"),
+            "entities":  ge("OtherInstitutionsDomestic"),
         },
         "otherInstitutionsForeign": {
             "aggregate": cf(root, "OtherInstitutionsForeign_ContextI"),
-            "entities":  eg(root, "OtherInstitutionsForeign"),
+            "entities":  ge("OtherInstitutionsForeign"),
         },
     }
     public["institutions"] = institutions
@@ -429,19 +598,19 @@ def _shp_extract_pattern(root) -> Dict:
     non_institutions: Dict[str, Any] = {
         "residentIndividuals": {
             "aggregate": cf(root, "ResidentIndividuals_ContextI"),
-            "entities":  eg(root, "ResidentIndividuals"),
+            "entities":  ge("ResidentIndividuals"),
         },
         "nonResidentIndians": {
             "aggregate": cf(root, "NonResidentIndians_ContextI"),
-            "entities":  eg(root, "NonResidentIndians"),
+            "entities":  ge("NonResidentIndians"),
         },
         "bodiesCorporate": {
             "aggregate": cf(root, "BodiesCorporate_ContextI"),
-            "entities":  eg(root, "BodiesCorporate"),
+            "entities":  ge("BodiesCorporate"),
         },
         "otherNonInstitutions": {
             "aggregate": cf(root, "OtherNonInstitutions_ContextI"),
-            "entities":  eg(root, "OtherNonInstitutions"),
+            "entities":  ge("OtherNonInstitutions"),
         },
     }
     public["nonInstitutions"] = non_institutions
@@ -453,18 +622,35 @@ def _shp_extract_pattern(root) -> Dict:
         "aggregate": cf(root, "SharesHeldByNonPromoterNonPublicShareholders_ContextI"),
         "entities":  [],
     }
-    cust_entities = eg(root, "CustodianOrDRHolder")
+    cust_entities = ge("CustodianOrDRHolder")
     if cust_entities:
         npnp["custodian"] = {
             "aggregate": cf(root, "CustodianOrDRHolder_ContextI"),
             "entities":  cust_entities,
         }
 
-    return {
-        "promoterHolding":          promoter,
-        "publicHolding":            public,
+    pattern = {
+        "promoterHolding":             promoter,
+        "publicHolding":               public,
         "nonPromoterNonPublicHolding": npnp,
     }
+
+    # ------------------------------------------------------------------ #
+    # 4. DISCOVERED — any prefix not in the canonical set above
+    # Captures entities from filers that use non-standard context prefix names
+    # (e.g. 'IndividualsOrHUF', 'OthersIndianShareholders') so nothing is dropped.
+    # ------------------------------------------------------------------ #
+    discovered: Dict[str, Any] = {}
+    for prefix, entity_contexts in all_groups.items():
+        if prefix not in _KNOWN:
+            discovered[prefix] = {
+                "aggregate": cf(root, f"{prefix}_ContextI"),
+                "entities":  _shp_build_entities(root, entity_contexts),
+            }
+    if discovered:
+        pattern["discovered"] = discovered
+
+    return pattern
 
 
 def _shp_extract_with_root(root) -> Dict:
@@ -500,19 +686,31 @@ def _parse_shp_xml(xml_path: Path, ctrl=None) -> Dict:
             sys.stdout = old_stdout
             if model is None:
                 raise ValueError("Arelle returned no model")
+
+            # Primary: fully dynamic dimension-based extraction
+            arelle_result = _shp_extract_arelle(model)
+            if arelle_result:
+                model.close()
+                return arelle_result
+
+            # Arelle loaded the file but resolved 0 facts (bundled taxonomy
+            # missing) — fall through to ElementTree on the same file.
+            log.debug(f"{xml_path.name}: Arelle resolved 0 facts, using ElementTree")
             root = model.modelDocument.xmlRootElement
             result = _shp_extract_with_root(root)
+            model.close()
             return result
+
         except Exception as exc:
             sys.stdout = old_stdout
             log.warning(f"Arelle parse failed for {xml_path.name}: {exc} — retrying with ElementTree")
-            # fall through to ET
-        finally:
             if model is not None:
                 try:
                     model.close()
                 except Exception:
                     pass
+            # fall through to ET
+        finally:
             sys.stdout = old_stdout
 
     # ---- ElementTree fallback ----------------------------------------------
@@ -700,7 +898,7 @@ def run(dry_run: bool = False, skip_shp: bool = False) -> None:
     # Load mca_crisil_match records
     # ------------------------------------------------------------------
     log.info("Loading mca_crisil_match documents …")
-    local      = MongoClient(LOCAL_URI, directConnection=True)
+    local      = MongoClient(LOCAL_URI)
     match_col  = local[LOCAL_DB][LOCAL_COL]
 
     records = list(match_col.find({}, {

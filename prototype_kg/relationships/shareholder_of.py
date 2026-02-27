@@ -165,6 +165,9 @@ def build_company_shareholder_of(
         if sh.bank_symbol:
             bank_to_co.append({**base, "ownerBankSymbol": sh.bank_symbol})
         elif sh.resolved_company_cin:
+            # Self-loop guard: skip if resolved owner == target company
+            if sh.resolved_company_cin == sh.source_company_cin:
+                continue
             company_to_co.append({
                 "ownerCin":  sh.resolved_company_cin,
                 "targetCin": sh.source_company_cin,

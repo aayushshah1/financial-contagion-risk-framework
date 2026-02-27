@@ -6,8 +6,9 @@ Primary key: `cin`  (every company has a CIN; synthetic ones have dummyCIN=true)
 Primary data: financial_kg/company collection (rich MCA + CRISIL consolidated docs).
 
 Node properties (trimmed to essentials):
-  cin, crisilName, mcaName, nicCode, nseSymbol,
-  industryCode, industryName, ratingDate, mcaIndustrialClassification, dummyCIN
+  cin, companyCode, crisilName, mcaName, nicCode, nseSymbol,
+  industryCode, industryName, ratingDate, mcaIndustrialClassification, dummyCIN,
+  shpTotalShares, shpTotalShareholders
 
 Returns:
   (count, industry_code_map)
@@ -33,6 +34,19 @@ def _safe_bool(val) -> bool:
     return bool(val) if val is not None else False
 
 
+def _safe_int(val) -> int:
+    """Coerce a value to int; handles MongoDB $numberLong dicts."""
+    if isinstance(val, dict) and "$numberLong" in val:
+        try:
+            return int(val["$numberLong"])
+        except (TypeError, ValueError):
+            return 0
+    try:
+        return int(val)
+    except (TypeError, ValueError):
+        return 0
+
+
 # ---------------------------------------------------------------------------
 # Neo4j upsert query
 # ---------------------------------------------------------------------------
@@ -41,6 +55,7 @@ _UPSERT_COMPANY = """
 UNWIND $batch AS row
 MERGE (c:Company {cin: row.cin})
 ON CREATE SET
+    c.companyCode                 = row.companyCode,
     c.crisilName                  = row.crisilName,
     c.mcaName                     = row.mcaName,
     c.nicCode                     = row.nicCode,
@@ -49,17 +64,22 @@ ON CREATE SET
     c.industryName                = row.industryName,
     c.ratingDate                  = row.ratingDate,
     c.mcaIndustrialClassification = row.mcaIndustrialClassification,
-    c.dummyCIN                    = row.dummyCIN
+    c.dummyCIN                    = row.dummyCIN,
+    c.shpTotalShares              = row.shpTotalShares,
+    c.shpTotalShareholders        = row.shpTotalShareholders
 ON MATCH SET
-    c.crisilName                  = CASE WHEN row.crisilName <> ''  THEN row.crisilName  ELSE c.crisilName  END,
-    c.mcaName                     = CASE WHEN row.mcaName <> ''     THEN row.mcaName     ELSE c.mcaName     END,
-    c.nicCode                     = CASE WHEN row.nicCode <> ''     THEN row.nicCode     ELSE c.nicCode     END,
-    c.nseSymbol                   = CASE WHEN row.nseSymbol <> ''   THEN row.nseSymbol   ELSE c.nseSymbol   END,
+    c.companyCode                 = CASE WHEN row.companyCode <> ''  THEN row.companyCode  ELSE c.companyCode  END,
+    c.crisilName                  = CASE WHEN row.crisilName <> ''   THEN row.crisilName   ELSE c.crisilName   END,
+    c.mcaName                     = CASE WHEN row.mcaName <> ''      THEN row.mcaName      ELSE c.mcaName      END,
+    c.nicCode                     = CASE WHEN row.nicCode <> ''      THEN row.nicCode      ELSE c.nicCode      END,
+    c.nseSymbol                   = CASE WHEN row.nseSymbol <> ''    THEN row.nseSymbol    ELSE c.nseSymbol    END,
     c.industryCode                = CASE WHEN row.industryCode <> '' THEN row.industryCode ELSE c.industryCode END,
     c.industryName                = CASE WHEN row.industryName <> '' THEN row.industryName ELSE c.industryName END,
-    c.ratingDate                  = CASE WHEN row.ratingDate <> ''  THEN row.ratingDate  ELSE c.ratingDate  END,
+    c.ratingDate                  = CASE WHEN row.ratingDate <> ''   THEN row.ratingDate   ELSE c.ratingDate   END,
     c.mcaIndustrialClassification = CASE WHEN row.mcaIndustrialClassification <> '' THEN row.mcaIndustrialClassification ELSE c.mcaIndustrialClassification END,
-    c.dummyCIN                    = CASE WHEN row.dummyCIN THEN true ELSE c.dummyCIN END
+    c.dummyCIN                    = CASE WHEN row.dummyCIN THEN true ELSE c.dummyCIN END,
+    c.shpTotalShares              = CASE WHEN row.shpTotalShares > 0 THEN row.shpTotalShares ELSE c.shpTotalShares END,
+    c.shpTotalShareholders        = CASE WHEN row.shpTotalShareholders > 0 THEN row.shpTotalShareholders ELSE c.shpTotalShareholders END
 """
 
 
@@ -93,6 +113,7 @@ def build_company_nodes(
             # Skip docs with no CIN — they cannot be merged safely
             continue
 
+        company_code   = _safe_str(doc.get("companyCode"))
         crisil_name    = _safe_str(doc.get("crisilName"))
         mca_name       = _safe_str(doc.get("mcaName"))
         nic_code       = _safe_str(doc.get("nicCode"))
@@ -103,11 +124,22 @@ def build_company_nodes(
         mca_ind_class  = _safe_str(doc.get("mcaIndustrialClassification"))
         dummy_cin      = _safe_bool(doc.get("dummyCIN"))
 
+        # SHP totals — prefer top-level shpTotal* fields; fall back to
+        # shareholdingPattern.totalShares / totalShareholders if present
+        shp            = doc.get("shareholdingPattern") or {}
+        shp_total_shares = _safe_int(
+            doc.get("shpTotalShares") or shp.get("totalShares")
+        )
+        shp_total_sh   = _safe_int(
+            doc.get("shpTotalShareholders") or shp.get("totalShareholders")
+        )
+
         if industry_code:
             industry_code_map[cin] = industry_code
 
         records.append({
             "cin":                        cin,
+            "companyCode":                company_code,
             "crisilName":                 crisil_name,
             "mcaName":                    mca_name,
             "nicCode":                    nic_code,
@@ -117,6 +149,8 @@ def build_company_nodes(
             "ratingDate":                 rating_date,
             "mcaIndustrialClassification": mca_ind_class,
             "dummyCIN":                   dummy_cin,
+            "shpTotalShares":             shp_total_shares,
+            "shpTotalShareholders":       shp_total_sh,
         })
 
     BATCH_SIZE = 500

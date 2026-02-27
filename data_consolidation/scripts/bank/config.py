@@ -6,7 +6,8 @@ import os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file in project root
-project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+# __file__ is scripts/bank/config.py → parents: bank → scripts → data_consolidation → Capstone
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 dotenv_path = os.path.join(project_root, '.env')
 load_dotenv(dotenv_path)
 
@@ -42,12 +43,13 @@ MONGODB_URI = MONGODB_CLOUD_URI
 DB_NAME = "financial_kg"
 COLLECTION_NAME = "banks"
 
-# CRISIL Data Configuration
-CRISIL_DB_NAME = "crisil_reports"
-CRISIL_COLLECTION_NAME = "crisil_reports_nic_ice_creams"  # Latest CRISIL data with NIC codes
+# CRISIL / Company Data Configuration (financial_kg.companies)
+CRISIL_DB_NAME = "financial_kg"
+CRISIL_COLLECTION_NAME = "companies"
 
 # Data Paths (relative to data_consolidation directory)
-BASE_DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+# go up: bank → scripts → data_consolidation
+BASE_DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data")
 
 DATA_PATHS = {
     "crisil": os.path.join(BASE_DATA_PATH, "company", "crisil_reports", "crisil_ratings.rating_reports.json"),
@@ -65,7 +67,7 @@ TARGET_YEAR = 2025  # FY25 ending March 31, 2025
 YEAR_LABEL = "2025"
 
 # XBRL Taxonomy Paths
-TAXONOMY_BASE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "taxonomies")
+TAXONOMY_BASE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "taxonomies")
 SHP_TAXONOMY = os.path.join(TAXONOMY_BASE, "shareholding_pattern", "SHP Taxonomy_2025-10-31")
 INTEGRATED_BANK_TAXONOMY = os.path.join(TAXONOMY_BASE, "integrated_bank_filing")
 
@@ -111,8 +113,9 @@ def get_mongodb_cloud_uri():
 
 def get_crisil_db_config():
     """
-    Get CRISIL database configuration
-    
+    Get company/CRISIL database configuration.
+    Source: financial_kg.companies (MongoDB cloud)
+
     Returns:
         Tuple of (database_name, collection_name)
     """

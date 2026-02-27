@@ -36,6 +36,10 @@ CREATE INDEX company_industry_code_idx IF NOT EXISTS
 CREATE INDEX company_nse_symbol_idx IF NOT EXISTS
   FOR (c:Company) ON (c.nseSymbol);
 
+// Fast lookup by CRISIL companyCode
+CREATE INDEX company_code_idx IF NOT EXISTS
+  FOR (c:Company) ON (c.companyCode);
+
 // Fast lookup by NIC code
 CREATE INDEX company_nic_code_idx IF NOT EXISTS
   FOR (c:Company) ON (c.nicCode);

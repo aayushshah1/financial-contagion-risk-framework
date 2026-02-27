@@ -41,6 +41,9 @@ from config import BANK_NAME_TO_SYMBOL, BANK_REGISTRY, GENERIC_NAME_TOKENS
 # ---------------------------------------------------------------------------
 
 FUZZY_THRESHOLD           = 88    # min token_set_ratio score to accept a match
+FUZZY_SORT_THRESHOLD      = 72    # min token_sort_ratio score (both must pass)
+                                  # prevents subset-name false positives, e.g.
+                                  # "Rane (Madras)" vs "Rane Holdings"
 ABBREV_MAX_LEN            = 6     # names ≤ this length + all-uppercase → abbreviation
 GENERIC_OVERLAP_THRESHOLD = 0.60  # veto if > this fraction of shared tokens are generic
 
@@ -232,13 +235,15 @@ class GlobalEntityRegistry:
         if cin:
             return "Company", cin, 1.0
 
-        # ── Pass 3: fuzzy bank (no veto — bank names are distinctive) ───────
+        # ── Pass 3: fuzzy bank — dual-ratio gate ────────────────────────────
         bank_variants = list(self._bank_index.keys())
         res = process.extractOne(norm2, bank_variants, scorer=fuzz.token_set_ratio)
         if res and res[1] >= FUZZY_THRESHOLD:
-            return "Bank", self._bank_index[res[0]], res[1] / 100
+            sort_score = fuzz.token_sort_ratio(norm2, res[0])
+            if sort_score >= FUZZY_SORT_THRESHOLD:
+                return "Bank", self._bank_index[res[0]], res[1] / 100
 
-        # ── Pass 3: fuzzy company + generic-token veto ──────────────────────
+        # ── Pass 3: fuzzy company — dual-ratio gate + generic-token veto ────
         if self._company_keys:
             results = process.extract(
                 norm2,
@@ -248,7 +253,8 @@ class GlobalEntityRegistry:
             )
             if results and results[0][1] >= FUZZY_THRESHOLD:
                 best_norm, best_score, _ = results[0]
-                if not _generic_overlap_veto(norm2, best_norm):
+                sort_score = fuzz.token_sort_ratio(norm2, best_norm)
+                if sort_score >= FUZZY_SORT_THRESHOLD and not _generic_overlap_veto(norm2, best_norm):
                     return "Company", self._company_index[best_norm], best_score / 100
 
         # ── Pass 4: abbreviation expansion ──────────────────────────────────

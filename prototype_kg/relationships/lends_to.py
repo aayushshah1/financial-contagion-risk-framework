@@ -4,16 +4,16 @@ Build (:Bank)-[:LENDS_TO]->(:Company) edges.
 
 One aggregated edge per bank-company pair.
 All facility amounts for that pair are summed into totalAmount.
-facilityTypes lists the canonical categories (Bills Discounting,
-Working Capital, Term Loan) present in the pair.
+facilityTypes lists the canonical categories present in the pair.
 
-:Company nodes are now keyed by CIN.  The advances.companies records in bank
-docs carry companyCode; we resolve companyCode → CIN via the registry before
-building edges.  Companies that cannot be resolved to a CIN are skipped.
+:Company nodes are keyed by CIN.  Each advances.companies record carries a
+'cin' field (real MCA CIN or generated dummy CIN).  Records where cin is
+missing/empty are the only ones skipped — dummy CINs (dummyCIN=True) are
+processed exactly like real CINs provided the corresponding :Company node
+exists in the graph.
 """
 
 from neo4j import Driver
-from resolution.entity_resolver import GlobalEntityRegistry
 
 
 # Map from bankFacilityMapping canonical keys → short labels stored on edge
@@ -45,10 +45,10 @@ SET r.totalAmount    = row.totalAmount,
 def build_lends_to(
     driver: Driver,
     bank_docs: list[dict],
-    registry: GlobalEntityRegistry,
 ) -> int:
     """
     Create LENDS_TO edges from all bank docs.
+    Skips records where hasCIN is False or cin is absent/empty.
     Returns total number of edges created/merged.
     """
     records: list[dict] = []
@@ -64,10 +64,9 @@ def build_lends_to(
         companies = doc.get("advances", {}).get("companies", [])
 
         for company in companies:
-            code = company.get("companyCode", "")
-
-            # Resolve companyCode → CIN via registry bridge
-            cin = registry.companycode_to_cin.get(code, "") if code else ""
+            # Use cin directly — hasCIN / dummyCIN are NOT checked here;
+            # all records with a non-empty cin are included.
+            cin = company.get("cin", "")
             if not cin:
                 skipped_no_cin += 1
                 continue

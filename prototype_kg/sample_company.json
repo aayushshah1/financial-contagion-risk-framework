@@ -1,96 +1,96 @@
 {
   "_id": {
-    "$oid": "699b1bfa936b9871ce9c2d6b"
+    "$oid": "699b1bfa936b9871ce9c2d73"
   },
-  "companyCode": "NTPCLTD",
-  "crisilName": "NTPC Limited",
-  "mcaName": "NTPC LIMITED",
+  "companyCode": "POGRCOL",
+  "crisilName": "Power Grid Corporation of India Limited",
+  "mcaName": "POWER GRID CORPORATION OF INDIA LIMITED",
   "listingStatus": "Listed",
-  "cin": "L40101DL1975GOI007966",
+  "cin": "L40101DL1989GOI038121",
   "nicCode": "40101",
   "matchType": "exact",
   "matchConfidence": 100,
   "nseMarket": "EQUITY",
   "nseMatchConfidence": 100,
   "nseMatchType": "exact",
-  "nseSymbol": "NTPC",
+  "nseSymbol": "POWERGRID",
   "bankFacilities": [
     {
-      "facility": "Bank Guarantee&",
-      "amount": 2067,
-      "lenderName": "State Bank of India",
+      "facility": "Bank Guarantee",
+      "amount": 25,
+      "lenderName": "IndusInd Bank Limited",
       "rating": "Crisil A1+"
     },
     {
-      "facility": "Bank Guarantee&",
-      "amount": 225,
-      "lenderName": "ICICI Bank Limited",
+      "facility": "Bank Guarantee",
+      "amount": 50,
+      "lenderName": "Bank Of India",
       "rating": "Crisil A1+"
     },
     {
-      "facility": "Bank Guarantee&",
-      "amount": 40,
-      "lenderName": "IDBI Bank Limited",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Bank Guarantee&",
-      "amount": 20,
-      "lenderName": "YES Bank Limited",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Bank Guarantee&",
-      "amount": 20,
+      "facility": "Bank Guarantee",
+      "amount": 300,
       "lenderName": "Axis Bank Limited",
       "rating": "Crisil A1+"
     },
     {
       "facility": "Bank Guarantee&",
-      "amount": 120,
+      "amount": 1600,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bank Guarantee",
+      "amount": 175,
+      "lenderName": "ICICI Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bank Guarantee",
+      "amount": 200,
       "lenderName": "HDFC Bank Limited",
       "rating": "Crisil A1+"
     },
     {
-      "facility": "Cash Credit",
-      "amount": 0.01,
-      "lenderName": "Axis Bank Limited",
-      "rating": "Crisil AAA/Stable"
+      "facility": "Bank Guarantee",
+      "amount": 50,
+      "lenderName": "Punjab National Bank",
+      "rating": "Crisil A1+"
     },
     {
-      "facility": "Cash Credit",
-      "amount": 0.01,
-      "lenderName": "YES Bank Limited",
-      "rating": "Crisil AAA/Stable"
+      "facility": "Bank Guarantee",
+      "amount": 50,
+      "lenderName": "Canara Bank",
+      "rating": "Crisil A1+"
     },
     {
-      "facility": "Cash Credit",
-      "amount": 0.01,
-      "lenderName": "Central Bank of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Cash Credit",
-      "amount": 0.01,
-      "lenderName": "IDBI Bank Limited",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Cash Credit",
-      "amount": 0.01,
-      "lenderName": "ICICI Bank Limited",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Cash Credit",
-      "amount": 0.01,
+      "facility": "Bank Guarantee",
+      "amount": 65,
       "lenderName": "Indian Overseas Bank",
-      "rating": "Crisil AAA/Stable"
+      "rating": "Crisil A1+"
     },
     {
-      "facility": "Cash Credit!",
-      "amount": 2499.94,
+      "facility": "Bank Guarantee",
+      "amount": 150,
+      "lenderName": "Bank of Baroda",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bank Guarantee",
+      "amount": 285,
+      "lenderName": "IDBI Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bill Discounting",
+      "amount": 1000,
       "lenderName": "State Bank of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 400,
+      "lenderName": "ICICI Bank Limited",
       "rating": "Crisil AAA/Stable"
     },
     {
@@ -100,696 +100,2121 @@
       "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "External Commercial Borrowings*",
-      "amount": 804.33,
-      "lenderName": "Bank Of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings@",
-      "amount": 795.71,
-      "lenderName": "Bank of Baroda",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings@",
-      "amount": 795.71,
-      "lenderName": "State Bank of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings*",
-      "amount": 223.43,
-      "lenderName": "Bank Of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings<",
-      "amount": 651.76,
-      "lenderName": "Bank Of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings<",
-      "amount": 2562.66,
-      "lenderName": "State Bank of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings<",
-      "amount": 998.42,
-      "lenderName": "Canara Bank",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings<",
-      "amount": 2228.16,
-      "lenderName": "State Bank of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings*",
-      "amount": 595.8,
-      "lenderName": "Bank of Baroda",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings*",
-      "amount": 106.95,
-      "lenderName": "HDFC Bank Limited",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings*",
-      "amount": 190.95,
-      "lenderName": "HDFC Bank Limited",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings*",
-      "amount": 3872.7,
-      "lenderName": "Bank of Baroda",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings*",
-      "amount": 1936.35,
-      "lenderName": "HDFC Bank Limited",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings*",
-      "amount": 2457.68,
-      "lenderName": "Bank of Baroda",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings*",
-      "amount": 3127.95,
-      "lenderName": "State Bank of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings<",
-      "amount": 854.22,
-      "lenderName": "Bank Of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "External Commercial Borrowings@",
-      "amount": 7302.98,
-      "lenderName": "State Bank of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 5,
-      "lenderName": "Axis Bank Limited",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 5,
-      "lenderName": "Central Bank of India",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 80,
-      "lenderName": "HDFC Bank Limited",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 2,
-      "lenderName": "Canara Bank",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 18,
-      "lenderName": "Indian Overseas Bank",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 5,
-      "lenderName": "YES Bank Limited",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 3078,
-      "lenderName": "State Bank of India",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 125,
-      "lenderName": "ICICI Bank Limited",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Letter of Credit&",
-      "amount": 10,
-      "lenderName": "IDBI Bank Limited",
-      "rating": "Crisil A1+"
-    },
-    {
-      "facility": "Long Term Loan",
-      "amount": 1523.09,
-      "lenderName": "Union Bank of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Long Term Loan",
-      "amount": 3106.7,
-      "lenderName": "Bank Of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Long Term Loan^",
-      "amount": 5000,
-      "lenderName": "Indian Railway Finance Corporation Limited",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Long Term Loan",
-      "amount": 416.11,
-      "lenderName": "The Jammu and Kashmir Bank Limited",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Long Term Loan",
-      "amount": 3476.83,
-      "lenderName": "Bank of Baroda",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Long Term Loan",
-      "amount": 16439.46,
-      "lenderName": "State Bank of India",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Long Term Loan",
-      "amount": 4069.71,
-      "lenderName": "Punjab National Bank",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Long Term Loan",
-      "amount": 1520,
-      "lenderName": "Axis Bank Limited",
-      "rating": "Crisil AAA/Stable"
-    },
-    {
-      "facility": "Long Term Loan",
-      "amount": 1500,
+      "facility": "Cash Credit",
+      "amount": 200,
       "lenderName": "IndusInd Bank Limited",
       "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Long Term Loan",
-      "amount": 1190,
+      "facility": "Cash Credit",
+      "amount": 200,
+      "lenderName": "Punjab National Bank",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 150,
       "lenderName": "Canara Bank",
       "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Long Term Loan",
-      "amount": 30833.33,
-      "lenderName": "HDFC Bank Limited",
+      "facility": "Cash Credit&",
+      "amount": 2400,
+      "lenderName": "State Bank of India",
       "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Long Term Loan",
-      "amount": 2083.33,
-      "lenderName": "UCO Bank",
+      "facility": "Cash Credit",
+      "amount": 400,
+      "lenderName": "Axis Bank Limited",
       "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Proposed Bank Guarantee&",
-      "amount": 180,
-      "lenderName": "Not Applicable",
+      "facility": "Cash Credit",
+      "amount": 150,
+      "lenderName": "Indian Overseas Bank",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 250,
+      "lenderName": "Bank Of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 200,
+      "lenderName": "IDBI Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 50,
+      "lenderName": "Canara Bank",
       "rating": "Crisil A1+"
     },
     {
-      "facility": "Proposed External Commercial Borrowings",
-      "amount": 10500.25,
+      "facility": "Letter of Credit",
+      "amount": 50,
+      "lenderName": "IndusInd Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 1100,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 100,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 50,
+      "lenderName": "Bank Of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 125,
+      "lenderName": "IDBI Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 100,
+      "lenderName": "ICICI Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 100,
+      "lenderName": "Axis Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 100,
+      "lenderName": "Punjab National Bank",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 175,
+      "lenderName": "Indian Overseas Bank",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit",
+      "amount": 50,
+      "lenderName": "Bank of Baroda",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Proposed Long Term Bank Loan Facility",
+      "amount": 7376.05,
       "lenderName": "Not Applicable",
       "rating": "Crisil AAA/Stable"
     },
     {
       "facility": "Proposed Long Term Bank Loan Facility",
-      "amount": 8835.43,
+      "amount": 10000,
       "lenderName": "Not Applicable",
       "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Proposed Working Capital Facility",
-      "amount": 2950,
+      "facility": "Proposed Term Loan",
+      "amount": 1000,
       "lenderName": "Not Applicable",
-      "rating": "Crisil A1+"
+      "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Working Capital Facility###",
-      "amount": 1000,
-      "lenderName": "The South Indian Bank Limited",
-      "rating": "Crisil A1+"
+      "facility": "Term Loan",
+      "amount": 4500,
+      "lenderName": "Canara Bank",
+      "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Working Capital Facility",
-      "amount": 1000,
-      "lenderName": "IndusInd Bank Limited",
-      "rating": "Crisil A1+"
+      "facility": "Term Loan",
+      "amount": 3742.9,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Working Capital Facility",
-      "amount": 750,
-      "lenderName": "The Karnataka Bank Limited",
-      "rating": "Crisil A1+"
+      "facility": "Term Loan",
+      "amount": 2500,
+      "lenderName": "Canara Bank",
+      "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Working Capital Facility###",
-      "amount": 3400,
-      "lenderName": "Central Bank of India",
-      "rating": "Crisil A1+"
+      "facility": "Term Loan",
+      "amount": 1955.56,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil AAA/Stable"
     },
     {
-      "facility": "Working Capital Facility###",
-      "amount": 11900,
+      "facility": "Term Loan",
+      "amount": 4999.63,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Term Loan",
+      "amount": 7754.54,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Term Loan",
+      "amount": 2500,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Term Loan",
+      "amount": 1367.34,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Term Loan",
+      "amount": 2500,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Term Loan",
+      "amount": 2473.94,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Working Capital Loan",
+      "amount": 4500,
       "lenderName": "State Bank of India",
       "rating": "Crisil A1+"
     },
     {
-      "facility": "Working Capital Facility###",
-      "amount": 1000,
-      "lenderName": "Union Bank of India",
+      "facility": "Working Capital Loan",
+      "amount": 1500,
+      "lenderName": "Punjab National Bank",
       "rating": "Crisil A1+"
     }
   ],
-  "crisilHeading": "NTPC Limited:Update on NTPC Limited",
+  "crisilHeading": "Power Grid Corporation of India Limited:Ratings reaffirmed at 'Crisil AAA/Stable/Crisil A1+'; Rated amount enhanced for Bank Debt",
   "crisilRatings": [
     {
       "instrumentName": "Bank Guarantee",
       "rating": "Crisil A1+",
-      "outlook": "",
+      "outlook": "Stable",
       "product": "Credit Rating",
       "industryCode": "29",
-      "industryName": "Power Generation"
+      "industryName": "Power - Transmission"
     },
     {
-      "instrumentName": "Fixed Deposits",
+      "instrumentName": "Bill Discounting",
+      "rating": "Crisil A1+",
+      "outlook": "Stable",
+      "product": "Credit Rating",
+      "industryCode": "29",
+      "industryName": "Power - Transmission"
+    },
+    {
+      "instrumentName": "Long-Term Borrowing Programme",
       "rating": "Crisil AAA",
-      "outlook": "",
+      "outlook": "Stable",
       "product": "Credit Rating",
       "industryCode": "29",
-      "industryName": "Power Generation"
+      "industryName": "Power - Transmission"
     },
     {
-      "instrumentName": "Proposed Working Capital Facility",
-      "rating": "Crisil A1+",
-      "outlook": "",
+      "instrumentName": "Term Loan",
+      "rating": "Crisil AAA",
+      "outlook": "Stable",
       "product": "Credit Rating",
       "industryCode": "29",
-      "industryName": "Power Generation"
+      "industryName": "Power - Transmission"
     },
     {
-      "instrumentName": "Working Capital Facility",
+      "instrumentName": "Working Capital Loan",
       "rating": "Crisil A1+",
-      "outlook": "",
+      "outlook": "Stable",
       "product": "Credit Rating",
       "industryCode": "29",
-      "industryName": "Power Generation"
+      "industryName": "Power - Transmission"
     }
   ],
   "industryCode": "29",
-  "industryName": "Power Generation",
-  "instruments": [],
-  "mcaAddress": "NTPC BHAWAN, SCOPE COMPLEX, 7, INSTITUTIONAL AREA   LODHI ROAD,NEW DELHI,Delhi,110003-India",
-  "mcaAuthorizedCapital": "166000000000.00",
+  "industryName": "Power - Transmission",
+  "instruments": [
+    {
+      "isin": "ISIN",
+      "instrumentName": "Name Of Instrument",
+      "allotmentDate": "Date ofAllotment",
+      "couponRate": "CouponRate (%)",
+      "maturityDate": "MaturityDate",
+      "issueSize": null,
+      "complexityLevel": "ComplexityLevels",
+      "rating": "Rating Outstandingwith Outlook"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Bank Guarantee",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 1350,
+      "complexityLevel": "NA",
+      "rating": "Crisil A1+"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Bank Guarantee#",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 1600,
+      "complexityLevel": "NA",
+      "rating": "Crisil A1+"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Bill Discounting",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 1000,
+      "complexityLevel": "NA",
+      "rating": "Crisil A1+"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Cash Credit",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 2450,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Cash Credit#",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 2400,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Letter of Credit",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 900,
+      "complexityLevel": "NA",
+      "rating": "Crisil A1+"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Letter of Credit#",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 1100,
+      "complexityLevel": "NA",
+      "rating": "Crisil A1+"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Working Capital Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 6000,
+      "complexityLevel": "NA",
+      "rating": "Crisil A1+"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Proposed Long Term Bank Loan Facility",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 7376.05,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Proposed Long Term Bank Loan Facility",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 10000,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Proposed Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 1000,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 4500,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 3742.9,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 2500,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 1367.34,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 2500,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 2473.94,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 1955.56,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 4999.63,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 7754.54,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Term Loan",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "30-Nov-35",
+      "issueSize": 2500,
+      "complexityLevel": "NA",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Commercial paper***",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "7-365 days",
+      "issueSize": 12000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil A1+"
+    },
+    {
+      "isin": "INE752E07IL7",
+      "instrumentName": "Bond - XXXV issue",
+      "allotmentDate": "31-May-11",
+      "couponRate": "9.64",
+      "maturityDate": "31-May-26",
+      "issueSize": 163.13,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07IZ7",
+      "instrumentName": "Bond - XXXVI issue",
+      "allotmentDate": "29-Aug-11",
+      "couponRate": "9.35",
+      "maturityDate": "29-Aug-29",
+      "issueSize": 206,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07IY0",
+      "instrumentName": "Bond - XXXVI issue",
+      "allotmentDate": "29-Aug-11",
+      "couponRate": "9.35",
+      "maturityDate": "29-Aug-28",
+      "issueSize": 206,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07IX2",
+      "instrumentName": "Bond - XXXVI issue",
+      "allotmentDate": "29-Aug-11",
+      "couponRate": "9.35",
+      "maturityDate": "29-Aug-27",
+      "issueSize": 206,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07IW4",
+      "instrumentName": "Bond - XXXVI issue",
+      "allotmentDate": "29-Aug-11",
+      "couponRate": "9.35",
+      "maturityDate": "29-Aug-26",
+      "issueSize": 206,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07JA8",
+      "instrumentName": "Bond - XXXVI issue",
+      "allotmentDate": "29-Aug-11",
+      "couponRate": "9.35",
+      "maturityDate": "29-Aug-30",
+      "issueSize": 206,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07JM3",
+      "instrumentName": "Bond - XXXVII issue",
+      "allotmentDate": "26-Dec-11",
+      "couponRate": "9.25",
+      "maturityDate": "26-Dec-26",
+      "issueSize": 166.25,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07JL5",
+      "instrumentName": "Bond - XXXVII issue",
+      "allotmentDate": "26-Dec-11",
+      "couponRate": "9.25",
+      "maturityDate": "26-Dec-25",
+      "issueSize": 166.25,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07JN1",
+      "instrumentName": "Bond - XXXVIII issue",
+      "allotmentDate": "9-Mar-12",
+      "couponRate": "9.25",
+      "maturityDate": "9-Mar-27",
+      "issueSize": 855,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07JO9",
+      "instrumentName": "Bond - XXXIX issue",
+      "allotmentDate": "29-Mar-12",
+      "couponRate": "9.40",
+      "maturityDate": "29-Mar-27",
+      "issueSize": 1800,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07KA6",
+      "instrumentName": "Bond - XL issue",
+      "allotmentDate": "28-Jun-12",
+      "couponRate": "9.30",
+      "maturityDate": "28-Jun-27",
+      "issueSize": 333.13,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07JZ5",
+      "instrumentName": "Bond - XL issue",
+      "allotmentDate": "28-Jun-12",
+      "couponRate": "9.30",
+      "maturityDate": "28-Jun-26",
+      "issueSize": 333.13,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07KM1",
+      "instrumentName": "Bond - XLI issue",
+      "allotmentDate": "19-Oct-12",
+      "couponRate": "8.85",
+      "maturityDate": "19-Oct-27",
+      "issueSize": 236.88,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07KL3",
+      "instrumentName": "Bond - XLI issue",
+      "allotmentDate": "19-Oct-12",
+      "couponRate": "8.85",
+      "maturityDate": "19-Oct-26",
+      "issueSize": 236.88,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07KZ3",
+      "instrumentName": "Bond - XLIII issue",
+      "allotmentDate": "20-May-13",
+      "couponRate": "7.93",
+      "maturityDate": "20-May-28",
+      "issueSize": 260.5,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07KY6",
+      "instrumentName": "Bond - XLIII issue",
+      "allotmentDate": "20-May-13",
+      "couponRate": "7.93",
+      "maturityDate": "20-May-27",
+      "issueSize": 260.5,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07KX8",
+      "instrumentName": "Bond - XLIII issue",
+      "allotmentDate": "20-May-13",
+      "couponRate": "7.93",
+      "maturityDate": "20-May-26",
+      "issueSize": 260.5,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07LC0",
+      "instrumentName": "Bond - XLIV issue",
+      "allotmentDate": "15-Jul-13",
+      "couponRate": "8.70",
+      "maturityDate": "15-Jul-28",
+      "issueSize": 1322,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07LO5",
+      "instrumentName": "Bond - XLV issue",
+      "allotmentDate": "28-Feb-14",
+      "couponRate": "9.65",
+      "maturityDate": "28-Feb-29",
+      "issueSize": 166.6,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07LN7",
+      "instrumentName": "Bond - XLV issue",
+      "allotmentDate": "28-Feb-14",
+      "couponRate": "9.65",
+      "maturityDate": "28-Feb-28",
+      "issueSize": 166.6,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07LM9",
+      "instrumentName": "Bond - XLV issue",
+      "allotmentDate": "28-Feb-14",
+      "couponRate": "9.65",
+      "maturityDate": "28-Feb-27",
+      "issueSize": 166.6,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07LL1",
+      "instrumentName": "Bond - XLV issue",
+      "allotmentDate": "28-Feb-14",
+      "couponRate": "9.65",
+      "maturityDate": "28-Feb-26",
+      "issueSize": 166.6,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07LR8",
+      "instrumentName": "Bond - XLVI issue",
+      "allotmentDate": "4-Sep-14",
+      "couponRate": "9.30",
+      "maturityDate": "4-Sep-29",
+      "issueSize": 1454,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MD6",
+      "instrumentName": "Bond - XLVII issue",
+      "allotmentDate": "20-Oct-14",
+      "couponRate": "8.93",
+      "maturityDate": "20-Oct-29",
+      "issueSize": 220,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MC8",
+      "instrumentName": "Bond - XLVII issue",
+      "allotmentDate": "20-Oct-14",
+      "couponRate": "8.93",
+      "maturityDate": "20-Oct-28",
+      "issueSize": 220,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MB0",
+      "instrumentName": "Bond - XLVII issue",
+      "allotmentDate": "20-Oct-14",
+      "couponRate": "8.93",
+      "maturityDate": "20-Oct-27",
+      "issueSize": 220,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MA2",
+      "instrumentName": "Bond - XLVII issue",
+      "allotmentDate": "20-Oct-14",
+      "couponRate": "8.93",
+      "maturityDate": "20-Oct-26",
+      "issueSize": 220,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MH7",
+      "instrumentName": "Bond - XLVIII issue",
+      "allotmentDate": "23-Jan-15",
+      "couponRate": "8.20",
+      "maturityDate": "23-Jan-30",
+      "issueSize": 645,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MK1",
+      "instrumentName": "Bond - XLIX issue",
+      "allotmentDate": "9-Mar-15",
+      "couponRate": "8.15",
+      "maturityDate": "9-Mar-30",
+      "issueSize": 435,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MV8",
+      "instrumentName": "Bond - L issue",
+      "allotmentDate": "27-May-15",
+      "couponRate": "8.40",
+      "maturityDate": "27-May-29",
+      "issueSize": 244,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MU0",
+      "instrumentName": "Bond - L issue",
+      "allotmentDate": "27-May-15",
+      "couponRate": "8.40",
+      "maturityDate": "27-May-28",
+      "issueSize": 244,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MT2",
+      "instrumentName": "Bond - L issue",
+      "allotmentDate": "27-May-15",
+      "couponRate": "8.40",
+      "maturityDate": "27-May-27",
+      "issueSize": 244,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MS4",
+      "instrumentName": "Bond - L issue",
+      "allotmentDate": "27-May-15",
+      "couponRate": "8.40",
+      "maturityDate": "27-May-26",
+      "issueSize": 244,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07MW6",
+      "instrumentName": "Bond - L issue",
+      "allotmentDate": "27-May-15",
+      "couponRate": "8.40",
+      "maturityDate": "27-May-30",
+      "issueSize": 244,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NH5",
+      "instrumentName": "Bond - LI issue",
+      "allotmentDate": "14-Sep-15",
+      "couponRate": "8.40",
+      "maturityDate": "14-Sep-29",
+      "issueSize": 250,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NG7",
+      "instrumentName": "Bond - LI issue",
+      "allotmentDate": "14-Sep-15",
+      "couponRate": "8.40",
+      "maturityDate": "14-Sep-28",
+      "issueSize": 250,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NF9",
+      "instrumentName": "Bond - LI issue",
+      "allotmentDate": "14-Sep-15",
+      "couponRate": "8.40",
+      "maturityDate": "14-Sep-27",
+      "issueSize": 250,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NE2",
+      "instrumentName": "Bond - LI issue",
+      "allotmentDate": "14-Sep-15",
+      "couponRate": "8.40",
+      "maturityDate": "14-Sep-26",
+      "issueSize": 250,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NI3",
+      "instrumentName": "Bond - LI issue",
+      "allotmentDate": "14-Sep-15",
+      "couponRate": "8.40",
+      "maturityDate": "14-Sep-30",
+      "issueSize": 250,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NK9",
+      "instrumentName": "Bond - LII issue",
+      "allotmentDate": "23-Dec-15",
+      "couponRate": "8.32",
+      "maturityDate": "23-Dec-25",
+      "issueSize": 466,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NL7",
+      "instrumentName": "Bond - LII issue",
+      "allotmentDate": "23-Dec-15",
+      "couponRate": "8.32",
+      "maturityDate": "23-Dec-30",
+      "issueSize": 466,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NV6",
+      "instrumentName": "Bond - LIII issue",
+      "allotmentDate": "25-Apr-16",
+      "couponRate": "8.13",
+      "maturityDate": "25-Apr-29",
+      "issueSize": 333,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NU8",
+      "instrumentName": "Bond - LIII issue",
+      "allotmentDate": "25-Apr-16",
+      "couponRate": "8.13",
+      "maturityDate": "25-Apr-28",
+      "issueSize": 333,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NT0",
+      "instrumentName": "Bond - LIII issue",
+      "allotmentDate": "25-Apr-16",
+      "couponRate": "8.13",
+      "maturityDate": "25-Apr-27",
+      "issueSize": 333,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NS2",
+      "instrumentName": "Bond - LIII issue",
+      "allotmentDate": "25-Apr-16",
+      "couponRate": "8.13",
+      "maturityDate": "25-Apr-26",
+      "issueSize": 333,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NX2",
+      "instrumentName": "Bond - LIII issue",
+      "allotmentDate": "25-Apr-16",
+      "couponRate": "8.13",
+      "maturityDate": "25-Apr-31",
+      "issueSize": 333,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NW4",
+      "instrumentName": "Bond - LIII issue",
+      "allotmentDate": "25-Apr-16",
+      "couponRate": "8.13",
+      "maturityDate": "25-Apr-30",
+      "issueSize": 333,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07NZ7",
+      "instrumentName": "Bond - LIV issue",
+      "allotmentDate": "15-Jul-16",
+      "couponRate": "7.97",
+      "maturityDate": "15-Jul-26",
+      "issueSize": 1000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07OA8",
+      "instrumentName": "Bond - LIV issue",
+      "allotmentDate": "15-Jul-16",
+      "couponRate": "7.97",
+      "maturityDate": "15-Jul-31",
+      "issueSize": 1000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07OB6",
+      "instrumentName": "Bond - LV issue",
+      "allotmentDate": "21-Sep-16",
+      "couponRate": "7.55",
+      "maturityDate": "21-Sep-31",
+      "issueSize": 1240,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07OC4",
+      "instrumentName": "Bond - LVI issue",
+      "allotmentDate": "18-Oct-16",
+      "couponRate": "7.36",
+      "maturityDate": "18-Oct-26",
+      "issueSize": 1065,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07OE0",
+      "instrumentName": "Bond - LVIII issue",
+      "allotmentDate": "9-Mar-17",
+      "couponRate": "7.89",
+      "maturityDate": "9-Mar-27",
+      "issueSize": 2060,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07OF7",
+      "instrumentName": "Bond- LIX issue",
+      "allotmentDate": "19-Jun-17",
+      "couponRate": "7.30",
+      "maturityDate": "19-Jun-27",
+      "issueSize": 3070,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07OG5",
+      "instrumentName": "Bond- LX issue",
+      "allotmentDate": "9-Aug-17",
+      "couponRate": "7.20",
+      "maturityDate": "9-Aug-27",
+      "issueSize": 3060,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08510",
+      "instrumentName": "Bond- LXI issue",
+      "allotmentDate": "12-Dec-17",
+      "couponRate": "7.74",
+      "maturityDate": "12-Dec-29",
+      "issueSize": 600,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08502",
+      "instrumentName": "Bond- LXI issue",
+      "allotmentDate": "12-Dec-17",
+      "couponRate": "7.74",
+      "maturityDate": "12-Dec-28",
+      "issueSize": 600,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08544",
+      "instrumentName": "Bond- LXI issue",
+      "allotmentDate": "12-Dec-17",
+      "couponRate": "7.74",
+      "maturityDate": "10-Dec-32",
+      "issueSize": 600,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08536",
+      "instrumentName": "Bond- LXI issue",
+      "allotmentDate": "12-Dec-17",
+      "couponRate": "7.74",
+      "maturityDate": "12-Dec-31",
+      "issueSize": 600,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08528",
+      "instrumentName": "Bond- LXI issue",
+      "allotmentDate": "12-Dec-17",
+      "couponRate": "7.74",
+      "maturityDate": "12-Dec-30",
+      "issueSize": 600,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E07OH3",
+      "instrumentName": "Bond- LXII issue",
+      "allotmentDate": "7-Jan-19",
+      "couponRate": "8.36",
+      "maturityDate": "7-Jan-29",
+      "issueSize": 1600,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08551",
+      "instrumentName": "GoI fully serviced bond",
+      "allotmentDate": "14-Feb-19",
+      "couponRate": "8.24",
+      "maturityDate": "14-Feb-29",
+      "issueSize": 3487.5,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08577",
+      "instrumentName": "Bond- LXIII issue",
+      "allotmentDate": "15-Jul-19",
+      "couponRate": "7.34",
+      "maturityDate": "15-Jul-29",
+      "issueSize": 600,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08585",
+      "instrumentName": "Bond- LXIII issue",
+      "allotmentDate": "15-Jul-19",
+      "couponRate": "7.34",
+      "maturityDate": "15-Jul-34",
+      "issueSize": 600,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08601",
+      "instrumentName": "Bond- LXIV issue",
+      "allotmentDate": "25-Oct-19",
+      "couponRate": "7.49",
+      "maturityDate": "25-Oct-29",
+      "issueSize": 756,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08619",
+      "instrumentName": "Bond- LXIV issue",
+      "allotmentDate": "25-Oct-19",
+      "couponRate": "7.49",
+      "maturityDate": "25-Oct-34",
+      "issueSize": 1008,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08635",
+      "instrumentName": "Bond- LXVI issue",
+      "allotmentDate": "8-Jan-20",
+      "couponRate": "7.38",
+      "maturityDate": "12-Apr-30",
+      "issueSize": 500,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08650",
+      "instrumentName": "Bond- LXVIII issue",
+      "allotmentDate": "5-Aug-20",
+      "couponRate": "6.28",
+      "maturityDate": "11-Apr-31",
+      "issueSize": 500,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08668",
+      "instrumentName": "Bond- LXIX issue",
+      "allotmentDate": "25-Mar-22",
+      "couponRate": "6.05",
+      "maturityDate": "25-Mar-27",
+      "issueSize": 529.9,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08676",
+      "instrumentName": "BOND – LXX ISSUE",
+      "allotmentDate": "17-Feb-23",
+      "couponRate": "7.40",
+      "maturityDate": "17-Feb-33",
+      "issueSize": 1537,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08684",
+      "instrumentName": "BOND – LXXI ISSUE",
+      "allotmentDate": "23-Mar-23",
+      "couponRate": "7.52",
+      "maturityDate": "23-Mar-33",
+      "issueSize": 650.255,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08692",
+      "instrumentName": "BOND – LXXII ISSUE",
+      "allotmentDate": "31-Mar-23",
+      "couponRate": "7.56",
+      "maturityDate": "31-Mar-33",
+      "issueSize": 318.755,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08700",
+      "instrumentName": "Bond – LXXIII ISSUE",
+      "allotmentDate": "24-Aug-23",
+      "couponRate": "7.50",
+      "maturityDate": "24-Aug-33",
+      "issueSize": 1000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08718",
+      "instrumentName": "Bond – LXXIV ISSUE",
+      "allotmentDate": "12-Oct-23",
+      "couponRate": "7.70",
+      "maturityDate": "12-Oct-33",
+      "issueSize": 1800,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08726",
+      "instrumentName": "Bond – LXXV ISSUE",
+      "allotmentDate": "11-Jan-24",
+      "couponRate": "7.65",
+      "maturityDate": "11-Jan-34",
+      "issueSize": 1980,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08734",
+      "instrumentName": "Bond – LXXVI ISSUE",
+      "allotmentDate": "12-Mar-24",
+      "couponRate": "7.35",
+      "maturityDate": "12-Mar-34",
+      "issueSize": 1200,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08742",
+      "instrumentName": "Bond – LXXVII ISSUE",
+      "allotmentDate": "23-Apr-24",
+      "couponRate": "7.55",
+      "maturityDate": "23-Apr-34",
+      "issueSize": 2700,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08759",
+      "instrumentName": "Bond – LXXVIII ISSUE",
+      "allotmentDate": "23-Jul-24",
+      "couponRate": "7.38",
+      "maturityDate": "23-Jul-34",
+      "issueSize": 2434.5,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08767",
+      "instrumentName": "Bond – LXXIX ISSUE",
+      "allotmentDate": "25-Oct-24",
+      "couponRate": "7.08",
+      "maturityDate": "25-Oct-34",
+      "issueSize": 5000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08775",
+      "instrumentName": "Bond – LXXX ISSUE",
+      "allotmentDate": "24-Dec-24",
+      "couponRate": "7.12",
+      "maturityDate": "24-Dec-34",
+      "issueSize": 3975,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08783",
+      "instrumentName": "6.94% POWERGRID Bond LXXXI Issue",
+      "allotmentDate": "15-Apr-25",
+      "couponRate": "6.94",
+      "maturityDate": "15-Apr-35",
+      "issueSize": 6000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "INE752E08791",
+      "instrumentName": "6.98% POWERGRID Bond LXXXII Issue",
+      "allotmentDate": "12-Aug-25",
+      "couponRate": "6.98",
+      "maturityDate": "12-Aug-35",
+      "issueSize": 5000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Bonds*",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 5000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "isin": "NA",
+      "instrumentName": "Bonds*",
+      "allotmentDate": "NA",
+      "couponRate": "NA",
+      "maturityDate": "NA",
+      "issueSize": 9000,
+      "complexityLevel": "Simple",
+      "rating": "Crisil AAA/Stable"
+    }
+  ],
+  "mcaAddress": "B-9 QUTAB INSTITUTIONAL AREA   KATWARIA SARAI,NEW DELHI,Delhi,110016-India",
+  "mcaAuthorizedCapital": "100000000000.00",
   "mcaCategory": "Company limited by shares",
   "mcaClass": "Public",
   "mcaCompanyStatus": "Active",
   "mcaIndianForeign": "Indian",
   "mcaIndustrialClassification": "Electricity, Gas and Water companies",
-  "mcaPaidupCapital": "96966661340.00",
+  "mcaPaidupCapital": "93006038190.00",
   "mcaROCCode": "ROC Delhi",
-  "mcaRegistrationDate": "1975-11-07",
+  "mcaRegistrationDate": "1989-10-23",
   "mcaStateCode": "delhi",
   "mcaSubCategory": "Union government company",
-  "ratingDate": "Jan 15, 2026",
-  "ratingFileName": "https://www.crisilratings.com/mnt/winshare/Ratings/RatingList/RatingDocs/NTPCLimited_January 15_ 2026_RR_387182.html",
+  "ratingDate": "Dec 05, 2025",
+  "ratingFileName": "https://www.crisilratings.com/mnt/winshare/Ratings/RatingList/RatingDocs/PowerGridCorporationofIndiaLimited_December 05_ 2025_RR_384912.html",
   "shareholdingPattern": {
-    "promoterHolding": {
-      "aggregate": {
-        "numberOfShareholders": 1,
+    "periodEnd": "2026-01-01",
+    "totalShares": {
+      "$numberLong": "9300603819"
+    },
+    "totalShareholders": 1374801,
+    "aggregates": {
+      "CentralGovernmentOrStateGovernmentSMember": {
+        "numberOfShareholders": 2,
         "numberOfFullyPaidUpEquityShares": {
-          "$numberLong": "4955346251"
+          "$numberLong": "4774884280"
         },
         "numberOfShares": {
-          "$numberLong": "4955346251"
+          "$numberLong": "4774884280"
         },
-        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.511,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.5134,
         "numberOfVotingRightsHeldBySameClassOfSecurities": {
-          "$numberLong": "4955346251"
+          "$numberLong": "4774884280"
         },
         "numberOfVotingRights": {
-          "$numberLong": "4955346251"
+          "$numberLong": "4774884280"
         },
-        "percentageOfTotalVotingRights": 0.511,
+        "percentageOfTotalVotingRights": 0.5134,
         "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
-          "$numberLong": "4955346251"
+          "$numberLong": "4774884280"
         },
-        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.511,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.5134,
         "numberOfEquitySharesHeldInDematerializedForm": {
-          "$numberLong": "4955346251"
+          "$numberLong": "4774884280"
         }
       },
-      "entities": [],
-      "government": {
-        "aggregate": null,
-        "entities": [
-          {
-            "name": "President Of India",
-            "numberOfShares": {
-              "$numberLong": "4955346251"
-            },
-            "shareholdingPercentage": 0.511,
-            "numberOfVotingRights": {
-              "$numberLong": "4955346251"
-            },
-            "votingRightsPercentage": 0.511,
-            "pan": "******",
-            "dematerializedShares": {
-              "$numberLong": "4955346251"
-            },
-            "numberOfShareholders": 1,
-            "type": "******"
-          }
-        ]
-      }
-    },
-    "publicHolding": {
-      "aggregate": {
-        "numberOfShareholders": 3543433,
+      "IndianMember": {
+        "numberOfShareholders": 2,
         "numberOfFullyPaidUpEquityShares": {
-          "$numberLong": "4741319883"
+          "$numberLong": "4774884280"
         },
         "numberOfShares": {
-          "$numberLong": "4741319883"
+          "$numberLong": "4774884280"
         },
-        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.489,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.5134,
         "numberOfVotingRightsHeldBySameClassOfSecurities": {
-          "$numberLong": "4741319883"
+          "$numberLong": "4774884280"
         },
         "numberOfVotingRights": {
-          "$numberLong": "4741319883"
+          "$numberLong": "4774884280"
         },
-        "percentageOfTotalVotingRights": 0.489,
+        "percentageOfTotalVotingRights": 0.5134,
         "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
-          "$numberLong": "4741319883"
+          "$numberLong": "4774884280"
         },
-        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.489,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.5134,
         "numberOfEquitySharesHeldInDematerializedForm": {
-          "$numberLong": "4741249724"
+          "$numberLong": "4774884280"
+        }
+      },
+      "ShareholdingOfPromoterAndPromoterGroupMember": {
+        "numberOfShareholders": 2,
+        "numberOfFullyPaidUpEquityShares": {
+          "$numberLong": "4774884280"
+        },
+        "numberOfShares": {
+          "$numberLong": "4774884280"
+        },
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.5134,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": {
+          "$numberLong": "4774884280"
+        },
+        "numberOfVotingRights": {
+          "$numberLong": "4774884280"
+        },
+        "percentageOfTotalVotingRights": 0.5134,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
+          "$numberLong": "4774884280"
+        },
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.5134,
+        "numberOfEquitySharesHeldInDematerializedForm": {
+          "$numberLong": "4774884280"
+        }
+      },
+      "MutualFundsOrUTIMember": {
+        "numberOfShareholders": 41,
+        "numberOfFullyPaidUpEquityShares": 1325032771,
+        "numberOfShares": 1325032771,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.1425,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 1325032771,
+        "numberOfVotingRights": 1325032771,
+        "percentageOfTotalVotingRights": 0.1425,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1325032771,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.1425,
+        "numberOfEquitySharesHeldInDematerializedForm": 1325032771,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "AlternativeInvestmentFundsMember": {
+        "numberOfShareholders": 19,
+        "numberOfFullyPaidUpEquityShares": 7859502,
+        "numberOfShares": 7859502,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0008,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 7859502,
+        "numberOfVotingRights": 7859502,
+        "percentageOfTotalVotingRights": 0.0008,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 7859502,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0008,
+        "numberOfEquitySharesHeldInDematerializedForm": 7859502,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "BanksMember": {
+        "numberOfShareholders": 11,
+        "numberOfFullyPaidUpEquityShares": 5811207,
+        "numberOfShares": 5811207,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0006,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 5811207,
+        "numberOfVotingRights": 5811207,
+        "percentageOfTotalVotingRights": 0.0006,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 5811207,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0006,
+        "numberOfEquitySharesHeldInDematerializedForm": 5811207,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "InsuranceCompaniesMember": {
+        "numberOfShareholders": 36,
+        "numberOfFullyPaidUpEquityShares": 421890813,
+        "numberOfShares": 421890813,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0454,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 421890813,
+        "numberOfVotingRights": 421890813,
+        "percentageOfTotalVotingRights": 0.0454,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 421890813,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0454,
+        "numberOfEquitySharesHeldInDematerializedForm": 421890813,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "ProvidentFundsOrPensionFundsMember": {
+        "numberOfShareholders": 1,
+        "numberOfFullyPaidUpEquityShares": 116068419,
+        "numberOfShares": 116068419,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0125,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 116068419,
+        "numberOfVotingRights": 116068419,
+        "percentageOfTotalVotingRights": 0.0125,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 116068419,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0125,
+        "numberOfEquitySharesHeldInDematerializedForm": 116068419,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "SovereignWealthFundsDomesticMember": {
+        "numberOfShareholders": 2,
+        "numberOfFullyPaidUpEquityShares": 6808745,
+        "numberOfShares": 6808745,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0007,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 6808745,
+        "numberOfVotingRights": 6808745,
+        "percentageOfTotalVotingRights": 0.0007,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 6808745,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0007,
+        "numberOfEquitySharesHeldInDematerializedForm": 6808745,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "NBFCsRegisteredWithRBIMember": {
+        "numberOfShareholders": 14,
+        "numberOfFullyPaidUpEquityShares": 1034432,
+        "numberOfShares": 1034432,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0001,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 1034432,
+        "numberOfVotingRights": 1034432,
+        "percentageOfTotalVotingRights": 0.0001,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1034432,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0001,
+        "numberOfEquitySharesHeldInDematerializedForm": 1034432,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "InstitutionsDomesticMember": {
+        "numberOfShareholders": 124,
+        "numberOfFullyPaidUpEquityShares": 1884505889,
+        "numberOfShares": 1884505889,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.2026,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 1884505889,
+        "numberOfVotingRights": 1884505889,
+        "percentageOfTotalVotingRights": 0.2026,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1884505889,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.2026,
+        "numberOfEquitySharesHeldInDematerializedForm": 1884505889,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "InstitutionsForeignPortfolioInvestorCategoryOneMember": {
+        "numberOfShareholders": 1002,
+        "numberOfFullyPaidUpEquityShares": {
+          "$numberLong": "2228563376"
+        },
+        "numberOfShares": {
+          "$numberLong": "2228563376"
+        },
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.2396,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": {
+          "$numberLong": "2228563376"
+        },
+        "numberOfVotingRights": {
+          "$numberLong": "2228563376"
+        },
+        "percentageOfTotalVotingRights": 0.2396,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
+          "$numberLong": "2228563376"
+        },
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.2396,
+        "numberOfEquitySharesHeldInDematerializedForm": {
+          "$numberLong": "2228563376"
         },
         "numberOfSharesUnderSubCategoryOne": 0,
         "numberOfSharesUnderSubCategoryTwo": 0,
         "numberOfSharesUnderSubCategoryThree": 0
       },
-      "institutions": {
-        "mutualFunds": {
-          "aggregate": {
-            "numberOfShareholders": 42,
-            "numberOfFullyPaidUpEquityShares": 1788901212,
-            "numberOfShares": 1788901212,
-            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.1845,
-            "numberOfVotingRightsHeldBySameClassOfSecurities": 1788901212,
-            "numberOfVotingRights": 1788901212,
-            "percentageOfTotalVotingRights": 0.1845,
-            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1788901212,
-            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.1845,
-            "numberOfEquitySharesHeldInDematerializedForm": 1788901212,
-            "numberOfSharesUnderSubCategoryOne": 0,
-            "numberOfSharesUnderSubCategoryTwo": 0,
-            "numberOfSharesUnderSubCategoryThree": 0
-          },
-          "entities": [
-            {
-              "name": "Icici Prudential Equity & Debt Fund",
-              "numberOfShares": 535440277,
-              "shareholdingPercentage": 0.0552,
-              "numberOfVotingRights": 535440277,
-              "votingRightsPercentage": 0.0552,
-              "pan": "******",
-              "dematerializedShares": 535440277,
-              "numberOfShareholders": 1
-            },
-            {
-              "name": "Cpse Exchange Traded Scheme (cpse Etf)",
-              "numberOfShares": 372595213,
-              "shareholdingPercentage": 0.0384,
-              "numberOfVotingRights": 372595213,
-              "votingRightsPercentage": 0.0384,
-              "pan": "******",
-              "dematerializedShares": 372595213,
-              "numberOfShareholders": 1
-            },
-            {
-              "name": "Sbi Nifty 50 Etf",
-              "numberOfShares": 206440711,
-              "shareholdingPercentage": 0.0213,
-              "numberOfVotingRights": 206440711,
-              "votingRightsPercentage": 0.0213,
-              "pan": "******",
-              "dematerializedShares": 206440711,
-              "numberOfShareholders": 1
-            },
-            {
-              "name": "Hdfc Trustee Company Ltd. A/c Hdfc Balanced A",
-              "numberOfShares": 144548575,
-              "shareholdingPercentage": 0.0149,
-              "numberOfVotingRights": 144548575,
-              "votingRightsPercentage": 0.0149,
-              "pan": "******",
-              "dematerializedShares": 144548575,
-              "numberOfShareholders": 1
-            }
-          ]
-        },
-        "foreignPortfolioInvestors": {
-          "category1": {
-            "aggregate": {
-              "numberOfShareholders": 605,
-              "numberOfFullyPaidUpEquityShares": 1525412375,
-              "numberOfShares": 1525412375,
-              "shareholdingAsAPercentageOfTotalNumberOfShares": 0.1573,
-              "numberOfVotingRightsHeldBySameClassOfSecurities": 1525412375,
-              "numberOfVotingRights": 1525412375,
-              "percentageOfTotalVotingRights": 0.1573,
-              "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1525412375,
-              "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.1573,
-              "numberOfEquitySharesHeldInDematerializedForm": 1525412375,
-              "numberOfSharesUnderSubCategoryOne": 0,
-              "numberOfSharesUnderSubCategoryTwo": 0,
-              "numberOfSharesUnderSubCategoryThree": 0
-            },
-            "entities": []
-          },
-          "category2": {
-            "aggregate": {
-              "numberOfShareholders": 58,
-              "numberOfFullyPaidUpEquityShares": 49760194,
-              "numberOfShares": 49760194,
-              "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0051,
-              "numberOfVotingRightsHeldBySameClassOfSecurities": 49760194,
-              "numberOfVotingRights": 49760194,
-              "percentageOfTotalVotingRights": 0.0051,
-              "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 49760194,
-              "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0051,
-              "numberOfEquitySharesHeldInDematerializedForm": 49760194,
-              "numberOfSharesUnderSubCategoryOne": 0,
-              "numberOfSharesUnderSubCategoryTwo": 0,
-              "numberOfSharesUnderSubCategoryThree": 0
-            },
-            "entities": []
-          }
-        },
-        "insuranceCompanies": {
-          "aggregate": {
-            "numberOfShareholders": 42,
-            "numberOfFullyPaidUpEquityShares": 797949389,
-            "numberOfShares": 797949389,
-            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0823,
-            "numberOfVotingRightsHeldBySameClassOfSecurities": 797949389,
-            "numberOfVotingRights": 797949389,
-            "percentageOfTotalVotingRights": 0.0823,
-            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 797949389,
-            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0823,
-            "numberOfEquitySharesHeldInDematerializedForm": 797949389,
-            "numberOfSharesUnderSubCategoryOne": 0,
-            "numberOfSharesUnderSubCategoryTwo": 0,
-            "numberOfSharesUnderSubCategoryThree": 0
-          },
-          "entities": [
-            {
-              "name": "Life Insurance Corporation Of India",
-              "numberOfShares": 541351991,
-              "shareholdingPercentage": 0.0558,
-              "numberOfVotingRights": 541351991,
-              "votingRightsPercentage": 0.0558,
-              "pan": "******",
-              "dematerializedShares": 541351991,
-              "numberOfShareholders": 1
-            }
-          ]
-        },
-        "banks": {
-          "aggregate": {
-            "numberOfShareholders": 17,
-            "numberOfFullyPaidUpEquityShares": 6938164,
-            "numberOfShares": 6938164,
-            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0007,
-            "numberOfVotingRightsHeldBySameClassOfSecurities": 6938164,
-            "numberOfVotingRights": 6938164,
-            "percentageOfTotalVotingRights": 0.0007,
-            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 6938164,
-            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0007,
-            "numberOfEquitySharesHeldInDematerializedForm": 6938164,
-            "numberOfSharesUnderSubCategoryOne": 0,
-            "numberOfSharesUnderSubCategoryTwo": 0,
-            "numberOfSharesUnderSubCategoryThree": 0
-          },
-          "entities": []
-        },
-        "providentFunds": {
-          "aggregate": {
-            "numberOfShareholders": 1,
-            "numberOfFullyPaidUpEquityShares": 210584194,
-            "numberOfShares": 210584194,
-            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0217,
-            "numberOfVotingRightsHeldBySameClassOfSecurities": 210584194,
-            "numberOfVotingRights": 210584194,
-            "percentageOfTotalVotingRights": 0.0217,
-            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 210584194,
-            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0217,
-            "numberOfEquitySharesHeldInDematerializedForm": 210584194,
-            "numberOfSharesUnderSubCategoryOne": 0,
-            "numberOfSharesUnderSubCategoryTwo": 0,
-            "numberOfSharesUnderSubCategoryThree": 0
-          },
-          "entities": [
-            {
-              "name": "Nps Trust- A/c Hdfc Pension Fund Management L",
-              "numberOfShares": 210584194,
-              "shareholdingPercentage": 0.0217,
-              "numberOfVotingRights": 210584194,
-              "votingRightsPercentage": 0.0217,
-              "pan": "******",
-              "dematerializedShares": 210584194,
-              "numberOfShareholders": 1
-            }
-          ]
-        },
-        "otherInstitutionsDomestic": {
-          "aggregate": null,
-          "entities": []
-        },
-        "otherInstitutionsForeign": {
-          "aggregate": null,
-          "entities": []
-        }
+      "InstitutionsForeignPortfolioInvestorCategoryTwoMember": {
+        "numberOfShareholders": 68,
+        "numberOfFullyPaidUpEquityShares": 71589858,
+        "numberOfShares": 71589858,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0077,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 71589858,
+        "numberOfVotingRights": 71589858,
+        "percentageOfTotalVotingRights": 0.0077,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 71589858,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0077,
+        "numberOfEquitySharesHeldInDematerializedForm": 71589858,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
       },
-      "nonInstitutions": {
-        "residentIndividuals": {
-          "aggregate": null,
-          "entities": []
+      "OtherInstitutionsForeignMember": {
+        "numberOfShareholders": 1,
+        "numberOfFullyPaidUpEquityShares": 143326,
+        "numberOfShares": 143326,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 143326,
+        "numberOfVotingRights": 143326,
+        "percentageOfTotalVotingRights": 0,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 143326,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0,
+        "numberOfEquitySharesHeldInDematerializedForm": 143326,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "InstitutionsForeignMember": {
+        "numberOfShareholders": 1071,
+        "numberOfFullyPaidUpEquityShares": {
+          "$numberLong": "2300296560"
         },
-        "nonResidentIndians": {
-          "aggregate": {
-            "numberOfShareholders": 27998,
-            "numberOfFullyPaidUpEquityShares": 12179968,
-            "numberOfShares": 12179968,
-            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0013,
-            "numberOfVotingRightsHeldBySameClassOfSecurities": 12179968,
-            "numberOfVotingRights": 12179968,
-            "percentageOfTotalVotingRights": 0.0013,
-            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 12179968,
-            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0013,
-            "numberOfEquitySharesHeldInDematerializedForm": 12122108,
-            "numberOfSharesUnderSubCategoryOne": 0,
-            "numberOfSharesUnderSubCategoryTwo": 0,
-            "numberOfSharesUnderSubCategoryThree": 0
-          },
-          "entities": []
+        "numberOfShares": {
+          "$numberLong": "2300296560"
         },
-        "bodiesCorporate": {
-          "aggregate": {
-            "numberOfShareholders": 4295,
-            "numberOfFullyPaidUpEquityShares": 27325586,
-            "numberOfShares": 27325586,
-            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0028,
-            "numberOfVotingRightsHeldBySameClassOfSecurities": 27325586,
-            "numberOfVotingRights": 27325586,
-            "percentageOfTotalVotingRights": 0.0028,
-            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 27325586,
-            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0028,
-            "numberOfEquitySharesHeldInDematerializedForm": 27325566,
-            "numberOfSharesUnderSubCategoryOne": 0,
-            "numberOfSharesUnderSubCategoryTwo": 0,
-            "numberOfSharesUnderSubCategoryThree": 0
-          },
-          "entities": []
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.2473,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": {
+          "$numberLong": "2300296560"
         },
-        "otherNonInstitutions": {
-          "aggregate": {
-            "numberOfShareholders": 60040,
-            "numberOfFullyPaidUpEquityShares": 7993453,
-            "numberOfShares": 7993453,
-            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0008,
-            "numberOfVotingRightsHeldBySameClassOfSecurities": 7993453,
-            "numberOfVotingRights": 7993453,
-            "percentageOfTotalVotingRights": 0.0008,
-            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 7993453,
-            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0008,
-            "numberOfEquitySharesHeldInDematerializedForm": 7993431,
-            "numberOfSharesUnderSubCategoryOne": 0,
-            "numberOfSharesUnderSubCategoryTwo": 0,
-            "numberOfSharesUnderSubCategoryThree": 0
-          },
-          "entities": [
-            {
-              "name": "Clearing Member/House - Corp",
-              "numberOfShares": 5165,
-              "shareholdingPercentage": 0,
-              "numberOfVotingRights": 5165,
-              "votingRightsPercentage": 0,
-              "dematerializedShares": 5165,
-              "numberOfShareholders": 9,
-              "category": "Others"
-            },
-            {
-              "name": "Clearing Member/House - Ind",
-              "numberOfShares": 8883,
-              "shareholdingPercentage": 0,
-              "numberOfVotingRights": 8883,
-              "votingRightsPercentage": 0,
-              "dematerializedShares": 8883,
-              "numberOfShareholders": 25,
-              "category": "Others"
-            }
-          ]
-        }
+        "numberOfVotingRights": {
+          "$numberLong": "2300296560"
+        },
+        "percentageOfTotalVotingRights": 0.2473,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
+          "$numberLong": "2300296560"
+        },
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.2473,
+        "numberOfEquitySharesHeldInDematerializedForm": {
+          "$numberLong": "2300296560"
+        },
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "CentralGovernmentOrPresidentOfIndiaMember": {
+        "numberOfShareholders": 6,
+        "numberOfFullyPaidUpEquityShares": 56574,
+        "numberOfShares": 56574,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 56574,
+        "numberOfVotingRights": 56574,
+        "percentageOfTotalVotingRights": 0,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 56574,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0,
+        "numberOfEquitySharesHeldInDematerializedForm": 56574,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "GovernmentsMember": {
+        "numberOfShareholders": 6,
+        "numberOfFullyPaidUpEquityShares": 56574,
+        "numberOfShares": 56574,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 56574,
+        "numberOfVotingRights": 56574,
+        "percentageOfTotalVotingRights": 0,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 56574,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0,
+        "numberOfEquitySharesHeldInDematerializedForm": 56574,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "DirectorsAndDirectorsRelativesMember": {
+        "numberOfShareholders": 5,
+        "numberOfFullyPaidUpEquityShares": 30831,
+        "numberOfShares": 30831,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 30831,
+        "numberOfVotingRights": 30831,
+        "percentageOfTotalVotingRights": 0,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 30831,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0,
+        "numberOfEquitySharesHeldInDematerializedForm": 30831,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "InvestorEducationAndProtectionFundMember": {
+        "numberOfShareholders": 1,
+        "numberOfFullyPaidUpEquityShares": 2463120,
+        "numberOfShares": 2463120,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0003,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 2463120,
+        "numberOfVotingRights": 2463120,
+        "percentageOfTotalVotingRights": 0.0003,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 2463120,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0003,
+        "numberOfEquitySharesHeldInDematerializedForm": 2463120,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "ResidentIndividualShareholdersHoldingNominalShareCapitalUpToRsTwoLakhMember": {
+        "numberOfShareholders": 1335403,
+        "numberOfFullyPaidUpEquityShares": 269482668,
+        "numberOfShares": 269482668,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.029,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 269482668,
+        "numberOfVotingRights": 269482668,
+        "percentageOfTotalVotingRights": 0.029,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 269482668,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.029,
+        "numberOfEquitySharesHeldInDematerializedForm": 269438894,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember": {
+        "numberOfShareholders": 438,
+        "numberOfFullyPaidUpEquityShares": 24261782,
+        "numberOfShares": 24261782,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0026,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 24261782,
+        "numberOfVotingRights": 24261782,
+        "percentageOfTotalVotingRights": 0.0026,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 24261782,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0026,
+        "numberOfEquitySharesHeldInDematerializedForm": 24261782,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "NonResidentIndiansMember": {
+        "numberOfShareholders": 18748,
+        "numberOfFullyPaidUpEquityShares": 10955173,
+        "numberOfShares": 10955173,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0012,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 10955173,
+        "numberOfVotingRights": 10955173,
+        "percentageOfTotalVotingRights": 0.0012,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 10955173,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0012,
+        "numberOfEquitySharesHeldInDematerializedForm": 10955077,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "ForeignCompaniesMember": {
+        "numberOfShareholders": 2,
+        "numberOfFullyPaidUpEquityShares": 1891,
+        "numberOfShares": 1891,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 1891,
+        "numberOfVotingRights": 1891,
+        "percentageOfTotalVotingRights": 0,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1891,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0,
+        "numberOfEquitySharesHeldInDematerializedForm": 1891,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "BodiesCorporateMember": {
+        "numberOfShareholders": 2113,
+        "numberOfFullyPaidUpEquityShares": 21683950,
+        "numberOfShares": 21683950,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0023,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 21683950,
+        "numberOfVotingRights": 21683950,
+        "percentageOfTotalVotingRights": 0.0023,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 21683950,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0023,
+        "numberOfEquitySharesHeldInDematerializedForm": 21683950,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "OtherNonInstitutionsMember": {
+        "numberOfShareholders": 16888,
+        "numberOfFullyPaidUpEquityShares": 11981101,
+        "numberOfShares": 11981101,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0013,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 11981101,
+        "numberOfVotingRights": 11981101,
+        "percentageOfTotalVotingRights": 0.0013,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 11981101,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0013,
+        "numberOfEquitySharesHeldInDematerializedForm": 11980599,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "NonInstitutionsMember": {
+        "numberOfShareholders": 1373598,
+        "numberOfFullyPaidUpEquityShares": 340860516,
+        "numberOfShares": 340860516,
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0366,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": 340860516,
+        "numberOfVotingRights": 340860516,
+        "percentageOfTotalVotingRights": 0.0366,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 340860516,
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0366,
+        "numberOfEquitySharesHeldInDematerializedForm": 340816144,
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "PublicShareholdingMember": {
+        "numberOfShareholders": 1374799,
+        "numberOfFullyPaidUpEquityShares": {
+          "$numberLong": "4525719539"
+        },
+        "numberOfShares": {
+          "$numberLong": "4525719539"
+        },
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.4866,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": {
+          "$numberLong": "4525719539"
+        },
+        "numberOfVotingRights": {
+          "$numberLong": "4525719539"
+        },
+        "percentageOfTotalVotingRights": 0.4866,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
+          "$numberLong": "4525719539"
+        },
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.4866,
+        "numberOfEquitySharesHeldInDematerializedForm": {
+          "$numberLong": "4525675167"
+        },
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "ShareholdingPatternMember": {
+        "numberOfShareholders": 1374801,
+        "numberOfFullyPaidUpEquityShares": {
+          "$numberLong": "9300603819"
+        },
+        "numberOfShares": {
+          "$numberLong": "9300603819"
+        },
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 1,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": {
+          "$numberLong": "9300603819"
+        },
+        "numberOfVotingRights": {
+          "$numberLong": "9300603819"
+        },
+        "percentageOfTotalVotingRights": 1,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
+          "$numberLong": "9300603819"
+        },
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 1,
+        "numberOfEquitySharesHeldInDematerializedForm": {
+          "$numberLong": "9300559447"
+        },
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
       }
     },
-    "nonPromoterNonPublicHolding": {
-      "aggregate": null,
-      "entities": []
+    "entities": {
+      "DetailsOfSharesHeldByCentralGovernmentOrStateGovernmentsAxis": [
+        {
+          "nameOfTheShareholder": "PRESIDENT OF INDIA",
+          "numberOfFullyPaidUpEquityShares": {
+            "$numberLong": "4594849080"
+          },
+          "numberOfShares": {
+            "$numberLong": "4594849080"
+          },
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.494,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": {
+            "$numberLong": "4594849080"
+          },
+          "numberOfVotingRights": {
+            "$numberLong": "4594849080"
+          },
+          "percentageOfTotalVotingRights": 0.494,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
+            "$numberLong": "4594849080"
+          },
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.494,
+          "numberOfEquitySharesHeldInDematerializedForm": {
+            "$numberLong": "4594849080"
+          },
+          "disclosureOfNotesOnReasonForNotProvidingPANExplanatoryTextBlock": "******",
+          "typeOfPromoterShareholding": "******",
+          "numberOfShareholders": 1,
+          "_member": "CentralGovernmentOrStateGovernments_Context15"
+        },
+        {
+          "nameOfTheShareholder": "PRESIDENT OF INDIA",
+          "numberOfFullyPaidUpEquityShares": 180035200,
+          "numberOfShares": 180035200,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0194,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 180035200,
+          "numberOfVotingRights": 180035200,
+          "percentageOfTotalVotingRights": 0.0194,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 180035200,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0194,
+          "numberOfEquitySharesHeldInDematerializedForm": 180035200,
+          "disclosureOfNotesOnReasonForNotProvidingPANExplanatoryTextBlock": "******",
+          "typeOfPromoterShareholding": "******",
+          "numberOfShareholders": 1,
+          "_member": "CentralGovernmentOrStateGovernments_Context16"
+        }
+      ],
+      "DetailsOfSharesHeldByMutualFundsOrUTIAxis": [
+        {
+          "nameOfTheShareholder": "PARAG PARIKH ARBITRAGE FUND",
+          "permanentAccountNumberOfShareholder": "******",
+          "numberOfFullyPaidUpEquityShares": 324125355,
+          "numberOfShares": 324125355,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0348,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 324125355,
+          "numberOfVotingRights": 324125355,
+          "percentageOfTotalVotingRights": 0.0348,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 324125355,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0348,
+          "numberOfEquitySharesHeldInDematerializedForm": 324125355,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "numberOfShareholders": 1,
+          "_member": "MutualFundsOrUTI_Context19"
+        },
+        {
+          "nameOfTheShareholder": "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA CON",
+          "permanentAccountNumberOfShareholder": "******",
+          "numberOfFullyPaidUpEquityShares": 235450488,
+          "numberOfShares": 235450488,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0253,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 235450488,
+          "numberOfVotingRights": 235450488,
+          "percentageOfTotalVotingRights": 0.0253,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 235450488,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0253,
+          "numberOfEquitySharesHeldInDematerializedForm": 235450488,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "numberOfShareholders": 1,
+          "_member": "MutualFundsOrUTI_Context17"
+        },
+        {
+          "nameOfTheShareholder": "MAGNUM HYBRID LONG SHORT FUND",
+          "permanentAccountNumberOfShareholder": "******",
+          "numberOfFullyPaidUpEquityShares": 203200489,
+          "numberOfShares": 203200489,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0218,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 203200489,
+          "numberOfVotingRights": 203200489,
+          "percentageOfTotalVotingRights": 0.0218,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 203200489,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0218,
+          "numberOfEquitySharesHeldInDematerializedForm": 203200489,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "numberOfShareholders": 1,
+          "_member": "MutualFundsOrUTI_Context18"
+        },
+        {
+          "nameOfTheShareholder": "HDFC TRUSTEE COMPANY LIMITED - HDFC INFRASTRUCTURE",
+          "permanentAccountNumberOfShareholder": "******",
+          "numberOfFullyPaidUpEquityShares": 160053798,
+          "numberOfShares": 160053798,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0172,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 160053798,
+          "numberOfVotingRights": 160053798,
+          "percentageOfTotalVotingRights": 0.0172,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 160053798,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0172,
+          "numberOfEquitySharesHeldInDematerializedForm": 160053798,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "numberOfShareholders": 1,
+          "_member": "MutualFundsOrUTI_Context16"
+        },
+        {
+          "nameOfTheShareholder": "ICICI PRUDENTIAL SENSEX ETF",
+          "permanentAccountNumberOfShareholder": "******",
+          "numberOfFullyPaidUpEquityShares": 148737239,
+          "numberOfShares": 148737239,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.016,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 148737239,
+          "numberOfVotingRights": 148737239,
+          "percentageOfTotalVotingRights": 0.016,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 148737239,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.016,
+          "numberOfEquitySharesHeldInDematerializedForm": 148737239,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "numberOfShareholders": 1,
+          "_member": "MutualFundsOrUTI_Context15"
+        }
+      ],
+      "DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorOneAxis": [
+        {
+          "nameOfTheShareholder": "GOVERNMENT OF SINGAPORE",
+          "permanentAccountNumberOfShareholder": "******",
+          "numberOfFullyPaidUpEquityShares": 182351332,
+          "numberOfShares": 182351332,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0196,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 182351332,
+          "numberOfVotingRights": 182351332,
+          "percentageOfTotalVotingRights": 0.0196,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 182351332,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0196,
+          "numberOfEquitySharesHeldInDematerializedForm": 182351332,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "numberOfShareholders": 1,
+          "_member": "DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorOne_Context15"
+        }
+      ],
+      "DetailsOfSharesHeldByInsuranceCompaniesAxis": [
+        {
+          "nameOfTheShareholder": "LIFE INSURANCE CORPORATION OF INDIA - ULIF00420091",
+          "permanentAccountNumberOfShareholder": "******",
+          "numberOfFullyPaidUpEquityShares": 339555880,
+          "numberOfShares": 339555880,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0365,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 339555880,
+          "numberOfVotingRights": 339555880,
+          "percentageOfTotalVotingRights": 0.0365,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 339555880,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0365,
+          "numberOfEquitySharesHeldInDematerializedForm": 339555880,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "numberOfShareholders": 1,
+          "_member": "InsuranceCompanies_Context15"
+        }
+      ],
+      "DetailsOfSharesHeldByOtherInstitutionsForeignAxis": [
+        {
+          "categoryOfOtherInstitutions": "Other",
+          "whetherACategoryOrMoreThan1PercentageOfShareholding": "Category",
+          "nameOfTheShareholder": "FOREIGN INSTITUTIONAL INVESTORS",
+          "numberOfShareholders": 1,
+          "numberOfFullyPaidUpEquityShares": 143326,
+          "numberOfShares": 143326,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 143326,
+          "numberOfVotingRights": 143326,
+          "percentageOfTotalVotingRights": 0,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 143326,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0,
+          "numberOfEquitySharesHeldInDematerializedForm": 143326,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "_member": "DetailsOfSharesHeldByOtherInstitutionsForeign_Context15"
+        }
+      ],
+      "DetailsOfSharesHeldByProvidentFundsOrPensionFundsAxis": [
+        {
+          "nameOfTheShareholder": "NPS TRUST A/C - LIC PFL NPS SMART BALANCE TIER I",
+          "permanentAccountNumberOfShareholder": "******",
+          "numberOfFullyPaidUpEquityShares": 116068419,
+          "numberOfShares": 116068419,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0125,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 116068419,
+          "numberOfVotingRights": 116068419,
+          "percentageOfTotalVotingRights": 0.0125,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 116068419,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0125,
+          "numberOfEquitySharesHeldInDematerializedForm": 116068419,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "numberOfShareholders": 1,
+          "_member": "ProvidentFundsOrPensionFunds_Context15"
+        }
+      ],
+      "DetailsOfSharesHeldByOtherNonInstitutionsAxis": [
+        {
+          "categoryOfOtherNonInstitutions": "HUF",
+          "whetherACategoryOrMoreThan1PercentageOfShareholding": "Category",
+          "numberOfShareholders": 16819,
+          "numberOfFullyPaidUpEquityShares": 10804898,
+          "numberOfShares": 10804898,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0012,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 10804898,
+          "numberOfVotingRights": 10804898,
+          "percentageOfTotalVotingRights": 0.0012,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 10804898,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0012,
+          "numberOfEquitySharesHeldInDematerializedForm": 10804396,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "_member": "OtherNonInstitutions_Context15"
+        },
+        {
+          "categoryOfOtherNonInstitutions": "Trusts",
+          "whetherACategoryOrMoreThan1PercentageOfShareholding": "Category",
+          "numberOfShareholders": 64,
+          "numberOfFullyPaidUpEquityShares": 1174379,
+          "numberOfShares": 1174379,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0001,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 1174379,
+          "numberOfVotingRights": 1174379,
+          "percentageOfTotalVotingRights": 0.0001,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1174379,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0001,
+          "numberOfEquitySharesHeldInDematerializedForm": 1174379,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "_member": "OtherNonInstitutions_Context17"
+        },
+        {
+          "categoryOfOtherNonInstitutions": "Clearing Members",
+          "whetherACategoryOrMoreThan1PercentageOfShareholding": "Category",
+          "numberOfShareholders": 5,
+          "numberOfFullyPaidUpEquityShares": 1824,
+          "numberOfShares": 1824,
+          "shareholdingAsAPercentageOfTotalNumberOfShares": 0,
+          "numberOfVotingRightsHeldBySameClassOfSecurities": 1824,
+          "numberOfVotingRights": 1824,
+          "percentageOfTotalVotingRights": 0,
+          "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1824,
+          "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0,
+          "numberOfEquitySharesHeldInDematerializedForm": 1824,
+          "numberOfSharesUnderSubCategoryOne": 0,
+          "numberOfSharesUnderSubCategoryTwo": 0,
+          "numberOfSharesUnderSubCategoryThree": 0,
+          "_member": "OtherNonInstitutions_Context16"
+        }
+      ],
+      "DetailsOfSharesWhichRemainUnclaimedForPublicShareholdersAxis": [
+        {
+          "numberOfShareholders": 5,
+          "outstandingSharesHeldInDematOrUnclaimedSuspenseAccount": 1837,
+          "_member": "Unclaimed_Public15"
+        }
+      ]
     }
   },
-  "shpTotalShareholders": 3543434,
+  "shpTotalShareholders": 1374801,
   "shpTotalShares": {
-    "$numberLong": "9696666134"
+    "$numberLong": "9300603819"
   }
 }

@@ -6,8 +6,8 @@ import sys
 import os
 import json
 
-# Add scripts directory to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'scripts'))
+# Add bank scripts directory to path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'scripts', 'bank'))
 
 from pymongo import MongoClient
 from datetime import datetime
@@ -23,7 +23,6 @@ from task4_outstanding_advances import extract_outstanding_advances
 from task5_shareholding_xbrl import extract_shareholding_pattern
 from task6_sector_advances import extract_sector_wise_advances
 from task7_related_party_transactions import extract_related_party_transactions
-from task8_nic_sector_mapping import aggregate_by_nic_sector
 # from task9_basel import extract_basel_data  # Commented out temporarily
 
 
@@ -62,7 +61,8 @@ def aggregate_by_industry(companies: List[Dict]) -> Dict:
     industry_aggregation = {}
     
     for company in companies:
-        industry = company.get('companyIndustrialClassification') or 'Unknown'
+        # task1 returns 'industryName'; fall back gracefully
+        industry = company.get('industryName') or company.get('companyIndustrialClassification') or 'Unknown'
         exposure = company.get('totalExposure', 0)
         
         if industry not in industry_aggregation:
@@ -146,7 +146,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
     }
     
     # Task 1: Extract CRISIL advances data
-    print("\n[1/8] Extracting CRISIL advances data...")
+    print("\n[1/7] Extracting CRISIL advances data...")
     try:
         advances_companies = extract_bank_loans(bank_symbol)
         
@@ -169,7 +169,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["advances"] = {"error": str(e)}
     
     # Task 2: Extract Balance Sheet data
-    print("\n[2/8] Extracting Balance Sheet data...")
+    print("\n[2/7] Extracting Balance Sheet data...")
     try:
         balance_sheet = extract_balance_sheet_data(bank_symbol)
         consolidated_data["balanceSheet"] = balance_sheet
@@ -179,7 +179,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["balanceSheet"] = {"error": str(e)}
     
     # Task 3: Extract Ratios data
-    print("\n[3/8] Extracting Financial Ratios...")
+    print("\n[3/7] Extracting Financial Ratios...")
     try:
         ratios = extract_ratios_data(bank_symbol)
         consolidated_data["financialRatios"] = ratios
@@ -189,7 +189,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["financialRatios"] = {"error": str(e)}
     
     # Task 4: Extract Outstanding Advances
-    print("\n[4/8] Extracting Outstanding Advances...")
+    print("\n[4/7] Extracting Outstanding Advances...")
     try:
         outstanding_advances = extract_outstanding_advances(bank_symbol)
         consolidated_data["outstandingAdvances"] = outstanding_advances
@@ -199,7 +199,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["outstandingAdvances"] = {"error": str(e)}
     
     # Task 5: Extract Shareholding Pattern
-    print("\n[5/8] Extracting Shareholding Pattern...")
+    print("\n[5/7] Extracting Shareholding Pattern...")
     try:
         shareholding = extract_shareholding_pattern(bank_symbol)
         consolidated_data["shareholdingPattern"] = shareholding
@@ -209,7 +209,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["shareholdingPattern"] = {"error": str(e)}
     
     # Task 6: Extract Sector-wise Advances
-    print("\n[6/8] Extracting Sector-wise Advances...")
+    print("\n[6/7] Extracting Sector-wise Advances...")
     try:
         sector_advances = extract_sector_wise_advances(bank_symbol)
         consolidated_data["sectorWiseAdvances"] = sector_advances
@@ -219,7 +219,7 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         consolidated_data["sectorWiseAdvances"] = {"error": str(e)}
     
     # Task 7: Extract Related Party Transactions
-    print("\n[7/8] Extracting Related Party Transactions...")
+    print("\n[7/7] Extracting Related Party Transactions...")
     try:
         rpt_data = extract_related_party_transactions(bank_symbol)
         consolidated_data["relatedPartyTransactions"] = rpt_data
@@ -228,19 +228,8 @@ def consolidate_bank_data(bank_symbol: str, push_to_db: bool = True) -> dict:
         print(f"  ✗ Error: {e}")
         consolidated_data["relatedPartyTransactions"] = {"error": str(e)}
     
-    # Task 8: Extract NIC Sector-wise Exposure from Cloud MongoDB
-    print("\n[8/8] Mapping companies to NIC sectors...")
-    try:
-        sector_exposure = aggregate_by_nic_sector(advances_companies)
-        consolidated_data["nicSectorExposure"] = sector_exposure
-        print(f"  ✓ Mapped {sector_exposure['summary']['totalMappedCompanies']} companies to {sector_exposure['summary']['numberOfSectors']} sectors")
-        print(f"  ✓ Total sector exposure: ₹{sector_exposure['summary']['totalExposure']:,.2f} Cr")
-        if sector_exposure['summary']['totalUnmappedCompanies'] > 0:
-            print(f"  ⚠ {sector_exposure['summary']['totalUnmappedCompanies']} companies could not be mapped")
-    except Exception as e:
-        print(f"  ✗ Error: {e}")
-        consolidated_data["nicSectorExposure"] = {"error": str(e)}
-    
+    # # Task 8 (NIC sector mapping) removed — obsolete for now
+
     # # Task 9: Extract Basel III Data (Commented out temporarily)
     # print("\n[9/9] Extracting Basel III Data...")
     # try:

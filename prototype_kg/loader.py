@@ -208,7 +208,7 @@ def run(bank_symbols: list[str], skip_schema: bool):
 
         # ── 8. LENDS_TO edges ────────────────────────────────────────────────
         print("\n[step 8] Building LENDS_TO edges …")
-        build_lends_to(driver, bank_docs, registry)
+        build_lends_to(driver, bank_docs)
 
         # ── 9. BELONGS_TO edges  (Company → Industry) ───────────────────────
         print("\n[step 9] Building BELONGS_TO edges …")

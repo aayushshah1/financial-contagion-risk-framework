@@ -51,7 +51,9 @@ MONGO_URI        = "mongodb://127.0.0.1:27108/?directConnection=true"
 DB_NAME          = "company"
 COLLECTION_NAME  = "mca_crisil_match"
 
-_REPO_ROOT       = Path(__file__).resolve().parents[2]   # d:\...\Capstone
+# __file__ is scripts/company/task_nse_match.py
+# parents: company(0) → scripts(1) → data_consolidation(2) → Capstone(3)
+_REPO_ROOT       = Path(__file__).resolve().parents[3]   # d:\...\Capstone
 EQUITY_CSV       = _REPO_ROOT / "data_analysis" / "outputs" / "EQUITY_L.csv"
 SME_CSV          = _REPO_ROOT / "data_analysis" / "outputs" / "SME_EQUITY_L.csv"
 
@@ -66,7 +68,7 @@ logging.basicConfig(
     format="%(asctime)s  %(levelname)-8s  %(message)s",
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler(_REPO_ROOT / "data_analysis" / "scripts" / "task_nse_match.log",
+        logging.FileHandler(Path(__file__).parent / "task_nse_match.log",
                             encoding="utf-8"),
     ],
 )
