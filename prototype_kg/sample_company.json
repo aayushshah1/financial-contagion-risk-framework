@@ -1,0 +1,795 @@
+{
+  "_id": {
+    "$oid": "699b1bfa936b9871ce9c2d6b"
+  },
+  "companyCode": "NTPCLTD",
+  "crisilName": "NTPC Limited",
+  "mcaName": "NTPC LIMITED",
+  "listingStatus": "Listed",
+  "cin": "L40101DL1975GOI007966",
+  "nicCode": "40101",
+  "matchType": "exact",
+  "matchConfidence": 100,
+  "nseMarket": "EQUITY",
+  "nseMatchConfidence": 100,
+  "nseMatchType": "exact",
+  "nseSymbol": "NTPC",
+  "bankFacilities": [
+    {
+      "facility": "Bank Guarantee&",
+      "amount": 2067,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bank Guarantee&",
+      "amount": 225,
+      "lenderName": "ICICI Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bank Guarantee&",
+      "amount": 40,
+      "lenderName": "IDBI Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bank Guarantee&",
+      "amount": 20,
+      "lenderName": "YES Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bank Guarantee&",
+      "amount": 20,
+      "lenderName": "Axis Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Bank Guarantee&",
+      "amount": 120,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 0.01,
+      "lenderName": "Axis Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 0.01,
+      "lenderName": "YES Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 0.01,
+      "lenderName": "Central Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 0.01,
+      "lenderName": "IDBI Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 0.01,
+      "lenderName": "ICICI Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 0.01,
+      "lenderName": "Indian Overseas Bank",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit!",
+      "amount": 2499.94,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Cash Credit",
+      "amount": 500,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 804.33,
+      "lenderName": "Bank Of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings@",
+      "amount": 795.71,
+      "lenderName": "Bank of Baroda",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings@",
+      "amount": 795.71,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 223.43,
+      "lenderName": "Bank Of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings<",
+      "amount": 651.76,
+      "lenderName": "Bank Of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings<",
+      "amount": 2562.66,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings<",
+      "amount": 998.42,
+      "lenderName": "Canara Bank",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings<",
+      "amount": 2228.16,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 595.8,
+      "lenderName": "Bank of Baroda",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 106.95,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 190.95,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 3872.7,
+      "lenderName": "Bank of Baroda",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 1936.35,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 2457.68,
+      "lenderName": "Bank of Baroda",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings*",
+      "amount": 3127.95,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings<",
+      "amount": 854.22,
+      "lenderName": "Bank Of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "External Commercial Borrowings@",
+      "amount": 7302.98,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 5,
+      "lenderName": "Axis Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 5,
+      "lenderName": "Central Bank of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 80,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 2,
+      "lenderName": "Canara Bank",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 18,
+      "lenderName": "Indian Overseas Bank",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 5,
+      "lenderName": "YES Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 3078,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 125,
+      "lenderName": "ICICI Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Letter of Credit&",
+      "amount": 10,
+      "lenderName": "IDBI Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 1523.09,
+      "lenderName": "Union Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 3106.7,
+      "lenderName": "Bank Of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan^",
+      "amount": 5000,
+      "lenderName": "Indian Railway Finance Corporation Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 416.11,
+      "lenderName": "The Jammu and Kashmir Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 3476.83,
+      "lenderName": "Bank of Baroda",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 16439.46,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 4069.71,
+      "lenderName": "Punjab National Bank",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 1520,
+      "lenderName": "Axis Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 1500,
+      "lenderName": "IndusInd Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 1190,
+      "lenderName": "Canara Bank",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 30833.33,
+      "lenderName": "HDFC Bank Limited",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Long Term Loan",
+      "amount": 2083.33,
+      "lenderName": "UCO Bank",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Proposed Bank Guarantee&",
+      "amount": 180,
+      "lenderName": "Not Applicable",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Proposed External Commercial Borrowings",
+      "amount": 10500.25,
+      "lenderName": "Not Applicable",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Proposed Long Term Bank Loan Facility",
+      "amount": 8835.43,
+      "lenderName": "Not Applicable",
+      "rating": "Crisil AAA/Stable"
+    },
+    {
+      "facility": "Proposed Working Capital Facility",
+      "amount": 2950,
+      "lenderName": "Not Applicable",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Working Capital Facility###",
+      "amount": 1000,
+      "lenderName": "The South Indian Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Working Capital Facility",
+      "amount": 1000,
+      "lenderName": "IndusInd Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Working Capital Facility",
+      "amount": 750,
+      "lenderName": "The Karnataka Bank Limited",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Working Capital Facility###",
+      "amount": 3400,
+      "lenderName": "Central Bank of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Working Capital Facility###",
+      "amount": 11900,
+      "lenderName": "State Bank of India",
+      "rating": "Crisil A1+"
+    },
+    {
+      "facility": "Working Capital Facility###",
+      "amount": 1000,
+      "lenderName": "Union Bank of India",
+      "rating": "Crisil A1+"
+    }
+  ],
+  "crisilHeading": "NTPC Limited:Update on NTPC Limited",
+  "crisilRatings": [
+    {
+      "instrumentName": "Bank Guarantee",
+      "rating": "Crisil A1+",
+      "outlook": "",
+      "product": "Credit Rating",
+      "industryCode": "29",
+      "industryName": "Power Generation"
+    },
+    {
+      "instrumentName": "Fixed Deposits",
+      "rating": "Crisil AAA",
+      "outlook": "",
+      "product": "Credit Rating",
+      "industryCode": "29",
+      "industryName": "Power Generation"
+    },
+    {
+      "instrumentName": "Proposed Working Capital Facility",
+      "rating": "Crisil A1+",
+      "outlook": "",
+      "product": "Credit Rating",
+      "industryCode": "29",
+      "industryName": "Power Generation"
+    },
+    {
+      "instrumentName": "Working Capital Facility",
+      "rating": "Crisil A1+",
+      "outlook": "",
+      "product": "Credit Rating",
+      "industryCode": "29",
+      "industryName": "Power Generation"
+    }
+  ],
+  "industryCode": "29",
+  "industryName": "Power Generation",
+  "instruments": [],
+  "mcaAddress": "NTPC BHAWAN, SCOPE COMPLEX, 7, INSTITUTIONAL AREA   LODHI ROAD,NEW DELHI,Delhi,110003-India",
+  "mcaAuthorizedCapital": "166000000000.00",
+  "mcaCategory": "Company limited by shares",
+  "mcaClass": "Public",
+  "mcaCompanyStatus": "Active",
+  "mcaIndianForeign": "Indian",
+  "mcaIndustrialClassification": "Electricity, Gas and Water companies",
+  "mcaPaidupCapital": "96966661340.00",
+  "mcaROCCode": "ROC Delhi",
+  "mcaRegistrationDate": "1975-11-07",
+  "mcaStateCode": "delhi",
+  "mcaSubCategory": "Union government company",
+  "ratingDate": "Jan 15, 2026",
+  "ratingFileName": "https://www.crisilratings.com/mnt/winshare/Ratings/RatingList/RatingDocs/NTPCLimited_January 15_ 2026_RR_387182.html",
+  "shareholdingPattern": {
+    "promoterHolding": {
+      "aggregate": {
+        "numberOfShareholders": 1,
+        "numberOfFullyPaidUpEquityShares": {
+          "$numberLong": "4955346251"
+        },
+        "numberOfShares": {
+          "$numberLong": "4955346251"
+        },
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.511,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": {
+          "$numberLong": "4955346251"
+        },
+        "numberOfVotingRights": {
+          "$numberLong": "4955346251"
+        },
+        "percentageOfTotalVotingRights": 0.511,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
+          "$numberLong": "4955346251"
+        },
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.511,
+        "numberOfEquitySharesHeldInDematerializedForm": {
+          "$numberLong": "4955346251"
+        }
+      },
+      "entities": [],
+      "government": {
+        "aggregate": null,
+        "entities": [
+          {
+            "name": "President Of India",
+            "numberOfShares": {
+              "$numberLong": "4955346251"
+            },
+            "shareholdingPercentage": 0.511,
+            "numberOfVotingRights": {
+              "$numberLong": "4955346251"
+            },
+            "votingRightsPercentage": 0.511,
+            "pan": "******",
+            "dematerializedShares": {
+              "$numberLong": "4955346251"
+            },
+            "numberOfShareholders": 1,
+            "type": "******"
+          }
+        ]
+      }
+    },
+    "publicHolding": {
+      "aggregate": {
+        "numberOfShareholders": 3543433,
+        "numberOfFullyPaidUpEquityShares": {
+          "$numberLong": "4741319883"
+        },
+        "numberOfShares": {
+          "$numberLong": "4741319883"
+        },
+        "shareholdingAsAPercentageOfTotalNumberOfShares": 0.489,
+        "numberOfVotingRightsHeldBySameClassOfSecurities": {
+          "$numberLong": "4741319883"
+        },
+        "numberOfVotingRights": {
+          "$numberLong": "4741319883"
+        },
+        "percentageOfTotalVotingRights": 0.489,
+        "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": {
+          "$numberLong": "4741319883"
+        },
+        "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.489,
+        "numberOfEquitySharesHeldInDematerializedForm": {
+          "$numberLong": "4741249724"
+        },
+        "numberOfSharesUnderSubCategoryOne": 0,
+        "numberOfSharesUnderSubCategoryTwo": 0,
+        "numberOfSharesUnderSubCategoryThree": 0
+      },
+      "institutions": {
+        "mutualFunds": {
+          "aggregate": {
+            "numberOfShareholders": 42,
+            "numberOfFullyPaidUpEquityShares": 1788901212,
+            "numberOfShares": 1788901212,
+            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.1845,
+            "numberOfVotingRightsHeldBySameClassOfSecurities": 1788901212,
+            "numberOfVotingRights": 1788901212,
+            "percentageOfTotalVotingRights": 0.1845,
+            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1788901212,
+            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.1845,
+            "numberOfEquitySharesHeldInDematerializedForm": 1788901212,
+            "numberOfSharesUnderSubCategoryOne": 0,
+            "numberOfSharesUnderSubCategoryTwo": 0,
+            "numberOfSharesUnderSubCategoryThree": 0
+          },
+          "entities": [
+            {
+              "name": "Icici Prudential Equity & Debt Fund",
+              "numberOfShares": 535440277,
+              "shareholdingPercentage": 0.0552,
+              "numberOfVotingRights": 535440277,
+              "votingRightsPercentage": 0.0552,
+              "pan": "******",
+              "dematerializedShares": 535440277,
+              "numberOfShareholders": 1
+            },
+            {
+              "name": "Cpse Exchange Traded Scheme (cpse Etf)",
+              "numberOfShares": 372595213,
+              "shareholdingPercentage": 0.0384,
+              "numberOfVotingRights": 372595213,
+              "votingRightsPercentage": 0.0384,
+              "pan": "******",
+              "dematerializedShares": 372595213,
+              "numberOfShareholders": 1
+            },
+            {
+              "name": "Sbi Nifty 50 Etf",
+              "numberOfShares": 206440711,
+              "shareholdingPercentage": 0.0213,
+              "numberOfVotingRights": 206440711,
+              "votingRightsPercentage": 0.0213,
+              "pan": "******",
+              "dematerializedShares": 206440711,
+              "numberOfShareholders": 1
+            },
+            {
+              "name": "Hdfc Trustee Company Ltd. A/c Hdfc Balanced A",
+              "numberOfShares": 144548575,
+              "shareholdingPercentage": 0.0149,
+              "numberOfVotingRights": 144548575,
+              "votingRightsPercentage": 0.0149,
+              "pan": "******",
+              "dematerializedShares": 144548575,
+              "numberOfShareholders": 1
+            }
+          ]
+        },
+        "foreignPortfolioInvestors": {
+          "category1": {
+            "aggregate": {
+              "numberOfShareholders": 605,
+              "numberOfFullyPaidUpEquityShares": 1525412375,
+              "numberOfShares": 1525412375,
+              "shareholdingAsAPercentageOfTotalNumberOfShares": 0.1573,
+              "numberOfVotingRightsHeldBySameClassOfSecurities": 1525412375,
+              "numberOfVotingRights": 1525412375,
+              "percentageOfTotalVotingRights": 0.1573,
+              "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 1525412375,
+              "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.1573,
+              "numberOfEquitySharesHeldInDematerializedForm": 1525412375,
+              "numberOfSharesUnderSubCategoryOne": 0,
+              "numberOfSharesUnderSubCategoryTwo": 0,
+              "numberOfSharesUnderSubCategoryThree": 0
+            },
+            "entities": []
+          },
+          "category2": {
+            "aggregate": {
+              "numberOfShareholders": 58,
+              "numberOfFullyPaidUpEquityShares": 49760194,
+              "numberOfShares": 49760194,
+              "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0051,
+              "numberOfVotingRightsHeldBySameClassOfSecurities": 49760194,
+              "numberOfVotingRights": 49760194,
+              "percentageOfTotalVotingRights": 0.0051,
+              "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 49760194,
+              "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0051,
+              "numberOfEquitySharesHeldInDematerializedForm": 49760194,
+              "numberOfSharesUnderSubCategoryOne": 0,
+              "numberOfSharesUnderSubCategoryTwo": 0,
+              "numberOfSharesUnderSubCategoryThree": 0
+            },
+            "entities": []
+          }
+        },
+        "insuranceCompanies": {
+          "aggregate": {
+            "numberOfShareholders": 42,
+            "numberOfFullyPaidUpEquityShares": 797949389,
+            "numberOfShares": 797949389,
+            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0823,
+            "numberOfVotingRightsHeldBySameClassOfSecurities": 797949389,
+            "numberOfVotingRights": 797949389,
+            "percentageOfTotalVotingRights": 0.0823,
+            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 797949389,
+            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0823,
+            "numberOfEquitySharesHeldInDematerializedForm": 797949389,
+            "numberOfSharesUnderSubCategoryOne": 0,
+            "numberOfSharesUnderSubCategoryTwo": 0,
+            "numberOfSharesUnderSubCategoryThree": 0
+          },
+          "entities": [
+            {
+              "name": "Life Insurance Corporation Of India",
+              "numberOfShares": 541351991,
+              "shareholdingPercentage": 0.0558,
+              "numberOfVotingRights": 541351991,
+              "votingRightsPercentage": 0.0558,
+              "pan": "******",
+              "dematerializedShares": 541351991,
+              "numberOfShareholders": 1
+            }
+          ]
+        },
+        "banks": {
+          "aggregate": {
+            "numberOfShareholders": 17,
+            "numberOfFullyPaidUpEquityShares": 6938164,
+            "numberOfShares": 6938164,
+            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0007,
+            "numberOfVotingRightsHeldBySameClassOfSecurities": 6938164,
+            "numberOfVotingRights": 6938164,
+            "percentageOfTotalVotingRights": 0.0007,
+            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 6938164,
+            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0007,
+            "numberOfEquitySharesHeldInDematerializedForm": 6938164,
+            "numberOfSharesUnderSubCategoryOne": 0,
+            "numberOfSharesUnderSubCategoryTwo": 0,
+            "numberOfSharesUnderSubCategoryThree": 0
+          },
+          "entities": []
+        },
+        "providentFunds": {
+          "aggregate": {
+            "numberOfShareholders": 1,
+            "numberOfFullyPaidUpEquityShares": 210584194,
+            "numberOfShares": 210584194,
+            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0217,
+            "numberOfVotingRightsHeldBySameClassOfSecurities": 210584194,
+            "numberOfVotingRights": 210584194,
+            "percentageOfTotalVotingRights": 0.0217,
+            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 210584194,
+            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0217,
+            "numberOfEquitySharesHeldInDematerializedForm": 210584194,
+            "numberOfSharesUnderSubCategoryOne": 0,
+            "numberOfSharesUnderSubCategoryTwo": 0,
+            "numberOfSharesUnderSubCategoryThree": 0
+          },
+          "entities": [
+            {
+              "name": "Nps Trust- A/c Hdfc Pension Fund Management L",
+              "numberOfShares": 210584194,
+              "shareholdingPercentage": 0.0217,
+              "numberOfVotingRights": 210584194,
+              "votingRightsPercentage": 0.0217,
+              "pan": "******",
+              "dematerializedShares": 210584194,
+              "numberOfShareholders": 1
+            }
+          ]
+        },
+        "otherInstitutionsDomestic": {
+          "aggregate": null,
+          "entities": []
+        },
+        "otherInstitutionsForeign": {
+          "aggregate": null,
+          "entities": []
+        }
+      },
+      "nonInstitutions": {
+        "residentIndividuals": {
+          "aggregate": null,
+          "entities": []
+        },
+        "nonResidentIndians": {
+          "aggregate": {
+            "numberOfShareholders": 27998,
+            "numberOfFullyPaidUpEquityShares": 12179968,
+            "numberOfShares": 12179968,
+            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0013,
+            "numberOfVotingRightsHeldBySameClassOfSecurities": 12179968,
+            "numberOfVotingRights": 12179968,
+            "percentageOfTotalVotingRights": 0.0013,
+            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 12179968,
+            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0013,
+            "numberOfEquitySharesHeldInDematerializedForm": 12122108,
+            "numberOfSharesUnderSubCategoryOne": 0,
+            "numberOfSharesUnderSubCategoryTwo": 0,
+            "numberOfSharesUnderSubCategoryThree": 0
+          },
+          "entities": []
+        },
+        "bodiesCorporate": {
+          "aggregate": {
+            "numberOfShareholders": 4295,
+            "numberOfFullyPaidUpEquityShares": 27325586,
+            "numberOfShares": 27325586,
+            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0028,
+            "numberOfVotingRightsHeldBySameClassOfSecurities": 27325586,
+            "numberOfVotingRights": 27325586,
+            "percentageOfTotalVotingRights": 0.0028,
+            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 27325586,
+            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0028,
+            "numberOfEquitySharesHeldInDematerializedForm": 27325566,
+            "numberOfSharesUnderSubCategoryOne": 0,
+            "numberOfSharesUnderSubCategoryTwo": 0,
+            "numberOfSharesUnderSubCategoryThree": 0
+          },
+          "entities": []
+        },
+        "otherNonInstitutions": {
+          "aggregate": {
+            "numberOfShareholders": 60040,
+            "numberOfFullyPaidUpEquityShares": 7993453,
+            "numberOfShares": 7993453,
+            "shareholdingAsAPercentageOfTotalNumberOfShares": 0.0008,
+            "numberOfVotingRightsHeldBySameClassOfSecurities": 7993453,
+            "numberOfVotingRights": 7993453,
+            "percentageOfTotalVotingRights": 0.0008,
+            "numberOfSharesOnFullyDilutedBasisIncludingWarrantsESOPAndConvertibleSecurities": 7993453,
+            "shareholdingAsAPercentageAssumingFullConversionOfConvertibleSecuritiesWarrantsAndESOP": 0.0008,
+            "numberOfEquitySharesHeldInDematerializedForm": 7993431,
+            "numberOfSharesUnderSubCategoryOne": 0,
+            "numberOfSharesUnderSubCategoryTwo": 0,
+            "numberOfSharesUnderSubCategoryThree": 0
+          },
+          "entities": [
+            {
+              "name": "Clearing Member/House - Corp",
+              "numberOfShares": 5165,
+              "shareholdingPercentage": 0,
+              "numberOfVotingRights": 5165,
+              "votingRightsPercentage": 0,
+              "dematerializedShares": 5165,
+              "numberOfShareholders": 9,
+              "category": "Others"
+            },
+            {
+              "name": "Clearing Member/House - Ind",
+              "numberOfShares": 8883,
+              "shareholdingPercentage": 0,
+              "numberOfVotingRights": 8883,
+              "votingRightsPercentage": 0,
+              "dematerializedShares": 8883,
+              "numberOfShareholders": 25,
+              "category": "Others"
+            }
+          ]
+        }
+      }
+    },
+    "nonPromoterNonPublicHolding": {
+      "aggregate": null,
+      "entities": []
+    }
+  },
+  "shpTotalShareholders": 3543434,
+  "shpTotalShares": {
+    "$numberLong": "9696666134"
+  }
+}
