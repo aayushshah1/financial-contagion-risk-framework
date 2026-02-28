@@ -358,8 +358,10 @@ def _shp_extract_arelle(model) -> Dict[str, Any]:
             continue
 
         category_member: Optional[str] = None
-        entity_axis:     Optional[str] = None
-        entity_member:   Optional[str] = None
+        # Collect ALL Details*Axis entries — a fact can technically carry more
+        # than one (e.g. a sub-axis alongside the primary axis).  We store the
+        # fact under every axis it belongs to so nothing is lost.
+        detail_axes: Dict[str, str] = {}  # axis_local -> entity_member key
 
         for dim_concept, dim_val in all_dims.items():
             axis_local   = dim_concept.qname.localName
@@ -369,19 +371,25 @@ def _shp_extract_arelle(model) -> Dict[str, Any]:
                 if mq:
                     category_member = mq.localName
             elif "Details" in axis_local:
-                entity_axis = axis_local
                 # SEBI SHP entity axes are TYPED dimensions — no memberQname.
                 # Use the context ID as an opaque but unique entity key.
-                # Strip the D_ duration prefix so that instant + duration facts
-                # for the same entity collapse into the same bucket.
+                # Strip the leading "D_" duration prefix so that instant +
+                # duration facts for the same entity collapse into one bucket.
                 mq = getattr(dim_val, "memberQname", None)
                 raw_ctx = fact.contextID
-                entity_member = mq.localName if mq else (raw_ctx[2:] if raw_ctx.startswith("D_") else raw_ctx)
+                member_key = mq.localName if mq else (
+                    raw_ctx[2:] if raw_ctx.startswith("D_") else raw_ctx
+                )
+                detail_axes[axis_local] = member_key
 
-        if category_member and not entity_axis:
+        if detail_axes:
+            # Entity row — store under EVERY Details axis found
+            for axis, member_key in detail_axes.items():
+                entities[axis][member_key][concept_local] = coerced
+        elif category_member:
+            # Pure aggregate row (no Details axis at all)
             aggregates[category_member][concept_local] = coerced
-        elif entity_axis and entity_member:
-            entities[entity_axis][entity_member][concept_local] = coerced
+        # Facts with unrecognised dimension patterns are intentionally ignored
 
     if not aggregates and not entities:
         return {}
