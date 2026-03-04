@@ -1,0 +1,1823 @@
+companyCode,companyName,total_facilities,cum_pct
+NTPCLTD,NTPC Limited,151000.0,3.989202533817809
+SIDBILT,Small Industries Development Bank of India,140000.0,7.687800909542932
+INDOIL,Indian Oil Corporation Limited,130800.0,11.143348534863259
+LICHOUS,LIC Housing Finance Limited,130085.88,14.580030138240211
+BHAPETR,Bharat Petroleum Corporation Limited,105000.0,17.353978920034052
+RELIANC,Reliance Industries Limited,100000.0,19.995834902694853
+NABARDE,National Bank For Agriculture and Rural Development,90000.0,22.373505287089575
+SHRTRAN,Shriram Finance Limited,75743.00000000001,24.374526264036344
+POGRCOL,Power Grid Corporation of India Limited,69469.95999999999,26.20982255844841
+HDBFSLTD,HDB Financial Services Limited,62500.00000000001,27.860982547611414
+HPRARL,HPCL Rajasthan Refinery Limited,62500.0,29.512142536774412
+SBICSPL,SBI Cards and Payment Services Limited,62000.0,31.150093246024106
+SESGOA,Vedanta Limited,57342.0,32.66498630360147
+RRL,Reliance Retail Limited,55000.0,34.11800709406491
+TCHFL,Tata Capital Housing Finance Limited,55000.0,35.57102788452834
+HINPETR,Hindustan Petroleum Corporation Limited,50000.0,36.89195587585875
+ADPOPL,Adani Power Limited,46000.0,38.10720962788272
+AIRINAR,Air India Limited,39000.0,39.13753346112043
+ESSGUJA,Arcelormittal Nippon Steel India Private Limited,38000.0,40.14143873453153
+SIPVTLTD,Jiostar India Private Limited,33000.0,41.0132512088096
+NUMREFNLD,Numaligarh Refinery Limited,32800.0,41.87977997112234
+BAJAUTF,Bajaj Finance Limited,31000.0,42.69875532574719
+RJIPLR,Summit Digitel Infrastructure Limited,30008.0,43.49152346902404
+EXPIMPB,Export Import Bank of India,30000.0,44.28408026382228
+INFAFEC,Indian Farmers Fertiliser Cooperative Limited,28000.0,45.02379993896731
+KALPOWE,Kalpataru Projects International Limited,26329.0,45.71937420064207
+MUFILT,Muthoot Fincorp Limited,25999.999999999996,46.40625675613388
+GDS22092,The Haryana State Cooperative Supply and Marketing Federation Limited,25050.0,47.068041679790404
+CFSL,Credila Financial Services Limited,25000.0,47.72850567545561
+IDHFL,Sammaan Capital Limited,24549.98,48.377080790827634
+DEWHOUS,Piramal Finance Limited,24000.0,49.01112622666623
+TECCOMP,The Tata Power Company Limited,23918.160000000003,49.643009567568605
+BHRTELELD,Bharti Airtel Limited,20000.0,50.17138076410077
+TPREL,Tata Power Renewable Energy Limited,19224.289999999997,50.67925881958983
+BAHOFL,Bajaj Housing Finance Limited,16000.0,51.101955776815565
+MAGLEAS,Poonawalla Fincorp Limited,15285.000000000002,51.50576346376526
+LTPGCL,Lalitpur Power Generation Company Limited,15115.0,51.90507999554445
+HLYFI,Hinduja Leyland Finance Limited,15000.0,52.30135839294356
+OIINLTJ,Oil India Limited,14000.0,52.67121823051608
+GDS552,Air India Express Limited,14000.0,53.04107806808859
+ADGREL,Adani Green Energy Limited,13530.0,53.39852118254259
+NMIAPL,Navi Mumbai International Airport Private Limited,13326.67,53.750592611227056
+IDIFHF,IIFL Home Finance Limited ,13300.000000000004,54.101959456920945
+HINZINC,Hindustan Zinc Limited,12270.0,54.42611518599343
+MANLEAF,Manappuram Finance Limited,12000.0,54.74313790391272
+LTFNCH,L&T Finance Limited,11500.0,55.046951341918714
+TMCOVL,Tata Motors Limited,11100.0,55.34019735599406
+PTCIFSL,PTC India Financial Services Limited,11000.0,55.63080151408675
+HIINRU,Vertis Infrastructure Trust,10950.0,55.9200847441881
+NEYLIGN,NLC India Limited,10334.7,56.193112634428154
+MSEZL,Adani Ports and Special Economic Zone Limited,10020.0,56.45782660389077
+NHOBANK,National Housing Bank,10000.0,56.72201220215685
+NATSTCLCL,NSE Clearing Limited,10000.0,56.986197800422936
+KOTMAHP,Kotak Mahindra Prime Limited,10000.0,57.25038339868901
+MUMILI,Muthoot Microfin Limited,10000.0,57.5145689969551
+MAUDYOG,Maruti Suzuki India Limited,10000.0,57.77875459522117
+GDS9904,Kerala Infrastructure Investment Fund Board,10000.0,58.04294019348725
+GDS16712,Polycab India Limited,9721.0,58.29975501356171
+CORFERT,Coromandel International Limited,9500.000000000002,58.550731331914484
+KSFIDP,Kisetsu Saison Finance India Private Limited,9350.0,58.797744866293264
+GICHOUS,GIC Housing Finance Limited,9100.0,59.0381537607154
+TADSTL,Tata Advanced Systems Limited,9100.0,59.278562655137534
+AVMFPL,Asirvad Microfinance Limited,9000.000000000002,59.516329693577006
+GDS8390,InterGlobe Aviation Limited,9000.0,59.75409673201648
+REREFL,Jio Credit Limited,9000.0,59.99186377045594
+KRISBHA,Krishna Bhagya Jala Nigam Limited,8520.0,60.21694990017865
+ABB,ABB India Limited,8500.0,60.44150765870482
+GOHOFL,Godrej Housing Finance Limited,8200.0,60.658139849282996
+KKRIFSL,Incred Financial Services Limited,8100.0,60.872130183878525
+TMLPCIL,SEIL Energy India Limited,8100.0,61.086120518474054
+GOFILG,Godrej Finance Limited,8100.0,61.300110853069576
+FSMFP,Fusion Finance Limited,8000.0,61.51145933168244
+SUNDFIN,Sundaram Finance Limited,8000.0,61.72280781029531
+CPCLTD,Chennai Petroleum Corporation Limited,7984.9,61.93375736865478
+BLTIF,Belstar Microfinance Limited,7500.0,62.13189656735435
+TADKFLT,Tata Teleservices Limited,7000.0,62.3168264861406
+IIHOLI,IIFL Finance Limited,7000.0,62.50175640492686
+INAGPL,IndianOil Adani Gas Private Limited,6944.3,62.68521480993077
+SMTLTD,Mahadhan Agritech Limited,6800.0,62.8648610167517
+PRGPGCL,Prayagraj Power Generation Company Limited,6750.0,63.04318629558131
+TOGAPL,Torrent Gas Limited,6700.0,63.22019064641958
+TRLILI,Transrail Lighting Limited,6470.000000000001,63.39111872849773
+NBAPLT,Nabha Power Limited,6425.0,63.56085797538369
+SVXCMPS,Savex Technologies Private Limited,6400.0,63.729936758273986
+RKMPG,R.K.M Powergen Private Limited,6392.009999999999,63.89880445687125
+IRINTR,IRB Infrastructure Trust,6390.0,64.06761905416329
+GDS1853,Dalmia Cement (Bharat) Limited,6348.000000000001,64.23532407194259
+GDS1564,Ashoka Buildcon Limited,6306.0,64.40191951020917
+WGSR,Welspun Corp Limited,6229.0,64.56648071936911
+ADTRLI,Adani Energy Solutions Limited,6000.0,64.72499207832877
+HINLEVE,Hindustan Unilever Limited,6000.0,64.88350343728841
+GDS10853,Lodha Developers Limited,5900.0,65.03937294026541
+DBPWR,DB Power Limited,5825.0,65.19326105125539
+JSWCM,JSW Cement Limited,5800.0,65.34648869824971
+STROPTECL,Sterlite Technologies Limited,5767.0,65.49884453276977
+IRGEPL,IRB Golconda Expressway Private Limited,5623.0,65.64739609467478
+TOINTR,Altius Telecom Infrastructure Trust,5600.0,65.79534002970378
+THERMAX,Thermax Limited,5500.0,65.94064210875014
+TPSOLI,TP Solar Limited,5500.0,66.08594418779647
+SVMOPL,Svatantra Microfin Private Limited,5500.0,66.23124626684283
+MAHSPIN,Vardhman Textiles Limited,5416.23,66.3743352631325
+UTCL,UltraTech Cement Limited,5400.0,66.51699548619618
+SHSL,Shyam Sel and Power Limited,5353.0,66.65841403694802
+CTNIFC,Chaitanya India Fin Credit Private Limited,5200.000000000001,66.79579054804637
+HUGISCO,Tata Teleservices (Maharashtra) Limited,5166.0,66.93226882811062
+MBPMPL,MB Power (Madhya Pradesh) Limited,5145.7300000000005,67.0682116039672
+ECLFL,ECL Finance Limited,5145.0,67.2041350942751
+INGRTR,Indigrid Infrastructure Trust,5120.0,67.33939812058732
+ARFILI,ARKA Fincap Limited,5000.0,67.47149091972037
+GUJAMCE,Ambuja Cements Limited,5000.0,67.60358371885341
+GDS6229,Genus Power Infrastructures Limited,4927.0,67.7337479631191
+NUPOCOR,Nuclear Power Corporation of India Limited,4869.0,67.86237993091487
+GINWE,Sembcorp Green Infra Private Limited,4811.0,67.98947962224067
+CAHEALT,Zydus Lifesciences Limited,4724.0,68.11428089886157
+ADNGS,Adani Total Gas Limited,4650.0,68.23712720205529
+TELCO,Tata Motors Passenger Vehicles Limited,4600.0,68.3586525772577
+BENCOLE,Bennett Coleman and Company Limited,4600.0,68.48017795246008
+GDS22573,Uflex Limited,4599.999999999999,68.60170332766249
+ORIINF,Oriental Infratrust,4548.3,68.72186286332183
+NMSTLI,NMDC Steel Limited,4500.0,68.84074638254157
+SHRCEME,Shree Cement Limited,4500.0,68.9596299017613
+ABL,Angel One Limited,4500.0,69.07851342098105
+LAFARGE,Nuvoco Vistas Corporation Limited,4400.0,69.19475508421812
+GDS20271,Skipper Limited,4301.000000000001,69.30838131003236
+JKCORLT,JK Lakshmi Cement Limited,4260.4800000000005,69.42093705580244
+TECSL,Tecpro Systems Limited,4250.0,69.53321593506551
+NIRMA,Nirma Limited,4250.0,69.6454948143286
+GWRCS,Gawar Construction Limited,4125.0,69.75447137361336
+ACVUPL,ACME Venus Urja Private Limited,4072.0,69.8620477492273
+SIINSL,Sify Infinit Spaces Limited,4053.78,69.9691427786812
+SLGBPL,SLMG Beverages Private Limited,4052.0,70.07619078309862
+APOTYLT,Apollo Tyres Limited,4000.4,70.18187558982898
+CRIDSP,Navi Finserv Limited,4000.000000000001,70.28754982913541
+GRFSPL,CreditAccess Grameen Limited,4000.0,70.39322406844185
+ABHINDLTD,Trident Limited,4000.0,70.49889830774828
+CRAPL,Craftsman Automation Limited,3950.0,70.60325161906337
+GDS8795,Jakson Limited,3860.0,70.70522725999409
+AACIPR,Tyger Capital Private Limited,3799.9999999999995,70.8056177873352
+HYUMOTO,Hyundai Motor India Limited,3700.0,70.90336645869365
+GDS4728,DLF Cyber City Developers Limited,3700.0,71.0011151300521
+PFIPAL,Payu Finance India Private Limited,3700.0,71.09886380141054
+SINHOTPL,Panipat Jalandhar NH-1 Tollway Private Limited,3646.0,71.19518587053835
+SDRIPL,Shyam Metalics and Energy Limited,3600.0,71.29029268591415
+MCCPTAICPL,MCPI Private Limited,3590.0,71.38513531569167
+MSFL,Marwadi Shares and Finance Limited,3575.0,71.47958166707178
+NXTTRU,Nxt-Infra Trust,3550.0,71.57336755445625
+AMRJIPL,Amara Raja Infra Private Limited,3501.49,71.66587187750353
+SRMHFL,Truhome Finance Limited,3500.0,71.75833683689665
+SRIFPL,Serentica Renewables India 4 Private Limited,3500.0,71.85080179628979
+BDCMPULTD,Banaskantha District Co-Operative Milk Producers Union Limited,3469.0,71.9424477803283
+CENTEXT,Aditya Birla Real Estate Limited,3419.0,72.03277283637546
+IAURSL,IAV Urja Services Limited,3357.0,72.12145994171338
+JKPLTD,JK Paper Limited,3280.5,72.20812602722458
+AEPIPLTD,Amber Enterprises India Limited,3252.0,72.2940391837807
+TPCODL,TP Central Odisha Distribution Limited,3212.0,72.37889559794375
+BDVENL,Belrise Industries Limited,3211.0,72.463725593547
+SRDS,Parry Sugars Refinery India Private Limited,3200.0,72.54826498499214
+DLFULTD,DLF Limited,3183.0,72.63235526092025
+DBMRSPL,Devbhumi Realtors Private Limited,3106.0,72.71441130774168
+TAMPVL,Tata Motors Passenger Vehicles Limited - (Amalgamated),3100.0,72.79630884320417
+CPVFAC,Mizuho Capsave Finance Private Limited,3049.9999999999995,72.87688545067532
+GDS10319,Kribhco Fertilizers Limited,3001.25,72.95617415335494
+DEEFERT,Deepak Fertilisers And Petrochemicals Corporation Limited,3000.0000000000005,73.03542983283475
+JSCPLJ,Jainam Broking Limited,3000.0,73.11468551231458
+BRITANN,Britannia Industries Limited,3000.0,73.19394119179441
+ZELEPL,CapFloat Financial Services Private limited,3000.0,73.27319687127422
+MUHOIL,Muthoot Homefin India Limited,3000.0,73.35245255075405
+BAPRIT,Bajel Projects Limited,3000.0,73.43170823023388
+BHHIIN,Indus Infra Trust,3000.0,73.5109639097137
+MTHFCL,Muthoot Housing Finance Company Limited,3000.0,73.59021958919352
+MUMOPL,Muthoot Money Limited,3000.0,73.66947526867335
+JAIIRRI,Jain Irrigation Systems Limited,2930.0,73.74688164896531
+PCPLPC5,Performance Chemiserve Limited,2900.0,73.82349547246247
+TPVASL,TP Vardhaman Surya Limited,2900.0,73.90010929595964
+ARINDLT,Aarti Industries Limited,2850.0,73.97540219146546
+TINAIN,Tilaknagar Industries Limited,2850.0,74.0506950869713
+SCEIPL,Schneider Electric India Private Limited,2850.0,74.12598798247714
+GDS19027,Sarda Energy and Minerals Limited,2845.5,74.20116199446375
+EDLBKL,Nuvama Wealth and Investment Limited,2800.0,74.27513396197826
+OXFSPL,Oxyzo Financial Services Limited,2800.0,74.34910592949275
+APLHOSENTL,Apollo Hospitals Enterprise Limited,2800.0,74.42307789700726
+HIMSEID,Himatsingka Seide Limited,2738.98,74.49543780400114
+GDS22958,Andritz Hydro Private Limited,2660.0,74.56571117313992
+GDS12672,Welspun Enterprises Limited,2600.0,74.63439942868911
+STGTTL,Resonia Limited,2600.0,74.70308768423828
+ASHFCL,Motilal Oswal Home Finance Limited,2562.0,74.77077203451404
+GDS9436,Chemplast Cuddalore Vinyls Limited,2550.0,74.8381393620719
+HEHOFL,Hero Housing Finance Limited,2549.9999999999995,74.90550668962975
+VICPEL,Vivriti Capital Limited,2523.9999999999995,74.97218713463211
+GDS5186,GMR Warora Energy Limited,2520.0000000000005,75.03876190539516
+TPNODL,TP Northern Odisha Distribution Limited,2510.0,75.10507249055995
+MUTCAPI,Muthoot Capital Services Limited,2500.0,75.17111889012646
+LTMB,L&T - MHI Power Boilers Private Limited,2500.0,75.23716528969298
+KLGCC,Kalinga Commercial Corporation Limited,2500.0,75.30321168925951
+INDBIC,Sammaan Finserve Limited,2500.0,75.36925808882603
+SUNMUTF,Sundaram Mutual Fund,2500.0,75.43530448839255
+OTPOW,ONGC Tripura Power Company Limited,2494.0,75.5011923766001
+GDS5315,Eon Kharadi Infrastructure Private Limited,2450.0,75.56591784817529
+AUFIPL,Auxilo Finserve Private Limited,2450.0,75.63064331975049
+AVGPAL,Avaada Gjsolar Private Limited,2414.25,75.69442432781187
+JSWSS,JSW Severfield Structures Limited,2353.0,75.75658719908388
+APFTPL,Azure Power Forty Three Private Limited,2350.0,75.81867081467641
+HFTRESPL,Hero Future Energies Private Limited,2335.0,75.88035815187155
+KATOPI,Kashi Tollway Private Limited,2315.0,75.94151711787013
+KIRUFL,IFFCO Kisan Finance Limited,2295.0,76.00214771267221
+KAGBPL,Kandhari Global Beverages Private Limited,2275.0,76.06224993627774
+RACOCI,Raymond Lifestyle Limited,2270.0,76.12222006708413
+ESELMIN,Essel Mining and Industries Limited,2253.8700000000003,76.18176406652054
+SCSIPL,Schwing Stetter India Private Limited,2251.79,76.24125311535249
+GBHHP,Bajoli Holi Hydropower Private Limited,2250.0,76.30069487496236
+COSFILM,Cosmo First Limited,2213.8400000000006,76.3591813394489
+INDINFL,IIFL Capital Services Limited,2200.0,76.41730217106743
+HIPPL,Hindustan Platinum Private Limited,2181.0,76.47492105004928
+MNYP,Manyata Promoters Private Limited,2176.0,76.53240783623197
+JPFIPL,JPFL Films Private Limited,2175.0,76.58986820385483
+CGORPPL,Candor Gurgaon One Realty Projects Private Limited,2160.0,76.64693229308031
+TBESPL,Thermax Babcock and Wilcox Energy Solutions Limited,2140.0,76.70346801110925
+MRHFL,Mahindra Rural Housing Finance Limited,2125.0,76.7596074507408
+HATAGPL,Hatsun Agro Product Limited,2120.0,76.8156147975732
+ONBRPL,One BKC Realtors Private Limited,2112.0,76.87141079592699
+ANPMF,Annapurna Finance Private Limited,2100.0000000000005,76.92688977156288
+PNBGILT,PNB Gilts Limited,2100.0,76.98236874719876
+CALTPL,CaratLane Trading Private Limited,2100.0,77.03784772283463
+INHFPL,Niwas Housing Finance Private Limited,2100.0,77.0933266984705
+GDS12567,Moon Beverages Limited,2076.0,77.14817162867055
+GRIPROL,G R Infraprojects Limited,2050.0,77.2023296763151
+METIL,Metenere Limited,2035.0,77.25609144556223
+RSPPL,Rashi Peripherals Limited,2024.0,77.3095626106513
+CHEANDP,Chemplast Sanmar Limited,2001.0,77.36242614886434
+SHINSL,Share India Securities Limited,2000.0,77.41526326851755
+FIHFCL,SMFG India Home Finance Company Limited,2000.0,77.46810038817077
+ADBFSPL,Aditya Birla Capital Limited,2000.0,77.52093750782399
+TPSALI,TP Saurya Limited,2000.0,77.57377462747719
+ACCLTD,ACC Limited,2000.0,77.62661174713041
+BALKRIS,Balkrishna Industries Limited,2000.0,77.67944886678363
+JAGRPI,Jakson Green Limited,2000.0,77.73228598643685
+CREHTP,Clean Renewable Energy Hybrid Three Private Limited,1958.0,77.78401352657734
+JKUULT,Udaipur Cement Works Limited,1947.49,77.83546340765407
+AUTMPL,Automotive Manufacturers Private Limited,1917.52,77.8861215244928
+ROHSPL,RSPL LIMITED,1901.8899999999999,77.93636671924142
+EMAMRL,EMIL Mines and Mineral Resources Limited,1900.0,77.98656198291198
+AVHCMPL,Epsilon Carbon Private Limited,1874.0,78.03607036402704
+JWIL,JWIL Infra Limited,1870.0,78.0854730709028
+SUNIRON,Sunflag Iron and Steel Company Limited,1850.0000000000002,78.13434740658202
+GLEPHAR,Glenmark Pharmaceuticals Limited,1850.0,78.18322174226124
+CRPL,Carbon Resources Private Limited,1831.0,78.23159412530377
+SASPPRL,SAEL Solar P4 Private Limited,1810.0,78.27941171858993
+WOREPL,Worldwide Realcon Private Limited,1800.0,78.32696512627783
+OSILTD,Offshore Infrastructures Limited,1800.0,78.37451853396573
+CREWPL,Chennai Radha Engineering Works Private Limited,1796.0,78.4219662674143
+MCSPL,Shakambhari Ispat and Power Limited,1791.49,78.46929485315808
+KLJRLTD,KLJ Resources Limited,1781.0,78.51634630820928
+GIAMAP,Giridhan Metal Private Limited,1775.0,78.56323925190149
+AARDRUL,Aarti Drugs Limited,1768.0,78.60994726567495
+NATBCCL,NBCC (India) Limited,1750.0,78.6561797453715
+BERPAIN,Berger Paints India Limited,1750.0,78.70241222506807
+MMDFPL,Milky Mist Dairy Food Limited,1746.9999999999998,78.74856544908515
+DKCIPL,Dorf-Ketal Chemicals India Limited,1741.6,78.79457601287918
+SUCLDL,Sundaram-Clayton Limited,1735.24,78.8404185546327
+GDS3108,C. J. Shah and Co.,1732.0,78.88617550025239
+AERLEE,Agile Real Estate Private Limited,1728.3400000000001,78.9318357539431
+UHDINDLTD,Thyssenkrupp Uhde India Private Limited,1719.0,78.97724925828504
+SUPREME,The Supreme Industries Limited,1710.9,79.02244877229239
+SSFLTD,Spandana Sphoorty Financial Limited,1700.0000000000002,79.06736032399763
+IRBPVTBLD,IRB Infrastructure Developers Limited,1700.0,79.11227187570286
+SEWLHL,SEW LSY Highways Limited,1700.0,79.15718342740809
+KIRBROT,Kirloskar Brothers Limited,1700.0,79.20209497911333
+AZPIPL,Azure Power India Private Limited,1680.0,79.24647815962203
+HRSLEPL,Hero Solar Energy Private Limited,1670.5,79.29061036381238
+GDS20947,Star Wire India Limited,1669.9999999999995,79.33472935872281
+RAMFORG,Ramkrishna Forgings Limited,1650.0,79.37831998243671
+TRUIOE,TruAlt Bioenergy Limited,1617.0,79.42103879367633
+SDHF,Sundaram Home Finance Limited,1600.0,79.46330848939891
+EGCNCO,Eagle Infra India Limited,1600.0,79.50557818512148
+MUKAND,Mukand Limited,1585.0,79.54745160244666
+GDS7432,Hindusthan Engineering and Industries Limited,1574.5,79.58904762489365
+ASSPSPL,Associated Power Structures Limited,1570.0,79.63052476382143
+SSPTPV,Adani Wind Energy MP One Private Limited,1562.18,79.67179530961135
+ASTMICPL,Astra Microwave Products Limited,1536.5,79.71238742678494
+ECIL,Electronics Corporation of India Limited,1527.65,79.75274573970405
+NAHSPIN,Nahar Spinning Mills Limited,1508.4,79.7925954953465
+BRTCDPL,Bhartiya Urban Private Limited,1504.0,79.83232900932573
+ADBLBL,Aditya Birla Lifestyle Brands Limited,1500.0,79.87195684906564
+RLECCSL,The Railway Employees Co-Operative Credit Society Limited,1500.0,79.91158468880555
+MPMAPL,Matrix Pharmacorp Private Limited,1500.0,79.95121252854547
+EPILTD,Engineering Projects India Limited,1500.0,79.99084036828538
+GDS22888,Evonith Metallics Limited,1500.0,80.03046820802528
+MOMIPL,Mohit Minerals Limited,1500.0,80.0700960477652
+GVTRPL,GV Techparks Private Limited,1500.0,80.10972388750511
+ACMESL,Acme Solar Holdings Limited,1500.0,80.14935172724502
+TILPLM,Tianish Laboratories Private Limited-(Amalgamated),1500.0,80.18897956698494
+FTLSL,Future Lifestyle Fashions Limited,1500.0,80.22860740672485
+IOUTLI,IAV Utkarsh Limited,1500.0,80.26823524646476
+BAACFL,Bajaj Auto Credit Limited,1500.0,80.30786308620468
+APPDCL,Andhra Pradesh Power Development Company Limited,1500.0,80.34749092594458
+LAXCON,LC Infra Projects Private Limited,1500.0,80.38711876568449
+GDS6353,Global Health Limited,1500.0,80.4267466054244
+SUTIPL,Supple Tek Industries Private Limited,1498.0,80.46632160804467
+RAJMILL,Rajapalayam Mills Limited,1497.46,80.50588234464261
+EIDPARI,E.I.D. Parry India Limited,1475.0,80.54484972038686
+EOAGEA,Essar Oil and Gas Exploration and Production Limited,1450.0,80.58315663213544
+JTIPL,Joyalukkas India Limited,1450.0,80.62146354388403
+CREHEP,Clean Renewable Energy Hybrid Eight Private Limited,1431.97,80.65929412899894
+TYTFSIL,Toyota Financial Services India Limited,1425.7,80.69695906974374
+ARSSB,Anand Rathi Share and Stock Brokers Limited,1400.0,80.733945053501
+GHACHEM,Gharda Chemicals Limited,1400.0,80.77093103725824
+GUJGARLTD,Gujarat Guardian Limited,1400.0,80.8079170210155
+GDS1177,Anupam Rasayan India Limited,1369.82,80.84410569263719
+LLOSTEE,Evonith Value Steel Limited,1350.0000000000002,80.8797707484031
+KAESVS,KrazyBee Services Limited,1350.0,80.91543580416902
+PAALL,Parekh Aluminex Limited,1345.0,80.9509687671358
+RML,Rashmi Metaliks Limited,1340.0,80.98636963730345
+KSIIPL,KSS Petron Private Limited,1333.5,81.02159878683224
+APMPLI,Azure Power Maple Private Limited,1325.5,81.05661658788242
+TATINTL,Tata International Limited,1317.0,81.09140983117406
+ASAINDI,Asahi India Glass Limited,1314.98,81.12614970897485
+AABPPI,APL Apollo Building Products Limited,1310.0,81.16075802234771
+JBETPL,JBM Eco Tech Private Limited,1308.78,81.19533410507756
+GDS18941,Sanmar Shipping Limited,1300.0,81.22967823285215
+INBFPL,Iscon Balaji Foods Private Limited,1300.0,81.26402236062674
+MLSBCL,Milestone Buildcon Private Limited,1300.0,81.29836648840134
+GDS4382,Deepak Cables India Limited,1300.0,81.33271061617593
+VRCCIPL,VRC Constructions India Limited,1300.0,81.36705474395052
+GDS2661,APL Apollo Tubes Limited,1270.0,81.40060631493031
+LTTG,L&T - MHI Power Turbine Generators Private Limited,1265.0,81.43402579311096
+POWELIM,Powerica Limited,1262.8700000000001,81.46738899975921
+SPCNEP,Adani Solar Energy Jaisalmer Two Private Limited,1256.0800000000002,81.50057282438621
+INXWD,Inox Wind Limited,1250.0,81.53359602416947
+GDS11644,Mankind Pharma Limited,1250.0,81.56661922395273
+VASENGG,Vascon Engineers Limited,1249.9999999999998,81.59964242373599
+NIRLON,Nirlon Limited,1230.0,81.6321372523227
+ORASPL,Orissa Alloy Steel Private Limited,1210.0,81.6641037097129
+SVNIS,Seven Islands Shipping Limited,1200.0,81.69580598150485
+PRFCPL,Profectus Capital Private Limited,1200.0,81.72750825329676
+KRABPI,Kribhco Agri Business Limited,1200.0,81.7592105250887
+AHSFPL,Tyger Home Finance Private Limited,1200.0,81.79091279688063
+SDCMPU,Surat-Tapi District Co-operative Milk Producers Union Limited,1200.0,81.82261506867256
+FORML,Daimler India Commercial Vehicles Private Limited,1200.0,81.85431734046449
+CHHL,Chalet Hotels Limited,1200.0,81.88601961225642
+DBCF,Digamber Capfin Limited,1200.0,81.91772188404835
+FFFL,3F Industries Limited,1192.0,81.94921280736166
+APPHLI,Apollo Pharmacies Limited,1191.0,81.98067731211516
+RL,Rubamin Private Limited,1177.5900000000001,82.01178754398136
+LOIL,Laxmi Organic Industries Limited,1170.0,82.0426972589785
+MJSELTD,Manjushree Technopack Limited,1166.0,82.07350129973632
+VDHBPL,Vidya Herbs Private Limited,1160.0,82.10414682913519
+SVTXHP,Shiv Texchem Limited,1150.0,82.13452817293579
+AMWL,Agrawal Metal Works Private Limited,1149.9999999999998,82.16490951673639
+KRIMSL,Krishna Institute of Medical Sciences Limited,1148.6,82.19525387455323
+SISIL,SIS Limited,1139.0,82.22534461419573
+NRACO,Ramalingam Construction Company Private Limited,1138.9999999999998,82.25543535383825
+CGHEPL,CGE Hybrid Energy Private Limited,1137.71,82.28549201353857
+HEWEPL,Hero Wind Energy Private Limited,1132.0,82.31539782326229
+GAIFPL,GA Infra Private Limited,1130.0,82.34525079586636
+SAAGCL,SAEL Agri Commodities Limited,1130.0,82.37510376847042
+KLTR,Kalpataru Limited,1126.3,82.40485899240313
+ANGEIL,Angelique International Limited,1125.0,82.43457987220808
+KIANPP,KRC Infrastructure And Projects Private Limited,1110.0,82.4639044736156
+KJBSMPL,Kanpur Jhansi Banda Smart Metering Private Limited,1101.71,82.49301006516218
+OCLISLTD,OCL Iron & Steels Limited,1101.5,82.52211010881118
+ADTSWL,Adani Transmission Step-Two Limited,1100.0,82.55117052462046
+ADCHIL,Aquapharm Chemical Limited,1100.0,82.58023094042971
+SSAMPAL,SAEL Solar MHP2 Private Limited,1100.0,82.60929135623898
+SMIDBPL,Sam India Builtwell Private Limited.,1100.0,82.63835177204825
+INDOA,Indo Autotech Limited,1087.9999999999998,82.6670951651396
+MAHMAH,Mahindra and Mahindra Limited,1087.5,82.69582534895105
+RANMADR,Rane (Madras) Limited,1085.0000000000002,82.72448948636291
+HML,Hazel Mercantile Limited,1082.0,82.7530743680953
+SRTEIX,Qatalyst Entec Private Limited,1082.0,82.78165924982768
+PLEA,Parle Agro Private Limited,1080.56,82.81020608883392
+GDS17752,Ramsarup Industries Limited,1075.0,82.83860604064753
+AGLL,Allcargo Logistics Limited,1075.0,82.86700599246115
+CSLCPPL,Crystal Crop Protection Limited,1071.0,82.89530027003543
+GDS13888,Opg Power Generation Private Limited,1066.8600000000001,82.92348517477205
+SC,Shiva Cement Limited,1066.0,82.95164735954721
+PHLIIL,Signify Innovations India Limited,1056.0,82.97954535872411
+KGLD,Kanishk Gold Private Limited,1050.0,83.00728484654205
+MHRL,Mayfair Hotels and Resorts Limited,1050.0,83.03502433435999
+GDS20171,Simbhaoli Sugars Limited,1041.0,83.06252605513949
+SPFIPI,Star Pipe Foundry India Private Limited,1040.0,83.09000135735916
+BRFI,Berar Finance Limited,1033.0,83.11729172966005
+ORMIPI,Rashmi Metallurgical Industry Private Limited,1030.0,83.14450284628145
+CSCCPL,Cs Construction Company Private Limited,1025.0,83.17158187010372
+HRENERG,Hero Rooftop Energy Private Limited,1015.0,83.19839670832772
+PGVPL,Piaggio Vehicles Private Limited,1011.46,83.22511802484995
+SDLAT,Victura Technologies Private Limited,1010.0,83.25180077027483
+SAISIPP,Sai Sravanthi Infra Projects Private Limited,1006.0,83.2783778414604
+DHITPV,Darshita Infrastructure Private Limited,1005.0,83.30492849408614
+MANREFI,Mangalore Refinery and Petrochemicals Limited,1000.0,83.33134705391274
+TBEGL,Tbea Energy India Private Limited,1000.0,83.35776561373936
+SSPSPAL,SAEL Solar P6 Private Limited,1000.0,83.38418417356596
+GDS21082,Authum Investment & Infrastructure Limited,1000.0,83.41060273339257
+FICCL,SMFG India Credit Company Limited,1000.0,83.43702129321917
+ADAIHL,Adani Airport Holdings Limited,1000.0,83.46343985304578
+DACIPL,Mercedes-Benz India Private Limited,1000.0,83.48985841287238
+MYHIPL,My Home Infrastructures Private Limited,1000.0,83.516276972699
+GDS20315,SMC Global Securities Limited,1000.0,83.5426955325256
+IDCSCO,Inderdeep Infra India Limited,1000.0,83.56911409235221
+GDS12572,SG Finserve Limited,1000.0,83.59553265217882
+RCINEEP,R & C Infraengineers Private Limited ,1000.0,83.62195121200543
+ERIPLM,Enerica Regrid Infra Private Limited,1000.0,83.64836977183204
+JHAPL,Jhajjar Power Limited,1000.0,83.67478833165865
+PCPRSL,Pace Digitek Limited,999.9999999999999,83.70120689148526
+HIFISP,Hiranandani Financial Services Private Limited,999.9999999999999,83.72762545131187
+ASML,Asmitha Microfin Limited,999.9999999999998,83.75404401113848
+GDS8704,Jai Balaji Industries Limited,995.0,83.78033047816594
+AICITL,AIC Iron Industries Private Limited,993.0,83.80656410807377
+NIITTL,Coforge Limited,989.0,83.83269206374229
+MATYPL,Mahansaria Tyres Private Limited,985.0,83.85871434517149
+DRJSMPL,Durg Rajnandgaon Jagdalpur Smart Metering Private Limited,983.0699999999999,83.88468563878023
+ESPL,Nuvama Wealth Management Limited,980.0,83.9105758274103
+CRGCEL,Crompton Greaves Consumer Electricals Limited,975.0,83.93633392324125
+JARRPL,Jain Resource Recycling Limited,964.0,83.96180141491409
+GDS3041,Budge Budge Refineries Limited,960.0,83.98716323234764
+HKRDL,Hkr Roadways Limited,960.0,84.01252504978119
+GDS2961,Bravo Sponge Iron Private Limited,958.0,84.03783403009507
+SHPEAS,Prima Bay Private Limited,950.0,84.06293166193035
+NIRBGSEC,Nirmal Bang Securities Private Limited,945.0,84.0878972009665
+MSNSSL,MSKVY Ninth Solar Spv Limited,939.95,84.11272932627553
+ENDTPL,Endurance Technologies Limited,918.03,84.13698235675314
+GDS20863,SRM Institute of Science and Technology,916.4,84.16119232497824
+AEGSPLD,AMPIN Energy Green Seventeen Private Limited,916.0,84.18539172577941
+JUAIPL,Jupiter Aluminium Industries Private Limited,916.0,84.20959112658059
+CHEAGR,NACL Industries Limited,915.0,84.23376410882193
+GDS1734,Atlanta Electricals Limited,910.0,84.25780499826413
+GDS805,Alpha Design Technologies Private Limited,906.8700000000001,84.2817631976141
+GLXSLTD,Galaxy Surfactants Limited,906.33,84.30570713094176
+KMCH,Kovai Medical Center and Hospital Limited,900.0,84.3294838347857
+DNEGPL,Dinesh Engineers Limited,900.0,84.35326053862966
+DARCL,CJ Darcl Logistics Limited,900.0,84.37703724247359
+GDS2353,BTL EPC Limited,900.0,84.40081394631754
+AEGEPL78,AMPIN Energy Green Eight Private Limited,898.0,84.42453781304184
+SBEOPL,Adani Solar Energy Jodhpur Three Limited,892.49,84.4481161135015
+GEKEPL,GR Ena Kim Expressway Private Limited,891.0,84.471655050307
+MAASMPL,Maharashtra Akola Amravati Smart Metering Private Limited,881.56,84.49494459590775
+GCPOSPL,Genus Chhattisgarh PKG 1 SPV Private Limited,881.22,84.51822515919815
+CAVKPL,CavinKare Private Limited,880.0,84.54147349184558
+BPLATLD,BSCPL Aurang Tollway Private Limited,855.03,84.56406215305411
+GOSTL,Goodluck India Limited,854.75,84.58664341706591
+ECOPE,Eco Protection Engineers Private Limited,850.0,84.60909919291852
+MNUHEF,Manappuram Home Finance Limited,850.0,84.63155496877114
+BHVEPL,Bharat Vanijya Eastern Pvt Ltd,850.0,84.65401074462375
+PESMPL,Purvanchal EAV-3 Smart Metering Private Limited,849.87,84.6764630860636
+HPFLTD,Eternis Fine Chemicals Limited,845.0,84.69878676911708
+ROHDPL,Roha Dyechem Private Limited,844.9999999999999,84.72111045217056
+ADCIL,L&T Valves Limited,840.0,84.74330204242492
+INOX,Inox India Limited,835.0,84.76536153988013
+HCCS,Hariom Pipe Industries Limited,829.75,84.78728233989627
+MCIBPL,Marwadi Chandarana Intermediaries Brokers Private Limited,825.0,84.80907765175321
+KHIITL,Khavda II-A Transmission Limited,825.0,84.83087296361016
+MOWDPL,Morjar Windfarm Development Private Limited,813.0,84.85235125274919
+ACMETL,Acme Cleantech Solutions Private Limited,808.83,84.87371937649375
+MLLTD,Mylan Laboratories Limited,805.0,84.89498631715418
+GDS2192,Bansal Wire Industries Limited,805.0,84.91625325781459
+SSIGESPL,Shiv Shakti Inter Globe Exports Private Limited,802.5,84.93745415207545
+MLABL,Micro Labs Limited,800.0,84.95858899993674
+APHONL,Apollo Hospitals North Limited,800.0,84.97972384779801
+EPCAPI,Epsilon Carbon Ashoka Private Limited,800.0,85.0008586956593
+KPDL,Kolte-Patil Developers Limited,800.0,85.0219935435206
+ABUEPL,Acreage Builders Private Limited,800.0,85.04312839138188
+PHICARB,PCBL Chemical Limited,800.0,85.06426323924316
+WEAPPL,Welspun Aunta-Simaria Project Private Limited,800.0,85.08539808710445
+ASEJSP,Adani Solar Energy Jodhpur Six Private Limited,798.43,85.10649145782682
+BWWMPL,Bhusawal Waste Water Management Private Limited,795.0,85.12749421288896
+RJPS,Raj Petro Specialities Private Limited,783.0,85.14817994523321
+GMEPL,Gadre Marine Export Private Limited,775.8799999999999,85.16867757743147
+BBELTD,Iron Triangle Limited,775.0,85.1891519612971
+RICAUTO,Rico Auto Industries Limited,775.0,85.20962634516272
+DDIPL,D.D. International Private Limited,775.0,85.23010072902834
+AOSAAP,A-One Steels India Limited,774.0,85.25054869433413
+MEILTD,Merino Industries Limited,773.48,85.27098292198882
+KTIPL,Kaynes Technology India Limited,770.0,85.2913252130553
+PRKH,Park Medi World Limited ,770.0,85.31166750412179
+PPFPL,Prince Pipes and Fittings Limited,768.0,85.33195695806862
+CMGRTL,CMR Green Technologies Limited,760.74,85.35205461327112
+SBICSL,SBICAP Securities Limited,750.0,85.37186853314108
+SSGIL,Aditya Birla Global Trading (India) Private Limited,750.0,85.39168245301103
+GDS8794,Jakson Engineers Limited,750.0,85.41149637288099
+HRSCL,Harsh Constructions Private Limited,750.0,85.43131029275094
+SPMCIL,Security Printing and Minting Corporation of India Limited,750.0,85.4511242126209
+GDS16577,Phoenix ARC Private Limited,750.0,85.47093813249086
+GGL,Green Gas Limited,750.0,85.4907520523608
+CARUNIV,Carborundum Universal Limited,750.0,85.51056597223076
+HPGAPL,HPOIL Gas Private Limited,747.5,85.53031384570116
+SHBULT44,Shankara Buildpro Ltd,745.0,85.54999567277198
+CEABPL,Ceigall Ayodhya Bypass Private Limited,741.0,85.5695718256035
+RATYLI,Ralson Tyres Limited,740.9999999999999,85.58914797843501
+ILPL,Kosmo One Business Park Private Limited,740.0,85.6086977127067
+VDCMPUL,Valsad District Cooperative Milk Producers Union Limited,735.0,85.62811535417926
+GCKCPWL,GCKC Projects and Works Private Limited,732.5,85.64746694925225
+CAMPCO,The Central Arecanut & Cocoa Marketing and Processing Co-Operative Limited,730.0,85.66675249792569
+EPBADPL,ESNP Property Builders and Developers Private Limited,730.0,85.6860380465991
+HDEGL,Talegaon Industrial Parks Private Limited,727.0,85.70524433959305
+GDS20034,Shyam Ferro Alloys Limited,725.0,85.72439779546734
+SSSHLI,SSL Shipping Limited,723.0,85.74349841422197
+FENNERL,J. K. Fenner India Limited,722.35,85.76258186091272
+SSABFL,Seshaasai Technologies Limited,721.1999999999999,85.78163492625967
+NRPSPL,Nsure Reliable Power Solutions Private Limited,718.5699999999999,85.80061851079428
+GBHPLI,Gawar Bijnor Highways Private Limited,713.8,85.8194760787985
+TCGUIHL,TCG Urban Infrastructure Holdings Private Limited,713.0,85.83831251195488
+SNSEPL,SunSource Energy Private Limited,707.03,85.85699122630908
+SDVAS,Sudiva Spinners Private Limited,705.0000000000001,85.87561631098683
+SHTCS,Sushee Infra and Mining Limited,703.0,85.89418855854495
+JINPOLY,Jindal Poly Films Limited,702.89,85.91275790006148
+UCHTDP,Uppal-Chadha Hi-Tech Developers Private Limited,700.0,85.93125089194011
+DSL,Dharampal Satyapal Limited,700.0,85.94974388381871
+JHNMPL,Jhajharia Nirman Limited,700.0,85.96823687569734
+EIPHPL,Embassy Industrial Park Hosur Private Limited,700.0,85.98672986757597
+EBLEBL,Enzene Biosciences Limited,700.0,86.0052228594546
+BIBIIL,Biocon Biologics Limited,700.0,86.02371585133322
+PSSC,Polisetty Somasundaram,700.0,86.04220884321185
+ATSENL,Adani Transmission Step-Seven Limited,700.0,86.06070183509048
+HASFPL,Haldiram Snacks Food Private Limited,700.0,86.07919482696911
+SMFPPVL,Shyam Metalics Flat Product Private Limited-(Amalgamated),700.0,86.09768781884773
+CHOSEC,Ugro Capital Limited,699.9999999999999,86.11618081072635
+PLRPPLTD,PLR Projects Private Limited,690.0000000000001,86.13440961700671
+MISDHNIGLTD,Mishra Dhatu Nigam Limited,690.0,86.15263842328707
+AVFIPL,Avendus Finance Private Limited,685.0,86.1707351367683
+BDACPL,Badve Autocomps Private Limited,681.03,86.18872696856701
+CNABPL93,Ceigall Northern Ayodhya Bypass Private Limited,681.0,86.20671800780893
+RHUV,Raheja Universal Pvt Limited,680.0,86.22468262849102
+GVKBPL,Aragen Life Sciences Limited,675.9799999999999,86.24254104656262
+NJCAPL,NJ Capital Private Limited,675.0,86.26037357444557
+SPSSRML,SPS Steels Rolling Mills Limited,668.0,86.27802117240975
+GDS23384,Vikas Telecom Private Limited,667.0,86.2956423518141
+HGRAVO,HG Raipur Visakhapatnam OD-5 Private Limited,667.0,86.31326353121844
+SCMGPL,SCM Garments Private Limited,661.29,86.33073386064618
+PGTCPP,Pg Technoplast Private Limited,661.27,86.34820366170273
+SRDMAL,Sarda Metals and Alloys Limited,659.8099999999998,86.36563489166191
+JINDRIL,Jindal Drilling and Industries Limited,655.0,86.38293904834835
+PNAESL,Pokarna Engineered Stone Limited,651.52,86.40015126844658
+BAXLIM,BAXY Limited,651.25,86.41735635553366
+SJYCI,Sanjay Chemicals India Private Limited,650.0,86.43452841942096
+PMIFRL,Prathima Infrastructure Limited,650.0,86.45170048330824
+WTIL,TVS Holdings Limited,650.0,86.46887254719555
+NIIPL,Netafim Irrigation India Private Limited,650.0,86.48604461108283
+UNPTIL,Unipro Techno Infrastructure Private Limited,650.0,86.50321667497013
+MASPFL,Toppan Speciality Films Private Limited,645.6700000000001,86.52027434649338
+RASOPI,Rayzon Solar Limited,645.0,86.53731431758153
+RAJSUGA,Rajshree Sugars and Chemicals Limited,644.0,86.55432787010987
+FRTHPL,Fortis Hospotel Limited,640.9,86.57125952510275
+KJSCTL,KJS Cement(I) Limited,640.0,86.58816740339178
+ARFSPL,Aryadhan Financial Solutions Private Limited,640.0,86.6050752816808
+GDS6902,HAL Offshore Limited,640.0,86.62198315996983
+QCIL,Quality Care India Limited,639.5,86.63887782897895
+VODOPL,Volumnus Developers Private Limited   ,635.0,86.65565361446885
+SUPL,Saraogi Udyog Private Limited,630.0,86.67229730715961
+GDS13165,Natural Sugar and Allied Industries Limited,627.0,86.6888617441709
+REREPL,Regaal Resources Limited,625.5699999999999,86.70538840264162
+LOHSTAR,Lohia Corp Limited,625.15,86.72190396531721
+HDPCO,H Dipak and Co.,625.0,86.73841556520885
+SVDPLTD,Sattva Developers Private Limited,624.0,86.75490074654066
+SOLEXE,Solex Energy Limited,620.5899999999999,86.77129584058343
+LGELINL,L G Electronics India Limited,618.2700000000001,86.78762964356744
+BTWFPL,Beta Wind Farm Private Limited,617.79,86.80395076564272
+NABAPL,Navabharat Limited,617.5,86.82026422633565
+REDIMI,REDTAPE LIMITED,615.0,86.83651164062903
+KDPIEPL,DAK Package I Expressway Private Limited,607.5,86.85256091572369
+GDS17904,Raymond UCO Denim Private Limited,606.4700000000001,86.86858297970173
+VDEWPL,Vindhyachal Expressway Private Limited,603.55,86.88452790148507
+SWKNBL,Sew Krishnagar Baharampore Highways Limited,600.3199999999999,86.90038749132017
+SHSCCO,Scc Infrastructure Private Limited,600.0000000000001,86.91623862721615
+ORPPAL,Oriana Power Limited,600.0,86.9320897631121
+TEALTE,Titan Engineering and Automation Limited,600.0,86.94794089900807
+AIHPL,Aparna Infrahousing Private Limited,600.0,86.96379203490405
+PTLESKRB,Dee Vee Projects Limited,600.0,86.9796431708
+NOCIL,NOCIL Limited,600.0,86.99549430669596
+NOMLSL,Sunbeam Lightweighting Solutions Private Limited,600.0,87.01134544259193
+PMEAPL,Pmea Solar Tech Solutions Limited,600.0,87.0271965784879
+GDS4112,D B Malls Private Limited,600.0,87.04304771438386
+MALTD,Maithan Alloys Limited,600.0,87.05889885027983
+JCIPLD,J Infratech Limited,600.0,87.07474998617579
+BCRNPL,Bhartiya City Residences Private Limited,600.0,87.09060112207176
+SAFNSE,Svamaan Financial Services Private Limited ,600.0,87.10645225796773
+MOSWIL,Motherson Sumi Wiring India Limited,600.0,87.12230339386369
+JASULI,Jaywant Sugars Limited,600.0,87.13815452975965
+SKRIMSL,Shankara Building Products Limited,595.0,87.15387357285648
+SHSKS,Dr. Patangrao Kadam Sonhira Sahakari Sakhar Karkhana Limited,580.0,87.16919633755592
+KCPLITD,The KCP Limited,579.96,87.18451804551295
+FMEL,Falcon Marine Exports Limited,575.5,87.19972192669316
+BPITCL,BPTP International Trade Centre Limited,575.0,87.21491259859346
+ALXEPL,Alpex Solar Limited,573.0,87.23005043337412
+HIIMPL,HI-Print Investments Private Limited,571.02,87.24513595940631
+GEMINDL,Gemscab Industries Limited,570.5,87.26020774778739
+SPCNCG,JayantiSuper Construction Private Limited,566.0,87.27516065264925
+GOAGIL,Gokul Agri International Limited,565.0000000000002,87.29008713895128
+ASAURI,Ask Automobiles Private Limited,564.0,87.30498720669348
+VISEL,Visen Industries Limited,563.11,87.31986376191743
+TRRPGL,Torrent Power Grid Limited,560.0,87.33465815542034
+GAWHPL,Gawar Waranga Highways Private Limited,560.0,87.34945254892324
+RPPCPL,RPP Infra Projects Limited,557.0000000000001,87.36416768674667
+GDS8516,Island Star Mall Developers Private Limited,555.0,87.37882998745043
+INJAPL,INCO Jade Private Limited,555.0,87.39349228815419
+STCECPL,TAQA Neyveli Power Company Private Limited,550.0,87.40802249605883
+HECOLL,Hetvi Construction Limited,550.0,87.42255270396346
+GDS7955,Rattanindia Power Limited,550.0,87.4370829118681
+SASPLD,Shri Ambalika Sugar Private Limited,550.0,87.45161311977273
+MCHFCLD,Svatantra Micro Housing Finance Corporation Limited,550.0,87.46614332767737
+EVFLPL,Everest Fleet Private Limited,549.9999999999999,87.48067353558201
+BKSC,B. K. Sales Corporation,540.0,87.49493955788837
+ANTPLI,Andritz Technologies Private Limited,540.0,87.50920558019473
+BLKSL,BL Kashyap and Sons Limited,539.34,87.52345416625162
+KVYDMSLD,Karvy Data Management Services Limited,537.19,87.53764595240487
+GDS19280,Seamec Limited,533.0,87.55172704479246
+JGRTPL,Juniper Green Ray Two Private Limited,533.0,87.56580813718003
+GBHPEL,Gawar Basukinath Highways Private Limited,532.22,87.57986862309096
+SLEIPL,Sri Lalitha Enterprises Industries Private Limited,528.4499999999999,87.59382951103134
+DDPL,D'Decor Home Fabrics Private Limited,526.88,87.60774892183278
+DREAPL,DR Axion India Private Limited,525.0,87.62161866574174
+VMRGTPL,Varmora Granito Limited,524.9999999999998,87.63548840965072
+MSCL,M Suresh Company Private Limited,524.0,87.64933173499986
+RAMSURG,The Ramaraju Surgical Cotton Mills Limited,520.4300000000001,87.66308074609043
+AMDFSPL,AMDD Foods Private Limited,520.0,87.67681839720026
+HRVOPL,HG Raipur Visakhapatnam OD-6 Private Limited,515.0,87.69042395551097
+MAFSIPL,Mirae Asset Financial Services (India) Private Limited,515.0,87.70402951382167
+TPHWPL,Tiruvallur P1 Highway Private Limited,512.75,87.71757563037276
+VENPPL,Venkateshwara Power Project Limited,510.0,87.73104909588433
+MCYCRR,Avis India Mobility Solutions Private Limited,510.0,87.7445225613959
+CLBGHP,Ceigall Ludhiana Bathinda Greenfield Highway Private Limited,510.0,87.75799602690746
+DOSY,Dodhia Industries Limited,506.1199999999999,87.77136698840692
+RANEPL,Cyient DLM Limited,503.0,87.7846555239997
+ESIPRP,Vena Energy Solar India Power Resources Private Limited,502.5,87.79793085031257
+SSAPAL,Skechers South Asia Private Limited,502.0,87.81119296734553
+UNGIPL,Jasani India Private Limited,501.0,87.82442866581866
+BOMDYEI,The Bombay Dyeing and Manufacturing Company Limited,501.0,87.83766436429178
+AVFPEL,Avanti Finance Private Limited,500.00000000000006,87.8508736442051
+CANFACLTD,Canbank Factors Limited,500.0,87.86408292411839
+SASIPL57,Saatvik Solar Industries Private Limited,500.0,87.8772922040317
+JDFIPL,John Deere Financial India Private Limited,500.0,87.890501483945
+POWILI,Poolavadi Windfarm Limited,500.0,87.90371076385831
+LAAGPR,Laxmi Agro India Private Limited,500.0,87.91692004377161
+GDS9012,Jesons Industries Limited,500.0,87.93012932368491
+ARISRML,Arora Iron and Steel Rolling Mills Private Limited,500.0,87.94333860359822
+AVNSPL,Avenue Supermarts Limited,500.0,87.95654788351153
+SKICBL,Birla Carbon India Private Limited,500.0,87.96975716342483
+GDS2467,Bharat Constructions (India) Private Limited,500.0,87.98296644333813
+REREVL,Reliance Retail Ventures Limited,500.0,87.99617572325144
+WVID,Wave Industries Private Limited,500.0,88.00938500316474
+OMYPPL,Om Yash Projects Limited,500.0,88.02259428307805
+KEFIRL,Keertana Finserv Limited,500.0,88.03580356299135
+FUPOSY,Fujiyama Power Systems Limited,499.99999999999994,88.04901284290465
+STAIL,Sterling Agro Industries Limited,494.0,88.062063611459
+SHCCPL,Sharda Construction and Corporation Private Limited,487.0,88.07492945009456
+WMNHPJS,Waman Hari Pethe Jewellers,485.00000000000006,88.08774245161047
+HPYFGL,Happy Forgings Limited,485.0,88.10055545312636
+GAMHPL,Gawar Mandi Highways Private Limited,485.0,88.11336845464227
+AMBPL,Amrit Bottlers Private Limited,481.0,88.12607578191887
+GDS16289,Paras Healthcare Limited,481.0,88.13878310919546
+CHPIPL,Chemco Plastic Industries Private Limited,481.0,88.15149043647207
+RLPLTD,Ritco Logistics Limited,480.0,88.16417134518883
+IOHOPL,Iora Hotels Private Limited,480.0,88.17685225390561
+SUNWIPL,Supreme Nonwoven Industries Private Limited,480.0,88.18953316262238
+CTYTPPL,Century 21 Town Planners Private Limited,480.0,88.20221407133916
+ANARAJ,Anant Raj Limited,480.0,88.21489498005593
+EVEIND,Eveready Industries India Limited,480.0,88.22757588877269
+CBSM,CMR Textiles & Jewellers Private Limited,475.00000000000006,88.24012470469033
+SALAS,Softzone Tech Park Limited,475.0,88.25267352060797
+FTHPL,Fortis Hospitals Limited,470.8,88.26511137857433
+GDS10982,M and B Engineering Limited,470.00000000000006,88.27752810169284
+FSSL,Firstsource Solutions Limited,470.0,88.28994482481136
+SCTSPL,Suncity Metals and Tubes Private Limited,470.0,88.30236154792985
+EEVISE,Epack Durable Limited,470.0,88.31477827104835
+MHTR,MRL Tyres Limited,470.0,88.32719499416687
+RFSSPL,Ratnamani Finow Spooling Solutions Private Limited,465.0,88.33947962448624
+BLOPLAS,VIP Industries Limited,464.0,88.35173783624577
+INPLTD,Indian Products Private Limited,464.0,88.36399604800533
+GBBHPL,GR Bhimasar Bhuj Highway Private Limited,459.0,88.37612216696574
+FSGEPL,Four Square Green Energy Private Limited,458.0,88.38822186736634
+JNKIDPL,JNK India Limited,457.0,88.40029514920708
+FRWGPL,Frontier Warehousing Limited,455.0,88.4123155939282
+HRVAPL,H.G Raipur Visakhapatnam AP-1 Private Limited,452.0,88.42425678296982
+FDMF,Aqualite Industries Private Limited,450.93,88.43616970415243
+ESRBT,Essar Bulk Terminal (Salaya) Limited,450.0,88.4480580560744
+NFPIL,Nitin Fire Protection Industries Limited,450.0,88.45994640799638
+BRCP,Brahmaputra Cracker and Polymer Limited,450.0,88.47183475991835
+AKMPPL,Arawali Kante Multi Projects Private Limited,450.0,88.48372311184033
+INLDPL,Inland Power Limited,450.0,88.4956114637623
+SKKFA,Sikkim Ferro Alloys Limited,450.0,88.50749981568427
+ANDIPI,Ankoor Distilleries Private Limited,450.0,88.51938816760625
+SYPL,Sharmanji Yarns Private Limited,450.0,88.53127651952822
+FINCABL,Finolex Cables Limited,450.0,88.5431648714502
+GDS2989,Brindavan Beverages Private Limited,450.0,88.55505322337217
+ATSAPLTD,Aquatech Systems (Asia) Private Limited,450.0,88.56694157529415
+TCPLP,TCPL Packaging Limited,450.0,88.57882992721612
+AKRBCL,Ankur Biochem Private Limited,449.99999999999994,88.59071827913809
+RTAT,Riya Travel and Tours India Private Limited,445.0,88.60247453826094
+ETEEVER,Everest Industries Limited,440.0,88.61409870458465
+RALLIS,Rallis India Limited,440.0,88.62572287090835
+GWKGHH,Gawar Kangra Highways Private Limited,440.0,88.63734703723206
+KCWEPL,KCC Walajahpet Expressway Private Limited,440.0,88.64897120355577
+DCNOLI,DCM Nouvelle Limited,439.72,88.66058797268272
+SESTLI,NRVS Steels Limited,437.20000000000005,88.67213816703892
+STAGL,Sathya Agencies Private Limited,437.0,88.68368307768316
+EUOIPL,LightHouse Learning Private Limited,436.0,88.69520156976756
+EICEPL,Egis India Consulting Engineers Private Limited,435.0,88.70669364329214
+THOCOOK,Thomas Cook India Limited,433.0,88.71813287969705
+KJSRPL,Adani Solar Energy Four Limited,428.0,88.72944002330284
+GRCAMC,Gujarat Credo Alumina Chemicals Limited,428.0,88.74074716690863
+KDETPL,Kader Exports Private Limited,427.55,88.75204242216249
+NUBGEL,Nuberg Engineering Limited,427.0,88.76332314720845
+FHC,Fortis Healthcare Limited,425.97999999999996,88.77457692532339
+COREIM,Cocoblu Retail Limited,425.0,88.7858048132497
+BSVL,Bharat Serums and Vaccines Limited,425.0,88.79703270117601
+GDS6729,Gufic Biosciences Limited,425.0,88.80826058910232
+WGDISPL,Wagad Infraprojects Private Limited,425.0,88.81948847702861
+LIMIPL,Light Microfinance Private Limited,425.0,88.83071636495494
+MBFSELTD,Mrs.Bectors Food Specialities Limited,424.99999999999994,88.84194425288125
+SACIPL,Saraswati Agro Chemicals India Private Limited,421.32,88.85307492050738
+KNMNS,Karuna Management Services Limited,420.0,88.86417071563456
+MGPRPL,Mangal Industries Limited,419.01,88.8752403563875
+PNGJPL,P N Gadgil Jewellers Limited,419.0,88.88630973295484
+SJCTL,SJ Contracts Private Limited,417.0999999999999,88.89732891425852
+SRVISHL,Sri Vishnu Shankar Mill Limited,416.99999999999994,88.90834545370622
+DHSOLI,Dhanuka Soya Private Limited,414.5,88.91929594675435
+PRJTIP,Parijat Industries (India) Limited,410.00000000000006,88.93012755628325
+NSFL,Nekkanti Sea Foods Limited,410.0,88.94095916581217
+IIL,Indian Immunologicals Limited,409.99999999999994,88.95179077534108
+AAGECPL,Alang Auto and General Engineering Company Private Limited,408.0,88.96256954775033
+CPMFPPL,C P Milk and Food Products Private Limited,406.22,88.97330129512311
+SSNTCPL,Sunhearrt Ceramix Private Limited,405.0,88.98400081185288
+GDS18687,Best Agrolife Limited,405.0,88.99470032858265
+BAENRM,BAXY Engineering Limited,404.5,89.00538663603253
+RAKUCO,RKCPL Limited,404.0,89.01605973420247
+SELENG,Shreetech Data Limited,400.0,89.02662715813311
+IIFLCL,5Paisa Capital Limited,400.0,89.03719458206376
+MSECF,Mansukh Securities and Finance Limited,400.0,89.0477620059944
+VVFIDLD,VVF India Limited,400.0,89.05832942992504
+RJSLQRS,Rajasthan Liquors Limited,400.0,89.06889685385568
+AZPFPL,Azure Power Forty Private Limited,400.0,89.07946427778633
+BMWVEN,BMW Ventures Limited,400.0,89.09003170171698
+TRICL,Tribeni Constructions Limited,400.0,89.10059912564762
+GBNHPL,Gawar Bhiwani Highway Private Limited,400.0,89.11116654957826
+HYSBLTD,Hariyana Ship Breakers Limited,400.0,89.1217339735089
+SRJRCN,Sri Raja Rajeswari Constructions India Private Limited,400.0,89.13230139743955
+NMFNPL,Namdev Finvest Private Limited,400.0,89.14286882137019
+GDS3348,Centum Electronics Limited,399.7,89.15342831973288
+GDS17639,Rajkamal Builders Infrastructure Private Limited,398.7,89.16396139953576
+DPL,Mangalam Organics Limited,397.0,89.17444956778692
+RDRPL,Ram Dev International Limited,395.74000000000007,89.18490444865272
+GDS3930,Corrtech International Limited,395.0,89.19533977978422
+RFIBSS,Rishi FIBC Solutions Private Limited,394.0,89.2057486923559
+HAPPL,Haresh Petrochem Private Limited,392.1,89.21610740966392
+SITSL,Sitaram Spinners Private Limited,391.0,89.22643706655613
+KKJW,Kirtilal Kalidas Jewellers Private Limited,390.0,89.23674030488851
+DHTTM,Dhoot Transmission Private Limited,388.99,89.24701686047545
+HAVERL,Halder Venture Limited,387.27,89.25724797613951
+AERREPL,Angeboren Renewables Private Limited,386.09000000000003,89.26744791790297
+GDS7745,IM Gears Private Limited,385.57000000000005,89.2776341220153
+SAEPEL,Swami Ashirwad Engimech Private Limited,385.02,89.28780579591975
+RSGBL,Riddhi Siddhi Gluco Biols Limited,385.0,89.297976941453
+KBIPVL,Kamakhya Biofuels Private Limited,385.0,89.30814808698624
+ATLCOPC,Atlas Copco (India) Private Limited,380.5,89.31820034900025
+SPACTP,Spac Starch Products India Private Limited,380.0,89.32823940173436
+VCDCHW,VRC DC Highways Private Limited,380.0,89.33827845446848
+DAHIPL,Darshita Hi-Rise Private Limited,380.0,89.3483175072026
+PDSIFTR,P. Das Infrastructure Private Limited,380.0,89.35835655993671
+SDMASL,Sundaram Alloys Limited,380.0,89.36839561267081
+VRTEPL,VRP Telematics Private Limited,379.5,89.37842145612501
+JBCHEMI,J B Chemicals and Pharmaceuticals Limited,379.0,89.3884340902993
+SDSTX,Shree Durga Syntex Private Limited,378.0,89.39842030591375
+GDS18870,Sandhya Spinning Mill Limited,375.0,89.40832726584873
+MHWB,MBG Commodities Private Limited,375.0,89.4182342257837
+CMPRPL,CMK Projects Private Limited,375.0,89.42814118571869
+DKMGSS,Deepak Mining Solutions Limited,375.0,89.43804814565367
+ALLABLT,Alkem Laboratories Limited,375.0,89.44795510558863
+LTBTF,Lite Bite Foods Private Limited,374.0,89.45783564696379
+PRPPL,Premier Fine Linens Private Limited,373.36,89.46769928046065
+GDS18395,S H Kelkar And Company Limited,372.0,89.47752698471615
+ABSMSPL,ABS Marine Services Limited,370.50000000000006,89.48731506113191
+AVDPL,Avinash Developers Private Limited,370.00000000000006,89.49708992826775
+KCVIKC,K. C. Vijayakumar,370.0,89.5068647954036
+DAHCLD,Dr. Agarwals Health Care Limited,370.0,89.51663966253945
+AMKSPL,Amplus KN Solar Private Limited,368.1,89.52636433441162
+TRANSILOX,Silox India Private Limited,367.0,89.53605994586799
+BNTIPL,Benetton India Private Limited,366.6,89.54574498990043
+GDS21930,Technico Industries Limited,366.1,89.55541682465295
+GHPAPL,Global Health Patliputra Private Limited,365.0,89.56505959898966
+GDS1640,ASK Automotive Limited,364.0,89.57467595476655
+AEABAR,Ahmednagar Bypass Road Project Private Limited,361.5,89.58422626414387
+STMWPL,Star Metalworks Private Limited ,360.0,89.59373694568144
+RALSLTD,Ralson (India) Limited,359.87000000000006,89.60324419280624
+LUCATVS,Lucas-TVS Limited,359.5,89.61274166506391
+SAESPL13,Samyakth Estates Private Limited,359.0,89.62222592804167
+INSPRI,Indiqube Spaces Limited,357.96000000000004,89.6316827157172
+KABEXTR,Kabra Extrusiontechnik Limited,354.0,89.64103488589582
+GUGREL,Gupta Global Resources Private Limited,353.92,89.65038494258964
+MCHEG,Welspun Michigan Engineers Limited,353.58,89.65972601697314
+BLPVL,Vayu (Project 1) Private Limited,352.0,89.6690253500321
+THSMPL,Thriveni Sainik Mining Private Limited,352.0,89.67832468309108
+RDMS,Radha Smelters Private Limited,351.0,89.68759759759021
+SKIFTX,Sakthi Infra Tex Private Limited,350.75,89.6968639074494
+CAPRBL,Casagrand Premier Builder Limited,350.0,89.7061104033887
+HEVLPL,Hero Electric Vehicles Private Limited,350.0,89.71535689932803
+ANPID,Anupam Industries Limited,350.0,89.72460339526734
+GDS16471,Peerless Hospitex Hospital and Research Center Limited,350.0,89.73384989120665
+SCAEPI,Shreeji Coke And Energy Private Limited,350.0,89.74309638714595
+SKECN,Shelke Constructions Private Limited,350.0,89.75234288308526
+ARPLPI,Aryatech Platforms Private Limited,350.0,89.76158937902458
+DEVCRED,DCB Bank Limited,350.0,89.7708358749639
+MFSVPL,mPokket Financial Services Private Limited,350.0,89.78008237090322
+TEGIND,Tega Industries Limited,350.0,89.78932886684252
+OMAHT,Omniactive Health Technologies Limited,350.0,89.79857536278185
+EDFIL,Nuvama Wealth Finance Limited,350.0,89.80782185872116
+SFGHCPL,Softgel HealthCare Private Limited,350.0,89.81706835466045
+SHIDL,Sivanssh Infrastructure Development Private Limited,350.0,89.82631485059977
+MGJPL,Mohan Gems and Jewels Private Limited,350.0,89.83556134653908
+GOONERO,Kansai Nerolac Paints Limited,350.0,89.8448078424784
+AVGJPL76,Avaada Gjclean Private Limited,349.0,89.85402791985788
+IDLMPL,Indel Money Limited,348.93000000000006,89.86324614793818
+NOFEPL,Noveltech Feeds Private Limited,347.5,89.87242659747794
+UDPBL,Udaipur Beverages Limited,347.0,89.88159383773777
+PMSSPL,Pmea Solar Systems Private Limited,347.0,89.89076107799761
+VVCNST,VVC Realinfra Private Limited,346.5,89.89991510897752
+GDS7986,India Japan Lighting Private Limited.,345.5,89.90904272139761
+VSTHC,V Sathyamoorthy and Co,345.0,89.91815712453779
+SSIPTL,Noventiq Services India Private Limited,343.7,89.9272371835502
+KNSYS,KGEPL Engineering Solutions Private Limited,343.0,89.93629874957072
+GDS5225,Empee Distilleries Limited,341.0,89.9453074784716
+RADNE,Radnik Exports Global Private Limited,340.0,89.95428978881264
+SIUDPL,Kimbal Private Limited,340.0,89.9632720991537
+SRJSL,Swaraj Suiting Limited,340.0,89.97225440949475
+GUILTD,Gujarat Insecticides Limited,340.0,89.98123671983579
+SSSSKAR,Shree Siddheshwar Sahakari Sakhar Karkhana Limited - Kumathe-Solapur,339.99999999999994,89.99021903017683
+GSERPL,Grahati Solar Energy Private Limited,338.06,89.99915008851183
+GDS16887,Prathista Industries Limited,337.53000000000003,90.0080671450101
+BDGM,BDG Metal and Power Limited,337.37,90.0169799745388
+GDS284,Accord Software and Systems Private Limited,337.0,90.02588302920036
+RMVHPL,RIPL Mehsana Vadnagar Highways Private Limited,337.0,90.03478608386193
+SNSTGL,Westwell Biorefineries Private Limited,337.0,90.04368913852349
+ADRETL52,Adani Renewable Energy Three Limited,336.57,90.05258083320433
+RAIIPL,Raigarh Ispat and Power Private Limited,336.18,90.06146222464685
+EXITSL,Eximius Infra Tech Solutions LLP,336.0,90.07033886074859
+SRGMEL,Sreeragam Exports Private Limited,335.77,90.07920942058158
+TGKTM,Theni Guru Krishna Textile Mills Private Limited,334.0000000000001,90.08803321956366
+GDS10947,Lumax Auto Technologies Limited,332.0,90.0968041814261
+KOINFL,Konark Infrastructure Limited,331.23,90.10555480099745
+BDSPPL46,BDG Steel & Power Private Limited,331.0,90.11429934430006
+APOLLI,Apollo Green Energy Limited,330.00000000000006,90.12301746904285
+KHELPL,Khosla Electronics Private Limited,330.0,90.13173559378562
+LYRYPL,Lily Realty Private Limited,330.0,90.1404537185284
+PPRGML,P P Rolling Mills Mfging Company Private Limited,330.0,90.14917184327119
+SDMFL,Shreedhar Milk Foods Limited,330.0,90.15788996801398
+MMISP,Maa Mangla Ispat Private Limited,328.75,90.16657506955697
+GDS16806,Prabhu Spinning Mills Private Limited,327.49999999999994,90.17522714790019
+AASOPL,Aarohi Solar Private Limited,325.63,90.18382982353651
+SBNDPL,Nirmal Buildinfra Private Limited,325.00000000000006,90.19241585548016
+JTCOPL,Jatan Constructions Private Limited,325.0,90.20100188742381
+KARPPL,Karmala Road Project Private Limited,325.0,90.20958791936746
+JRAPL,J. R. Agrotech Private Limited,325.0,90.21817395131112
+GDS13217,Navnit Motors Private Limited,324.99999999999994,90.22675998325475
+NIKCON,Nikhil Constructiongroup Private Limited,323.0,90.23529317807875
+GAKHPL22,Gawar KBNC Highway Private Limited,322.4,90.24381052176685
+DYCICPL,Dairy Classic Ice Creams Private Limited,321.0,90.25229087947119
+GDS9320,K R Pulp and Papers Limited,320.0,90.2607448186157
+SICRPL,Singularity Creditworld Private Limited,320.0,90.26919875776022
+GMEO,Gem Edible Oils Private Limited,320.0,90.27765269690474
+ILJEIL,IL Jin Electronics India Private Limited,320.0,90.28610663604924
+KISWINDPVL,Kiswok Industries Private Limited,320.0,90.29456057519376
+SPIOHE,St Peters Institute Of Higher Education And Research,319.7,90.30300658877033
+RIDELI,Rishita Developers Private Limited,316.0,90.31135485367554
+KNTCSPL,Kintech Synergy Private Limited,315.56,90.31969149441443
+AMOST,Amod Stampings Private Limited,315.0,90.32801334075981
+GDS17499,Rai Bahadur Narain Singh Sugar Mills Limited,313.0,90.33628234998552
+GDS7840,Ideal Movers Private Limited,312.0,90.34452494065144
+TIMIL,Times Internet Limited,312.0,90.35276753131734
+MTETBSL,Mount Everest Breweries Limited,310.84,90.36097947645383
+EGOMPL,Ecolife Green One Mobility Private Limited,310.0,90.36916923000008
+MTBCN,Mehrotra Buildcon Private Limited,310.0,90.37735898354633
+HTGPPL,Hitech Grain Processing Private Limited,310.0,90.38554873709258
+GYSIPL,Gypsum Structural India Private Limited,310.0,90.39373849063882
+HLAPPL,H.L. Agro Products Private Limited,310.0,90.40192824418509
+LIVPLL,IAC International Automotive India Private Limited,310.0,90.41011799773132
+KLPOPL,K.L.J. Polymers Private Limited,310.0,90.41830775127757
+GDS12749,Mumbai International Airport Limited,310.0,90.42649750482383
+MTRCL,Metarolls Ispat Private Limited,310.0,90.43468725837008
+PGEPPL,PG Electroplast Limited,310.0,90.44287701191632
+PNHTAD,Pan Health And Hygiene Private Limited,309.5,90.45105355618266
+IVEIPL,Ivy Ecoenergy India Private Limited,308.57,90.45920553118835
+CMEAPL,CMR NLM Eco Aluminium Private Limited,308.0,90.46734244761494
+PSAAPL,Prasad Sugar and Allied Agro Products Limited,307.0,90.47545294548172
+SHSURI,Shri Subhash Sugar Private Limited,307.0,90.48356344334849
+ELSTPL,Eloquent Steel Private Limited,306.71,90.4916662798329
+PCIOPL,PCI Infraprojects Private Limited,306.0,90.49975035913984
+CNSCC,Consolidated Coin Company Private Limited,306.0,90.50783443844678
+TKMML,The Kerala Minerals and Metals Limited,305.0,90.51589209919389
+SARWSPL,SA Rawther Spices Private Limited,305.0,90.52394975994102
+MHBULL,MHK Buildcon LLP,305.0,90.53200742068813
+ANHL,Anshu Hospitals Limited,304.0,90.54003866287542
+CAACPL,Campus Activewear Limited,303.0,90.54804348650288
+AGRPPL,Ahmednagar Ghogargaon Road Projects Private Limited,302.96000000000004,90.55604725338794
+SNOSLTD,Signet Industries Limited,302.55,90.56404018866348
+TRHF,Tara Health Foods Limited,302.0,90.57201859373112
+SPEHPL,SPL ECR Highway Private Limited,302.0,90.57999699879875
+SGYGIPL,Synergy Green Industries Limited,300.72,90.58794158810983
+JINDPIL,Jindal Pipes Limited,300.7,90.59588564904968
+PSSPLP2,Prakash Silks and Sarees Private Limited,300.00000000000006,90.60381121699767
+SAFNPL,Samunnati Finance Private Limited,300.00000000000006,90.61173678494565
+GSNKR,G. Shankar,300.0,90.61966235289363
+ASHIPL,ASG Hospital Private Limited,300.0,90.6275879208416
+DALAMIN,Dalmia Laminators Limited,300.0,90.6355134887896
+GINDPL,Sagility Limited,300.0,90.64343905673758
+FAHOFL,ITI Housing Finance Limited,300.0,90.65136462468556
+GRNUPL,Grainspan Nutrients Private Limited,300.0,90.65929019263355
+SLJSXL,Satluj Spintex Limited,300.0,90.66721576058153
+DEGLPL,Delta Global Private Limited,300.0,90.6751413285295
+ETNBPL,Jakson Biofuels Private Limited,300.0,90.6830668964775
+EQSEPL,Equirus Securities Private Limited,300.0,90.69099246442546
+ANJTP,ANJ Turnkey Projects Private Limited,300.0,90.69891803237346
+THFIPL,Varthana Finance Private Limited,300.0,90.70684360032143
+DPUODY,Divya  Pharmacy Unit Of Divya Yog Mandir Trust,300.0,90.71476916826941
+SMSSPL20,SMEL Steel Structural Private Limited,300.0,90.7226947362174
+SHVEPL,SHV Energy Private Limited,300.0,90.73062030416538
+ASSCEL,Assets Care and Reconstruction Enterprise Limited,300.0,90.73854587211336
+DSP-MLIML,DSP Finance Private Limited,300.0,90.74647144006136
+TAMVPL,Tatsavi and Manikanta Ventures Private Limited,300.0,90.75439700800933
+DEGLRP,Delta Global Resources Private Limited,300.0,90.76232257595731
+VSNDSHM,Vishindas Holaram (Lakhi Group) Private Limited,300.0,90.77024814390529
+SHRDIGV,Shree Digvijay Cement Co. Limited,300.0,90.77817371185328
+MEHELT,Metropolis Healthcare Limited,300.0,90.78609927980126
+SHCJWL,Shah C J World LLP,300.0,90.79402484774924
+PARELL,Paarichem Resources LLP,300.0,90.80195041569723
+SAVC,Sri Avantika Contractors (I) Limited,300.0,90.8098759836452
+PDMTCPL,Padmavati Chains And Jewels Private Limited,300.0,90.81780155159319
+LKGKL,Lakshmi Gold Khazaanaa Private Limited,300.0,90.82572711954117
+STDPVL,Shankh Trading Private Limited,300.0,90.83365268748915
+BLSISL,BLS International Services Limited,300.0,90.84157825543714
+EDLATDL,EAAA India Alternatives Limited,300.0,90.84950382338512
+SAMILI,Satya Microcapital Limited,300.0,90.8574293913331
+TIPLT27,Trafigura India Private Limited,300.0,90.86535495928109
+SCYIPL,SRC Company Infra Private LImited,300.0,90.87328052722906
+BAPOLI,Baidyanath Power Private Limited,299.49,90.88119262171155
+GDS19419,Shairu Gems Diamonds Private Limited,298.2,90.88907063625184
+GRDIPI,Grainfuel Distilleries Private Limited,298.0,90.89694336708017
+AKSHIL,A K Shivhare Infrastructure Private Limited,295.5,90.90475005150893
+SCCI,Swastik Coal Corporation Private Limited,295.0,90.91254352665779
+DIABEV,Diamond Beverages Private Limited,295.0,90.92033700180663
+MIPTBPL,Milecon IT Park 3B Private Limited,295.0,90.92813047695549
+SNROIPL,Sunraja Oil Industries Private Limited,290.0,90.9357918593052
+RAMNSGHOS,Ramniklal S Gosalia and Co,290.0,90.94345324165491
+GTIPLD,Golden Tower Infratech Private Limited,290.0,90.95111462400463
+PRKISPL,Parekh Integrated Services Private Limited,290.0,90.95877600635434
+ITOF,KN Agri Resources Limited,290.0,90.96643738870407
+ABMTMPL,ABM Tele Mobiles India Private Limited,286.0,90.97399309681448
+EXAUPL,Eximiius Autocomps Private Limited,285.93,90.9815469556257
+IMCL,Indus Motor Company Private Limited,285.36,90.98908575585781
+LBST,Lalbaba Engineering Limited,285.0,90.9966150454084
+DBGC,DBM Geotechnics and Constructions Private Limited,285.0,91.00414433495898
+IHLSPL,IVY Health and Life Sciences Private Limited,284.0,91.01164720594974
+BCIP,Benzo Chem Industries Private Limited,281.0,91.01907082126101
+STPLS12,Sanwaria Texpro Private Limited,281.0,91.02649443657229
+GDS4012,Crescent Foundry Co Private Limited,280.0,91.03389163332375
+VHDAUO,All India Society For Health Aid Education And Research (A.S.H.A.),280.0,91.04128883007519
+APSXLTD,Ricela Health Foods Limited,280.0,91.04868602682664
+APLP,Apollo Pipes Limited,280.0,91.0560832235781
+AANVIKMERC,Bhagyanagar Copper Private Limited,280.0,91.06348042032954
+SPLIPL,SPL Infrastructure Private Limited,280.0,91.070877617081
+GDS18674,Sahajanand Medical Technologies Limited,280.0,91.07827481383245
+SCCMPL,Sahana Clothing Company Private Limited,277.8,91.08561388975227
+CMIXPL,Classic Marble Company Private Limited,277.5,91.09294504010415
+SUREL,Surya Exim Limited,277.0,91.10026298117613
+WTNC,Western Carriers India Limited,276.0,91.10755450368828
+FLURHL,Fleur Hotels Limited,275.0,91.11481960764058
+NWKRTC,North Western Karnataka Road Transport Corporation,275.0,91.1220847115929
+WAONPL,Wave One Private Limited,275.0,91.12934981554523
+HINPPL,Hindustan Pencils Private Limited,275.0,91.13661491949753
+SKSNMLD,Baba Agro Food Limited,275.0,91.14388002344985
+ZEOIDP,Zebronics India Private Limited,275.0,91.15114512740217
+MPJLSCO,MPJ Jewellers (GB) Private Limited,275.0,91.1584102313545
+GDS20690,Sri Adichunchanagiri Shikshana Trust,275.0,91.1656753353068
+MNHSPT,Manjushree Spntek Private Limited,275.0,91.17294043925914
+SRPKPL,Shirasa Regency Park Private Limited,275.0,91.18020554321144
+VINEYC,Viney Corporation Limited,275.0,91.18747064716376
+GMHYAL,GMR Hyderabad Aerotropolis Limited,274.0,91.19470933255626
+AFBX,Asian Fabricx Private Limited,273.0,91.20192159938891
+VEGEIEP,VeeGee Industrial Enterprises Private Limited,271.42999999999995,91.20909238908266
+HIREPLTD,Hitachi Hi-Rel Power Electronics Private Limited,270.3,91.21623332580378
+WSFPPL,Winsol Solar Fields (Polepally) Private Limited,270.19,91.22337135648333
+YEPRLI,Yeemak Private Limited,270.0,91.23050436763653
+ABCCPL,ABC Cotspin Private Limited,270.0,91.2376373787897
+MIOTH,MIOT Hospitals Private Limited,270.0,91.24477038994289
+UCONI,Unicorn Infosolutions Private Limited,270.0,91.25190340109607
+APOPLTD,A P Organics Limited,270.0,91.25903641224924
+SOINIM,Sonaselection India Limited,270.0,91.26616942340243
+SOADFP,Sheel Oil And Fats Private Limited,269.2,91.27328129970776
+AMSPET,Acme Solar Power Technology Private Limited,268.58,91.280376796506
+UDSVKR,Udayshivakumar Infra Limited,267.55,91.2874450821876
+ROOAL,Highway Roop Precision Technologies Limited,266.63,91.29448906279417
+PSIPL,Pinax Steel Industries Private Limited,266.61,91.30153251502954
+BHAGEAR,Bharat Gears Limited,266.2,91.30856513565539
+GDS7219,Heranba Industries Limited,265.5,91.31557926328935
+LGMAC,La-Gajjar Machineries Private Limited,265.15000000000003,91.32258414442737
+TATIFP,T And T Infra Limited,265.0,91.32958506278143
+ACNCIPL,Archean Chemical Industries Limited,265.0,91.33658598113547
+RPLRPL,R.M.Chemicals Private Limited,264.6,91.3435763320656
+DASPPL,Dayanidhi Solar Power Private Limited,263.82,91.35054607651905
+PCTSVS,Poct Services,263.5,91.35750736703336
+SHRPRPL,Shriram Properties Limited,263.1,91.36445809012375
+RJPWS,Rajesh Power Services Limited,263.0,91.37140617135813
+APSHPL,Apollo Specialty Hospitals Private Limited,262.0,91.37832783403272
+GEAPVI,Genus Assam Package-5 Spv Private Limited,260.89,91.38522017210587
+GDS3012,Broadcast Engineering Consultants India Limited,260.73,91.39210828320947
+LIPDPL,Aurum Realestate Developers Limited,260.0,91.39897710876438
+SHSPG,Shree Hari Sponge Private Limited,260.0,91.4058459343193
+MHTBL,Mehta Tubes Limited,260.0,91.41271475987422
+NEETHL,Netweb Technologies India Limited,260.0,91.41958358542914
+USUSVLT,USV Private Limited,260.0,91.42645241098406
+GPMHPL,Gawar Pathankot Mandi Highway Private Limited,259.05,91.43329613890714
+CAFRPLS,Casagrand Fresh Private Limited,259.0,91.44013854590223
+GDS10105,Kirloskar Ebara Pumps Limited,258.0,91.4469545343375
+CNSAEX,Crayon Software Experts India Private Limited,256.97,91.45374331165614
+GDS2420,Bhagwan Mahavir Education Foundation,255.00000000000003,91.46048004441192
+SIGNPL,Sattva Horizon Private Limited,255.0,91.46721677716772
+NSLWPCL,NSL Wind Power Company (Phoolwadi) Private Limited,255.0,91.4739535099235
+MALDRGPHR,Malladi Drugs and Pharmaceuticals Limited,255.0,91.48069024267929
+NSPRPL,NSC Projects Private Limited,253.0,91.48737413831542
+VNCSTDTS,V.N.C. Steel Distributors,252.0,91.49403161539172
+WAWIPL,Wanfeng Aluminum Wheel (India) Private Limited,252.0,91.50068909246802
+SBETPL,Adani Solar Energy Jodhpur Four Limited,251.99,91.50734630535874
+DAHNPL,Darshita Housing Private Limited,251.0,91.51397736387523
+QTNCPL,Qutone Ceramic Private Limited,250.0,91.52058200383188
+MAXMCL,Mahalaxmi Continental Limited,250.0,91.52718664378851
+DBASSKL,Dr Babasaheb Ambedkar Sahakari Sakhar Karkhana Limited,250.0,91.53379128374517
+GKCPL,GKC Projects Limited,250.0,91.54039592370182
+LMTHL,Lemon Tree Hotels Limited,250.0,91.54700056365847
+RARAP,Rays Power Infra Limited,250.0,91.55360520361513
+TTTPL,Trans Tech Turnkey Private Limited,250.0,91.56020984357178
+KNMALL,Knest Manufacturers Private Limited,250.0,91.56681448352843
+THBSPL,Thermax Bioenergy Solutions Private Limited,250.0,91.5734191234851
+TVNH,Trivitron Healthcare Private Limited,250.0,91.58002376344173
+PRTEPL37,Pragyawan Technologies Private Limited,250.0,91.58662840339838
+GHIAL,GMR Hyderabad International Airport Limited,250.0,91.59323304335504
+PABPPL,Pluto Atriza Business Parks Private Limited,250.0,91.59983768331169
+RKCAIP,R K Chavan Infrastructure Private Limited,250.0,91.60644232326834
+REWAPL,Rean Watertech Private Limited,250.0,91.613046963225
+KCSTPL,Krishna Constellation Private Limited,250.0,91.61965160318165
+BIINDIA,Biocon Limited,250.0,91.6262562431383
+SPELIL,Spectrum Electrical Industries Limited,250.0,91.63286088309496
+ALERIM,Allcargo Terminals limited,250.0,91.6394655230516
+AGEH,Apollo Multispeciality Hospitals Limited,250.0,91.64607016300825
+RRERAPL,Rajashree Electricals Private Limited,250.0,91.65267480296491
+GDS2193,Bansi Mall Management Company Private Limited,250.0,91.65927944292156
+SRKDSPL,Suraksha Diagnostic Limited,250.0,91.66588408287821
+GKNCIPL,G K N Chemical India Private Limited,250.0,91.67248872283487
+JAIPLD,Jaina India Private Limited,250.0,91.67909336279152
+EMAMPL,Emprada Mines And Minerals Private Limited,250.0,91.68569800274817
+RKEGSL,R.K.Engineers Sales Limited,250.0,91.69230264270483
+YEMASE,Yeoman Marine Services Private Limited,250.0,91.69890728266147
+KSCPL,Kasukurthi Sujatha Constructions Private Limited,250.0,91.70551192261811
+AADPAL,Aarti Distilleries Private Limited,249.99999999999997,91.71211656257478
+TCTEL,T C Terrytex Limited,249.99999999999997,91.71872120253143
+ASRCPL,Ashmi Road Carriers Private Limited,249.99999999999994,91.72532584248808
+CMRTAIPL,CMR-Toyotsu Aluminium India Private Limited,249.51,91.73191753735041
+RAAAEPL,Rajas Aerosports and Adventures Private Limited,248.0,91.73846934018741
+GDS4687,Dinshaws Dairy Foods Private Limited,247.15,91.74499868724855
+GPACWP,GS PEB and Civil Works Private Limited,247.0,91.75152407152572
+ITCAGRO,Sundrop Brands Limited,247.0,91.7580494558029
+FEAULI,Fenace Auto Limited,246.55,91.76456295172815
+SFAAL,Surya Food and Agro Limited,246.0,91.77106191744548
+JELMSPL,JBM Ecolife Mobility Surat Private Limited,245.93,91.77755903386365
+SMATENGPL,S M Auto Engineering Private Limited,245.64000000000001,91.78404848889946
+APSETP,Amplus Pavagada Solar Energy Two Private Limited,245.6,91.79053688719287
+GDS21746,Tab India Granites Private Limited,245.3,91.79701735991834
+SWRI,Sidwal Refrigeration Industries Private Limited,245.0,91.80348990707586
+AMNTSPL,Amman-Try Sponge and Power Private Limited,245.0,91.80996245423339
+UNIHOTELD,Unison Hotels Private Limited,245.0,91.8164350013909
+LSAFPL,LSKB Aluminium Foils Private Limited,245.0,91.82290754854841
+IJMCPL,Inderjit Mehta Constructions Private Limited,245.0,91.82938009570594
+CMALPL,CMR Aluminium Private Limited,244.06000000000003,91.83582780941722
+TRAINDU,Transpek Industry Limited,242.26,91.84222796972081
+TCPLMTD,TCP Limited,241.0,91.84859484263902
+HNBE,HNB Engineers Private Limited,240.0,91.85493529699741
+GDS10607,LSC Infratech Limited,240.0,91.86127575135579
+FABPRI,Walking Tree (India) Private Limited,240.0,91.86761620571417
+GDS17779,Rane Steering Systems Private Limited,240.0,91.87395666007257
+FOPL,Fabindia Limited,240.0,91.88029711443096
+JMAPPL,JM Aluext Profiles Private Limited,240.0,91.88663756878934
+MDLPRL,Maashree Distillery Private Limited,240.0,91.89297802314772
+ORCENL,Oricon Enterprises Limited,239.56,91.8993068533398
+DHBIRL,Dhanuka Biotech Private Limited,239.0,91.90562088913835
+VWILTD,Vaswani Industries Limited,237.00000000000003,91.91188208781725
+TRCMPL,The Rajlakshmi Cotton Mills Private Limited,236.01999999999998,91.91811739630754
+GEAPPI,Genus Assam Package-4 SPV Limited,235.34,91.92433474017712
+GPTENT,Ganpati Infrapower Private Limited ,235.25,91.93054970637633
+RGWSPL,Inox Renewable Solutions Limited,235.0,91.93675806793557
+LVEDS,Lavu Educational Society,235.0,91.94296642949483
+EDAARE,Eldorado Agritech Limited,234.00000000000003,91.94914837249426
+RNDB,R. N. Dobariya,234.0,91.95533031549368
+SGEARI,Shrinivas (g) Educational And Research Institute Of Medical Sciences,233.0,91.96148583993329
+BTACP,Bhatia Corporation Private Limited,232.0,91.96761494581305
+KALPPL,Kalpataru Properties Private Limited,230.56,91.97370600896669
+AGDILI,Agappe Diagnostics Limited,230.15,91.97978624051078
+CMJBRL,CMJ Breweries Private Limited,230.10000000000002,91.98586515112687
+EFIRPL,Effwa Infra & Research Limited,230.0,91.991941419887
+PELOCPL,Pricol Precision Products Private Limited,230.0,91.99801768864711
+ELINPLM,Electromech Infraprojects Limited,230.0,92.00409395740724
+AVTWSL,Avanthi Warehousing Services Private Limited,230.0,92.01017022616736
+PICLIPL,PICL (India) Private Limited,230.0,92.01624649492747
+SUTRPL,Supreme Treon Private Limited,229.99999999999997,92.0223227636876
+ADWETL,Adani Solar Energy Chitrakoot One Limited,229.0,92.02837261388788
+ATSEOP,Amplus Tumkur Solar Energy One Private Limited,229.0,92.03442246408818
+HINRECT,Hind Rectifiers Limited,228.9,92.0404696724325
+SOBL,Sona Biscuits Limited,228.0,92.04649310407295
+ACPEPL61,AMPIN C&I Power Eight Private Limited,228.0,92.05251653571342
+PORFMPL,Brightstar Foods India Private Limited,225.66,92.0584781479239
+ROSTP,Reproscan Tech Park Llp,225.0,92.06442232388488
+AIHFPL,Aviom India Housing Finance Private Limited,225.0,92.07036649984587
+GDS6015,Butterfly Gandhimathi Appliances Limited,225.0,92.07631067580687
+BZRT,Baazar Retail Private Limited,225.0,92.08225485176786
+YATEPL,Yash Technologies Private Limited,225.0,92.08819902772883
+MKAGFL,MKC Agro Fresh Limited,225.0,92.09414320368982
+MTLAT,Metalman Auto Limited,225.0,92.1000873796508
+ALCBDL,Alcobrew Distilleries India Limited,225.0,92.1060315556118
+SOPLSP,Shriprop Living Space Private Limited,225.0,92.11197573157278
+KAPLLTD,Kanpur Plastipack Limited,224.99999999999997,92.11791990753377
+MHEEPL,MH Ecolife Emobility Private Limited,224.76,92.12385774304039
+PTBOK,Pitambra Books Private Limited,224.5,92.12978870972147
+PSWMPL,Premier Spg and Wvg Mills Private Limited,224.32,92.13571492106176
+WLCMF,Wellcome Fisheries Limited,224.13,92.1416361128757
+AWWMPL,Agra Waste Water Management Private Limited,224.0,92.14755387027687
+GOFILL,Golden Fibres LLP,222.75999999999996,92.15343886866383
+SVNSHPL,Seven Seas Hospitality Private Limited,222.00000000000003,92.15930378894534
+SSWSE,Shri Swami Samarth Engineers Limited,222.0,92.16516870922685
+GDS6217,Gennova Biopharmaceuticals Limited,222.0,92.17103362950834
+SRRPL,Shrinath Rotopack Private Limited,220.50000000000003,92.17685892195013
+DIASCPL,Delta Iron and Steel Company Private Limited,220.0,92.18267100511197
+SCIPLTD,Sud-Chemie India Private Limited,220.0,92.18848308827383
+FNEML,Fortune Metaliks Limited,220.0,92.19429517143568
+MCNSE,Tega McNally Minerals Limited,220.0,92.20010725459753
+RACHAN,Rachana Construction Co,220.0,92.20591933775938
+SPILTD,SpiceJet Limited,220.0,92.21173142092124
+VIGDPL,Virginia Developers Private Limited,220.0,92.2175435040831
+TTPRL,T and T Projects Limited,219.57,92.22334422726422
+ALKAMIN,Alkyl Amines Chemicals Limited,219.38,92.22913993091898
+KVCHPL,KVR Construction Heights Private Limited,219.0,92.234925595521
+SMSMPSS,S. M. Shankarrao Mohite Patil S. S. K. Ltd,218.5,92.24069805084312
+NELC,NELCO Limited,218.3,92.24646522245327
+SSVT,Shri Siddhivinayaga Tex India Private Limited,218.00000000000003,92.25222446849546
+MDLHPL,Medall Healthcare Private Limited,218.00000000000003,92.25798371453766
+KCRPT,Krishna Corpindia Private Limited,217.67,92.26373424245512
+ANCHES,Ananta Charitable Educational Society,216.5,92.26945386065758
+BVNINDS,Bhavani Industries India LLP,215.35,92.27514309751625
+SKLFPL,Skylark Feeds Private Limited,215.20000000000002,92.28082837159093
+SRPEPRL,SAEL RE Power Private Limited,215.0,92.28650836195365
+GDS17888,Raviraj Foils Limited,215.0,92.29218835231637
+MEL,Modelama Exports Private Limited,215.0,92.2978683426791
+CLAPDPL,Corporate Leisure And Property Developments Private Limited,215.0,92.30354833304182
+SJPGBCT,Shri Jagannath Prasad Ganeshi Lal Bajaj Charitable Trust Samiti,214.5,92.30921511412463
+SNBGL,Sona Beverages Private Limited,214.45,92.31488057427944
+HIAPSL,Hi-Print Assam Package-3 Spv Private Limited,214.07,92.32053599538152
+GDS6450,Godhani Gems Private Limited,213.0,92.32616314862459
+CHBYPL,Chilakaluripet Bypass Private Limited,212.0,92.33176388330783
+GEAPSL,Genus Assam Package-2 SPV Limited,211.25,92.3373448040712
+BGFOIPL,Bergwerff Organic India Private Limited,210.62,92.34290908114188
+AMSEYP,Renew Medak Power Private Limited,210.2,92.34846226241744
+MCCPL,Mohan Clothing Co. Private Limited,210.0,92.35401015998103
+GBID,Global Infonet Distribution Private Limited,210.0,92.35955805754462
+SSNIESIPL,Sunshine Infra Engineers India Private Limited,210.0,92.3651059551082
+IDVL,Indev Infra Private Limited,210.0,92.3706538526718
+IKMISL,IKM Investors Private Limited,210.0,92.37620175023538
+SAHSPPL,Shah Sponge and Power Limited,210.0,92.38174964779897
+RNFAPL,Amara Raja Enterprises Private Limited,209.25000000000003,92.38727773144268
+DKRSPP,Dayakara Solar Power Private Limited,209.15,92.39280317323042
+CTPSDPL,Creative Newtech Limited,209.0,92.39832465223418
+NKSEPL,NKAS Services Private Limited,209.0,92.40384613123794
+YABTPL,Yelahanka - AP Border Tollways Private Limited,208.35,92.40935043817782
+BALWVAN,Balmer Lawrie-Van Leer Limited,208.33,92.4148542167465
+VYBHSPL,Viceroy Bangalore Hotels Private Limited-(Amalgamated),206.0,92.42029644007079
+PNPPM,PNP Polymers Private Limited,205.0,92.42571224483524
+GDS6388,Globus Infocom Limited,205.0,92.43112804959969
+AYCXPLTD,Abhay Nutrition Private Limited,205.0,92.43654385436415
+MFPPL,Megha Fruit Processing Private Limited,205.0,92.44195965912859
+PVRPL,PVR Projects Limited,205.0,92.44737546389305
+JPTL,Jupiter Laminators Private Limited,203.62,92.45275481104494
+BGLIPPL,Bengal Intelligent Parks Private Limited,203.02,92.45811830706094
+GAWLTD,Ganga Acrowools Limited,203.0,92.46348127470576
+RSFOPD,Ramsons Food Limited,203.0,92.46884424235054
+INVILI,Innovision Limited,203.0,92.47420720999536
+RABPTL,Raipur Bottling Private Limited,202.64,92.47956066695862
+GDS9113,Jodhani Papers Private Limited,202.0,92.48489721604359
+GWRTPL,GVRMP Whagdhari Ribbanpally Tollway Private Limited,202.0,92.49023376512856
+RPIPIL,R.P. Infraventure Private Limited,202.0,92.49557031421354
+NADBEL,Nanda Devi Bio Energy LLP,202.0,92.50090686329851
+AMSORS,Ampsolar Solution Private Limited,201.68,92.50623495844435
+HRKBPL,HRY Kundu Buildtech Private Limited,200.0,92.51151867040967
+SDDL,Schreiber Dynamix Dairies Private Limited,200.0,92.51680238237499
+MSFAPL,MS Fincap Private Limited,200.0,92.52208609434032
+HINPLTD,Hariyana International Private Limited,200.0,92.52736980630564
+KMEWPL,Knowledge Marine & Engineering Works Limited,200.0,92.53265351827096
+MAEDOM,Mahesh Edible Oil Manufactures Private Limited,200.0,92.53793723023628
+ESWPAL,E-Suburbs Ways Private Limited,200.0,92.5432209422016
+THANMUN,Thane Municipal Corporation,200.0,92.54850465416693
+ICPL,Indiabulls Securities Limited,200.0,92.55378836613225
+LTSBSDS,Land Trades Builders & Developers,200.0,92.55907207809757
+GDAM,Gandhi Automations Private Limited,200.0,92.56435579006289
+SHVCPL,Mitc Metals Private Limited,200.0,92.56963950202821
+SSLEL,Sir Shadi Lal Enterprises Limited,200.0,92.57492321399353
+KOEPL,Konstelec Engineers Limited,200.0,92.58020692595885
+VMNOSPL,Vamani Overseas Private Limited,200.0,92.58549063792417
+NEXMAR,Nexxbase Marketing Private Limited,200.0,92.5907743498895
+LIMEIN,Lissie Medical Institutions,200.0,92.59605806185482
+ASNCTC,Asian Construction Company,200.0,92.60134177382014
+SCDTBL,Scoda Tubes Limited,200.0,92.60662548578547
+MGAIPL,Mangla Apparels India Private Limited,200.0,92.61190919775079
+LIPOPL,Lineage Power Private Limited,200.0,92.61719290971611
+SIDEIL,Sitaram Denims India Limited,200.0,92.62247662168143
+VCFDPL,Victoria Foods Private Limited,200.0,92.62776033364675
+PWRGL,Powergear Limited,200.0,92.63304404561207
+TNEST,The Nest - Chennai,200.0,92.63832775757739
+UNPEFL,ITI Gold Loans Limited,200.0,92.64361146954272
+SWNS,Swarn Shilp Chains and Jewellers Private Limited,200.0,92.64889518150804
+CMNSL,Comnet Solutions Private Limited,200.0,92.65417889347336
+GDS149,A.P.I. Civilcon Private Limited,200.0,92.65946260543868
+RAICPV,Rah Infotech Private Limited,200.0,92.664746317404
+GDS19023,Saravana Stores Tex,200.0,92.67003002936931
+JAMMETA,Ramkrishna Casting Solutions Limited,200.0,92.67531374133465
+YSOI,Yasho Industries Limited,200.0,92.68059745329997
+GRGINF,GRG Infra,200.0,92.68588116526529
+NHHFAD,Save Housing Finance Limited,200.0,92.6911648772306
+GDS22157,Times Innovative Media Limited,200.0,92.69644858919594
+SNSSK,Sahakar Maharshi Shankarrao Kolhe SSK Limited,200.0,92.70173230116126
+HSDPLTD,Hariyana Ship Demolition Private Limited,200.0,92.70701601312658
+SUMTSPL,Sumita Tex Spin Private Limited,200.0,92.7122997250919
+UNFIAL,Unigold Finance Limited,200.0,92.71758343705721
+AIRFG,AFG Combustion Private Limited,200.0,92.72286714902253
+PPPCL,PPAP Automotive Limited,200.0,92.72815086098785
+VITPL,Vinyas Innovative Technologies Limited,200.0,92.73343457295317
+GRDILI,Gro Digital Platforms Limited,200.0,92.73871828491849
+MANENT95,Mandeepa Enterprises,200.0,92.74400199688382
+KRCOGL,Krishna Construction (Gujarat) LLP,199.99999999999997,92.74928570884914
+RJNDC,Rajinder Infrastructure Private Limited,199.99999999999997,92.75456942081448
+VAHFPL,Varashakti Housing Finance Private Limited,199.99999999999991,92.7598531327798
+GDS8421,International Hospital Limited,199.0,92.76511042618529
+SDPLD,Sidharth Papers Private Limited,198.6,92.77035715216685
+CMYTIPL,Chendhoor Murughan Yarn Tex India Private Limited,198.00000000000003,92.77558802701252
+SUISRL,Suvidhi Ispat Private Limited,198.0,92.78081890185818
+SUSFSP,Anadrone Systems Private Limited,198.0,92.78604977670386
+WICCPL,Western India Cashew Company Private Limited,197.99999999999997,92.79128065154953
+CMFPJ,Edelweiss Rural and Corporate Services Limited,197.37,92.7964948827025
+BKDESPL,Black Diamond Explosives Private Limited,197.34000000000003,92.80170832129868
+DATL,Deesan Agro Tech Private Limited,197.0,92.80691277758453
+BBGGCH,B. G. Chitale,196.57999999999996,92.81210613807525
+GAIRLD,Ganesh Infraworld Limited,196.0,92.81728417580126
+BLCPL,Blend Colours Private Limited,195.0,92.82243579496745
+PLIDPL,PV Lumens India Private Limited,195.0,92.82758741413363
+BIAKPL,Birla Advanced Knits Private Limited,195.0,92.83273903329983
+HIMIL,Himalaya Food International Limited,194.32999999999998,92.83787295203093
+CMRNKIPL,CMR Nikkei India Private Limited,194.0,92.84299815263729
+NOGRPL,Novasys Greenergy Limited,193.61999999999998,92.84811331419093
+MSLAPL,Matsyodari Steel and Alloy Private Limited,193.5,92.85322530551737
+NDRINK,Narmada Drinks Private Limited,192.5,92.85831087828399
+BPIJPL,BPC Infraprojects Private Limited,192.35,92.86339248826664
+JEIPPL,Jesons Innovative Polymers Private Limited,192.0,92.86846485175334
+APLHTLFLD,Apollo Health and Lifestyle Limited,192.0,92.87353721524006
+TGSPEL,Truere Guj SPV Private Limited,192.0,92.87860957872677
+GOKPET,Gokulanand Petrofibres,191.5,92.88366873293357
+IOXWSL,Inox Green Energy Services Limited,191.5,92.88872788714036
+AAKTIL,Ambashakti Industries Limited,190.0,92.89374741350743
+SHSSKL,Sharad Sahakari Sakhar Karkhana Limited,190.0,92.89876693987446
+SUFAPL,Sumeet Facilities Limited,190.0,92.90378646624153
+IVTRVL,I Vetrivel,190.0,92.90880599260858
+RNFI,Infiiloom India Private Limited,189.5,92.91381230969571
+LSINDPL,Lasons India Private Limited,188.5,92.91879220822304
+RENPPI,Renew Nizamabad Power Private Limited,188.46,92.92377105000796
+RACCPL,Raj Chopra & Company Private Limited,188.0,92.92873773925537
+UNMMPL,Unique Malls Private Limited,187.5,92.93369121922285
+JETPOL,Jesons Techno Polymers LLP,187.2,92.93863677362239
+DVSHR,Devashree Ispat Private Limited,187.11,92.94357995035155
+AJPOPL,Ajay Poly Limited,186.95999999999998,92.94851916429674
+CGHDH,Celebi Airport Services India Private Limited,186.42000000000002,92.95344411221961
+GDS17662,Rajvir Industries Limited,186.0,92.95835796434736
+BRTV,Premchand Jute and Industries Private Limited,186.0,92.9632718164751
+ADYSW,Bansal Aradhya Steel Private Limited,186.0,92.96818566860286
+GDS17858,Raunaq Steels Trading Private Limited,186.0,92.97309952073061
+GDS19039,Sarita Handa Exports Private Limited,186.0,92.97801337285836
+DSSPPL,DS Spiceco Private Limited,185.0,92.98290080642627
+BSPHPL,Bsv pharma private Limited,185.0,92.9877882399942
+ATIL,Anindita Steels Limited,185.0,92.99267567356212
+RVGPPL,Ram Van Gaman Path Private Limited,185.0,92.99756310713005
+VWMSAE,Vishwatma Solar Energy Private Limited,184.5,93.00243733141805
+CHNCJL,Chain N Chains Jewels Limited,184.0,93.00729834642615
+WDLP,Windals Precision Private Limited,183.27,93.01214007588557
+COTEPL,Cotmac Electronics Private Limited,183.2,93.01697995604582
+SWENPL,Swastid Engineering Private Limited,183.0,93.02181455249408
+GNRCPL,GNRC Ltd,182.31,93.02663092013607
+DMCNS,DMW CNC Solutions India Private Limited,182.22,93.03144491010768
+SYLLTD,Symed Labs Limited,182.0,93.03625308799613
+NEWHPL,New way Homes Private Limited,181.0,93.04103484732474
+SPLTIPL,Saraswati Plastotech India Private Limited,180.73,93.04580947364221
+GDS19421,Shakthi Knitting Private Limited,180.00000000000006,93.05056481441099
+GMPTSPL,GMP Technical Solutions Private Limited,180.0,93.05532015517977
+RTDSML,Ratnadeep Retail Private Limited,180.0,93.06007549594857
+CDVDC,Chadalavada Infratech Limited,180.0,93.06483083671736
+VARIND,Vardhman Industries Limited-(Amalgamated),180.0,93.06958617748616
+TOESLT,Thermax Onsite Energy Solutions Limited,180.0,93.07434151825494
+MIAEGPL,Multi Infrastructure And Engineering Private Limited,180.0,93.07909685902372
+IVLINF,IVLR Infrastructure,180.0,93.08385219979252
+SHENLS,Shreno Engineering Limited,180.0,93.08860754056131
+GDS259,Absolute Projects India Limited,180.0,93.0933628813301
+SNTI,Sanman Trade Impex Limited,180.0,93.09811822209889
+JBRGML,JB Rolling Mills Limited,180.0,93.10287356286767
+SAMONO,Sagar Motors - Noida,180.0,93.10762890363647
+GDS17393,R. Kantilal and Company,180.0,93.11238424440525
+BHSPRL,Bharat Spirits Private Limited,178.0,93.11708674805439
+TTKPRES,TTK Prestige Limited,177.5,93.1217760424236
+TSCON,Talib and Shamsi Constructions Private Limited,177.12,93.12645529774011
+RSUGLTD,Rausheena Udyog Limited,176.89,93.13112847678784
+OWPPLTD,Oswal Pumps Limited,176.5,93.13579135259722
+GDS5125,Elegant Collection,176.5,93.14045422840664
+BTCPL,Bharat Cereals Private Limited,176.0,93.14510389493611
+GASHRL,Gawar Sihuni Highway Private Limited,176.0,93.1497535614656
+SHDIRO,Shri Dinesh Roadlines,175.00000000000003,93.15437680943526
+NACSPE,NACL Spec-Chem Limited,175.0,93.15900005740491
+PAPSLE,Parampujya Solar Energy Limited ,175.0,93.16362330537457
+MNMOPL,Mandovi Motors Private Limited,175.0,93.16824655334422
+MIDELI27,Miraj Developers Limited,175.0,93.17286980131388
+DIGNCPL,Designco Private Limited,175.0,93.17749304928353
+SOCTSL,Supreme Offshore Constructions And Technical Services Limited,175.0,93.18211629725319
+KNKNC,KNK Construction Private limited,175.0,93.18673954522285
+BSOISL,Armee Infotech Limited,175.0,93.1913627931925
+SUSILTD,Suja Shoei Industries Private Limited,175.0,93.19598604116216
+SLPEPL,Shilpi Engineering Private Limited,175.0,93.20060928913182
+SUHOLI,Sunhill Homes Private Limited,175.0,93.20523253710147
+KRSF,Kris Flexipacks Private Limited,174.5,93.20984257579121
+VDYW,Vidya Wires Limited,174.31,93.21444759495459
+SAFIPI,Sri Aishwarya Food Industries Private Limited,173.92,93.21904231087964
+AESARF,Acme Solar Rooftop Systems Private Limited,173.3,93.22362064729758
+HCIRCPL,Heart Care Institute And Research Centre (Indore) Private Limited,172.5,93.22817784886766
+SKAFL,Shakti Apifoods Private Limited,172.0,93.23272184115785
+HERHL,Heritage Hospitals Limited,172.0,93.23726583344802
+NKTPSL,Nikita Papers Limited,171.61,93.24179952249987
+UCIOMS,United Ciigma Institute of Medical Sciences Private Limited,171.5,93.24633030551013
+HCNASPL,Hari Construction and Associates Private Limited,171.5,93.25086108852038
+AKASNM,Akshara Spinning Mills Private Limited,171.38,93.25538870130347
+NMDSG,Narmada Sugar Private Limited,170.73,93.25989914202268
+SFISPL,Samunnati Agri Value Chain Solutions Private Limited,170.0,93.26439029719319
+ARGOPL,A R Gold Private Limited,170.0,93.26888145236371
+PTVN,Purti Vanaspati Private Limited,170.0,93.27337260753424
+IFHOFL,IFL Finance Limited,170.0,93.27786376270475
+CIMEL,Cimechel Electric Private Limited,170.0,93.28235491787528
+QUAIT,Quadro Info Technologies Private Limited,170.0,93.28684607304581
+TMPPCL,The Mathrubhumi Printing And Publishing Company Limited,170.0,93.29133722821634
+NDDDPP,Nature Delight Dairy & Dairy Products Private Limited,170.0,93.29582838338686
+HECB,Hind Energy and Coal Benefication India Limited,170.0,93.30031953855737
+SUKUAL,Sunil Kumar Agrawal LLP,170.0,93.3048106937279
+SISUML,Sidhanath Sugar Mills Limited,170.0,93.30930184889843
+GDS8216,Indu Corporation Private Limited,170.0,93.31379300406894
+KASSL,Kasyap Sweetners Private Limited,170.0,93.31828415923947
+SSPLSPL,Shiny Shipping and Logistics Private Limited,169.62,93.32276527535727
+SERMSTCL,SMC Integrated Facility Management Solutions Limited,169.5,93.32724322124788
+POSEPL,Q-Line Biotech Limited,169.0,93.33170795785857
+GUJPPL,Gujarat Polyfilms Private Limited,168.76000000000002,93.3361663540149
+MABHPL,Magnet Buildtech Private Limited,168.04,93.34060572880817
+SASRCL,Sawariya Shakti Railway Carriage Llp,168.0,93.34504404685904
+COGFPL,Cosmo Global Films Private Limited,167.0,93.34945594635008
+RITRLL,Rishabh Triexim LLP,167.0,93.35386784584112
+ACCPRL,Acume Chemicals Private Limited,167.0,93.35827974533217
+MILTRU,Milli Trust,166.50000000000003,93.3626784355433
+MAGWIPL,Morrill And Greenwood India Private Limited,166.0,93.3670639164745
+RAINPM,Rabwin Industries Private Limited,166.0,93.37144939740574
+SKTEIP,Sky Textiles India Private Limited,166.0,93.37583487833695
+GERVNR,Greenpro Ventures Private Limited,166.0,93.38022035926816
+GDS831,Aludecor Lamination Private Limited,165.85999999999999,93.38460214160101
+MAHMPL,MMPL Private Limited,165.0,93.3889612039724
+ALDISER,Allied Digital Services Limited,165.0,93.39332026634378
+GVPFS,Geo VPL Finance Limited,165.0,93.39767932871517
+BKBFPL,Bakebest Foods Private Limited,165.0,93.40203839108656
+BLAUGPL,BLA Udyog Private Limited,165.0,93.40639745345796
+SJBFDL,Continuum Green Energy Limited,165.0,93.41075651582935
+CLBRVL,Clear Bridge Ventures Llp,165.0,93.41511557820074
+CONCEPH,Concept Pharmaceuticals Limited,165.0,93.41947464057213
+DEWILI,Dev-Dwarka Windproject Limited,165.0,93.42383370294351
+MKBDDS,MK Builders and Developers,165.0,93.4281927653149
+GIRPJL,Green Infra Renewable Projects Limited,165.0,93.4325518276863
+JACIPL,Jain Cord Industries Private Limited,164.73000000000002,93.43690375704654
+GNTID,Grainotch Industries Limited,164.0,93.4412364008581
+GDS18269,Royal Classic Mills Private Limited,163.26,93.44554949493539
+GOKOVE,Gokul Overseas,162.99999999999997,93.44985572018713
+VFFSTA,Vignans Foundation For Science Technology And Research,162.0,93.45413552687903
+SINFRAP,SRSC Infra Private Limited,162.0,93.45841533357094
+SEBIPI,Seas Biotech Private Limited,161.8,93.46268985655088
+VJIDPL,Vilas Javdekar Infinitee Developers Private Limited,161.62,93.46695962419005
+SLAPL,SAPL Industries Private Limited,161.5,93.47122622160205
+SRGBFX,Surya Global Flexifilms Private Limited,161.0,93.47547960973415
+ASNPGL,Astron Packaging Limited,160.76999999999998,93.47972692159748
+RMVPPL,RMJ Veritable Products Private Limited,160.5,93.48396710044963
+FLSYPL,Fldec Systems Private Limited,160.0,93.48819407002189
+CHANDENTL,Chandpur Enterprises Limited,160.0,93.49242103959415
+SSHPRL,Sirmour Small Hydro Power Private Limited,160.0,93.4966480091664
+HIHIAS,Keystone Infra Buildcon Private Limited,160.0,93.50087497873866
+AGGIPL,Agrawal Global Infratech Private Limited,160.0,93.50510194831092
+GDS22949,V-Trans India Limited,160.0,93.50932891788318
+KAPOTF,Kasturi Poultry Farm Private Limited,160.0,93.51355588745544
+GDS5305,Entremonde Polycoaters Limited,160.0,93.5177828570277
+PPCSPL,Patco Precision Components Private Limited,160.0,93.52200982659996
+GDS23747,Generic Engineering Construction and Projects Limited,160.0,93.52623679617221
+SRIANN,Saakar Infra Nirman Private Limited,160.0,93.53046376574447
+HOFILL,Hombale Films LLP,160.0,93.53469073531673
+HRMISL,Hariom Industries Limited,160.0,93.53891770488897
+ASALCHB,Associated Alcohols and Breweries Limited,160.0,93.54314467446125
+CHESPL,Checkmate Services Private Limited,160.0,93.54737164403349
+GVRHL,GVR RMN Hubli Lakshmeshwar Road Project Private Limited,160.0,93.55159861360576
+GDS2784,Bliss GVS Pharma Limited,160.0,93.555825583178
+VVVSEOL,V.V.V and Sons Edible Oils Limited,159.5,93.56003934347036
+FKAGPL,F and K Agro Private Limited,159.03,93.56424068703959
+STKI,Shivtek Spechemi Industries Ltd,159.0,93.568441238052
+UNTIPL40,Universal Transformers Infra Private Limited,158.0,93.57261537050461
+KRSNEIL,Krishnae Infrastructure Private Limited,158.0,93.57678950295721
+DABUR,Dabur India Limited,157.5,93.5809504261299
+MAFCL,MAF Clothing Private Limited,157.4,93.58510870744661
+TATYZACPL,Yazaki India Private Limited,157.3,93.58926434690733
+NENEPL,Nelco Network Products Limited,157.0,93.5934120608001
+BLJWRPL,Balaji Wires Private Limited,156.0,93.59753335613306
+JIINRL,Jinkushal Industries Limited,156.0,93.60165465146602
+KSUGR,NSL Krishnaveni Sugars Limited,155.37,93.60575930310627
+DEENIN,Deep Engineering Industries,155.0,93.6098541798794
+ALEPPL,Alpha Ecoplast Private Limited,155.0,93.61394905665253
+SWLETP,Shiwalay Infra Projects Private Limited,155.0,93.61804393342564
+ALPKPL,Alutech Packaging Private Limited,154.99999999999997,93.62213881019878
+EVPRLI,EVIO Private Limited,154.0,93.62620726841206
+VDBPPLTD,VDB Projects Private Limited,154.0,93.63027572662537
+AMHOPL65,Ambition Homes Private Limited,153.25,93.6343243709188
+KLDPIA,Kamaldeep Ispat Private Limited,153.0,93.63836641057226
+KMCRE,Dr Ngp Research And Educational Trust,153.0,93.64240845022573
+ASTCL,Modi Auto Group Private Limited,153.0,93.64645048987921
+VACPPL,Vanilla Clean Power Private Limited,152.74,93.65048566070713
+GDS6801,GRP Limited,152.62000000000003,93.65451766130786
+MLMSCS,Millennium Semiconductors India Private Limited,152.57999999999998,93.65854860516622
+GRIWSL,Green Infra Wind Solutions Private Limited,152.55,93.66257875646777
+NROLGS,Narola Diamonds Private Limited,152.1,93.66659701941738
+LMSRMLS,Lakshmi Green Ship Recyclers LLP,152.1,93.67061528236702
+GRGN,Bansal Steel and Power Limited,152.0,93.67463090346067
+GPLSK,Gopal Snacks Limited,152.0,93.67864652455431
+BADAPL,Badve Autotech Private Limited,152.0,93.68266214564795
+GDS160,Aaj Ka Anand Papers Limited,151.99999999999997,93.6866777667416
+SLSMLTD,Shahlon Silk Industries Limited,151.5,93.69068017855533
+DSCOPL,Dharampal Satyapal Foods Limited,151.0,93.69466938108914
+EUPPPL,Euro Panel Products Limited,150.69999999999996,93.69865065805502
+KTPML,Kanti Prasad Mittal,150.05,93.702614762957
+NTTCH,Arche Global Private Limited,150.00000000000003,93.70657754693099
+MKTAPL,Mk Tron Autoparts Private Limited,150.0,93.71054033090498
+EXINLL86,Excentia Infra LLP,150.0,93.71450311487897
+PRMSMU,Premsons Motor Udyog Private Limited,150.0,93.71846589885297
+SSSTCP,Shri Sourab Sagar Trading Co. Private Limited,150.0,93.72242868282696
+ZOINPL52,Zoella Infra Private Limited,150.0,93.72639146680093
+SAITPL,Shah Infra Towers Private Limited,150.0,93.73035425077494
+NEZIPL,Nest Zone India Private Limited,150.0,93.73431703474893
+VINSKL,Vishwasrao Naik Sahakari Sakhar Karkhana Limited,150.0,93.73827981872292
+RVISPL,Indifi Capital Private Limited,150.0,93.74224260269692
+AIFSUR,S Gupta Holding Private Limited,150.0,93.7462053866709
+AFOSPL,Agromark Foods Private Limited,150.0,93.75016817064488
+KPIVTP,Kolte-Patil Integrated Townships Limited,150.0,93.75413095461889
+AEABPL,Aeroeagle Automobiles Private Limited,150.0,93.75809373859288
+MILPPL,Indip Industrial Parks (Vizag) Private Limited,150.0,93.76205652256687
+CATMPC,Community Action Through Motivation Programme Camp,150.0,93.76601930654085
+ENTNETIN,Entertainment Network (India) Limited,150.0,93.76998209051484
+SDTHPS,Siddharth Properties,150.0,93.77394487448883
+HRDVCL,Hardev Construction Private Limited,150.0,93.77790765846284
+SMKTSSKL,Sadashivrao Mandlik Kagal Taluka Sahakari Sakhar Karkhana Limited,150.0,93.78187044243683
+WBES,Websol Energy System Limited,150.0,93.7858332264108
+KECHLI,Ketul Chem Private Limited,150.0,93.7897960103848
+APGPLTD,Andhra Pradesh Gas Power Corporation Limited,150.0,93.7937587943588
+GDS1386,Arihant Coal Sales India Private Limited,150.0,93.79772157833278
+JDLSLSB,Jindal Steels (Bangalore),150.0,93.80168436230679
+SUBUIN,Suraj Builder India Private Limited,150.0,93.80564714628076
+SKREML,Shankar Ramchandra Infra Private Limited,150.0,93.80960993025475
+GDS10892,Lords Distillery Limited,150.0,93.81357271422875
+MECPRL,Mahalaxmi Ennore Coke & Power Private Limited,150.0,93.81753549820274
+PARCOMN,Paramount Communications Limited,150.0,93.82149828217673
+KEICCL,Kenz Inn Commercial Complex Limited,150.0,93.82546106615072
+DVLAK,Dilipkumar V. Lakhi,150.0,93.82942385012471
+REELML,Reliance Electrolyser Manufacturing Limited,150.0,93.8333866340987
+ICLCLI,ICL Fincorp Limited,150.0,93.8373494180727
+RGHAGCL,Reliance Green Hydrogen and Green Chemicals Limited,150.0,93.8413122020467
+APCEL,Aparna Constructions and Estates Private Limited,150.0,93.84527498602068
+WNEN,Wine Enterprises Private Limited,150.0,93.84923776999467
+GDS20838,Srijan Realty Private Limited,150.0,93.85320055396866
+BLDTBU,BLDE (Deemed to be University),150.0,93.85716333794265
+SAPAAT,Samast Patidar Aarogya Trust,150.0,93.86112612191666
+GAGAIL,Gajanan Gangamai Industries LLP,150.0,93.86508890589063
+BIINPL96,BIADS India Private Limited,150.0,93.86905168986462
+GDS18620,Safari Industries India Limited,150.0,93.87301447383862
+KJLSPL,Kunjal Synergies Private Limited,150.0,93.87697725781261
+GDS12461,Modern Impex,150.0,93.8809400417866
+BESMML,Best Smart Metering Limited,150.0,93.88490282576059
+SARSPL,Sara Suole Private Limited,150.0,93.88886560973458
+HIGEXI,High Eximpetro Private Limited,150.0,93.89282839370857
+SYGTML,Suyog Telematics Limited,150.0,93.89679117768257
+VAICIP,Vijai Construction India Private Limited,150.0,93.90075396165656
+ILFSETS,Schoolnet India Limited,150.0,93.90471674563055
+NESMLM,NE Smart Metering Limited,150.0,93.90867952960454
+ARIAL,Aries Agro Limited,150.0,93.91264231357853
+CSCSIPL,C S Construction India Private Limited,150.0,93.91660509755252
+GDS704,Alf Engineering Private Limited,150.0,93.92056788152652
+MDIHSPL,MDIndia Health Insurance TPA Private Limited,150.0,93.9245306655005
+GOVRUBB,Govind Rubber Limited,149.99999999999997,93.92849344947449
+JCFPL,Jaydeep Cotton Fibres Private Limited,149.54000000000002,93.93244408091097
+JGKM,JKM Infra Works LLP,149.5,93.93639365560504
+RKSFRL,Radiance KA Sunshine Five Private Limited,148.55,93.94031813266729
+STELC,S T Electricals Private Limited,147.95,93.94422675859363
+HELSRI,Heilsa Life Sciences Private Limited,147.0,93.94811028688814
+JNSIN,JNS Instruments Limited,147.0,93.95199381518266
+SISCSPL,SIS Cash Services Limited,147.0,93.95587734347717
+PNITL,P N International Private Limited,146.5,93.95974766249176
+AYAGL,Arya Voyagers Private Limited-(Amalgamated),146.4,93.96361533965037
+GDS13491,Nila Sea Foods Private Limited,146.25,93.96747905402503
+VSSKLTD,Vaidyanath Sahakari Sakhar Karkhana Limited,145.66,93.97132718144937
+NNIP,N. N. Ispat Private Limited,145.5,93.97517108190414
+BBDBSPL,B and B Developers and Builders Private Limited,145.1,93.97900441493499
+VITDPI,Vikram Infratech Developers Private Limited,145.0,93.98283510610985
+TRCLSLD,Tara Chand Infralogistic Solutions Limited,145.0,93.9866657972847
+OPERTP,Om Power Transmission Limited,145.0,93.99049648845957
+CISBFSPL,CISB Services Private Limited,145.0,93.99432717963442
+DREAMF,Dreamfolks Services Limited,145.0,93.99815787080928
+PRPUPL,Pricol Limited,145.0,94.00198856198413
+PAUSLTD,Paushak Limited,145.0,94.00581925315899
+DNCTFPL,Dhancot Fibres Private Limited,145.0,94.00964994433384
+HASMPL,Haripriya Spinning Mill Private Limited,144.75,94.01347403086875
+MUNSHOW,Munjal Showa Limited,144.25,94.01728490812374
+KALCPL,Kashmirilal Constructions Private Limited,144.0,94.02108918073877
+SLTAPPL,Sri Luxmi Tulasi Agro Paper Private Limited,143.27000000000004,94.02487416780512
+SASOML,Sael Solar Mfg.Private Limited,143.0,94.02865202186034
+HDTITS,Hindustan Institute of Technology and Science,142.5,94.03241666663563
+WAIIPL,Walfs Infra India Private Limited,142.38,94.03617814118374
+PEPRPL,Petchem Products Private Limited,142.0,94.03992957667911
+GDS8003,The India Thermit Corporation Limited,142.0,94.0436810121745
+GDS2628,BHUMI Tex industries private limited,142.0,94.04743244766986
+NKPRIPL,NK Power and Infrastructure Private Limited,142.0,94.05118388316525
+SVMAZL,Shivam Autozone India Private Limited,141.05,94.05491022102879
+BSRSRPL,BVSR SSG Road Projects Private Limited,141.0,94.05863523796434
+SOENPI,Solbridge Energy Private Limited,140.5,94.06234704561997
+SNRME,Shree NM Electricals Limited,140.0,94.0660456439957
+JJKKEC,J.K. Electric Contractor LLP,140.0,94.06974424237143
+PYDUDL,Ananda Protein Limited,140.0,94.07344284074716
+SKPPLE,Skylark Proteins Private Limited,140.0,94.07714143912288
+NIAAPL,Narmada Iron and Associates Private Limited,140.0,94.0808400374986
+BHPEPL,Bharat Plus Ethanol Private Limited,140.0,94.08453863587432
+VSNDPL,Vision Distribution Private Limited,140.0,94.08823723425004
+BHUNPL,Bhardwaj Unibuild Private Limited,140.0,94.09193583262578
+KMRIPL,Kharagpur Metal Reforming Industries Private Limited,140.0,94.09563443100151
+MNTCPL,B&B Triplewall Containers Limited,140.0,94.09933302937723
+BPABPPL,Baccarose Perfumes And Beauty Products Private Limited,140.0,94.10303162775296
+POLRI,Polyhose India (Rubber) Private Limited,140.0,94.10673022612868
+MAEDOC,Mahesh Edible Oil Corporation Private Limited,140.0,94.1104288245044
+PNPPX,PNP Polytex Private Limited,140.0,94.11412742288013
+TEJKB,Tirupati Basmati Exports Private Limited,140.0,94.11782602125585
+JACUPL,Jagdamba Cutlery Limited,140.0,94.12152461963159
+BEBIPI,Betul Biofuel Private Limited,140.0,94.1252232180073
+RKMTSPL,R.K.S.Motor Private Limited,140.0,94.12892181638303
+MYRIDPL,Mayar Infrastructure Development Private Limited,140.0,94.13262041475875
+RUCI,Team Interventure Exports India Private Limited,140.0,94.13631901313448
+SSPPLI,Sunworld Solar Power Private Limited,139.56,94.14000598734388
+ARRSPP,Renew Ranga Reddy Solar Power Private Limited,139.26,94.14368503598533
+GDS1999,B. N. Global Private Limited,138.75,94.14735061116127
+APGEPO,Amplus Green Power Private Limited,138.5,94.15100958169725
+PREBPL,Preeti Buildcon Private Limited,138.5,94.15466855223325
+DAALPI,Dabra Alcobrew Private Limited,138.0,94.15831431348931
+GFAMSP,GDX Security Solutions India Private Limited,138.0,94.1619600747454
+AAFIPL,ALP Aeroflex India Private Limited,138.0,94.16560583600145
+MTDCSPL,Mahavir Die Casters Private Limited,137.9,94.16924895540154
+VSNRPL,Vishal Nirmiti Limited,137.24,94.17287463855214
+RQINL,Raunaq International Limited,137.0,94.1764939812484
+BNHCPL,Bansal High Carbons Private Limited,137.0,94.18011332394465
+PFEDM,Prestige Feed Mills Limited,136.35,94.183715494577
+MADBPL27,Maruti Dharoi Bridge Private Limited,136.04,94.18730947545582
+GDS3294,Ceedeeyes Infrastructure Solutions Private Limited,136.0,94.19090239959223
+GDS12031,Meenakshi Ammal Trust,136.0,94.19449532372866
+GDS19976,Shri Santhosh Meenakshi Textiles Private Limited,136.0,94.19808824786507
+MMMYPL,M. M. Yarns Private Limited,135.79,94.20167562410393
+SPARSH,Sparsh Infratech Private Limited,135.0,94.20524212968053
+MRRUPL,Matarani Resources Private Limited,135.0,94.20880863525711
+DUFAIL,Dugar Finance and Investments Limited,135.0,94.2123751408337
+GDS22549,UAL Industries Limited,135.0,94.2159416464103
+HRETL,Hero Ecotech Limited,135.0,94.21950815198689
+SCAGPL,Sheel Chand Agroils Private Limited,135.0,94.22307465756347
+GDS11011,MFAR Hotels and Resorts Private Limited,135.0,94.22664116314007
+THFOPL,Theobroma Foods Private Limited,135.0,94.23020766871667
+KEACPL,Kindle Engineering and Construction Private Limited,134.04999999999998,94.23374907666143
+GDS6603,Goyal Energy and Steel Private Limited,134.0,94.23728916367818
+AJSPPL,Acme Jaisalmer Solar Power Private Limited,133.0,94.24080283213512
+AMTSPL,Advanced Mining Technologies Private Limited,133.0,94.24431650059206
+NISEPL,Niranjana Solar Energy Private Limited,132.83,94.24782567789384
+RAIPVL,Raam Autobahn India Private Limited,132.6,94.25132877892685
+OLIIL,Olivia Impex Private Limited,132.5,94.25482923810387
+JBECLJ,J B Ecotex Limited,132.0,94.25831648800099
+IPHLTD,Indian Phosphate Limited,132.0,94.26180373789809
+KNTG,Knit Gallery,132.0,94.2652909877952
+AARAPL,Aanjaney Rail Private Limited,131.95,94.26877691676432
+STENP,Satvik Enterprises Limited,131.6,94.27225359923752
+LLFIPL,Life Line Feeds India Private Limited,131.37,94.27572420544193
+PTDPPT,Prayatna Developers Limited,131.0,94.27918503677923
+MAGEPL,Markdata Green Energy Private Limited,131.0,94.2826458681165
+DUMLPV,Delbus Mobility Private Limited,130.66,94.28609771714346
+MSTRC,Master Chains N Jewels Private Limited,130.5,94.28954533920083
+ACLADP,Accumax Lab Devices Private Limited,130.14000000000001,94.29298345057667
+LOCVPL,Lone Cypress Ventures Private Limited,130.0,94.29641786335414
+GDS13475,Nikhil Adhesives Limited,130.0,94.29985227613159
+SSNAIP,Sri Sai Nath Agri Industries Private Limited,130.0,94.30328668890905
+SJTMPL,Sree Jagathguru Textiles Mills Private Limited,130.0,94.3067211016865
+ASAIPL,Anmol Steel Processors Private Limited,130.0,94.31015551446397
+SAMYN,Samosaran Yarns Private Limited,130.0,94.31358992724142
+MENCR,Meenu Creation LLP,130.0,94.31702434001889
+GDS1155,Ludhiana Steel Rolling Mills Limited,130.0,94.32045875279634
+HVLRTL,Haveli Restaurant and Resorts Limited,130.0,94.3238931655738
+IRINTE,Irp Infra Tech Limited,130.0,94.32732757835126
+ATDPL,Athena Tradewinds Private Limited,130.0,94.33076199112872
+DRAGRA,Dr. Agarwals Eye Hospital Limited,130.0,94.33419640390618
+CPSRPL,Cofoods Processors Private Limited,130.0,94.33763081668364
+GDS19571,Shell Inn (International) Private Limited,130.0,94.3410652294611
+SHIHPL,Shweta Infrastructure and Housing India Private Limited,130.0,94.34449964223856
+GDS1368,Arfin India Limited,129.21000000000004,94.34791318435374
+SNIISC,Sonai Infrastructure Private Limited,129.0,94.35132117857138
+AUPSIL,Australian Premium Solar (India) Limited,128.0,94.3547027542292
+ACSHPL,Accuracy Shipping Limited,128.0,94.35808432988699
+SISECP,Sai Shreeja Cars Private Limited,128.0,94.3614659055448
+SHASEAF,Sharat Industries Limited,128.0,94.3648474812026
+PNSI,Pansuriya Impex LLP,127.66,94.36822007455008
+GDS885,Ambica Jute Mills Limited,127.0,94.37157523164805
+JTMTL,Jyote Motors Private Limited,126.36,94.37491348086773
+HITR,Hi-Tech Radiators Private Limited,126.27000000000001,94.37824935241704
+RUSOLI,Rudra Solarfarms Private Limited,126.14,94.38158178955358
+SCPL,South City Projects (Kolkata) Limited,126.13000000000001,94.3849139625045
+ARJNI,Arjan Impex Private Limited,126.0,94.38824270104266
+MSJPL,MSJPL Jewellery Private Limited,125.68,94.39156298564167
+RPMMPL,R. P. Multimetals Limited,125.00000000000001,94.39486530562
+IMHORCL,Imperial Hospital and Research Centre Limited,125.0,94.39816762559833
+AVANPL,AVI Renewable Energy Private Limited,125.0,94.40146994557665
+RCPLTD,Royal Castor Products Limited,125.0,94.40477226555497
+MGRJINL,Megh Raj International,125.0,94.4080745855333
+SFINUP,Shriram Food Industry Limited,125.0,94.41137690551162
+JISUNI,JIS University,125.0,94.41467922548995
+AKIEL,Air Works India (Engineering) Private Limited,125.0,94.41798154546828
+GDS23055,Vanya Steels Private Limited,125.0,94.4212838654466
+GDS544,Aimil Pharmaceuticals India Limited,125.0,94.42458618542493
+SHKBPL,Shivalik Buildtech Private Limited,125.0,94.42788850540326
+IGAMPL,Integra Automation Private Limited,125.0,94.43119082538158
+SAISERV,Sai Service Private Limited,125.0,94.43449314535991
+VICAUT,Victora Automotive Private Limited,125.0,94.43779546533824
+HDPSAL,Hindupur Steel and Alloys Private Limited,125.0,94.44109778531656
+GDS8925,Jay Ushin Limited,125.0,94.44440010529489
+SCRECC,South Central Railway Employees Co-op Credit Society Limited,125.0,94.44770242527322
+AIWPL,Ashok Iron Works Private Limited,125.0,94.45100474525154
+GDS9097,Jiwarajka Textile Industries,125.0,94.45430706522987
+SEINPI,Seedlings India Private Limited,125.0,94.4576093852082
+AVHEGR,Avadh Heliconia Green,125.0,94.46091170518652
+MATESH,Mateshwari Construction,125.0,94.46421402516484
+SHSTPI,Shikhara Steels Private Limited,125.0,94.46751634514317
+JMALSPL,Jailaxmi Alloy Steels Private Limited,125.0,94.4708186651215
+ARTR,Artech Realtors Private Limited,125.0,94.47412098509982
+HTIXL,Hindustan Inox Limited,125.0,94.47742330507815
+JRESPL,Jaganmayi Real Estates Private Limited,125.0,94.48072562505646
+RELPPL,Repplen Projects Private Limited,125.0,94.4840279450348
+BSTCPS,Best Crop Science Private Limited,125.0,94.48733026501313
+GPRSSLD,Green Power Sugars Limited,125.0,94.49063258499145
+EXEPHA,Exemed Pharmaceuticals,125.0,94.49393490496978
+NILNE,Nilons Enterprises Private Limited,125.0,94.49723722494811
+GSMGSBY,GGSBY Industries Private Limited,125.0,94.50053954492643
+NSLRNPL,Nsl Renewable Power Private Limited,125.0,94.50384186490476
+GDS19733,Shree Baba Naga Food Stuff Limited,125.0,94.50714418488309
+GDS3267,Castle Rock Fisheries Private Limited,124.99999999999999,94.5104465048614
+GDS10255,Kopran Research Laboratories Limited,124.75,94.51374222019979
+NILINF,Nilshikhaa Projects Limited,124.00000000000001,94.51701812161828
+JDRM,Janki Dass Rice Mills,124.0,94.52029402303678
+EATUPL,Eastern Track Udyog Private Limited,124.0,94.52356992445527
+SSPPVTL,SSP Private Limited,123.7,94.52683790030582
+KCWSL,Kancheshwar Sugar Limited,123.0,94.53008738316451
+KTLLM,KTL Private Limited,123.0,94.53333686602318
+THVC,Theva and Co.,123.0,94.53658634888184
+KSOIDPL,Koso India Private Limited,123.0,94.53983583174053
+NWPCSP,NSL Wind Power Company (Satara) Private Limited,122.56,94.54307369043288
+WILTD,Witmans Industries Private Limited,122.15,94.54630071751569
+PJPTL,Prajay Properties Private Limited,122.0,94.54952378181454
+GGEPAIPL,Green Gene Enviro Protection And Infrastructure Limited,122.0,94.55274684611338
+ZLTI,Zoloto Industries,122.0,94.55596991041223
+RCLCIPL,Exxaro Tiles Limited,122.0,94.55919297471107
+ARAMT,Arora Aromatics Private Limited,122.0,94.56241603900992
+SUBPTL,Sunit Breweries Private Limited,122.0,94.56563910330877
+SSPLSS8,SEI Suryalabh Private Limited,121.3,94.56884367461574
+ESMSSPL,Essem Auto Electricals Private Limited,121.0,94.57204032035474
+KHDILI,Khandoba Distilleries Private Limited,121.0,94.57523696609377
+EUEXPL,Euro Exports Private Limited,121.0,94.57843361183279
+AMJCTPL,Amjey Chem Trade Private Limited,121.0,94.58163025757182
+ARINPI,Archidpanel Industries Private Limited,120.3,94.58480841031894
+BGTFEL,Bhagwati Fats and Edible Oils Private Limited,120.2,94.58798392121011
+VTML,VTM Limited,120.19999999999999,94.59115943210126
+GDS5437,Ever Electronics Private Limited,120.0,94.59432965928046
+HANOVE,Hanu Overseas,120.0,94.59749988645966
+GDS22134,TC Tours Limited,120.0,94.60067011363886
+CAPAPL,Camerich Papers Private Limited,120.0,94.60384034081805
+IMFAL,Impex Metal and Ferro Alloys Limited,120.0,94.60701056799724
+UNCMIL,Uni-Com India Private Limited,120.0,94.61018079517642
+KSCML,Krishna Solvechem Limited,120.0,94.61335102235562
+EDSARCL,Edelweiss Asset Reconstruction Company Limited,120.0,94.61652124953481
+REMITL,Reise Mitas Tires LLP,120.0,94.61969147671401
+RVRLTPL,Revive Realty Private Limited,120.0,94.62286170389321
+RSMSFL,RSM Sapthagiri Finance Limited,120.0,94.62603193107239
+PATFPL,Patodia Filaments Private Limited,120.0,94.62920215825159
+MDPLTD,Mohit Diamonds Private Limited,120.0,94.63237238543077
+AFPCPL,A-1 Fence Products Company Private Limited,120.0,94.63554261260997
+AWALIM,Awaze Limited,120.0,94.63871283978916
+KKBP,KKB Projects Private Limited,120.0,94.64188306696836
+TCSGSPL,Technocrafts Electric Private Limited,120.0,94.64505329414756
+PNCLSL,Pinnacle Life Science Private Limited,120.0,94.64822352132674
+TATIL,The Asian Traders India,120.0,94.65139374850594
+KETTX,Amer-Sil Ketex Private Limited,120.0,94.65456397568514
+JNACPL,Jain Amar Clothing Private Limited,119.99999999999999,94.65773420286432
+SYCXIPL,Sky Cotex India Private Limited,119.99999999999999,94.66090443004352
+SUNRN,Sunrise Naturals Private Limited,118.8,94.66404295495092
+ADOPL,Ador Powertron Limited,118.11,94.66716325105203
+MANUGRA,Manugraph India Limited,118.0,94.67028064111157
+HEROE,Hero Exports,118.0,94.6733980311711
+JUGEPL,Juniper Green Energy Limited,118.0,94.67651542123065
+BHPRDL,Bhavna Property Developers Ltd.,118.0,94.67963281129019
+BHER,Bhavani Erectors Private Limited,118.0,94.68275020134973
+NWPCKPL,NSL Wind Power Company (Kayathar) Private Limited,117.82,94.6858628360685
+GDS5252,Enar Industrial Enterprises Private Limited,117.75,94.68897362148809
+TPLPSL,TPL Plastech Limited,117.69999999999999,94.69208308597968
+BOMBURM,The Bombay Burmah Trading Corporation Limited,117.0,94.69517405747939
+KASMPI,Kansal Spinning Mills Private Limited,117.0,94.6982650289791
+GDS1098,Anjaney Ferro Alloys Limited,117.0,94.70135600047881
+SAPOPI,Saanika Polytex Private Limited,117.0,94.70444697197853
+20ML,20 Microns Limited,117.0,94.70753794347824
+INSELI,Infinx Services Private Limited,116.97,94.71062812242116
+VDSMLTD,Vidhi Specialty Food Ingredients Limited,116.72000000000001,94.71371169672413
+EDACEL,EDAC Engineering Limited,116.3,94.71678417523196
+FEDERL,Featherstone Designs Private Limited,116.0,94.71984872817185
+VRETPL,Vaayu Renewable Energy (Tapti) Private Limited,116.0,94.72291328111173
+CAGGPL,Casa Grande Grace Private Limited,116.0,94.72597783405162
+HNEFPL,HNB Engineers (F&F) Private Limited,116.0,94.72904238699151
+SDCT,Shanti Devi Charitable Trust (Regd.),116.0,94.7321069399314
+LNSNML,Lanson Motors Private Limited,115.42999999999999,94.73515643429218
+RAMPULP,Nath Industries Limited,115.08,94.73819668215702
+MADRORL,Mangalam Drugs and Organics Limited,115.00000000000001,94.74123481653709
+ASTELL,Aspire Textiles LLP,115.0,94.74427295091715
+MSSPAD,M/S Silver Promoters and Developers,115.0,94.74731108529721
+AVAFPL,AVR Aviation Fuel Private Limited,115.0,94.75034921967726
+DRISL,Drish Shoes Limited,115.0,94.75338735405732
+PWPCPL,Pawar Patkar Constructions Private Limited,115.0,94.75642548843739
+PVPOPL,Pvr Powercon Private Limited,115.0,94.75946362281745
+RKIEPL,Rk Infra Electricals Private Limited,115.0,94.76250175719751
+GDS10972,Luxor Writing Instruments Private Limited,115.0,94.76553989157756
+SYLIPI,Synokem Lifesciences Private Limited,115.0,94.76857802595762
+BCEI,Bucon Engineers and Infrastructure Private Limited,115.0,94.77161616033769
+SSVIPL,SteelStrong Valves India Private Limited,115.0,94.77465429471775
+SKIPL,SmartCity (Kochi) Infrastructure Private Limited,114.75,94.77768582445786
+ANTWML,Anithaa Weaving Mill Private Limited,114.0,94.7806975402781
+KNCVL,Kun Commercial Vehicles Private Limited,114.0,94.78370925609832
+VIRSYI,SMRC Automotive Products India Limited,114.0,94.78672097191856
+HAAULI,Harbir Automobile Private Limited,114.0,94.78973268773878
+GDS7285,Hightemp Furnaces Limited,113.36,94.79272749568072
+SYGSSNS,Synergy Systems and Solutions,113.0,94.79571279294113
+SRLSPL,Sri Lakshmikantha Spinners Limited,113.0,94.79869809020154
+BROCHB,B Roshanlal Chemicals Private Limited,113.0,94.80168338746195
+RDCFRP,Redeco Fibers Private Limited,112.5,94.80465547544244
+GDS3870,Continental Engines Private Limited,111.7,94.80760642857507
+AMSEFO,Amulya Sea Foods,111.23,94.81054496498459
+SPMBPL,Sai Projects (Mumbai) Private Limited,111.0,94.81347742512534
+RESOPR,Recycling Solutions Private Limited-(Amalgamated),110.99999999999999,94.8164098852661
+SESPPI,SEI Solar Power Private Limited,110.5,94.81932913612694
+SJSPPL,Saluja Steel and Power Private Limited,110.5,94.82224838698777
+ATCVL,Antony Commercial Vehicles Private Limited,110.0,94.82515442856871
+KKNCAL,K. N. C. Agro Limited,110.0,94.82806047014964
+KEOMPL,Kaynes Electronics Manufacturing Private Limited,110.0,94.83096651173057
+OPGCPL,O P Gupta Contractors Private Limited,110.0,94.83387255331148
+MCSIPL,Miracle Cables India Private Limited,110.0,94.83677859489241
+AOPMPL,Midland Super Speciality Hospital Private Limited,110.0,94.83968463647334
+CCABLE,Chandresh Cables Limited,110.0,94.84259067805426
+SPSSPL,Shriprop Structures Private Limited,110.0,94.8454967196352
+COIMIP,Cosmos Impex (India) Private Limited,110.0,94.84840276121612
+HOIL,Holostik India Limited,110.0,94.85130880279705
+POCHPL,Pooja Crafted Homes Private Limited,110.0,94.85421484437796
+GHRAMI,Global Health Research and Management Institute,110.0,94.8571208859589
+MUSEPL,Munnangi Sea Foods Private Limited,110.0,94.86002692753983
+SDYCCY,Sreedhanya Construction Company,110.0,94.86293296912075
+GMSEBL,GMS Elegant Builders India Private Limited,110.0,94.86583901070168
+PHLB,Phoolchand Bhagatsingh,110.0,94.8687450522826
+KRBSML,Karbonsteel Engineering Limited,110.0,94.87165109386353
+ASCSPL,Shah Steel Impex Private Limited,110.0,94.87455713544446
+PIFEPA,Premium Ferromet Private Limited,110.0,94.87746317702539
+MSRCOM,M S R Constructions,110.0,94.88036921860632
+ALKMS,Alok Masterbatches Private Limited,110.0,94.88327526018723
+UPLD,Upal Developers Private Limited,110.0,94.88618130176818
+VAPPLI,Vayu Products Private Limited,110.0,94.8890873433491
+SWTKCI,Effulgence Trading And Services Private Limited,110.0,94.89199338493003
+BDOXPL,BDJ Oxides Private Limited,110.0,94.89489942651095
+RFBSPL,RFE Belgaum Solar Private Limited,109.67,94.89779674996713
+ALIL,Alchem International Private Limited,109.14,94.9006800715866
+GDS2126,Bally Jute Company Limited,109.1,94.9035623364637
+EDFR,Edhayam Frozen Foods Private Limited,109.0,94.9064419594848
+SSSFPL,S. S. Super Foods Private Limited,109.0,94.9093215825059
+GDS1247,Apis India Limited,109.0,94.912201205527
+BSDU,Basudha Udyog Private Limited,109.0,94.9150808285481
+NSACTL,N S Associates Private Limited,109.0,94.9179604515692
+OPAPPI,Optima Auto Products Private Limited,108.47,94.9208260727536
+CTPCPL,Creative Tools and Press Components Private Limited,108.25999999999999,94.92368614604042
+GDS5464,Excel Overseas Private Limited,108.0,94.9265393505017
+DPMPL,Delta Paper Mills Limited,108.0,94.92939255496296
+VDKJ,Vinod Kumar Jain,108.0,94.93224575942423
+STAPTL,Stellar Autohaus Private Limited,107.99999999999999,94.93509896388551
+SHREPR,Zon Hotels Private Limited,107.0,94.93792574978696
+MSIPLTD,Metal Scope India Private Limited,107.0,94.9407525356884
+GDS3609,Chowgule Industries Private Limited,107.0,94.94357932158985
+FRNKTR,Frontier Knitters Private Limited,107.0,94.9464061074913
+SESIRI,SEI Sitara Private Limited,106.69999999999999,94.9492249678248
+AMRCSPL,Amar Cars Private Limited,106.51,94.95203880863194
+MSBSLTD,Maa Shakambari Steel Limited,105.83999999999999,94.95483494900398
+DEAIPL,Deligentia Energy And Infrastructures Private Limited,105.63,94.95762554147846
+APTG,Ample Technologies Private Limited,105.24,94.9604058307146
+SUSTELT,Sumangala Steel Private Limited,105.00000000000001,94.96317977949641
+CRECPI,Credence Ecofibre Private Limited,105.0,94.96595372827821
+NARSI,Narsingh Ispat Limited,105.0,94.96872767705999
+NMTM,New Modern Technomech Private Limited,105.0,94.9715016258418
+THPS,Thiese Precision Private Limited,105.0,94.97427557462359
+ALOSHI,Alok Buildtech Private Limited,105.0,94.97704952340538
+CGSIBI,Ch Gowri Shankar Infra Build India Private Limited,105.0,94.97982347218718
+BAPRRL,Balajikrupa Projects Private Limited,105.0,94.98259742096896
+LOAMPL,Aavri Overseas Private Limited,105.0,94.98537136975077
+SAUDIL,Saraswati Udyog India Limited,105.0,94.98814531853256
+GDS16529,Permali Wallace Private Limited,104.97,94.99091847475756
+YAPIPL,Yashodaplus Pharmacies India Private Limited,104.0,94.99366600497953
+PVHTPV,Pravat Hospitality Private Limited,104.0,94.9964135352015
+WLPTP,Walplast Products Private Limited,103.35,94.99914389335957
+KSMBMS,K.S.M. Bashir Mohammad & Sons,103.35,95.00187425151766
