@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entity Stress Pipeline — Documentation</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0b0f1a;
+            --surface: #111827;
+            --surface2: #1a2235;
+            --border: #1e2d45;
+            --accent: #00d4ff;
+            --accent2: #0090b8;
+            --gold: #f0a500;
+            --green: #00e5a0;
+            --red: #ff4d6d;
+            --yellow: #ffd166;
+            --text: #c8d8ef;
+            --muted: #5a7090;
+            --heading: #e8f4ff;
+            --mono: "IBM Plex Mono", monospace;
+            --sans: "IBM Plex Sans", sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+
+        /* ── SIDEBAR NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            z-index: 100;
+            padding: 28px 0 40px;
+        }
+
+        .nav-logo {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+
+        .nav-logo span {
+            display: block;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .nav-logo strong {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--heading);
+            line-height: 1.3;
+            display: block;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 24px;
+            font-size: 12.5px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.15s, background 0.15s;
+            border-left: 2px solid transparent;
+            font-weight: 400;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent);
+            background: rgba(0, 212, 255, 0.05);
+            border-left-color: var(--accent);
+        }
+
+        nav a .num {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+            min-width: 18px;
+        }
+
+        /* ── MAIN CONTENT ── */
+        main {
+            margin-left: 240px;
+            padding: 0;
+            max-width: 960px;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 72px 64px 56px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, #0b0f1a 60%, #0d1825 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 4px;
+            padding: 4px 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--heading);
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text);
+            max-width: 580px;
+            margin-bottom: 36px;
+            font-weight: 300;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .hero-meta-item strong {
+            display: block;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        /* ── SECTION ── */
+        section {
+            padding: 56px 64px;
+            border-bottom: 1px solid var(--border);
+            scroll-margin-top: 24px;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        h2.sec-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--heading);
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+        }
+
+        h3.sub-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--heading);
+            margin: 36px 0 12px;
+            padding-left: 12px;
+            border-left: 3px solid var(--accent2);
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        /* ── INFO BOXES ── */
+        .callout {
+            border-left: 3px solid var(--accent);
+            background: rgba(0, 212, 255, 0.05);
+            padding: 16px 20px;
+            border-radius: 0 6px 6px 0;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+
+        .callout.warn {
+            border-left-color: var(--yellow);
+            background: rgba(240, 165, 0, 0.05);
+        }
+
+        .callout.formula {
+            border-left-color: var(--green);
+            background: rgba(0, 229, 160, 0.05);
+            font-family: var(--mono);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .callout strong {
+            color: var(--heading);
+            font-weight: 600;
+        }
+
+        /* ── CODE BLOCKS ── */
+        pre {
+            background: #080c14;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 24px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: var(--mono);
+            font-size: 13px;
+            line-height: 1.7;
+            color: #a8c4e0;
+            position: relative;
+        }
+
+        pre .kw {
+            color: #00d4ff;
+        }
+
+        pre .str {
+            color: #a0e080;
+        }
+
+        pre .cm {
+            color: #4a6a8a;
+            font-style: italic;
+        }
+
+        pre .num {
+            color: var(--gold);
+        }
+
+        pre .fn {
+            color: #c792ea;
+        }
+
+        code {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 3px;
+            padding: 1px 6px;
+            color: var(--accent);
+        }
+
+        /* ── TABLES ── */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+
+        thead tr {
+            background: var(--surface2);
+        }
+
+        thead th {
+            padding: 11px 16px;
+            text-align: left;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #141f30;
+            transition: background 0.1s;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        td {
+            padding: 10px 16px;
+            color: var(--text);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        td:first-child {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            color: var(--heading);
+            white-space: nowrap;
+        }
+
+        td .tag {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 3px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+        }
+
+        .tag-green {
+            background: rgba(0, 229, 160, 0.12);
+            color: var(--green);
+        }
+
+        .tag-yellow {
+            background: rgba(255, 209, 102, 0.12);
+            color: var(--yellow);
+        }
+
+        .tag-red {
+            background: rgba(255, 77, 109, 0.12);
+            color: var(--red);
+        }
+
+        .tag-blue {
+            background: rgba(0, 212, 255, 0.12);
+            color: var(--accent);
+        }
+
+        .tag-muted {
+            background: rgba(90, 112, 144, 0.15);
+            color: var(--muted);
+        }
+
+        /* ── SCORE CARD GRID ── */
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .score-card {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .score-card .wt {
+            font-family: var(--mono);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .score-card .wt-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--heading);
+            margin-bottom: 4px;
+        }
+
+        .score-card .wt-desc {
+            font-size: 11.5px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* ── STRESS LABEL PILLS ── */
+        .label-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .label-pill {
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid;
+        }
+
+        .label-pill .range {
+            font-family: var(--mono);
+            font-size: 11px;
+            margin-bottom: 4px;
+            opacity: 0.7;
+        }
+
+        .label-pill .lname {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .label-pill .ldesc {
+            font-size: 11.5px;
+            opacity: 0.75;
+            line-height: 1.4;
+        }
+
+        .lp-min {
+            background: rgba(0, 229, 160, 0.06);
+            border-color: rgba(0, 229, 160, 0.25);
+            color: var(--green);
+        }
+
+        .lp-low {
+            background: rgba(0, 212, 255, 0.06);
+            border-color: rgba(0, 212, 255, 0.25);
+            color: var(--accent);
+        }
+
+        .lp-mod {
+            background: rgba(255, 209, 102, 0.06);
+            border-color: rgba(255, 209, 102, 0.25);
+            color: var(--yellow);
+        }
+
+        .lp-elev {
+            background: rgba(240, 165, 0, 0.08);
+            border-color: rgba(240, 165, 0, 0.3);
+            color: var(--gold);
+        }
+
+        .lp-high {
+            background: rgba(255, 77, 109, 0.06);
+            border-color: rgba(255, 77, 109, 0.25);
+            color: var(--red);
+        }
+
+        .lp-severe {
+            background: rgba(180, 0, 60, 0.1);
+            border-color: rgba(255, 0, 80, 0.3);
+            color: #ff6b8a;
+        }
+
+        /* ── UL/OL ── */
+        ul,
+        ol {
+            padding-left: 20px;
+            margin: 12px 0 20px;
+        }
+
+        li {
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        li::marker {
+            color: var(--accent2);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            margin-left: 240px;
+            padding: 32px 64px;
+            font-size: 12px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e2d45;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 800px) {
+            nav {
+                display: none;
+            }
+
+            main,
+            footer {
+                margin-left: 0;
+            }
+
+            .hero,
+            section {
+                padding: 40px 24px;
+            }
+
+            .score-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .label-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── SIDEBAR ── -->
+    <nav>
+        <div class="nav-logo">
+            <span>financial_kg</span>
+            <strong>Entity Stress Pipeline</strong>
+        </div>
+        <a href="#overview"><span class="num">01</span> Overview</a>
+        <a href="#datasources"><span class="num">02</span> Data Sources</a>
+        <a href="#crisil-tables"><span class="num">03</span> CRISIL Reference Data</a>
+        <a href="#methodology"><span class="num">04</span> Methodology</a>
+        <a href="#output-schema"><span class="num">05</span> Output CSV Schema</a>
+        <a href="#usage"><span class="num">06</span> Installation &amp; Usage</a>
+        <a href="#example"><span class="num">07</span> Worked Example</a>
+        <a href="#design"><span class="num">08</span> Design &amp; Limitations</a>
+        <a href="#references"><span class="num">09</span> References</a>
+    </nav>
+
+    <!-- ── MAIN ── -->
+    <main>
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-badge">⬡ CRISIL FY2025 · MongoDB · Python</div>
+            <h1>Entity <span>Stress</span> Pipeline</h1>
+            <p>Fundamental credit stress scoring for every company in <code>financial_kg.companies</code> — grounded in
+                CRISIL's published default and transition rates, FY2015–2025.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">Source<strong>CRISIL Default Study FY2025</strong></div>
+                <div class="hero-meta-item">Database<strong>financial_kg.companies</strong></div>
+                <div class="hero-meta-item">Output<strong>entity_stress_scores.csv</strong></div>
+                <div class="hero-meta-item">Scale<strong>0 (Minimal) → 100 (Severe)</strong></div>
+            </div>
+        </div>
+
+        <!-- 1. OVERVIEW -->
+        <section id="overview">
+            <div class="section-label">01 — Overview</div>
+            <h2 class="sec-title">What this pipeline does</h2>
+            <p>The pipeline reads every document in <code>financial_kg.companies</code>, extracts CRISIL rating signals
+                from <code>crisilRatings[]</code> and <code>bankFacilities[]</code>, maps them to empirical
+                probability-of-default values from CRISIL's own published tables, and outputs a single <strong>composite
+                    stress score (0–100)</strong> per entity.</p>
+
+            <div class="callout">
+                <strong>Scoring anchors:</strong> Score = 0 → AAA/Stable entity with fully uniform AAA facilities (e.g.,
+                Indian Oil). Score = 100 → all facilities rated D (defaulted). Unrated/unknown entities receive a
+                neutral cautionary score of <strong>50</strong>.
+            </div>
+
+            <p>The output CSV is sorted highest-stress first, making it immediately usable for watchlist monitoring,
+                knowledge-graph edge weighting, or counterparty risk dashboards.</p>
+        </section>
+
+        <!-- 2. DATA SOURCES -->
+        <section id="datasources">
+            <div class="section-label">02 — Data Sources</div>
+            <h2 class="sec-title">MongoDB fields consumed</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Used For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>crisilRatings[].rating</td>
+                            <td>String</td>
+                            <td>Primary LT / ST rating — maps to CDR table PD</td>
+                        </tr>
+                        <tr>
+                            <td>crisilRatings[].outlook</td>
+                            <td>String</td>
+                            <td>Outlook multiplier (Stable/Negative/Positive/Watch)</td>
+                        </tr>
+                        <tr>
+                            <td>bankFacilities[].rating</td>
+                            <td>String</td>
+                            <td>Per-facility LT rating for exposure-weighted PD</td>
+                        </tr>
+                        <tr>
+                            <td>bankFacilities[].amount</td>
+                            <td>Number</td>
+                            <td>₹ Cr exposure weight for each facility</td>
+                        </tr>
+                        <tr>
+                            <td>companyCode, crisilName, nseSymbol</td>
+                            <td>String</td>
+                            <td>Identity columns in output CSV</td>
+                        </tr>
+                        <tr>
+                            <td>industryCode, industryName</td>
+                            <td>String</td>
+                            <td>Sector metadata in output CSV</td>
+                        </tr>
+                        <tr>
+                            <td>listingStatus, ratingDate</td>
+                            <td>String</td>
+                            <td>Listing flag and rating staleness indicator</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. CRISIL TABLES -->
+        <section id="crisil-tables">
+            <div class="section-label">03 — CRISIL Reference Data</div>
+            <h2 class="sec-title">Embedded CRISIL FY2025 tables</h2>
+            <p>All PD and transition values are lifted directly from the CRISIL publication. No third-party estimates
+                are used.</p>
+
+            <h3 class="sub-title">Table 1 — Long-Term 1-Year CDRs (FY15-25, Monthly Static Pools)</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rating</th>
+                            <th>Published 1-yr CDR</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Crisil AAA</td>
+                            <td><span class="tag tag-green">0.00%</span></td>
+                            <td>No AAA instrument has defaulted since inception (1987)</td>
+                        </tr>
+                        <tr>
+                            <td>Crisil AA</td>
+                            <td><span class="tag tag-green">0.05%</span></td>
+                            <td>3 defaults since FY2020 — 2 pandemic, 1 operational glitch</td>
+                        </tr>
+                        <tr>
+                            <td>Crisil A</td>
+                            <td><span class="tag tag-green">0.07%</span></td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Crisil BBB</td>
+                            <td><span class="tag tag-blue">0.46%</span></td>
+                            <td>Investment grade boundary; stability rate &gt;91%</td>
+                        </tr>
+                        <tr>
+                            <td>Crisil BB</td>
+                            <td><span class="tag tag-yellow">2.86%</span></td>
+                            <td>Sub-investment grade begins here</td>
+                        </tr>
+                        <tr>
+                            <td>Crisil B</td>
+                            <td><span class="tag tag-yellow">8.40%</span></td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Crisil C</td>
+                            <td><span class="tag tag-red">24.98%</span></td>
+                            <td>Near-default category</td>
+                        </tr>
+                        <tr>
+                            <td>Crisil D</td>
+                            <td><span class="tag tag-red">100.00%</span></td>
+                            <td>Default by definition</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:13px;color:var(--muted);">Modifier notches (+/−) are linearly interpolated between
+                published anchors. E.g. AA+ = 0.03%, AA− = 0.08%, BBB− = 1.10%, BB+ = 1.90%.</p>
+
+            <h3 class="sub-title">Table 3 — Short-Term 1-Year CDRs (FY15-25)</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ST Rating</th>
+                            <th>1-yr CDR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Crisil A1+</td>
+                            <td><span class="tag tag-green">0.02%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Crisil A1</td>
+                            <td><span class="tag tag-green">0.01%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Crisil A2</td>
+                            <td><span class="tag tag-blue">0.23%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Crisil A3</td>
+                            <td><span class="tag tag-yellow">0.43%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Crisil A4</td>
+                            <td><span class="tag tag-red">4.72%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="sub-title">Table 2 — 1-Year Downgrade Probability</h3>
+            <p>Derived from the transition matrix as: <code>1 − stability_rate − upgrade_rate</code></p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rating</th>
+                            <th>Downgrade Prob.</th>
+                            <th>Derivation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AAA</td>
+                            <td>0.00%</td>
+                            <td>Cannot downgrade further</td>
+                        </tr>
+                        <tr>
+                            <td>AA</td>
+                            <td>1.75%</td>
+                            <td>1 − 95.96% stable − 2.28% upgrade</td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>3.04%</td>
+                            <td>1 − 93.14% stable − 3.82% upgrade</td>
+                        </tr>
+                        <tr>
+                            <td>BBB</td>
+                            <td>4.64%</td>
+                            <td>Sum of BB+B+C+D transition columns</td>
+                        </tr>
+                        <tr>
+                            <td>BB</td>
+                            <td>6.57%</td>
+                            <td>Sum of B+C+D transition columns</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>8.80%</td>
+                            <td>B→C (0.40%) + B→D (8.40%)</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>46.77%</td>
+                            <td>1 − 53.23% stable − 0% upgrades</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="sub-title">Outlook Multipliers</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Outlook</th>
+                            <th>Multiplier</th>
+                            <th>Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Positive / Watch Positive</td>
+                            <td><span class="tag tag-green">0.80×</span></td>
+                            <td>Reduces stress — improving credit trajectory</td>
+                        </tr>
+                        <tr>
+                            <td>Stable</td>
+                            <td><span class="tag tag-blue">1.00×</span></td>
+                            <td>No adjustment</td>
+                        </tr>
+                        <tr>
+                            <td>Developing</td>
+                            <td><span class="tag tag-yellow">1.15×</span></td>
+                            <td>Slight stress — uncertain direction</td>
+                        </tr>
+                        <tr>
+                            <td>Under Watch / Credit Watch</td>
+                            <td><span class="tag tag-yellow">1.20–1.25×</span></td>
+                            <td>Moderate stress — under review</td>
+                        </tr>
+                        <tr>
+                            <td>Negative</td>
+                            <td><span class="tag tag-red">1.30×</span></td>
+                            <td>Higher stress — deteriorating trajectory</td>
+                        </tr>
+                        <tr>
+                            <td>Watch Negative</td>
+                            <td><span class="tag tag-red">1.50×</span></td>
+                            <td>Significant stress — imminent review</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. METHODOLOGY -->
+        <section id="methodology">
+            <div class="section-label">04 — Methodology</div>
+            <h2 class="sec-title">How the stress score is computed</h2>
+
+            <h3 class="sub-title">Four Weighted Components</h3>
+            <div class="score-grid">
+                <div class="score-card">
+                    <div class="wt">35%</div>
+                    <div class="wt-label">C1 — Primary PD</div>
+                    <div class="wt-desc">Adjusted LT PD from crisilRatings[]. Core credit opinion × outlook multiplier.
+                    </div>
+                </div>
+                <div class="score-card">
+                    <div class="wt">30%</div>
+                    <div class="wt-label">C2 — Exposure-Weighted PD</div>
+                    <div class="wt-desc">Amount-weighted average PD across all bankFacilities[]. Captures lender
+                        concentration risk.</div>
+                </div>
+                <div class="score-card">
+                    <div class="wt">20%</div>
+                    <div class="wt-label">C3 — Downgrade Risk</div>
+                    <div class="wt-desc">P(rating worsens ≥1 notch in 1yr) from CRISIL transition matrix Table 2.</div>
+                </div>
+                <div class="score-card">
+                    <div class="wt">15%</div>
+                    <div class="wt-label">C4 — Heterogeneity</div>
+                    <div class="wt-desc">Std dev of PDs across all rated facilities. High spread = hidden risk
+                        inconsistency.</div>
+                </div>
+            </div>
+
+            <h3 class="sub-title">Normalisation</h3>
+            <p>Each component is mapped to [0, 1] before weighting:</p>
+            <ul>
+                <li><strong>C1, C2 (PDs):</strong> Log-linear — <code>ln(1 + 99·PD) / ln(100)</code>. AAA→0.0, D→1.0.
+                    Log scale captures the non-linear nature of credit risk.</li>
+                <li><strong>C3 (Downgrade prob):</strong> Linear — <code>min(dp / 0.25, 1.0)</code>. Anchored at ~25%
+                    max (C-rated entity).</li>
+                <li><strong>C4 (Heterogeneity):</strong> Linear — <code>min(stdev / 0.50, 1.0)</code>. Max theoretical
+                    stdev across AAA–D mix ≈ 0.50.</li>
+            </ul>
+
+            <h3 class="sub-title">Composite Formula</h3>
+            <div class="callout formula">
+                Stress Score = 100 × (0.35 × norm(C1) + 0.30 × norm(C2) + 0.20 × norm(C3) + 0.15 × norm(C4))<br><br>
+                Fallback rules:<br>
+                · No LT rating → C1 uses adjusted EW-PD, or ST PD as proxy<br>
+                · No rating at all → Score = 50.0, Label = "Unknown"<br>
+                · Unknown PD in norm() → returns 0.30 (neutral-cautious default)
+            </div>
+
+            <h3 class="sub-title">Stress Labels</h3>
+            <div class="label-grid">
+                <div class="label-pill lp-min">
+                    <div class="range">0 – 4.99</div>
+                    <div class="lname">Minimal</div>
+                    <div class="ldesc">Top-tier IG, stable, uniform facilities</div>
+                </div>
+                <div class="label-pill lp-low">
+                    <div class="range">5 – 14.99</div>
+                    <div class="lname">Low</div>
+                    <div class="ldesc">Strong IG (AA/A), stable, diversified</div>
+                </div>
+                <div class="label-pill lp-mod">
+                    <div class="range">15 – 29.99</div>
+                    <div class="lname">Moderate</div>
+                    <div class="ldesc">BBB-range or A with negative outlook</div>
+                </div>
+                <div class="label-pill lp-elev">
+                    <div class="range">30 – 49.99</div>
+                    <div class="lname">Elevated</div>
+                    <div class="ldesc">Sub-IG or BBB with negative watch</div>
+                </div>
+                <div class="label-pill lp-high">
+                    <div class="range">50 – 69.99</div>
+                    <div class="lname">High</div>
+                    <div class="ldesc">BB/B range; high downgrade probability</div>
+                </div>
+                <div class="label-pill lp-severe">
+                    <div class="range">70 – 100</div>
+                    <div class="lname">Severe</div>
+                    <div class="ldesc">C/D or unrated with heavy sub-IG exposure</div>
+                </div>
+            </div>
+
+            <h3 class="sub-title">Risk Tier Classification</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Rating Categories</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="tag tag-green">Investment Grade</span></td>
+                            <td>AAA, AA+, AA, AA−, A+, A, A− BBB+, BBB, BBB− / A1+, A1, A2+, A2, A2−</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-yellow">Sub-Investment Grade</span></td>
+                            <td>BB+, BB, BB−, B+, B, B− / A3+, A3, A3−, A4+, A4, A4−</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-red">Near Default</span></td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-red">Default</span></td>
+                            <td>D</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-muted">Unrated</span></td>
+                            <td>No recognised CRISIL rating found in document</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. OUTPUT SCHEMA -->
+        <section id="output-schema">
+            <div class="section-label">05 — Output CSV Schema</div>
+            <h2 class="sec-title">entity_stress_scores.csv — full column reference</h2>
+            <p>One row per entity, sorted descending by <code>stressScore</code>.</p>
+
+            <h3 class="sub-title">Identity</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>companyCode</td>
+                            <td>Internal MongoDB identifier</td>
+                        </tr>
+                        <tr>
+                            <td>crisilName</td>
+                            <td>Company name (crisilName or mcaName fallback)</td>
+                        </tr>
+                        <tr>
+                            <td>nseSymbol</td>
+                            <td>NSE ticker symbol</td>
+                        </tr>
+                        <tr>
+                            <td>industryCode / industryName</td>
+                            <td>CRISIL sector classification</td>
+                        </tr>
+                        <tr>
+                            <td>listingStatus</td>
+                            <td>Listed / Unlisted</td>
+                        </tr>
+                        <tr>
+                            <td>ratingDate</td>
+                            <td>Date of latest CRISIL rating action (staleness indicator)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="sub-title">Rating & PD</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>primaryLT_Rating</td>
+                            <td>Cleaned LT rating from crisilRatings[] (e.g. AAA, BBB+)</td>
+                        </tr>
+                        <tr>
+                            <td>primaryLT_Outlook</td>
+                            <td>Normalised outlook key (stable, negative, positive…)</td>
+                        </tr>
+                        <tr>
+                            <td>primaryST_Rating</td>
+                            <td>Short-term rating if present (e.g. A1+)</td>
+                        </tr>
+                        <tr>
+                            <td>primaryLT_PD_%</td>
+                            <td>1-yr CDR for primary LT rating (CRISIL Table 1)</td>
+                        </tr>
+                        <tr>
+                            <td>primaryST_PD_%</td>
+                            <td>1-yr CDR for primary ST rating (CRISIL Table 3)</td>
+                        </tr>
+                        <tr>
+                            <td>outlookMultiplier</td>
+                            <td>Outlook adjustment factor applied to PD</td>
+                        </tr>
+                        <tr>
+                            <td>adjustedLT_PD_%</td>
+                            <td>primaryLT_PD × outlookMultiplier</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="sub-title">Facility Exposure</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>numBankFacilities</td>
+                            <td>Total count of bankFacilities[] entries</td>
+                        </tr>
+                        <tr>
+                            <td>numRatedFacilities</td>
+                            <td>Count of facilities with a recognised LT rating</td>
+                        </tr>
+                        <tr>
+                            <td>totalExposure_Cr</td>
+                            <td>Sum of facility amounts (₹ Cr) for rated facilities</td>
+                        </tr>
+                        <tr>
+                            <td>ewPD_%</td>
+                            <td>Exposure-weighted average PD across all rated facilities</td>
+                        </tr>
+                        <tr>
+                            <td>adjustedEW_PD_%</td>
+                            <td>ewPD × outlookMultiplier</td>
+                        </tr>
+                        <tr>
+                            <td>ewGrade</td>
+                            <td>Exposure-weighted numeric grade (1=AAA … 18=D)</td>
+                        </tr>
+                        <tr>
+                            <td>ratingHeterogeneity</td>
+                            <td>Std dev of facility PDs × 100 (higher = more spread)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="sub-title">Score Components & Final Output</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1yr_DowngradeProbab_%</td>
+                            <td>P(≥1-notch LT downgrade in 1yr) from CRISIL Table 2</td>
+                        </tr>
+                        <tr>
+                            <td>comp_PrimaryPD</td>
+                            <td>C1 component (0–100), pre-weighting</td>
+                        </tr>
+                        <tr>
+                            <td>comp_ExposureWeightedPD</td>
+                            <td>C2 component (0–100), pre-weighting</td>
+                        </tr>
+                        <tr>
+                            <td>comp_DowngradeRisk</td>
+                            <td>C3 component (0–100), pre-weighting</td>
+                        </tr>
+                        <tr>
+                            <td>comp_Heterogeneity</td>
+                            <td>C4 component (0–100), pre-weighting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>stressScore</strong></td>
+                            <td>Composite score 0–100 (sorted descending)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>stressLabel</strong></td>
+                            <td>Minimal / Low / Moderate / Elevated / High / Severe / Unknown</td>
+                        </tr>
+                        <tr>
+                            <td><strong>riskTier</strong></td>
+                            <td>Investment Grade / Sub-Investment Grade / Near Default / Default / Unrated</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6. USAGE -->
+        <section id="usage">
+            <div class="section-label">06 — Installation &amp; Usage</div>
+            <h2 class="sec-title">Running the pipeline</h2>
+
+            <h3 class="sub-title">Prerequisites</h3>
+            <pre><span class="kw">pip</span> install pymongo</pre>
+
+            <h3 class="sub-title">Basic run (all documents)</h3>
+            <pre><span class="kw">python</span> entity_stress_pipeline.py \
+    --uri  <span class="str">"mongodb://localhost:27017"</span> \
+    --db   financial_kg \
+    --col  companies \
+    --out  entity_stress_scores.csv</pre>
+
+            <h3 class="sub-title">Test run (10 documents)</h3>
+            <pre><span class="kw">python</span> entity_stress_pipeline.py --limit <span class="num">10</span> --out test_output.csv</pre>
+
+            <h3 class="sub-title">MongoDB Atlas</h3>
+            <pre><span class="kw">python</span> entity_stress_pipeline.py \
+    --uri <span class="str">"mongodb+srv://user:pass@cluster0.abc123.mongodb.net/"</span></pre>
+
+            <h3 class="sub-title">CLI Arguments</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Argument</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>--uri</td>
+                            <td>mongodb://localhost:27017</td>
+                            <td>MongoDB connection URI</td>
+                        </tr>
+                        <tr>
+                            <td>--db</td>
+                            <td>financial_kg</td>
+                            <td>Database name</td>
+                        </tr>
+                        <tr>
+                            <td>--col</td>
+                            <td>companies</td>
+                            <td>Collection name</td>
+                        </tr>
+                        <tr>
+                            <td>--out</td>
+                            <td>entity_stress_scores.csv</td>
+                            <td>Output CSV file path</td>
+                        </tr>
+                        <tr>
+                            <td>--limit</td>
+                            <td>0 (all)</td>
+                            <td>Max documents to process; 0 = all</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="sub-title">Console Output Example</h3>
+            <pre><span class="cm"># After processing completes:</span>
+✅  <span class="num">1247</span> entities written → entity_stress_scores.csv  (errors: <span class="num">0</span>)
+
+Stress Label Distribution:
+  Minimal                  <span class="num">312</span>  ████████████
+  Low                      <span class="num">418</span>  ████████████████
+  Moderate                 <span class="num">289</span>  ███████████
+  Elevated                 <span class="num">142</span>  █████
+  High                      <span class="num">63</span>  ██
+  Severe                    <span class="num">23</span>  █
+
+Stress Score  min=<span class="num">0.0</span>  max=<span class="num">68.4</span>  mean=<span class="num">14.2</span>  median=<span class="num">11.8</span></pre>
+        </section>
+
+        <!-- 7. WORKED EXAMPLE -->
+        <section id="example">
+            <div class="section-label">07 — Worked Example</div>
+            <h2 class="sec-title">Indian Oil Corporation Limited (INDOIL)</h2>
+            <p>IOC holds <strong>Crisil AAA/Stable</strong> on both its Term Loan and Short-Term Loan, and all 36 bank
+                facilities are rated AAA/Stable.</p>
+
+            <h3 class="sub-title">Step 1 — Parse crisilRatings[]</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Instrument</th>
+                            <th>Rating</th>
+                            <th>Outlook</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Term Loan</td>
+                            <td>Crisil AAA</td>
+                            <td>Stable</td>
+                        </tr>
+                        <tr>
+                            <td>Short Term Loan</td>
+                            <td>Crisil A1+</td>
+                            <td>Stable</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul>
+                <li>Primary LT = AAA → PD = <strong>0.00%</strong></li>
+                <li>Primary ST = A1+ → PD = <strong>0.02%</strong></li>
+                <li>Outlook = Stable → multiplier = <strong>1.00×</strong></li>
+                <li>Adjusted LT PD = 0.00% × 1.00 = <strong>0.00%</strong></li>
+                <li>1-yr downgrade probability (AAA) = <strong>0.00%</strong></li>
+            </ul>
+
+            <h3 class="sub-title">Step 2 — Exposure-Weighted PD from bankFacilities[]</h3>
+            <p>All 36 facilities rated AAA → every facility PD = 0.00%.</p>
+            <ul>
+                <li>EW-PD = 0.00% | Adjusted EW-PD = 0.00%</li>
+                <li>Rating heterogeneity (std dev) = <strong>0.0000</strong> — fully uniform</li>
+            </ul>
+
+            <h3 class="sub-title">Step 3 — Normalise & Composite</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Raw Value</th>
+                            <th>Normalised (0–100)</th>
+                            <th>Weight</th>
+                            <th>Contribution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>C1 Primary PD</td>
+                            <td>0.00%</td>
+                            <td>0.00</td>
+                            <td>35%</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>C2 Exposure-Weighted PD</td>
+                            <td>0.00%</td>
+                            <td>0.00</td>
+                            <td>30%</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>C3 Downgrade Probability</td>
+                            <td>0.00%</td>
+                            <td>0.00</td>
+                            <td>20%</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>C4 Heterogeneity</td>
+                            <td>0.0000</td>
+                            <td>0.00</td>
+                            <td>15%</td>
+                            <td>0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout formula">
+                Stress Score = 100 × (0.35×0 + 0.30×0 + 0.20×0 + 0.15×0) = <strong>0.00</strong><br>
+                Stress Label = <strong>Minimal</strong> | Risk Tier = <strong>Investment Grade</strong>
+            </div>
+        </section>
+
+        <!-- 8. DESIGN -->
+        <section id="design">
+            <div class="section-label">08 — Design &amp; Limitations</div>
+            <h2 class="sec-title">Design decisions &amp; known limitations</h2>
+
+            <h3 class="sub-title">Why log-linear normalisation for PD?</h3>
+            <p>Credit risk is non-linear. The economic gap between BBB (0.46%) and B (8.40%) is far larger than the raw
+                arithmetic difference suggests. A log transform compresses the upper tail and spreads the lower range,
+                giving better resolution to investment-grade distinctions while capturing sub-IG severity accurately.
+            </p>
+
+            <h3 class="sub-title">Why 35 / 30 / 20 / 15 weights?</h3>
+            <p>The primary LT rating (C1) is CRISIL's authoritative credit opinion, so it anchors the score. Facility
+                exposure weighting (C2) captures lender-level concentration risk. Downgrade probability (C3) adds a
+                forward-looking dimension. Heterogeneity (C4) is a secondary signal for internal rating inconsistency
+                across facilities.</p>
+
+            <h3 class="sub-title">Known Limitations</h3>
+            <div class="callout warn">
+                <ul style="margin:0;padding-left:18px;">
+                    <li>Financial statement data (leverage, coverage ratios) is not included — this is a ratings-based
+                        pipeline only.</li>
+                    <li>Ratings may be stale; <code>ratingDate</code> is included in the CSV to flag this.</li>
+                    <li>Facilities without a recognised CRISIL LT rating contribute to <code>numBankFacilities</code>
+                        but not to EW-PD.</li>
+                    <li>INC (Issuer Not Cooperating) suffix is not extracted — these appear as Unrated with score = 50.
+                    </li>
+                    <li>Modifier notch interpolation (AA+, AA−, etc.) is a linear approximation between CRISIL's
+                        broad-category anchors.</li>
+                </ul>
+            </div>
+
+            <h3 class="sub-title">Extending the Pipeline</h3>
+            <ol>
+                <li><strong>Financial ratio stress</strong> — multiply stressScore by a leverage factor derived from
+                    <code>mcaPaidupCapital / mcaAuthorizedCapital</code>.</li>
+                <li><strong>Industry adjustment</strong> — high-default industries (CRISIL Annexure 7) carry an industry
+                    beta multiplier.</li>
+                <li><strong>Time-to-default overlay</strong> — combine with CRISIL Annexure 8 survival curves for 2-year
+                    and 3-year variants.</li>
+                <li><strong>Graph integration</strong> — feed <code>stressScore</code> as edge weights into the
+                    financial_kg knowledge graph for counterparty contagion analysis.</li>
+            </ol>
+        </section>
+
+        <!-- 9. REFERENCES -->
+        <section id="references">
+            <div class="section-label">09 — References</div>
+            <h2 class="sec-title">Sources</h2>
+            <ul>
+                <li>CRISIL Ratings Annual Default and Ratings Transition Study — FY2025 (Tables 1, 2, 3, 4)</li>
+                <li>CRISIL Default Study FY2025 — Annexure 10: Methodology (monthly static pools, marginal default rate
+                    method)</li>
+                <li>CRISIL Default Study FY2025 — Annexure 7: Industry-wise classification of defaults</li>
+                <li>CRISIL Default Study FY2025 — Annexure 8: Analysis of defaults — Time to default</li>
+                <li><code>financial_kg.companies</code> MongoDB collection schema</li>
+                <li>pymongo Documentation — <a href="https://pymongo.readthedocs.io"
+                        style="color:var(--accent);">pymongo.readthedocs.io</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <span>Entity Stress Pipeline · financial_kg.companies</span>
+        <span>Grounded in CRISIL Default &amp; Transition Study FY2025</span>
+    </footer>
+
+    <script>
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    navLinks.forEach(a => a.classList.remove('active'));
+                    const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        sections.forEach(s => obs.observe(s));
+    </script>
+
+</body>
+
+</html>
