@@ -28,6 +28,11 @@ import argparse
 import os
 from pymongo import MongoClient
 
+# Load environment variables from .env in root folder
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(
+    os.path.dirname(os.path.dirname(__file__))), '.env'), override=True)
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # SECTION 1 ── CRISIL FY2025 DATA TABLES
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -429,7 +434,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="CRISIL Entity Stress Pipeline")
     ap.add_argument(
         "--uri",
-        default=os.environ.get("MONGO_URI", "ip daalo "))
+        default=os.environ.get("MONGO_URI", "ip here "))
     ap.add_argument(
         "--db",
         default=os.environ.get("MONGO_DB", "financial_kg"))
