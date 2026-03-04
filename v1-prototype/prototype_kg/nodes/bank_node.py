@@ -1,3 +1,4 @@
+
 """
 prototype_kg/nodes/bank_node.py
 Create or merge :Bank nodes in Neo4j.

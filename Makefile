@@ -9,10 +9,9 @@ run-ratio-extractor:
 help:
 	@echo "Available targets:"
 	@echo "  run-ratio-extractor   Run the ratio data extractor (data-cleanser)"
-	@echo "  run-v1-kg            Run the v1-prototype KG loader"
-	@echo "  help                 Show this help message"
-
-.PHONY: run-ratio-extractor run-v1-kg help
+	@echo "  run-v1-kg             Run the v1-prototype KG loader"
+	@echo "  run-crisil-scraper    Run the CRISIL data scraper"
+	@echo "  help                  Show this help message"
 
 # v1-prototype KG loader
 V1_PROTOTYPE_DIR=./v1-prototype
@@ -21,4 +20,10 @@ KG_LOADER=$(V1_PROTOTYPE_DIR)/prototype_kg/loader.py
 run-v1-kg:
 	python3 $(KG_LOADER)
 
-.PHONY: run-v1-kg
+# CRISIL scraper
+CRISIL_SCRAPER=./data-fetcher/crisil_data_fetcher.py
+
+run-crisil-scraper:
+	python3 $(CRISIL_SCRAPER)
+
+.PHONY: run-ratio-extractor run-v1-kg run-crisil-scraper help
