@@ -8,10 +8,11 @@ run-ratio-extractor:
 
 help:
 	@echo "Available targets:"
-	@echo "  run-ratio-extractor   Run the ratio data extractor (data-cleanser)"
-	@echo "  run-v1-kg             Run the v1-prototype KG loader"
-	@echo "  run-crisil-scraper    Run the CRISIL data scraper"
-	@echo "  help                  Show this help message"
+	@echo "  run-ratio-extractor      Run the ratio data extractor (data-cleanser)"
+	@echo "  run-v1-kg                Run the v1-prototype KG loader"
+	@echo "  run-crisil-scraper       Run the CRISIL data scraper"
+	@echo "  run-bank-stress-mapper   Run the bank stress mapper (fundamental stress pipeline)"
+	@echo "  help                     Show this help message"
 
 # v1-prototype KG loader
 V1_PROTOTYPE_DIR=./v1-prototype
@@ -26,4 +27,10 @@ CRISIL_SCRAPER=./data-fetcher/crisil_data_fetcher.py
 run-crisil-scraper:
 	python3 $(CRISIL_SCRAPER)
 
-.PHONY: run-ratio-extractor run-v1-kg run-crisil-scraper help
+# Bank stress mapper
+BANK_STRESS_MAPPER=./engine/stress/bank_stress_mapper.py
+
+run-bank-stress-mapper:
+	python3 $(BANK_STRESS_MAPPER)
+
+.PHONY: run-ratio-extractor run-v1-kg run-crisil-scraper run-bank-stress-mapper help

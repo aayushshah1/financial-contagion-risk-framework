@@ -18,9 +18,9 @@ load_dotenv()
 CONFIG = {
     "api_endpoint": os.getenv("API_ENDPOINT", "https://www.crisilratings.com/content/crisilratings/en/home/our-business/ratings/rating-rationale/_jcr_content/wrapper_100_par/ratingresultlisting.results.json?cmd=RR&start=0&limit=10000&filters={%22fromDate%22:%2201/01/2025%22,%22toDate%22:%2202/01/2026%22}&_=1770467786548"),
     "html_base_url": os.getenv("HTML_BASE_URL", "https://www.crisilratings.com/mnt/winshare/Ratings/RatingList/RatingDocs/"),
-    "mongodb_uri": os.getenv("MONGODB_URI", "mongodb://localhost:27017/"),
-    "database_name": os.getenv("DATABASE_NAME", "crisil_ratings"),
-    "collection_name": os.getenv("COLLECTION_NAME", "rating_reports"),
+    "mongodb_uri": os.getenv("MONGO_URI") or os.getenv("MONGODB_URI", "mongodb://localhost:27017/"),
+    "database_name": os.getenv("MONGO_DB") or os.getenv("DATABASE_NAME", "crisil_ratings"),
+    "collection_name": os.getenv("MONGO_COLLECTION") or os.getenv("COLLECTION_NAME", "rating_reports"),
     "batch_size": int(os.getenv("BATCH_SIZE", 1)),
     # seconds between cycles
     "sleep_interval": int(os.getenv("SLEEP_INTERVAL", 1)),
