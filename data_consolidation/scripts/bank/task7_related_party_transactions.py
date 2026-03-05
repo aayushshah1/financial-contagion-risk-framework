@@ -4,6 +4,7 @@ Parses integrated XBRL files using Arelle and extracts related party transaction
 """
 from arelle import Cntlr
 from typing import Dict, List, Optional
+import glob
 import os
 import sys
 import re
@@ -25,14 +26,18 @@ def extract_related_party_transactions(bank_symbol: str) -> Dict:
     if not bank_config:
         raise ValueError(f"Unknown bank symbol: {bank_symbol}")
     
-    # Construct XBRL file path for integrated filings
-    xbrl_file = os.path.join(
-        DATA_PATHS["integrated_xbrl_dir"], 
-        f"integrated_{bank_symbol}_Q2FY26.xml"
+    # Discover XBRL file — pattern: integrated_{SYMBOL}_{YYYY-MM-DD}.xml
+    xbrl_file_pattern = os.path.join(
+        DATA_PATHS["integrated_xbrl_dir"],
+        f"integrated_{bank_symbol}_*.xml"
     )
-    
-    if not os.path.exists(xbrl_file):
-        raise FileNotFoundError(f"XBRL file not found: {xbrl_file}")
+    matches = sorted(glob.glob(xbrl_file_pattern))
+    if not matches:
+        raise FileNotFoundError(
+            f"No integrated XBRL file found for {bank_symbol} in {DATA_PATHS['integrated_xbrl_dir']}. "
+            f"Expected pattern: integrated_{bank_symbol}_YYYY-MM-DD.xml"
+        )
+    xbrl_file = matches[-1]  # Use the most recent date if multiple files exist
     
     # Suppress Arelle logging
     old_stdout = sys.stdout

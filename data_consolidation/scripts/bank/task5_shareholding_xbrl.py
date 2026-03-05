@@ -5,6 +5,7 @@ Parses XBRL shareholding pattern files using Arelle and extracts structured data
 from arelle import Cntlr
 from collections import defaultdict
 from typing import Any, Dict, List, Optional
+import glob
 import os
 import sys
 import re
@@ -31,9 +32,14 @@ def extract_shareholding_pattern(bank_symbol: str, ctrl=None) -> Dict:
     if not bank_config:
         raise ValueError(f"Unknown bank symbol: {bank_symbol}")
 
-    xbrl_file = os.path.join(DATA_PATHS["shp_dir"], f"shp_{bank_symbol}.xml")
-    if not os.path.exists(xbrl_file):
-        raise FileNotFoundError(f"XBRL file not found: {xbrl_file}")
+    xbrl_file_pattern = os.path.join(DATA_PATHS["shp_dir"], f"shareholding_{bank_symbol}_*.xml")
+    matches = sorted(glob.glob(xbrl_file_pattern))
+    if not matches:
+        raise FileNotFoundError(
+            f"No shareholding XBRL file found for {bank_symbol} in {DATA_PATHS['shp_dir']}. "
+            f"Expected pattern: shareholding_{bank_symbol}_YYYY-MM-DD.xml"
+        )
+    xbrl_file = matches[-1]  # Use the most recent date if multiple files exist
 
     # Create a temporary controller if the caller did not supply one
     _owns_ctrl = ctrl is None

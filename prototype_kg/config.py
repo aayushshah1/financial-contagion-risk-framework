@@ -52,7 +52,7 @@ def get_mongo_client():
 
 
 def get_bank_docs(client: MongoClient) -> list[dict]:
-    """Return all 3 consolidated bank documents from MongoDB (financial_kg/bank)."""
+    """Return all 41 consolidated bank documents from MongoDB (financial_kg/banks)."""
     return list(
         client[MONGO_DB][MONGO_COLLECTION].find(
             {"bankSymbol": {"$in": TARGET_BANK_SYMBOLS}}
@@ -71,21 +71,175 @@ def get_company_docs(client: MongoClient) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Target banks
+# Target banks  (all 41 scheduled commercial banks)
 # ---------------------------------------------------------------------------
 
-TARGET_BANK_SYMBOLS = ["SBIN", "HDFCBANK", "ICICIBANK"]
+TARGET_BANK_SYMBOLS = [
+    "AUBANK", "AXISBANK", "BANDHANBNK", "BANKBARODA", "BANKINDIA",
+    "CANBK", "CAPITALSFB", "CENTRALBK", "CSBBANK", "CUB",
+    "DCBBANK", "DHANBANK", "EQUITASBNK", "ESAFSFB", "FEDERALBNK",
+    "FINOPB", "HDFCBANK", "ICICIBANK", "IDBI", "IDFCFIRSTB",
+    "INDIANB", "INDUSINDBK", "IOB", "J&KBANK", "JSFB",
+    "KARURVYSYA", "KOTAKBANK", "KTKBANK", "MAHABANK", "PNB",
+    "PSB", "RBLBANK", "SBIN", "SOUTHBANK", "SURYODAY",
+    "TMB", "UCOBANK", "UJJIVANSFB", "UNIONBANK", "UTKARSHBNK",
+    "YESBANK",
+]
 
 BANK_REGISTRY = {
-    "SBIN": {
-        "bankSymbol": "SBIN",
-        "bankName": "State Bank of India",
-        # All known name variants (lowercase) that should resolve to this bank
+    "AUBANK": {
+        "bankSymbol": "AUBANK",
+        "bankName": "AU Small Finance Bank Limited",
         "nameVariants": [
-            "state bank of india",
-            "sbi",
-            "s.b.i.",
-            "state bank",
+            "au small finance bank limited",
+            "au small finance bank ltd",
+            "au small finance bank",
+            "au bank",
+        ],
+    },
+    "AXISBANK": {
+        "bankSymbol": "AXISBANK",
+        "bankName": "Axis Bank Limited",
+        "nameVariants": [
+            "axis bank limited",
+            "axis bank ltd",
+            "axis bank ltd.",
+            "axis bank",
+            "axisbank",
+            "axis bank limited ibu gift city branch",
+        ],
+    },
+    "BANDHANBNK": {
+        "bankSymbol": "BANDHANBNK",
+        "bankName": "Bandhan Bank Limited",
+        "nameVariants": [
+            "bandhan bank limited",
+            "bandhan bank ltd",
+            "bandhan bank",
+        ],
+    },
+    "BANKBARODA": {
+        "bankSymbol": "BANKBARODA",
+        "bankName": "Bank of Baroda",
+        "nameVariants": [
+            "bank of baroda",
+            "bob",
+            "bank of baroda - ifsc banking unit gift city",
+        ],
+    },
+    "BANKINDIA": {
+        "bankSymbol": "BANKINDIA",
+        "bankName": "Bank of India",
+        "nameVariants": [
+            "bank of india",
+            "bank of india limited",
+            "bank of india ltd",
+            "boi",
+            "bank of india - singapore branch",
+        ],
+    },
+    "CANBK": {
+        "bankSymbol": "CANBK",
+        "bankName": "Canara Bank",
+        "nameVariants": [
+            "canara bank",
+            "canara bank limited",
+        ],
+    },
+    "CAPITALSFB": {
+        "bankSymbol": "CAPITALSFB",
+        "bankName": "Capital Small Finance Bank Limited",
+        "nameVariants": [
+            "capital small finance bank limited",
+            "capital small finance bank ltd",
+            "capital small finance bank",
+        ],
+    },
+    "CENTRALBK": {
+        "bankSymbol": "CENTRALBK",
+        "bankName": "Central Bank of India",
+        "nameVariants": [
+            "central bank of india",
+            "central bank of india limited",
+            "central bank",
+        ],
+    },
+    "CSBBANK": {
+        "bankSymbol": "CSBBANK",
+        "bankName": "CSB Bank Limited",
+        "nameVariants": [
+            "csb bank limited",
+            "csb bank ltd",
+            "csb bank",
+            "catholic syrian bank",
+        ],
+    },
+    "CUB": {
+        "bankSymbol": "CUB",
+        "bankName": "City Union Bank Limited",
+        "nameVariants": [
+            "city union bank limited",
+            "city union bank ltd",
+            "city union bank",
+        ],
+    },
+    "DCBBANK": {
+        "bankSymbol": "DCBBANK",
+        "bankName": "DCB Bank Limited",
+        "nameVariants": [
+            "dcb bank limited",
+            "dcb bank ltd",
+            "dcb bank",
+            "development credit bank",
+        ],
+    },
+    "DHANBANK": {
+        "bankSymbol": "DHANBANK",
+        "bankName": "Dhanlaxmi Bank Limited",
+        "nameVariants": [
+            "dhanlaxmi bank limited",
+            "dhanlaxmi bank ltd",
+            "dhanlaxmi bank",
+        ],
+    },
+    "EQUITASBNK": {
+        "bankSymbol": "EQUITASBNK",
+        "bankName": "Equitas Small Finance Bank Limited",
+        "nameVariants": [
+            "equitas small finance bank limited",
+            "equitas small finance bank ltd",
+            "equitas small finance bank",
+        ],
+    },
+    "ESAFSFB": {
+        "bankSymbol": "ESAFSFB",
+        "bankName": "ESAF Small Finance Bank Limited",
+        "nameVariants": [
+            "esaf small finance bank limited",
+            "esaf small finance bank ltd",
+            "esaf small finance bank",
+        ],
+    },
+    "FEDERALBNK": {
+        "bankSymbol": "FEDERALBNK",
+        "bankName": "Federal Bank Ltd",
+        "nameVariants": [
+            "federal bank limited",
+            "federal bank ltd",
+            "federal bank ltd.",
+            "federal bank",
+            "the federal bank limited",
+            "the federal bank ltd",
+        ],
+    },
+    "FINOPB": {
+        "bankSymbol": "FINOPB",
+        "bankName": "Fino Payments Bank Limited",
+        "nameVariants": [
+            "fino payments bank limited",
+            "fino payments bank ltd",
+            "fino payments bank",
+            "fino bank",
         ],
     },
     "HDFCBANK": {
@@ -108,6 +262,241 @@ BANK_REGISTRY = {
             "icici bank ltd.",
             "icici bank",
             "icicibank",
+        ],
+    },
+    "IDBI": {
+        "bankSymbol": "IDBI",
+        "bankName": "IDBI Bank Limited",
+        "nameVariants": [
+            "idbi bank limited",
+            "idbi bank ltd",
+            "idbi bank ltd.",
+            "idbi bank",
+            "idbi",
+        ],
+    },
+    "IDFCFIRSTB": {
+        "bankSymbol": "IDFCFIRSTB",
+        "bankName": "IDFC First Bank Limited",
+        "nameVariants": [
+            "idfc first bank limited",
+            "idfc first bank ltd",
+            "idfc first bank ltd.",
+            "idfc first bank",
+            "idfc firstbank",
+            "idfc bank",
+        ],
+    },
+    "INDIANB": {
+        "bankSymbol": "INDIANB",
+        "bankName": "Indian Bank",
+        "nameVariants": [
+            "indian bank",
+            "indian bank limited",
+        ],
+    },
+    "INDUSINDBK": {
+        "bankSymbol": "INDUSINDBK",
+        "bankName": "IndusInd Bank Ltd",
+        "nameVariants": [
+            "indusind bank limited",
+            "indusind bank ltd",
+            "indusind bank ltd.",
+            "indusind bank",
+            "indusindbk",
+        ],
+    },
+    "IOB": {
+        "bankSymbol": "IOB",
+        "bankName": "Indian Overseas Bank",
+        "nameVariants": [
+            "indian overseas bank",
+            "indian overseas bank limited",
+            "iob",
+        ],
+    },
+    "J&KBANK": {
+        "bankSymbol": "J&KBANK",
+        "bankName": "Jammu & Kashmir Bank Ltd",
+        "nameVariants": [
+            "jammu and kashmir bank limited",
+            "jammu & kashmir bank limited",
+            "jammu and kashmir bank ltd",
+            "jammu & kashmir bank ltd",
+            "j&k bank",
+            "jk bank",
+            "the jammu and kashmir bank limited",
+        ],
+    },
+    "JSFB": {
+        "bankSymbol": "JSFB",
+        "bankName": "Jana Small Finance Bank Limited",
+        "nameVariants": [
+            "jana small finance bank limited",
+            "jana small finance bank ltd",
+            "jana small finance bank",
+        ],
+    },
+    "KARURVYSYA": {
+        "bankSymbol": "KARURVYSYA",
+        "bankName": "Karur Vysya Bank Ltd",
+        "nameVariants": [
+            "karur vysya bank limited",
+            "karur vysya bank ltd",
+            "karur vysya bank ltd.",
+            "karur vysya bank",
+            "the karur vysya bank limited",
+            "kvb",
+        ],
+    },
+    "KOTAKBANK": {
+        "bankSymbol": "KOTAKBANK",
+        "bankName": "Kotak Mahindra Bank Ltd",
+        "nameVariants": [
+            "kotak mahindra bank limited",
+            "kotak mahindra bank ltd",
+            "kotak mahindra bank ltd.",
+            "kotak mahindra bank",
+            "kotak bank",
+            "kotakbank",
+        ],
+    },
+    "KTKBANK": {
+        "bankSymbol": "KTKBANK",
+        "bankName": "Karnataka Bank Ltd",
+        "nameVariants": [
+            "karnataka bank limited",
+            "karnataka bank ltd",
+            "karnataka bank ltd.",
+            "karnataka bank",
+            "the karnataka bank limited",
+        ],
+    },
+    "MAHABANK": {
+        "bankSymbol": "MAHABANK",
+        "bankName": "Bank of Maharashtra",
+        "nameVariants": [
+            "bank of maharashtra",
+            "bank of maharashtra limited",
+        ],
+    },
+    "PNB": {
+        "bankSymbol": "PNB",
+        "bankName": "Punjab National Bank",
+        "nameVariants": [
+            "punjab national bank",
+            "punjab national bank limited",
+            "pnb",
+        ],
+    },
+    "PSB": {
+        "bankSymbol": "PSB",
+        "bankName": "Punjab & Sind Bank",
+        "nameVariants": [
+            "punjab and sind bank",
+            "punjab & sind bank",
+            "punjab & sind bank limited",
+            "psb",
+        ],
+    },
+    "RBLBANK": {
+        "bankSymbol": "RBLBANK",
+        "bankName": "RBL Bank Ltd",
+        "nameVariants": [
+            "rbl bank limited",
+            "rbl bank ltd",
+            "rbl bank ltd.",
+            "rbl bank",
+            "ratnakar bank",
+        ],
+    },
+    "SBIN": {
+        "bankSymbol": "SBIN",
+        "bankName": "State Bank of India",
+        "nameVariants": [
+            "state bank of india",
+            "sbi",
+            "s.b.i.",
+            "state bank",
+        ],
+    },
+    "SOUTHBANK": {
+        "bankSymbol": "SOUTHBANK",
+        "bankName": "South Indian Bank Ltd",
+        "nameVariants": [
+            "south indian bank limited",
+            "south indian bank ltd",
+            "south indian bank ltd.",
+            "south indian bank",
+            "the south indian bank limited",
+            "sib",
+        ],
+    },
+    "SURYODAY": {
+        "bankSymbol": "SURYODAY",
+        "bankName": "Suryoday Small Finance Bank Limited",
+        "nameVariants": [
+            "suryoday small finance bank limited",
+            "suryoday small finance bank ltd",
+            "suryoday small finance bank",
+        ],
+    },
+    "TMB": {
+        "bankSymbol": "TMB",
+        "bankName": "Tamilnad Mercantile Bank Ltd",
+        "nameVariants": [
+            "tamilnad mercantile bank limited",
+            "tamilnad mercantile bank ltd",
+            "tamilnad mercantile bank ltd.",
+            "tamilnad mercantile bank",
+            "tmb",
+        ],
+    },
+    "UCOBANK": {
+        "bankSymbol": "UCOBANK",
+        "bankName": "UCO Bank",
+        "nameVariants": [
+            "uco bank",
+            "uco bank limited",
+        ],
+    },
+    "UJJIVANSFB": {
+        "bankSymbol": "UJJIVANSFB",
+        "bankName": "Ujjivan Small Finance Bank Limited",
+        "nameVariants": [
+            "ujjivan small finance bank limited",
+            "ujjivan small finance bank ltd",
+            "ujjivan small finance bank",
+        ],
+    },
+    "UNIONBANK": {
+        "bankSymbol": "UNIONBANK",
+        "bankName": "Union Bank of India",
+        "nameVariants": [
+            "union bank of india",
+            "union bank of india limited",
+            "union bank of india ltd",
+            "union bank",
+        ],
+    },
+    "UTKARSHBNK": {
+        "bankSymbol": "UTKARSHBNK",
+        "bankName": "Utkarsh Small Finance Bank Limited",
+        "nameVariants": [
+            "utkarsh small finance bank limited",
+            "utkarsh small finance bank ltd",
+            "utkarsh small finance bank",
+        ],
+    },
+    "YESBANK": {
+        "bankSymbol": "YESBANK",
+        "bankName": "Yes Bank Ltd",
+        "nameVariants": [
+            "yes bank limited",
+            "yes bank ltd",
+            "yes bank ltd.",
+            "yes bank",
+            "yesbank",
         ],
     },
 }

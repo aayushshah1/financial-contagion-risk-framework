@@ -28,6 +28,14 @@ CREATE CONSTRAINT priority_sector_rbi_key_unique IF NOT EXISTS
 CREATE INDEX company_resolved_idx IF NOT EXISTS
   FOR (c:Company) ON (c.resolved);
 
+// Fast lookup for lender stub nodes (isStub=true are unresolved lenders)
+CREATE INDEX company_is_stub_idx IF NOT EXISTS
+  FOR (c:Company) ON (c.isStub);
+
+// Fast lookup by nodeSource (e.g. 'LenderStub', 'CRISIL', 'MCA')
+CREATE INDEX company_node_source_idx IF NOT EXISTS
+  FOR (c:Company) ON (c.nodeSource);
+
 // Fast lookup for CRISIL industry membership queries
 CREATE INDEX company_industry_code_idx IF NOT EXISTS
   FOR (c:Company) ON (c.industryCode);

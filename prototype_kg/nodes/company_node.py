@@ -55,6 +55,7 @@ _UPSERT_COMPANY = """
 UNWIND $batch AS row
 MERGE (c:Company {cin: row.cin})
 ON CREATE SET
+    c.name                        = CASE WHEN row.crisilName <> '' THEN row.crisilName ELSE row.mcaName END,
     c.companyCode                 = row.companyCode,
     c.crisilName                  = row.crisilName,
     c.mcaName                     = row.mcaName,
@@ -68,6 +69,7 @@ ON CREATE SET
     c.shpTotalShares              = row.shpTotalShares,
     c.shpTotalShareholders        = row.shpTotalShareholders
 ON MATCH SET
+    c.name                        = CASE WHEN row.crisilName <> '' THEN row.crisilName WHEN row.mcaName <> '' THEN row.mcaName ELSE c.name END,
     c.companyCode                 = CASE WHEN row.companyCode <> ''  THEN row.companyCode  ELSE c.companyCode  END,
     c.crisilName                  = CASE WHEN row.crisilName <> ''   THEN row.crisilName   ELSE c.crisilName   END,
     c.mcaName                     = CASE WHEN row.mcaName <> ''      THEN row.mcaName      ELSE c.mcaName      END,
@@ -81,6 +83,10 @@ ON MATCH SET
     c.shpTotalShares              = CASE WHEN row.shpTotalShares > 0 THEN row.shpTotalShares ELSE c.shpTotalShares END,
     c.shpTotalShareholders        = CASE WHEN row.shpTotalShareholders > 0 THEN row.shpTotalShareholders ELSE c.shpTotalShareholders END
 """
+# NOTE: isStub and nodeSource are intentionally NOT set in _UPSERT_COMPANY.
+# They are managed exclusively by _MERGE_LENDER_STUB in lends_to.py (ON CREATE only),
+# so a real company node is never accidentally marked as a stub, and a stub's
+# isStub/nodeSource flags survive subsequent MERGE calls from this upsert.
 
 
 # ---------------------------------------------------------------------------

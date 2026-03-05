@@ -11,7 +11,8 @@ Sequence:
   5. Company nodes
   6. Shareholder nodes (bank SHP)
   7. Shareholder nodes (company SHP)
-  8. LENDS_TO edges
+  8. LENDS_TO edges (bank-side: advances.companies → Bank→Company)
+  8B.LENDS_TO edges (company-side: bankFacilities → Bank→Company + Company→Company + stubs)
   9. BELONGS_TO edges         (Company → Industry)
  10. SHAREHOLDER_OF edges (bank SHP)
  11. SHAREHOLDER_OF edges (company SHP)
@@ -25,7 +26,7 @@ Run:
 
 Optional flags:
     --skip-schema        Skip DDL step (if already applied)
-    --banks SBIN HDFCBANK ICICIBANK   Override which banks to process
+    --banks SBIN HDFCBANK ...         Override which banks to process (default: all 41)
 """
 
 import argparse
@@ -42,7 +43,7 @@ from nodes.sector_node      import build_sector_nodes
 from nodes.industry_node    import build_industry_nodes
 from nodes.company_node     import build_company_nodes
 from nodes.shareholder_node import build_shareholder_nodes, build_company_shareholder_nodes
-from relationships.lends_to         import build_lends_to
+from relationships.lends_to         import build_lends_to, build_lends_to_from_companies
 from relationships.belongs_to       import build_belongs_to
 from relationships.shareholder_of   import build_shareholder_of, build_company_shareholder_of
 from relationships.subsidiary_of    import build_subsidiary_of
@@ -138,7 +139,7 @@ def run(bank_symbols: list[str], skip_schema: bool):
 
     print("=" * 60)
     print("  Knowledge Graph Loader — prototype_kg")
-    print(f"  Banks: {bank_symbols}")
+    print(f"  Banks: {len(bank_symbols)} banks selected")
     print("=" * 60)
 
     # ── Connections ─────────────────────────────────────────────────────────
@@ -206,9 +207,17 @@ def run(bank_symbols: list[str], skip_schema: bool):
         print("\n[step 7] Building :Shareholder nodes (company SHP) …")
         company_shareholders = build_company_shareholder_nodes(driver, company_docs, registry)
 
-        # ── 8. LENDS_TO edges ────────────────────────────────────────────────
-        print("\n[step 8] Building LENDS_TO edges …")
+        # ── 8. LENDS_TO edges (bank-side: advances.companies) ─────────────
+        print("\n[step 8] Building LENDS_TO edges (bank-side) …")
         build_lends_to(driver, bank_docs)
+
+        # ── 8B. LENDS_TO edges (company-side: bankFacilities, polymorphic) ──
+        # Resolves each facility's lenderName against GER:
+        #   Bank   → (Bank)-[:LENDS_TO]->(Company)
+        #   Company→ (Company)-[:LENDS_TO]->(Company)
+        #   Unknown→ stub :Company created, then (Company)-[:LENDS_TO]->(Company)
+        print("\n[step 8B] Building LENDS_TO edges (company-side, polymorphic) …")
+        build_lends_to_from_companies(driver, company_docs, registry)
 
         # ── 9. BELONGS_TO edges  (Company → Industry) ───────────────────────
         print("\n[step 9] Building BELONGS_TO edges …")
@@ -262,7 +271,7 @@ if __name__ == "__main__":
         nargs="+",
         default=TARGET_BANK_SYMBOLS,
         metavar="SYMBOL",
-        help="Bank symbols to process (default: all 3 target banks).",
+        help="Bank symbols to process (default: all 41 target banks).",
     )
     args = parser.parse_args()
     run(bank_symbols=args.banks, skip_schema=args.skip_schema)

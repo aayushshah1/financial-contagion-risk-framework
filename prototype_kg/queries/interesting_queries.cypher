@@ -349,3 +349,119 @@ RETURN
     relTypes
 ORDER BY bankConnections DESC, relationshipTypes DESC
 LIMIT 30;
+
+// ── Q21 ── Full Lending Chain: Bank → Company → Company (2-hop credit chain) ──
+//
+// Visualises chains where a bank lends to Company A, which in turn has
+// a lending relationship with Company B (inter-corporate deposits / loans).
+// Reveals shadow-lending / pass-through credit structures.
+
+MATCH path = (b:Bank)-[:LENDS_TO]->(c1:Company)-[:LENDS_TO]->(c2:Company)
+RETURN path
+LIMIT 100;
+
+
+// ── Q22 ── 3-Hop Lending Chain: Bank → Co → Co → Co ─────────────────────────
+//
+// Deeper chain: bank credit flows through two corporate intermediaries.
+// Useful to surface layered credit structures or shadow banking chains.
+
+MATCH path = (b:Bank)-[:LENDS_TO]->(c1:Company)-[:LENDS_TO]->(c2:Company)-[:LENDS_TO]->(c3:Company)
+RETURN path
+LIMIT 50;
+
+
+// ── Q23 ── Bipartite Bank→Company Lending Web (graph view) ───────────────────
+//
+// Returns the full bipartite subgraph of all three banks and every company
+// they lend to, weighted by loan amount. Feed directly into Browser or PyVis.
+
+MATCH (b:Bank)-[l:LENDS_TO]->(c:Company)
+RETURN b, l, c
+ORDER BY l.totalAmount DESC
+LIMIT 200;
+
+
+// ── Q24 ── Ego-Graph: Everything Connected to a Single Bank ──────────────────
+//
+// Replace $bankSymbol with 'SBIN', 'HDFCBANK', or 'ICICIBANK'.
+// Returns every node within 2 hops of a specific bank — great for
+// full ego-graph visualisation in Neo4j Browser.
+
+MATCH path = (b:Bank {bankSymbol: $bankSymbol})-[*1..2]-(n)
+RETURN path
+LIMIT 300;
+
+
+// ── Q25 ── Interconnected Bank Cluster (all 3 banks + shared nodes) ───────────
+//
+// Returns the full subgraph linking all three banks through shared
+// companies, shareholders, or RPT counterparties. Best run in Browser
+// for a force-directed graph of the entire prototype KG.
+
+MATCH (b:Bank)
+MATCH path = (b)-[r*1..2]-(other)
+WHERE other:Company OR other:Shareholder OR other:Bank
+RETURN path
+LIMIT 500;
+
+
+// ── Q26 ── Exposure Heatmap Backbone: Bank → Industry → Company ───────────────
+//
+// Three-node path: Bank lends to Company which belongs to an Industry.
+// Renders a layered graph — banks at top, industries in middle, companies at base.
+// Perfect for a hierarchical / sunburst layout in PyVis or Gephi.
+
+MATCH path = (b:Bank)-[:LENDS_TO]->(c:Company)-[:BELONGS_TO]->(i:Industry)
+RETURN path
+ORDER BY b.bankSymbol, i.industryName
+LIMIT 300;
+
+
+// ── Q27 ── Shareholder → Bank → Borrower Chain ────────────────────────────────
+//
+// Visualises the full ownership-to-lending chain:
+// Shareholder S holds stake in Bank B which lends to Company C.
+// Highlights potential conflicts where a major shareholder benefits
+// indirectly from a bank's lending decisions.
+
+MATCH path = (s:Shareholder)-[:SHAREHOLDER_OF]->(b:Bank)-[:LENDS_TO]->(c:Company)
+WHERE s.shareholdingPercentage IS NOT NULL
+RETURN path
+LIMIT 150;
+
+
+// ── Q28 ── Circular Risk Web: Company Borrows From Bank AND Holds Shares ───────
+//
+// Company C borrows from Bank B and simultaneously holds shares in Bank B.
+// A circular incentive loop — visualise as a triangle in the graph.
+
+MATCH path = (c:Company)-[:SHAREHOLDER_OF]->(b:Bank)-[:LENDS_TO]->(c)
+RETURN path;
+
+
+// ── Q29 ── RPT + Lending Overlap Subgraph ────────────────────────────────────
+//
+// Returns nodes and edges where BOTH a LENDS_TO and a RELATED_PARTY
+// relationship exist between a bank and a company — double-exposure nodes.
+// These are the highest-risk company nodes in the graph.
+
+MATCH (b:Bank)-[l:LENDS_TO]->(c:Company)
+MATCH (b)-[rpt:RELATED_PARTY]->(c)
+RETURN b, l, rpt, c
+ORDER BY l.totalAmount DESC;
+
+
+// ── Q30 ── Full Knowledge Graph Snapshot (sampled, for overview layout) ───────
+//
+// A sampled view of the entire graph — all node types, all relationship types.
+// Use in Neo4j Browser with a force-directed layout for a "galaxy view".
+// Tweak LIMIT per label to balance density vs. readability.
+
+MATCH (b:Bank)-[r1:LENDS_TO]->(c:Company)        WITH b, r1, c LIMIT 100
+OPTIONAL MATCH (c)-[r2:BELONGS_TO]->(i:Industry)
+OPTIONAL MATCH (s)-[r3:SHAREHOLDER_OF]->(b)       WHERE s:Shareholder OR s:Company
+OPTIONAL MATCH (b)-[r4:RELATED_PARTY]->(c)
+OPTIONAL MATCH (c)-[r5:SUBSIDIARY_OF]->(b)
+RETURN b, r1, c, r2, i, s, r3, r4, r5
+LIMIT 500;
