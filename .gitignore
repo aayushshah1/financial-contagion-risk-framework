@@ -16,3 +16,4 @@ Ds.Store
 .venv
 venv/
 .idea
+node_modules
