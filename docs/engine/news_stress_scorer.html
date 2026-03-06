@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Stress Scorer — Documentation</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0f0e0c;
+            --ink-soft: #4a4640;
+            --ink-faint: #9a9490;
+            --paper: #f7f4ef;
+            --paper-2: #efece6;
+            --rule: #d8d3ca;
+            --red: #c0392b;
+            --gold: #b8860b;
+            --green: #1a6b3c;
+            --blue: #1a3a6b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* ── noise texture overlay ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 999;
+            opacity: .5;
+        }
+
+        /* ── masthead ── */
+        .masthead {
+            border-bottom: 3px double var(--ink);
+            padding: 20px 0 16px;
+            text-align: center;
+            background: var(--paper);
+        }
+
+        .masthead-eyebrow {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: 10px;
+        }
+
+        .masthead h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -1px;
+            color: var(--ink);
+        }
+
+        .masthead h1 em {
+            font-style: italic;
+            color: var(--red);
+        }
+
+        .masthead-sub {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .masthead-sub span {
+            color: var(--rule);
+        }
+
+        /* ── layout ── */
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        /* ── hero tagline ── */
+        .hero {
+            padding: 52px 0 44px;
+            border-bottom: 1px solid var(--rule);
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .hero-lede {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 2.8vw, 1.7rem);
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--ink);
+        }
+
+        .hero-lede em {
+            font-style: italic;
+            color: var(--red);
+        }
+
+        .hero-body {
+            margin-top: 18px;
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .score-example {
+            background: var(--ink);
+            color: #e8d9b8;
+            border-radius: 4px;
+            padding: 20px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            line-height: 1.8;
+        }
+
+        .score-example .ex-label {
+            color: var(--ink-faint);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .score-example .field {
+            color: #9ab5d9;
+        }
+
+        .score-example .val {
+            color: #e8d9b8;
+        }
+
+        .score-example .num {
+            color: #f0a050;
+        }
+
+        .score-example .str {
+            color: #90d9a0;
+        }
+
+        .score-example .key {
+            color: #d9a0c0;
+        }
+
+        /* ── section ── */
+        section {
+            padding: 44px 0;
+            border-bottom: 1px solid var(--rule);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .5s ease, transform .5s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .section-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+
+        p {
+            color: var(--ink-soft);
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* ── pipeline diagram ── */
+        .pipeline {
+            margin: 28px 0;
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+
+        .pipe-step {
+            flex: 1;
+            min-width: 120px;
+            background: var(--paper-2);
+            border: 1px solid var(--rule);
+            border-right: none;
+            padding: 18px 16px;
+            position: relative;
+        }
+
+        .pipe-step:last-child {
+            border-right: 1px solid var(--rule);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .pipe-step:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .pipe-step::after {
+            content: '→';
+            position: absolute;
+            right: -13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--ink-faint);
+            font-size: 1rem;
+            z-index: 1;
+            background: var(--paper);
+            padding: 0 2px;
+        }
+
+        .pipe-step:last-child::after {
+            display: none;
+        }
+
+        .pipe-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 6px;
+        }
+
+        .pipe-title {
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.78rem;
+            color: var(--ink);
+            margin-bottom: 5px;
+        }
+
+        .pipe-desc {
+            font-size: 0.68rem;
+            color: var(--ink-faint);
+            line-height: 1.5;
+        }
+
+        /* ── scale table ── */
+        .scale-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.85rem;
+        }
+
+        .scale-table th {
+            text-align: left;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            padding: 8px 16px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .scale-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--rule);
+            vertical-align: top;
+        }
+
+        .scale-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .scale-table .band {
+            font-family: 'DM Mono', monospace;
+            font-weight: 500;
+            font-size: 0.82rem;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        /* ── callout box ── */
+        .callout {
+            border-left: 3px solid var(--gold);
+            background: #fdf8ee;
+            padding: 18px 20px;
+            margin: 24px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout .callout-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .callout p {
+            font-size: 0.88rem;
+            margin: 0;
+            color: var(--ink-soft);
+        }
+
+        /* ── field list ── */
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--rule);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .field-item {
+            background: var(--paper);
+            padding: 14px 18px;
+        }
+
+        .field-item .fname {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--blue);
+            margin-bottom: 3px;
+        }
+
+        .field-item .fdesc {
+            font-size: 0.75rem;
+            color: var(--ink-faint);
+            line-height: 1.4;
+        }
+
+        /* ── source list ── */
+        .source-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .source-row:last-child {
+            border-bottom: none;
+        }
+
+        .source-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: var(--paper-2);
+            border: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .source-name {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        .source-desc {
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+        }
+
+        /* ── fallback note ── */
+        .fallback-chain {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 24px 0;
+        }
+
+        .fallback-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--paper-2);
+            border: 1px solid var(--rule);
+            border-bottom: none;
+            font-size: 0.82rem;
+        }
+
+        .fallback-item:first-child {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .fallback-item:last-child {
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0 0 4px 4px;
+        }
+
+        .fallback-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .fb-primary {
+            background: #e8f5ee;
+            color: var(--green);
+            border: 1px solid #b0d9bf;
+        }
+
+        .fb-fallback {
+            background: #fdf3e3;
+            color: var(--gold);
+            border: 1px solid #e8d0a0;
+        }
+
+        .fb-baseline {
+            background: #fde8e6;
+            color: var(--red);
+            border: 1px solid #e8b0a8;
+        }
+
+        /* ── output block ── */
+        .output-block {
+            background: var(--ink);
+            border-radius: 6px;
+            padding: 24px;
+            margin: 24px 0;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            line-height: 2;
+            color: #c8c0b0;
+        }
+
+        .ob-key {
+            color: #9ab5d9;
+        }
+
+        .ob-str {
+            color: #90d9a0;
+        }
+
+        .ob-num {
+            color: #f0a050;
+        }
+
+        .ob-arr {
+            color: #d9c080;
+        }
+
+        .ob-label {
+            display: block;
+            font-size: 0.58rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* ── context rules ── */
+        .context-rules {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .context-rules li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--rule);
+            font-size: 0.88rem;
+            color: var(--ink-soft);
+        }
+
+        .context-rules li:last-child {
+            border-bottom: none;
+        }
+
+        .rule-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── footer ── */
+        footer {
+            border-top: 3px double var(--ink);
+            padding: 28px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        footer .f-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        footer .f-meta {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.62rem;
+            color: var(--ink-faint);
+            letter-spacing: 1px;
+            line-height: 1.9;
+            text-align: right;
+        }
+
+        /* ── responsive ── */
+        @media (max-width: 680px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .field-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pipeline {
+                flex-direction: column;
+            }
+
+            .pipe-step {
+                border-right: 1px solid var(--rule);
+                border-bottom: none;
+                border-radius: 0;
+            }
+
+            .pipe-step:first-child {
+                border-radius: 4px 4px 0 0;
+            }
+
+            .pipe-step:last-child {
+                border-bottom: 1px solid var(--rule);
+                border-radius: 0 0 4px 4px;
+            }
+
+            .pipe-step::after {
+                content: '↓';
+                right: auto;
+                left: 50%;
+                top: auto;
+                bottom: -14px;
+                transform: translateX(-50%);
+            }
+
+            footer .f-meta {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Masthead -->
+    <div class="masthead">
+        <div class="masthead-eyebrow">Technical Documentation · Financial Risk Engine</div>
+        <h1>News <em>Stress</em> Scorer</h1>
+        <div class="masthead-sub">
+            FinBERT Sentiment Analysis
+            <span>|</span>
+            Real-Time News Ingestion
+            <span>|</span>
+            Weighted Aggregation
+        </div>
+    </div>
+
+    <div class="page">
+
+        <!-- Hero -->
+        <div class="hero">
+            <div>
+                <div class="hero-lede">
+                    A pipeline that reads a company from your database, finds its news, and returns a <em>financial
+                        stress score</em> between 0 and 1.
+                </div>
+                <div class="hero-body">
+                    Given any company identifier — a code like <strong>ALEPPL</strong> or a name like <strong>Alpha
+                        Ecoplast Private Limited</strong> — the system pulls its profile from MongoDB, searches Google
+                    News for recent coverage, and classifies each snippet through <strong>FinBERT</strong>
+                    (ProsusAI/finbert) — a BERT model fine-tuned on financial text — then aggregates the per-snippet
+                    sentiment into a single weighted stress score.
+                </div>
+            </div>
+            <div>
+                <div class="score-example">
+                    <span class="ex-label">// Example Output</span>
+                    {<br>
+                    &nbsp;&nbsp;<span class="field">"company_code"</span>: <span class="str">"ALEPPL"</span>,<br>
+                    &nbsp;&nbsp;<span class="field">"stress_score"</span>: <span class="num">0.5202</span>,<br>
+                    &nbsp;&nbsp;<span class="field">"confidence"</span>: <span class="str">"medium"</span>,<br>
+                    &nbsp;&nbsp;<span class="field">"key_drivers"</span>: [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"CRISIL rating action…"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Starlinger PET line…"</span><br>
+                    &nbsp;&nbsp;],<br>
+                    &nbsp;&nbsp;<span class="field">"news_used"</span>: <span class="num">3</span>,<br>
+                    &nbsp;&nbsp;<span class="field">"articles"</span>: [<span class="str">…</span>]<br>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Pipeline -->
+        <section>
+            <div class="section-num">// 01</div>
+            <div class="section-title">How It Works</div>
+            <p>The system runs four sequential steps. Each step feeds the next — if any step returns nothing,
+                the following step still runs on whatever is available.</p>
+
+            <div class="pipeline">
+                <div class="pipe-step">
+                    <div class="pipe-num">Step 1</div>
+                    <div class="pipe-title">MongoDB Lookup</div>
+                    <div class="pipe-desc">Fetch the company profile by code or name from your financial knowledge graph
+                    </div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">Step 2</div>
+                    <div class="pipe-title">News Fetch</div>
+                    <div class="pipe-desc">Query Google News RSS using the company name as the search term</div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">Step 3</div>
+                    <div class="pipe-title">FinBERT Scoring</div>
+                    <div class="pipe-desc">Classify each snippet with FinBERT (positive / neutral / negative) and
+                        aggregate into a stress score</div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">Step 4</div>
+                    <div class="pipe-title">Output</div>
+                    <div class="pipe-desc">Return normalised stress score, confidence, drivers and summary</div>
+                </div>
+            </div>
+
+            <div class="callout">
+                <div class="callout-label">Design choice</div>
+                <p>The company name is used directly as the news search query — there is no keyword matching or feed
+                    filtering. This means you always get articles that are explicitly about that company rather than
+                    loosely related sector news.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Data Sources -->
+        <section>
+            <div class="section-num">// 02</div>
+            <div class="section-title">Data Sources</div>
+            <p>The scorer draws from two sources per company. Both are queried on every run — there is no caching.</p>
+
+            <div class="source-row">
+                <div class="source-icon">🗄</div>
+                <div>
+                    <div class="source-name">MongoDB — finincial_kg.companies</div>
+                    <div class="source-desc">Your existing database of 2,818 companies. Contains CRISIL ratings, MCA
+                        registration data, industry codes, listing status, capital structure and shareholding patterns.
+                        The CRISIL heading is always fed to FinBERT as an extra text snippet — even when no news is
+                        found, the model can score from the rating action text alone.</div>
+                </div>
+            </div>
+
+            <div class="source-row">
+                <div class="source-icon">📰</div>
+                <div>
+                    <div class="source-name">Google News RSS</div>
+                    <div class="source-desc">A free, unauthenticated RSS feed queried by company name. Returns up to 10
+                        recent articles with title, source, publication date and summary snippet. Requires a
+                        browser-style User-Agent header — without it, Google returns an empty response.</div>
+                </div>
+            </div>
+
+            <p>The script tries two query strategies against Google News in order, stopping as soon as it gets results:
+            </p>
+
+            <div class="fallback-chain">
+                <div class="fallback-item">
+                    <span class="fallback-badge fb-primary">Primary</span>
+                    Exact quoted name — <code
+                        style="font-family:'DM Mono',monospace;font-size:.8em">"Alpha Ecoplast Private Limited"</code>
+                </div>
+                <div class="fallback-item">
+                    <span class="fallback-badge fb-fallback">Fallback</span>
+                    Short name with legal suffix stripped — <code
+                        style="font-family:'DM Mono',monospace;font-size:.8em">"Alpha Ecoplast"</code>
+                </div>
+                <div class="fallback-item">
+                    <span class="fallback-badge fb-baseline">No news</span>
+                    Score entirely from MongoDB profile and CRISIL heading
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Company lookup -->
+        <section>
+            <div class="section-num">// 03</div>
+            <div class="section-title">Company Lookup Logic</div>
+            <p>You can identify a company in three ways. The system tries each field in order until it finds a match:
+            </p>
+
+            <div class="field-grid">
+                <div class="field-item">
+                    <div class="fname">companyCode</div>
+                    <div class="fdesc">Exact match. Fastest. e.g. <em>ALEPPL</em></div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">crisilName</div>
+                    <div class="fdesc">Case-insensitive regex match. e.g. <em>alpha ecoplast</em></div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">mcaName</div>
+                    <div class="fdesc">Case-insensitive regex match against the MCA registered name</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">Fallback</div>
+                    <div class="fdesc">Raises a clear error showing 10 sample codes from the collection</div>
+                </div>
+            </div>
+
+            <p>The following fields from the matched document are used for building text snippets and enriching
+                the final output:</p>
+
+            <div class="field-grid">
+                <div class="field-item">
+                    <div class="fname">crisilName / mcaName</div>
+                    <div class="fdesc">Official company name</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">listingStatus</div>
+                    <div class="fdesc">Listed or Unlisted</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">mcaClass</div>
+                    <div class="fdesc">Private / Public</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">mcaCompanyStatus</div>
+                    <div class="fdesc">Active / Struck off etc.</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">industryName + nicCode</div>
+                    <div class="fdesc">Sector classification</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">mcaAuthorizedCapital</div>
+                    <div class="fdesc">Authorised capital in ₹</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">mcaPaidupCapital</div>
+                    <div class="fdesc">Paid-up capital — key size signal</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">crisilHeading</div>
+                    <div class="fdesc">Most recent CRISIL rating line — the single most valuable field when no news
+                        exists</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Scoring -->
+        <section>
+            <div class="section-num">// 04</div>
+            <div class="section-title">The Stress Score</div>
+            <p>The score is a single float between <strong>0.0</strong> (no stress) and <strong>1.0</strong> (severe
+                distress), produced by running each text snippet through <strong>FinBERT</strong>
+                (<code style="font-family:'DM Mono',monospace;font-size:.85em">ProsusAI/finbert</code>).
+                FinBERT returns three probabilities per snippet: <strong>positive</strong>, <strong>neutral</strong>,
+                and <strong>negative</strong>. Each is mapped to a stress value using:
+                <code style="font-family:'DM Mono',monospace;font-size:.85em">stress = negative + 0.5 × neutral</code>.
+                The per-snippet scores are then aggregated via a weighted average (news headlines get weight 2×,
+                CRISIL/baseline snippets get 1×).
+            </p>
+
+            <table class="scale-table">
+                <thead>
+                    <tr>
+                        <th>Band</th>
+                        <th>Score Range</th>
+                        <th>What it means</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="band"><span class="dot" style="background:#1a6b3c"></span>None</td>
+                        <td>0.0 – 0.2</td>
+                        <td>No stress. Positive news, routine operations, stable ratings.</td>
+                    </tr>
+                    <tr>
+                        <td class="band"><span class="dot" style="background:#5a9a3c"></span>Low</td>
+                        <td>0.2 – 0.4</td>
+                        <td>Minor operational friction. Small delays, management reshuffles at large companies.</td>
+                    </tr>
+                    <tr>
+                        <td class="band"><span class="dot" style="background:#b8860b"></span>Moderate</td>
+                        <td>0.4 – 0.6</td>
+                        <td>Noticeable issues. Leadership change at a small firm, downgrade watch, sector headwinds.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="band"><span class="dot" style="background:#d0600a"></span>High</td>
+                        <td>0.6 – 0.8</td>
+                        <td>Significant concern. Rating downgrade, auditor resignation, payment delays, legal action.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="band"><span class="dot" style="background:#c0392b"></span>Severe</td>
+                        <td>0.8 – 1.0</td>
+                        <td>Critical distress. Default, NCLT filing, insolvency proceedings, fraud investigation.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The output also includes these supporting fields:</p>
+
+            <div class="field-grid">
+                <div class="field-item">
+                    <div class="fname">confidence</div>
+                    <div class="fdesc">low / medium / high — based on article volume. ≥5 articles → high, ≥2 → medium,
+                        otherwise low.</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">key_drivers</div>
+                    <div class="fdesc">Text previews of the snippets with the highest stress values (stress > 0.4).
+                    </div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">summary</div>
+                    <div class="fdesc">Auto-generated sentence with the band label, score, confidence, and article
+                        count.</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">news_used</div>
+                    <div class="fdesc">Integer count of articles analysed. Zero means the score is profile-only.</div>
+                </div>
+                <div class="field-item">
+                    <div class="fname">articles</div>
+                    <div class="fdesc">Array of objects with title, link, and source for each news article consumed.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: How FinBERT aggregation works -->
+        <section>
+            <div class="section-num">// 05</div>
+            <div class="section-title">How FinBERT Aggregation Works</div>
+            <p>Each text snippet is independently classified by FinBERT. The per-snippet results are then combined
+                into one final score. Here is how the pipeline handles key scenarios:</p>
+
+            <ul class="context-rules">
+                <li>
+                    <span class="rule-icon">🧮</span>
+                    <div><strong>Per-snippet mapping.</strong> FinBERT returns positive, neutral, and negative
+                        probabilities. The stress value for each snippet is:
+                        <code
+                            style="font-family:'DM Mono',monospace;font-size:.85em">stress = negative + 0.5 × neutral</code>.
+                        Fully positive text → stress ≈ 0, fully negative → stress ≈ 1.
+                    </div>
+                </li>
+                <li>
+                    <span class="rule-icon">⚖️</span>
+                    <div><strong>Weighted average.</strong> News headlines receive <strong>2×</strong> weight because
+                        they carry the most current signal. The CRISIL heading and baseline profile snippets receive
+                        <strong>1×</strong> weight. This ensures fresh news dominates the score when available.
+                    </div>
+                </li>
+                <li>
+                    <span class="rule-icon">📋</span>
+                    <div><strong>CRISIL heading is always included.</strong> Even when many news articles are found,
+                        the CRISIL rating action text is always scored as an extra snippet. If it contains words like
+                        "downgraded" or "watch", FinBERT will classify it as negative, pulling the score upward.</div>
+                </li>
+                <li>
+                    <span class="rule-icon">🔇</span>
+                    <div><strong>No news fallback.</strong> When zero articles are found and no CRISIL heading exists,
+                        a baseline sentence is synthesised from the company profile (name, industry, status, paid-up
+                        capital). FinBERT typically scores this as neutral, yielding a mid-range stress value (~0.5).
+                    </div>
+                </li>
+                <li>
+                    <span class="rule-icon">🧩</span>
+                    <div><strong>Compound signals.</strong> When multiple negative snippets appear together — e.g. a
+                        downgrade headline, a profit-drop article, and a negative CRISIL heading — the weighted average
+                        naturally pushes the score higher than any single snippet would alone.</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 6: Output structure -->
+        <section>
+            <div class="section-num">// 06</div>
+            <div class="section-title">Full Output Structure</div>
+            <p>The script prints and returns a Python dictionary (serialisable to JSON) with the following shape:</p>
+
+            <div class="output-block">
+                <span class="ob-label">// Full output schema</span>
+                {<br>
+                &nbsp;&nbsp;<span class="ob-key">"company_code"</span>: <span class="ob-str">"ALEPPL"</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"company_name"</span>: <span class="ob-str">"Alpha Ecoplast Private
+                    Limited"</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"listing_status"</span>: <span class="ob-str">"Unlisted"</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"industry"</span>: <span class="ob-str">"Other Textile
+                    Products"</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"stress_score"</span>: <span class="ob-num">0.5202</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"confidence"</span>: <span class="ob-str">"medium"</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"key_drivers"</span>: <span class="ob-arr">["CRISIL rating action:
+                    …downgraded…",
+                    "Starlinger PET bottle-to-bottle…"]</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"summary"</span>: <span class="ob-str">"Moderate financial stress
+                    detected for Alpha Ecoplast… (FinBERT score 0.52, medium confidence, 3 article(s)
+                    analysed)."</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"news_used"</span>: <span class="ob-num">3</span>,<br>
+                &nbsp;&nbsp;<span class="ob-key">"articles"</span>: [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{ <span class="ob-key">"title"</span>: <span class="ob-str">"…"</span>,
+                <span class="ob-key">"link"</span>: <span class="ob-str">"https://…"</span>,
+                <span class="ob-key">"source"</span>: <span class="ob-str">"…"</span> }<br>
+                &nbsp;&nbsp;],<br>
+                &nbsp;&nbsp;<span class="ob-key">"scored_at"</span>: <span
+                    class="ob-str">"2026-03-04T20:17:37+00:00"</span><br>
+                }
+            </div>
+        </section>
+
+        <!-- Section 7: Running it -->
+        <section>
+            <div class="section-num">// 07</div>
+            <div class="section-title">Running the Script</div>
+            <p>Set your environment variables then call the script with a company identifier as the first argument:</p>
+
+            <div class="output-block">
+                <span class="ob-label">// Install dependencies</span>
+                pip install pymongo feedparser requests transformers torch numpy<br><br>
+                <span class="ob-label">// Run with a company code</span>
+                MONGO_URI="mongodb://host:27017" \<br>
+                python3 news_data_fetcher_stress_mapper.py <span class="ob-str">ALEPPL</span><br><br>
+                <span class="ob-label">// Or with a partial name</span>
+                python3 news_data_fetcher_stress_mapper.py <span class="ob-str">"Alpha Ecoplast"</span>
+            </div>
+
+            <p>All configuration can also be placed in a <strong>.env</strong> file and loaded with <code
+                    style="font-family:'DM Mono',monospace;font-size:.85em">set -a && . .env && set +a</code> before
+                running. The script reads: <strong>MONGO_URI</strong>, <strong>DB_NAME</strong>, and
+                <strong>COLLECTION_NAME</strong>. No LLM endpoint or API key is required.
+            </p>
+
+            <div class="callout">
+                <div class="callout-label">FinBERT — Offline Model</div>
+                <p>The scorer uses <strong>ProsusAI/finbert</strong>, a BERT model fine-tuned on financial text. The
+                    model weights (~438 MB) are downloaded automatically from HuggingFace on first run and cached
+                    locally. No external API calls are required for scoring — the only outbound request is the Google
+                    News RSS fetch, which can be removed for fully air-gapped operation.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="f-title">News Stress Scorer</div>
+            <div class="f-meta">
+                finincial_kg · companies (2,818 records)<br>
+                FinBERT · ProsusAI/finbert via HuggingFace Transformers<br>
+                Generated March 2026
+            </div>
+        </footer>
+
+    </div><!-- /page -->
+
+    <script>
+        // Scroll-triggered section reveals
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        sections.forEach(s => observer.observe(s));
+    </script>
+</body>
+
+</html>

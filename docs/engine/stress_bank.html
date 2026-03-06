@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamental Stress Pipeline</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0a0c10;
+            --surface: #111318;
+            --border: #1e2230;
+            --accent: #00e5ff;
+            --accent2: #ff4757;
+            --accent3: #ffd32a;
+            --accent4: #2ed573;
+            --text: #c8d0e0;
+            --muted: #4a5168;
+            --white: #eef1f8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ── GRID BACKGROUND ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 32px 100px;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            margin-bottom: 64px;
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 3px 10px;
+            margin-bottom: 20px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        h1 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: clamp(26px, 4vw, 40px);
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 16px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 620px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        /* ── SECTION ── */
+        .section {
+            margin-bottom: 56px;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        h2 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: var(--text);
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        /* ── PIPELINE ── */
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+        }
+
+        .pipeline-step {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 0 20px;
+            position: relative;
+        }
+
+        .step-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .step-num {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 229, 255, 0.05);
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+
+        .step-num.new {
+            border-color: var(--accent3);
+            color: var(--accent3);
+            background: rgba(255, 211, 42, 0.07);
+        }
+
+        .pipeline-step:hover .step-num {
+            background: rgba(0, 229, 255, 0.15);
+        }
+
+        .pipeline-step:hover .step-num.new {
+            background: rgba(255, 211, 42, 0.15);
+        }
+
+        .step-line {
+            flex: 1;
+            width: 1px;
+            background: var(--border);
+            margin: 4px 0;
+            min-height: 16px;
+        }
+
+        .pipeline-step:last-child .step-line {
+            display: none;
+        }
+
+        .step-body {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 16px 20px;
+            margin-bottom: 8px;
+            transition: border-color 0.2s;
+            cursor: default;
+        }
+
+        .step-body.new {
+            border-color: rgba(255, 211, 42, 0.2);
+            background: rgba(255, 211, 42, 0.03);
+        }
+
+        .pipeline-step:hover .step-body {
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        .pipeline-step:hover .step-body.new {
+            border-color: rgba(255, 211, 42, 0.4);
+        }
+
+        .step-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .step-tag {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            padding: 2px 7px;
+            margin-left: 8px;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .tag-fix {
+            background: rgba(255, 71, 87, 0.12);
+            color: var(--accent2);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+        }
+
+        .tag-scale {
+            background: rgba(0, 229, 255, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        .tag-weight {
+            background: rgba(255, 211, 42, 0.08);
+            color: var(--accent3);
+            border: 1px solid rgba(255, 211, 42, 0.3);
+        }
+
+        .tag-out {
+            background: rgba(46, 213, 115, 0.08);
+            color: var(--accent4);
+            border: 1px solid rgba(46, 213, 115, 0.3);
+        }
+
+        .tag-new {
+            background: rgba(255, 211, 42, 0.12);
+            color: var(--accent3);
+            border: 1px solid rgba(255, 211, 42, 0.4);
+        }
+
+        /* ── CALLOUT ── */
+        .callout {
+            border-left: 3px solid var(--accent2);
+            background: rgba(255, 71, 87, 0.05);
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+
+        .callout.warn {
+            border-left-color: var(--accent3);
+            background: rgba(255, 211, 42, 0.04);
+        }
+
+        .callout-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent2);
+            margin-bottom: 8px;
+        }
+
+        .callout.warn .callout-title {
+            color: var(--accent3);
+        }
+
+        .callout p {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        /* ── METRICS TABLE ── */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-top: 4px;
+        }
+
+        .metric-card {
+            background: var(--surface);
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            transition: background 0.15s;
+        }
+
+        .metric-card:hover {
+            background: #161922;
+        }
+
+        .metric-name {
+            font-size: 12px;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .metric-dir {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            padding: 2px 7px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .dir-up {
+            background: rgba(46, 213, 115, 0.1);
+            color: var(--accent4);
+            border: 1px solid rgba(46, 213, 115, 0.3);
+        }
+
+        .dir-down {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--accent2);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+        }
+
+        /* ── MISSING VALUE TABLE ── */
+        .missing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+        }
+
+        .missing-table th {
+            text-align: left;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .missing-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            vertical-align: middle;
+        }
+
+        .missing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .missing-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .pct-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pct-bar-bg {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .pct-bar-fill {
+            height: 100%;
+        }
+
+        .pct-label {
+            width: 40px;
+            text-align: right;
+            color: var(--white);
+        }
+
+        .verdict-ok {
+            color: var(--accent4);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+        }
+
+        .verdict-warn {
+            color: var(--accent3);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+        }
+
+        .verdict-bad {
+            color: var(--accent2);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+        }
+
+        /* ── FORMULA ── */
+        .formula-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 24px 28px;
+            font-family: 'IBM Plex Mono', monospace;
+            margin: 8px 0 16px;
+        }
+
+        .formula-line {
+            font-size: 13px;
+            color: var(--white);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .formula-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .formula-comment {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .f-accent {
+            color: var(--accent);
+        }
+
+        .f-accent2 {
+            color: var(--accent2);
+        }
+
+        .f-accent3 {
+            color: var(--accent3);
+        }
+
+        .f-accent4 {
+            color: var(--accent4);
+        }
+
+        /* ── PIPELINE DIAGRAM (VISUAL) ── */
+        .diagram-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 32px 24px;
+            overflow-x: auto;
+        }
+
+        .diagram {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            min-width: 860px;
+        }
+
+        .d-node {
+            flex: 1;
+            min-width: 76px;
+            text-align: center;
+        }
+
+        .d-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 10px 6px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--white);
+            margin-bottom: 6px;
+            transition: border-color 0.2s, background 0.2s;
+            cursor: default;
+            line-height: 1.5;
+        }
+
+        .d-box:hover {
+            border-color: var(--accent);
+            background: rgba(0, 229, 255, 0.04);
+        }
+
+        .d-box.active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .d-box.new-step {
+            border-color: var(--accent3);
+            color: var(--accent3);
+            background: rgba(255, 211, 42, 0.04);
+        }
+
+        .d-box.output {
+            border-color: var(--accent4);
+            color: var(--accent4);
+            background: rgba(46, 213, 115, 0.04);
+        }
+
+        .d-label {
+            font-size: 9px;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .d-arrow {
+            color: var(--muted);
+            font-size: 16px;
+            padding: 0 4px;
+            margin-bottom: 22px;
+            flex-shrink: 0;
+        }
+
+        /* ── OUTPUT BOX ── */
+        .output-box {
+            background: rgba(46, 213, 115, 0.05);
+            border: 1px solid rgba(46, 213, 115, 0.3);
+            padding: 20px 24px;
+            margin-top: 8px;
+        }
+
+        .output-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent4);
+            margin-bottom: 10px;
+        }
+
+        .output-code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            color: var(--white);
+        }
+
+        /* ── SCORE VIZ ── */
+        .score-viz {
+            margin-top: 24px;
+        }
+
+        .score-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .score-row.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .score-bank {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--text);
+            width: 140px;
+            flex-shrink: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .score-bar-wrap {
+            flex: 1;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-bar {
+            height: 100%;
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .score-val {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            width: 40px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .score-legend {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            color: var(--muted);
+            padding-top: 4px;
+            letter-spacing: 0.06em;
+        }
+
+        /* ── CODE BLOCK ── */
+        .code-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 16px 20px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--text);
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block .comment {
+            color: var(--muted);
+        }
+
+        .code-block .cmd {
+            color: var(--accent4);
+        }
+
+        .code-block .pkg {
+            color: var(--accent3);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="badge">contagion model · type 1 stress · v2 — trend-aware</div>
+            <h1>Fundamental <span>Stress</span><br />Pipeline</h1>
+            <p class="subtitle">Computes a size-neutral, trend-aware stress score S(bank) ∈ [0,1] for the latest year
+                using 2023–2025 data. Current position (2025) + trajectory (slope across 3 years) feed a single PCA
+                — ready as the initial shock vector in a contagion model.</p>
+        </div>
+
+        <!-- VISUAL PIPELINE DIAGRAM -->
+        <div class="section">
+            <div class="section-label">end-to-end flow</div>
+            <div class="diagram-wrap">
+                <div class="diagram">
+                    <div class="d-node">
+                        <div class="d-box">MongoDB<br />2023–25</div>
+                        <div class="d-label">raw input</div>
+                    </div>
+                    <div class="d-arrow">→</div>
+                    <div class="d-node">
+                        <div class="d-box">Flatten<br />(bank, year)</div>
+                        <div class="d-label">step 2</div>
+                    </div>
+                    <div class="d-arrow">→</div>
+                    <div class="d-node">
+                        <div class="d-box">Impute<br />Missing</div>
+                        <div class="d-label">step 3</div>
+                    </div>
+                    <div class="d-arrow">→</div>
+                    <div class="d-node">
+                        <div class="d-box active">Winsorize<br />5–95%</div>
+                        <div class="d-label">step 4</div>
+                    </div>
+                    <div class="d-arrow">→</div>
+                    <div class="d-node">
+                        <div class="d-box active">Z-Score<br />per Year</div>
+                        <div class="d-label">step 5</div>
+                    </div>
+                    <div class="d-arrow">→</div>
+                    <div class="d-node">
+                        <div class="d-box active">Flip<br />Signs</div>
+                        <div class="d-label">step 6</div>
+                    </div>
+                    <div class="d-arrow">→</div>
+                    <div class="d-node">
+                        <div class="d-box new-step">Trend<br />Slopes</div>
+                        <div class="d-label">step 7 — new</div>
+                    </div>
+                    <div class="d-arrow">→</div>
+                    <div class="d-node">
+                        <div class="d-box active">PCA<br />16 feat.</div>
+                        <div class="d-label">step 8</div>
+                    </div>
+                    <div class="d-arrow">→</div>
+                    <div class="d-node">
+                        <div class="d-box output">S(bank)<br />[0, 1]</div>
+                        <div class="d-label">output — 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WHY THIS APPROACH -->
+        <div class="section">
+            <div class="section-label">the core problem</div>
+            <p>A bank's raw financial numbers cannot be compared directly. Two banks might both have strong
+                fundamentals, but because one is ten times larger, its absolute Gross NPA and Net Profit numbers will
+                dwarf the smaller bank's — creating a false signal of stress.</p>
+
+            <div class="callout">
+                <div class="callout-title">Size Bias — The Bug This Pipeline Solves</div>
+                <p>Canara Bank's Gross NPA: ₹46,159 cr &nbsp;|&nbsp; IDFC First's Gross NPA: ₹3,884 cr<br />
+                    Using absolute values, Canara scores stress = 1.0 even though its <em>Net NPA %</em> (0.7%) is lower
+                    than IDFC's (0.86%). Every metric must be a <strong>ratio</strong> — normalised by assets, deposits,
+                    or advances — so large and small banks are on equal footing.</p>
+            </div>
+
+            <div class="callout warn" style="margin-top:16px">
+                <div class="callout-title">v2 Addition — Trajectory Matters</div>
+                <p>A bank at NPA = 5% trending toward 8% is riskier than one stable at 5% — even if their 2025
+                    snapshots look identical. v2 adds 8 trend-slope features (one per metric) computed from
+                    2023→2024→2025
+                    z-scores. PCA now sees both <em>where the bank stands</em> and <em>where it is heading</em>.
+                    Slopes are computed on the already-z-scored values so they capture relative deterioration vs. peers,
+                    not industry-wide macro moves.</p>
+            </div>
+        </div>
+
+        <!-- STEP BY STEP -->
+        <div class="section">
+            <div class="section-label">pipeline steps</div>
+            <div class="pipeline">
+
+                <div class="pipeline-step">
+                    <div class="step-left">
+                        <div class="step-num">01</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-title">Fetch &amp; Flatten</div>
+                        <div class="step-desc">Pull all bank documents from MongoDB <code>performance_metrics</code>.
+                            Each document contains yearly sub-objects (2023, 2024, 2025). Flatten into a single
+                            DataFrame with one row per (bank, year) pair — up to 3× more rows than the old
+                            2-year version.</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-left">
+                        <div class="step-num">02</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-title">Handle Missing Values</div>
+                        <div class="step-desc">Some banks don't report every metric every year. Missing values are
+                            imputed with the <strong>cross-sectional median for that year</strong> — a conservative
+                            choice that assigns average health, not false stress or false safety. Note that
+                            Provision Coverage Ratio has ~77% missing data; see the Data Quality section below.</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-left">
+                        <div class="step-num">03</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-title">Winsorize <span class="step-tag tag-fix">outlier fix</span></div>
+                        <div class="step-desc">Clip each metric at the 5th and 95th percentile <em>within each
+                                year</em>. Without this, a single distressed bank (e.g. NPA = 40% when peers are 1–3%)
+                            inflates the standard deviation and compresses everyone else's scores toward zero —
+                            destroying the signal.</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-left">
+                        <div class="step-num">04</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-title">Z-Score Normalise per Year <span class="step-tag tag-scale">scale
+                                fix</span></div>
+                        <div class="step-desc">For each metric within each year: subtract the mean, divide by standard
+                            deviation. Normalising <em>within each year</em> means the benchmark is always the current
+                            year's peer group — a healthy NPA in 2023 may differ from 2025. Trend slopes are computed
+                            on these z-scores, so they capture relative moves vs. peers rather than absolute
+                            level shifts.</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-left">
+                        <div class="step-num">05</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-title">Flip Signs for Direction Consistency</div>
+                        <div class="step-desc">After z-scoring, HIGH value must always mean HIGH STRESS. For "higher is
+                            better" metrics (CAR, ROA), a below-average bank has a negative z-score but is stressed —
+                            multiply by −1. For "lower is better" metrics (NPA %, OpEx %), an above-average bank
+                            already has a positive z-score. Formula: <code>stressed_z = z × (−1 × direction)</code>.
+                            This also makes trend slopes directionally consistent: positive slope = worsening.</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-left">
+                        <div class="step-num new">06</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-body new">
+                        <div class="step-title">Compute Trend Features <span class="step-tag tag-new">new in v2</span>
+                        </div>
+                        <div class="step-desc">For each bank, fit a linear slope across the 3 available years of
+                            sign-flipped z-scores for each metric. Produces 8 trend columns
+                            (<code>trend_NPA</code>, <code>trend_CAR</code>, …). Slope &gt; 0 means the metric is
+                            worsening relative to peers year-on-year. Banks with only one year of data receive
+                            slope = 0. These slopes are then standardised (z-scored) before entering PCA so their
+                            scale matches the snapshot features.</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-left">
+                        <div class="step-num">07</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-title">PCA — 16-Feature Stress Score <span class="step-tag tag-weight">no
+                                arbitrary weights</span></div>
+                        <div class="step-desc">Take only the <strong>2025 (LATEST_YEAR) rows</strong> and merge in the
+                            trend slopes → 16 features per bank (8 snapshot + 8 trend). Run PCA; PC1 is the dominant
+                            stress axis. The NPA loading is checked — if it is negative, scores are flipped. PC1
+                            loadings are printed with a <code>[trend]</code> prefix on trend features so you can
+                            see which dimensions drive the score.</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-left">
+                        <div class="step-num">08</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-title">Normalise to [0, 1] &amp; Save <span
+                                class="step-tag tag-out">output</span></div>
+                        <div class="step-desc">Min-max scale PC1 scores across all banks in the 2025 universe.
+                            Score of 0.0 = least stressed. Score of 1.0 = most stressed. Save to
+                            <code>fundamental_stress_scores.csv</code>. The column
+                            <code>fundamental_stress_normalized</code> is S(bank) — your initial shock vector
+                            for contagion. One row per bank, no per-year duplication.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- METRICS -->
+        <div class="section">
+            <div class="section-label">metrics used — ratios only</div>
+            <p>All metrics are percentages or ratios normalised by a size denominator (assets, deposits, advances).
+                Absolute values like Gross NPA and Net Profit were deliberately excluded to prevent size bias.
+                Each metric also generates a corresponding trend feature in v2.</p>
+            <div class="metrics-grid">
+                <div class="metric-card"><span class="metric-name">Net NPA as % to Net Advances</span><span
+                        class="metric-dir dir-down">↓ lower better</span></div>
+                <div class="metric-card"><span class="metric-name">Capital Adequacy Ratio (Basel-III)</span><span
+                        class="metric-dir dir-up">↑ higher better</span></div>
+                <div class="metric-card"><span class="metric-name">Provision Coverage Ratio (%)</span><span
+                        class="metric-dir dir-up">↑ higher better</span></div>
+                <div class="metric-card"><span class="metric-name">Credit Deposit Ratio</span><span
+                        class="metric-dir dir-down">↓ lower better</span></div>
+                <div class="metric-card"><span class="metric-name">Investment Deposit Ratio</span><span
+                        class="metric-dir dir-up">↑ higher better</span></div>
+                <div class="metric-card"><span class="metric-name">Return on Assets (%)</span><span
+                        class="metric-dir dir-up">↑ higher better</span></div>
+                <div class="metric-card"><span class="metric-name">Spread as % of Total Assets</span><span
+                        class="metric-dir dir-up">↑ higher better</span></div>
+                <div class="metric-card"><span class="metric-name">Operating Expenses as % to Total Expenses</span><span
+                        class="metric-dir dir-down">↓ lower better</span></div>
+            </div>
+        </div>
+
+        <!-- DATA QUALITY / MISSING VALUES -->
+        <div class="section">
+            <div class="section-label">data quality — missing value report</div>
+            <p>The pipeline reports missing percentages before imputation. Understanding these is critical —
+                high missingness means the imputed median is doing the work, not real data.</p>
+
+            <table class="missing-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Missing %</th>
+                        <th>Verdict</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Net NPA as % to Net Advances</td>
+                        <td>
+                            <div class="pct-bar-wrap">
+                                <div class="pct-bar-bg">
+                                    <div class="pct-bar-fill" style="width:11.8%;background:var(--accent4)"></div>
+                                </div>
+                                <span class="pct-label">11.8%</span>
+                            </div>
+                        </td>
+                        <td><span class="verdict-ok">ACCEPTABLE</span></td>
+                    </tr>
+                    <tr>
+                        <td>Capital Adequacy Ratio (Basel-III)</td>
+                        <td>
+                            <div class="pct-bar-wrap">
+                                <div class="pct-bar-bg">
+                                    <div class="pct-bar-fill" style="width:11.8%;background:var(--accent4)"></div>
+                                </div>
+                                <span class="pct-label">11.8%</span>
+                            </div>
+                        </td>
+                        <td><span class="verdict-ok">ACCEPTABLE</span></td>
+                    </tr>
+                    <tr>
+                        <td>Provision Coverage Ratio (%)</td>
+                        <td>
+                            <div class="pct-bar-wrap">
+                                <div class="pct-bar-bg">
+                                    <div class="pct-bar-fill" style="width:77.3%;background:var(--accent2)"></div>
+                                </div>
+                                <span class="pct-label" style="color:var(--accent2)">77.3%</span>
+                            </div>
+                        </td>
+                        <td><span class="verdict-bad">PROBLEM</span></td>
+                    </tr>
+                    <tr>
+                        <td>Credit Deposit Ratio</td>
+                        <td>
+                            <div class="pct-bar-wrap">
+                                <div class="pct-bar-bg">
+                                    <div class="pct-bar-fill" style="width:19.3%;background:var(--accent3)"></div>
+                                </div>
+                                <span class="pct-label">19.3%</span>
+                            </div>
+                        </td>
+                        <td><span class="verdict-warn">MODERATE</span></td>
+                    </tr>
+                    <tr>
+                        <td>Investment Deposit Ratio</td>
+                        <td>
+                            <div class="pct-bar-wrap">
+                                <div class="pct-bar-bg">
+                                    <div class="pct-bar-fill" style="width:13.7%;background:var(--accent4)"></div>
+                                </div>
+                                <span class="pct-label">13.7%</span>
+                            </div>
+                        </td>
+                        <td><span class="verdict-ok">ACCEPTABLE</span></td>
+                    </tr>
+                    <tr>
+                        <td>Return on Assets (%)</td>
+                        <td>
+                            <div class="pct-bar-wrap">
+                                <div class="pct-bar-bg">
+                                    <div class="pct-bar-fill" style="width:11.8%;background:var(--accent4)"></div>
+                                </div>
+                                <span class="pct-label">11.8%</span>
+                            </div>
+                        </td>
+                        <td><span class="verdict-ok">ACCEPTABLE</span></td>
+                    </tr>
+                    <tr>
+                        <td>Spread as % of Total Assets</td>
+                        <td>
+                            <div class="pct-bar-wrap">
+                                <div class="pct-bar-bg">
+                                    <div class="pct-bar-fill" style="width:11.8%;background:var(--accent4)"></div>
+                                </div>
+                                <span class="pct-label">11.8%</span>
+                            </div>
+                        </td>
+                        <td><span class="verdict-ok">ACCEPTABLE</span></td>
+                    </tr>
+                    <tr>
+                        <td>Operating Expenses as % to Total Expenses</td>
+                        <td>
+                            <div class="pct-bar-wrap">
+                                <div class="pct-bar-bg">
+                                    <div class="pct-bar-fill" style="width:11.8%;background:var(--accent4)"></div>
+                                </div>
+                                <span class="pct-label">11.8%</span>
+                            </div>
+                        </td>
+                        <td><span class="verdict-ok">ACCEPTABLE</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout warn" style="margin-top:20px">
+                <div class="callout-title">Provision Coverage Ratio — Action Required</div>
+                <p>77.3% of Provision Coverage Ratio values are filled with the cross-sectional median — meaning
+                    only ~23% of banks actually reported this metric. The imputed values are identical for all
+                    non-reporters, contributing near-zero unique signal to PCA. Consider either sourcing this data
+                    from a more complete dataset, or removing PCR from <code>METRICS</code> until coverage improves.
+                    The 11–14% missing on other metrics is expected: foreign/small banks and cooperative banks often
+                    skip IBA sub-metrics.</p>
+            </div>
+        </div>
+
+        <!-- FORMULA -->
+        <div class="section">
+            <div class="section-label">mathematical summary — v2</div>
+            <div class="formula-block">
+                <div class="formula-line">
+                    <span class="f-accent">// Step 1: Winsorize (per metric j, within year t)</span>
+                </div>
+                <div class="formula-line">
+                    <span class="f-accent3">x̃ᵢⱼₜ</span> = clip(<span class="f-accent2">xᵢⱼₜ</span>, p05ⱼₜ, p95ⱼₜ)
+                </div>
+                <div class="formula-line">&nbsp;</div>
+                <div class="formula-line">
+                    <span class="f-accent">// Step 2: Z-score within each year t</span>
+                </div>
+                <div class="formula-line">
+                    <span class="f-accent3">zᵢⱼₜ</span> = (x̃ᵢⱼₜ − μⱼₜ) / σⱼₜ
+                    <span class="formula-comment">&nbsp;// μ, σ computed within year t</span>
+                </div>
+                <div class="formula-line">&nbsp;</div>
+                <div class="formula-line">
+                    <span class="f-accent">// Step 3: Align direction (high z = high stress)</span>
+                </div>
+                <div class="formula-line">
+                    <span class="f-accent3">sᵢⱼₜ</span> = zᵢⱼₜ × (−1 × dⱼ)
+                    <span class="formula-comment">&nbsp;// dⱼ ∈ {+1, −1}</span>
+                </div>
+                <div class="formula-line">&nbsp;</div>
+                <div class="formula-line">
+                    <span class="f-accent">// Step 4: Trend slope per metric (new in v2)</span>
+                </div>
+                <div class="formula-line">
+                    <span class="f-accent3">βᵢⱼ</span> = slope of {<span class="f-accent3">sᵢⱼ,2023</span>,
+                    <span class="f-accent3">sᵢⱼ,2024</span>, <span class="f-accent3">sᵢⱼ,2025</span>}
+                    <span class="formula-comment">&nbsp;// linear regression; β &gt; 0 = worsening</span>
+                </div>
+                <div class="formula-line">&nbsp;</div>
+                <div class="formula-line">
+                    <span class="f-accent">// Step 5: PCA on 16-feature vector per bank (LATEST_YEAR only)</span>
+                </div>
+                <div class="formula-line">
+                    <span class="f-accent3">vᵢ</span> = [ <span class="f-accent3">sᵢ,2025</span> (8) &nbsp;||&nbsp;
+                    std(<span class="f-accent3">βᵢ</span>) (8) ]
+                </div>
+                <div class="formula-line">
+                    <span class="f-accent3">Fᵢ</span> = <span class="f-accent4">w</span>ᵀ · <span
+                        class="f-accent3">vᵢ</span>
+                    <span class="formula-comment">&nbsp;// w = PC1 loadings, learned from data</span>
+                </div>
+                <div class="formula-line">&nbsp;</div>
+                <div class="formula-line">
+                    <span class="f-accent">// Step 6: Normalise</span>
+                </div>
+                <div class="formula-line">
+                    <span class="f-accent4">S(bank)</span> = (Fᵢ − min F) / (max F − min F) &nbsp;∈ [0, 1]
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE SCORES VIZ -->
+        <div class="section">
+            <div class="section-label">illustrative output — 2025 trend-adjusted stress scores</div>
+            <p style="margin-bottom:16px">Example of what the ranked output looks like (one row per bank, no per-year
+                duplication). Higher bar = more stressed relative to the 2025 peer universe, incorporating
+                2023–2025 trajectory.</p>
+            <div class="score-viz" id="scoreViz">
+                <!-- rows injected by JS -->
+            </div>
+            <div class="score-legend" style="padding-left:152px; padding-right:52px;">
+                <span>0.0 — healthiest</span>
+                <span>0.5</span>
+                <span>1.0 — most stressed</span>
+            </div>
+        </div>
+
+        <!-- CONTAGION NOTE -->
+        <div class="section">
+            <div class="section-label">how this feeds into contagion</div>
+            <div class="output-box">
+                <div class="output-title">Output Used As</div>
+                <div class="output-code">df['fundamental_stress_normalized']<br /><br /><span
+                        style="color:var(--muted)">→ Initial shock vector S(bank) [one score per bank, 2025]<br />
+                        → One scalar per node in your contagion graph<br />
+                        → Higher S = bank enters the cascade more stressed<br />
+                        → Also usable as threshold: S &gt; 0.6 = contagion-eligible<br />
+                        → Score reflects BOTH current position AND 3-year trajectory</span></div>
+            </div>
+        </div>
+
+        <!-- INSTALL -->
+        <div class="section">
+            <div class="section-label">installation</div>
+            <div class="code-block">
+                <span class="comment"># Install dependencies</span>
+                <span class="cmd">pip install</span> <span class="pkg">pymongo pandas scikit-learn numpy
+                    python-dotenv</span>
+
+                <span class="comment"># .env file (repo root)</span>
+                MONGO_URI=mongodb+srv://your-uri
+                MONGO_DB=financial_kg
+                MONGO_COLLECTION=performance_metrics
+
+                <span class="comment"># Run</span>
+                <span class="cmd">make</span> run-bank-stress-mapper
+                <span class="comment"># or: python engine/stress/bank_stress_mapper.py</span>
+                <span class="comment"># → outputs: fundamental_stress_scores.csv (one row per bank)</span>
+
+                <span class="comment"># Config (top of bank_stress_mapper.py)</span>
+                YEARS = ["2023", "2024", "2025"] <span class="comment"># years used for trend computation</span>
+                LATEST_YEAR = "2025" <span class="comment"># year whose score is output</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const banks = [
+            { name: "IDFC First", score: 0.78, color: "#ff4757" },
+            { name: "Canara Bank", score: 0.61, color: "#ffd32a" },
+            { name: "Axis Bank", score: 0.44, color: "#ffd32a" },
+            { name: "Kotak Bank", score: 0.31, color: "#2ed573" },
+            { name: "HDFC Bank", score: 0.18, color: "#2ed573" },
+            { name: "SBI", score: 0.12, color: "#2ed573" },
+        ];
+
+        const viz = document.getElementById("scoreViz");
+        banks.forEach((b, i) => {
+            const row = document.createElement("div");
+            row.className = "score-row";
+            row.innerHTML = `
+      <div class="score-bank">${b.name}</div>
+      <div class="score-bar-wrap">
+        <div class="score-bar" id="bar-${i}" style="background:${b.color}20; border-right: 2px solid ${b.color};"></div>
+      </div>
+      <div class="score-val">${b.score.toFixed(2)}</div>
+    `;
+            viz.appendChild(row);
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const rows = viz.querySelectorAll(".score-row");
+                    rows.forEach((row, i) => {
+                        setTimeout(() => {
+                            row.classList.add("visible");
+                            const bar = document.getElementById(`bar-${i}`);
+                            setTimeout(() => {
+                                bar.style.width = (banks[i].score * 100) + "%";
+                            }, 100);
+                        }, i * 80);
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(viz);
+    </script>
+</body>
+
+</html>
