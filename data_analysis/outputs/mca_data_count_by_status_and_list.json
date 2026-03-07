@@ -1,0 +1,246 @@
+[{
+  "statusCounts": [
+    {
+      "Listingstatus": "Listed",
+      "count": 230
+    },
+    {
+      "Listingstatus": "Unlisted",
+      "count": 11685
+    }
+  ],
+  "total": 11915,
+  "CompanyStatus": "Dissolved (Liquidated)"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 876599
+    },
+    {
+      "Listingstatus": "Listed",
+      "count": 388
+    }
+  ],
+  "total": 876987,
+  "CompanyStatus": "Strike Off"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 5
+    }
+  ],
+  "total": 5,
+  "CompanyStatus": "Inactive"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 1
+    }
+  ],
+  "total": 1,
+  "CompanyStatus": "Vanished"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Listed",
+      "count": 2
+    },
+    {
+      "Listingstatus": "Unlisted",
+      "count": 615
+    }
+  ],
+  "total": 617,
+  "CompanyStatus": "Dissolved under section 59(8)"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 1
+    }
+  ],
+  "total": 1,
+  "CompanyStatus": "Unclassified"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 1
+    }
+  ],
+  "total": 1,
+  "CompanyStatus": "Converted to LLP and Dissolved"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Listed",
+      "count": 508
+    },
+    {
+      "Listingstatus": "Unlisted",
+      "count": 7993
+    }
+  ],
+  "total": 8501,
+  "CompanyStatus": "Under Liquidation"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 374
+    }
+  ],
+  "total": 374,
+  "CompanyStatus": "Strike Off-AwaitingPublication"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Listed",
+      "count": 2
+    },
+    {
+      "Listingstatus": "Unlisted",
+      "count": 2568
+    }
+  ],
+  "total": 2570,
+  "CompanyStatus": "Dormant under section 455"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Listed",
+      "count": 5
+    },
+    {
+      "Listingstatus": "Unlisted",
+      "count": 27328
+    }
+  ],
+  "total": 27333,
+  "CompanyStatus": "Converted to LLP"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Listed",
+      "count": 126
+    },
+    {
+      "Listingstatus": "Unlisted",
+      "count": 7510
+    }
+  ],
+  "total": 7636,
+  "CompanyStatus": "Inactive for e-filing"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 27417
+    },
+    {
+      "Listingstatus": "Listed",
+      "count": 5
+    }
+  ],
+  "total": 27422,
+  "CompanyStatus": "Under process of striking off"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 1786
+    },
+    {
+      "Listingstatus": "Listed",
+      "count": 127
+    }
+  ],
+  "total": 1913,
+  "CompanyStatus": "Under CIRP"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Listed",
+      "count": 566
+    },
+    {
+      "Listingstatus": "Unlisted",
+      "count": 36721
+    }
+  ],
+  "total": 37287,
+  "CompanyStatus": "Amalgamated"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 10
+    },
+    {
+      "Listingstatus": "Listed",
+      "count": 1
+    }
+  ],
+  "total": 11,
+  "CompanyStatus": "Not available for efiling"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Listed",
+      "count": 12
+    },
+    {
+      "Listingstatus": "Unlisted",
+      "count": 349
+    }
+  ],
+  "total": 361,
+  "CompanyStatus": "Dissolved under section 54"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 147
+    },
+    {
+      "Listingstatus": "Listed",
+      "count": 7
+    }
+  ],
+  "total": 154,
+  "CompanyStatus": "Dissolved"
+},
+{
+  "statusCounts": [
+    {
+      "Listingstatus": "Unlisted",
+      "count": 1865507
+    },
+    {
+      "Listingstatus": "Listed",
+      "count": 6978
+    }
+  ],
+  "total": 1872485,
+  "CompanyStatus": "Active"
+}]
