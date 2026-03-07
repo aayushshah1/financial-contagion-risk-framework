@@ -6,14 +6,16 @@ This project processes banking ratio data, builds knowledge graphs, and loads da
 
 - `ingestion/` — Fetch and extract raw data (CRISIL scraper, XLSX ratio extractor)
 - `data/raw/` — Raw input files (banking ratios, XLSX)
-- `data/outputs/` — Computed artifacts (stress scores, normalised CSVs)
-- `data_consolidation/` — Scripts and data for consolidating financial info into MongoDB
 - `data_analysis/` — Jupyter notebooks and scripts for EDA and reconciliation
 - `prototype_kg/` — Knowledge graph builder (main pipeline: `loader.py`)
 - `engine/` — Stress scoring pipelines (bank, entity, news)
 - `engine/migrations/` — One-off data migration scripts
 - `docs/` — Documentation (see `docs/archive/` for v1 README)
 - `Makefile` — Run main pipelines easily
+
+archives
+- `data/outputs/` — Computed artifacts (stress scores, normalised CSVs)
+- `data_consolidation/` — Scripts and data for consolidating financial info into MongoDB
 
 ## Usage
 
