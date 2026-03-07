@@ -1,6 +1,6 @@
 {
   "_id": {
-    "$oid": "69a219da66dd292a5d8f7ec2"
+    "$oid": "69a3293766dd292a5d8f89b5"
   },
   "bankSymbol": "SBIN",
   "advances": {
@@ -24000,7 +24000,7 @@
     "year": 2025,
     "unit": "Percent (except productivity metrics which are in Rupees Lakh)"
   },
-  "lastUpdated": "2026-02-27T22:25:24.831773",
+  "lastUpdated": "2026-03-05T19:59:38.602727",
   "outstandingAdvances": {
     "bankName": "State Bank of India",
     "year": 2025,
@@ -25931,6 +25931,55 @@
           }
         ]
       }
+    }
+  },
+  "tier1Capital": {
+    "tier1CapitalCrores": 342105.2,
+    "reportDate": "08-Feb-26"
+  },
+  "camelsDimensions": {
+    "Capital": 0.0847,
+    "AssetQuality": 0,
+    "Management": 0.0175,
+    "Earnings": 0.0579,
+    "Liquidity": 0.1451,
+    "Sensitivity": 0.0509
+  },
+  "stressComponents": {
+    "boundaryDistance": 0.7533,
+    "mertonOriented": 0.225,
+    "camelsComposite": 0.0516
+  },
+  "stressRank": 10,
+  "stressScore": 0.3929,
+  "stressUpdatedAt": "2026-03-05T21:04:24.324931",
+  "performanceMetrics": {
+    "2025": {
+      "Advances": 4163312,
+      "Business Per Employee": 37.37,
+      "Capital Adequacy Ratio (Basel-III)": 14.25,
+      "Credit Deposit Ratio": 77.35349365221221,
+      "Deposits": 5382190,
+      "Gross NPA": 76880,
+      "Interest Expended": 295524,
+      "Interest Income": 462489,
+      "Investment Deposit Ratio": 31.410503902686454,
+      "Investments": 1690573,
+      "Net NPA": 19667,
+      "Net NPA as % to Net Advances": 0.47,
+      "Net Profit": 70901,
+      "Operating Expenses": 118069,
+      "Operating Expenses as % to Total Expenses": 28.48071122107146,
+      "Operating Profit": 110579,
+      "Other Income": 61683,
+      "Profit Per Employee": 29.91,
+      "Provision Coverage Ratio (%)": 92.08,
+      "Provisions & Contingencies": 39678,
+      "Return on Assets (%)": 1.1,
+      "Spread as % of Total Assets": 2.5009537821224606,
+      "Total Assets": 6676053,
+      "Total Expenditure": 413593,
+      "Total Income": 524172
     }
   }
 }

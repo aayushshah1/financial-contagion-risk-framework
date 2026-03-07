@@ -603,4 +603,10 @@ GENERIC_NAME_TOKENS: frozenset[str] = frozenset({
     "trading", "traders", "trade", "commercial", "commerce",
     "realty", "realtors", "properties", "property", "developers",
     "associates", "associate", "co", "company",
+    # Securities / banking subsidiaries (extremely common in Indian company names;
+    # treating as distinctive causes subset-name false positives like
+    # 'SMC Global Securities' matching 'SBI-SG Global Securities Services')
+    "securities", "broking", "brokerage", "wealth",
+    "credit", "leasing", "insurance",
+    "asset", "assets", "fund", "funds",
 })
