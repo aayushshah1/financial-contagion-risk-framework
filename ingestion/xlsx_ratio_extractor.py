@@ -77,7 +77,7 @@ def standardize_metric(m):
     return m.strip().title()
 
 
-def create_bank_dataframe(data_dir='./data/ratio_data_csv'):
+def create_bank_dataframe(data_dir='./data/raw/ratio_data_csv'):
     """Parses all sheets from CSVs and XLSX files dynamically into a wide DataFrame"""
     all_data = []
 
@@ -230,7 +230,7 @@ def push_to_mongo(json_data):
 
 if __name__ == "__main__":
     import sys
-    data_dir = sys.argv[1] if len(sys.argv) > 1 else './data/ratio_data_csv'
+    data_dir = sys.argv[1] if len(sys.argv) > 1 else './data/raw/ratio_data_csv'
 
     print("1. Parsing CSV and XLSX files...")
     df_clean = create_bank_dataframe(data_dir)

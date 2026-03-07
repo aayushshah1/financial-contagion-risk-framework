@@ -4,36 +4,38 @@ This project processes banking ratio data, builds knowledge graphs, and loads da
 
 ## Project Structure
 
-- `data/ratio_data_csv/` — Raw CSV files for banking ratios
-- `data-cleanser/xlsx_ratio_extrator.py` — Cleanses and normalizes banking data
-- `v1-prototype/` — Prototype for financial knowledge graph (made by  [@snehil-sinha](https://www.github.com/nex7-7) )
-  - `data_analysis/` — Jupyter notebooks and scripts for data analysis
-  - `data_consolidation/` — Scripts and data for consolidating financial info
-  - `prototype_kg/` — Knowledge graph builder (main pipeline: `loader.py`)
-- `docs/` — Documentation
+- `ingestion/` — Fetch and extract raw data (CRISIL scraper, XLSX ratio extractor)
+- `data/raw/` — Raw input files (banking ratios, XLSX)
+- `data/outputs/` — Computed artifacts (stress scores, normalised CSVs)
+- `data_consolidation/` — Scripts and data for consolidating financial info into MongoDB
+- `data_analysis/` — Jupyter notebooks and scripts for EDA and reconciliation
+- `prototype_kg/` — Knowledge graph builder (main pipeline: `loader.py`)
+- `engine/` — Stress scoring pipelines (bank, entity, news)
+- `engine/migrations/` — One-off data migration scripts
+- `docs/` — Documentation (see `docs/archive/` for v1 README)
 - `Makefile` — Run main pipelines easily
 
 ## Usage
 
 ### 1. Prepare Data
 
-Place all your CSV files in the `data/ratio_data_csv/` directory.
+Place all your CSV files in the `data/raw/ratio_data_csv/` directory.
 
-### 2. Run Data Cleanser
+### 2. Run Ratio Extractor
 
 Run the script using the Makefile:
 
 ```sh
-make run
+make run-ratio-extractor
 ```
 
 Or directly:
 
 ```sh
-python3 data-cleanser/xlsx_ratio_extrator.py data/ratio_data_csv
+python3 ingestion/xlsx_ratio_extractor.py data/raw/ratio_data_csv
 ```
 
-### 3. Run v1-prototype Knowledge Graph Loader
+### 3. Run Knowledge Graph Loader
 
 Run the KG pipeline using the Makefile:
 
@@ -44,7 +46,7 @@ make run-v1-kg
 Or directly:
 
 ```sh
-python3 v1-prototype/prototype_kg/loader.py
+python3 prototype_kg/loader.py
 ```
 
 ### 4. Output

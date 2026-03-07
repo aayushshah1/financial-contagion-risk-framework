@@ -9,7 +9,7 @@ Grounded in: CRISIL Default & Ratings Transition Study FY2025
   - Table 2: 1-yr LT transition rates
   - Table 3: 1-yr ST transition rates
 
-Output: entity_stress_scores.csv  (sorted highest stress first)
+Output: data/outputs/entity_stress_scores.csv  (sorted highest stress first)
 
 Usage:
     pip install pymongo
@@ -17,7 +17,7 @@ Usage:
         --uri "mongodb://localhost:27017" \
         --db  financial_kg \
         --col companies \
-        --out entity_stress_scores.csv
+        --out data/outputs/entity_stress_scores.csv
 """
 
 import re
@@ -443,7 +443,7 @@ if __name__ == "__main__":
         default=os.environ.get("MONGO_COL", "companies"))
     ap.add_argument(
         "--out",
-        default=os.environ.get("ENTITY_STRESS_OUT", "entity_stress_scores.csv"))
+        default=os.environ.get("ENTITY_STRESS_OUT", "data/outputs/entity_stress_scores.csv"))
     ap.add_argument(
         "--limit",
         type=int,

@@ -1,14 +1,14 @@
 # Makefile for running the data-cleanser
 
-DATA_DIR=./data/ratio_data_csv
-SCRIPT=./data-cleanser/xlsx_ratio_extrator.py
+DATA_DIR=./data/raw/ratio_data_csv
+SCRIPT=./ingestion/xlsx_ratio_extractor.py
 
 run-ratio-extractor:
 	python3 $(SCRIPT) $(DATA_DIR)
 
 help:
 	@echo "Available targets:"
-	@echo "  run-ratio-extractor      Run the ratio data extractor (data-cleanser)"
+	@echo "  run-ratio-extractor      Run the ratio data extractor (ingestion)"
 	@echo "  run-v1-kg                Run the v1-prototype KG loader"
 	@echo "  run-crisil-scraper       Run the CRISIL data scraper"
 	@echo "  run-bank-stress-mapper   Run the bank stress mapper (fundamental stress pipeline)"
@@ -22,14 +22,13 @@ entity-stress:
 	python3 $(ENTITY_STRESS_PIPELINE)
 
 # v1-prototype KG loader
-V1_PROTOTYPE_DIR=./v1-prototype
-KG_LOADER=$(V1_PROTOTYPE_DIR)/prototype_kg/loader.py
+KG_LOADER=./prototype_kg/loader.py
 
 run-v1-kg:
 	python3 $(KG_LOADER)
 
 # CRISIL scraper
-CRISIL_SCRAPER=./data-fetcher/crisil_data_fetcher.py
+CRISIL_SCRAPER=./ingestion/crisil_data_fetcher.py
 
 run-crisil-scraper:
 	python3 $(CRISIL_SCRAPER)

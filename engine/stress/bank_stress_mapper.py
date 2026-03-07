@@ -391,7 +391,7 @@ def save_results(df):
     output_df = df[output_cols].sort_values(
         "fundamental_stress_normalized", ascending=False)
 
-    csv_path = "fundamental_stress_scores.csv"
+    csv_path = "data/outputs/fundamental_stress_scores.csv"
     output_df.to_csv(csv_path, index=False)
     print(f"✓ Saved {len(output_df)} records → {csv_path}")
 
