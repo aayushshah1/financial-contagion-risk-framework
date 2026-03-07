@@ -1,0 +1,1399 @@
+{
+  "BANK OF BARODA": {
+    "stressScore": 0.1896,
+    "stressRank": 24,
+    "stressComponents": {
+      "boundaryDistance": 0.0736,
+      "mertonOriented": 0.425,
+      "camelsComposite": 0.0458
+    },
+    "camelsDimensions": {
+      "Capital": 0.0077,
+      "AssetQuality": 0.0044,
+      "Management": 0.0156,
+      "Earnings": 0.0495,
+      "Liquidity": 0.29,
+      "Sensitivity": 0.0432
+    },
+    "merton": {
+      "distanceToDefault": 7.252105,
+      "dtdRank": 24
+    },
+    "kpcaEmbedding": [
+      -0.033303,
+      0.457545,
+      0.042295,
+      0.606974,
+      -0.050592,
+      -0.127466,
+      0.104539,
+      -0.015966,
+      0.010154,
+      -0.047772
+    ]
+  },
+  "BANK OF INDIA": {
+    "stressScore": 0.319,
+    "stressRank": 11,
+    "stressComponents": {
+      "boundaryDistance": 0.0931,
+      "mertonOriented": 0.775,
+      "camelsComposite": 0.0421
+    },
+    "camelsDimensions": {
+      "Capital": 0.0044,
+      "AssetQuality": 0.0175,
+      "Management": 0.0145,
+      "Earnings": 0.0814,
+      "Liquidity": 0.1533,
+      "Sensitivity": 0.0533
+    },
+    "merton": {
+      "distanceToDefault": 5.716783,
+      "dtdRank": 10
+    },
+    "kpcaEmbedding": [
+      -0.288352,
+      0.41952,
+      0.08218,
+      -0.179697,
+      0.146284,
+      -0.029066,
+      0.143114,
+      0.134157,
+      0.017598,
+      -0.065565
+    ]
+  },
+  "BANK OF MAHARASHTRA": {
+    "stressScore": 0.1921,
+    "stressRank": 23,
+    "stressComponents": {
+      "boundaryDistance": 0.0134,
+      "mertonOriented": 0.525,
+      "camelsComposite": 0.0122
+    },
+    "camelsDimensions": {
+      "Capital": 0.0009,
+      "AssetQuality": 0.0,
+      "Management": 0.014,
+      "Earnings": 0.0118,
+      "Liquidity": 0.0688,
+      "Sensitivity": 0.0266
+    },
+    "merton": {
+      "distanceToDefault": 6.783208,
+      "dtdRank": 20
+    },
+    "kpcaEmbedding": [
+      -0.428541,
+      0.041543,
+      0.182589,
+      -0.108817,
+      -0.076414,
+      0.325411,
+      -0.070418,
+      0.006115,
+      -0.008804,
+      0.075644
+    ]
+  },
+  "CANARA BANK": {
+    "stressScore": 0.152,
+    "stressRank": 28,
+    "stressComponents": {
+      "boundaryDistance": 0.0796,
+      "mertonOriented": 0.325,
+      "camelsComposite": 0.0256
+    },
+    "camelsDimensions": {
+      "Capital": 0.0132,
+      "AssetQuality": 0.0109,
+      "Management": 0.0155,
+      "Earnings": 0.0669,
+      "Liquidity": 0.0097,
+      "Sensitivity": 0.0618
+    },
+    "merton": {
+      "distanceToDefault": 7.89603,
+      "dtdRank": 28
+    },
+    "kpcaEmbedding": [
+      -0.200129,
+      0.456014,
+      -0.01353,
+      -0.352102,
+      0.174024,
+      -0.17239,
+      0.063653,
+      0.076395,
+      0.000799,
+      -0.1399
+    ]
+  },
+  "CENTRAL BANK OF INDIA": {
+    "stressScore": 0.132,
+    "stressRank": 33,
+    "stressComponents": {
+      "boundaryDistance": 0.0686,
+      "mertonOriented": 0.275,
+      "camelsComposite": 0.0332
+    },
+    "camelsDimensions": {
+      "Capital": 0.0084,
+      "AssetQuality": 0.0027,
+      "Management": 0.0617,
+      "Earnings": 0.0688,
+      "Liquidity": 0.0745,
+      "Sensitivity": 0.0576
+    },
+    "merton": {
+      "distanceToDefault": 8.404665,
+      "dtdRank": 30
+    },
+    "kpcaEmbedding": [
+      -0.329303,
+      0.33595,
+      0.208963,
+      -0.082011,
+      0.105933,
+      0.205849,
+      -0.16752,
+      -0.022492,
+      -0.009353,
+      0.040642
+    ]
+  },
+  "INDIAN BANK": {
+    "stressScore": 0.259,
+    "stressRank": 18,
+    "stressComponents": {
+      "boundaryDistance": 0.0633,
+      "mertonOriented": 0.65,
+      "camelsComposite": 0.0246
+    },
+    "camelsDimensions": {
+      "Capital": 0.0034,
+      "AssetQuality": 0.0,
+      "Management": 0.0181,
+      "Earnings": 0.0304,
+      "Liquidity": 0.139,
+      "Sensitivity": 0.04
+    },
+    "merton": {
+      "distanceToDefault": 6.101367,
+      "dtdRank": 15
+    },
+    "kpcaEmbedding": [
+      -0.289688,
+      0.414104,
+      0.207433,
+      0.335098,
+      -0.037372,
+      0.094488,
+      -0.012959,
+      -0.033298,
+      0.004468,
+      -0.022757
+    ]
+  },
+  "INDIAN OVERSEAS BANK": {
+    "stressScore": 0.1469,
+    "stressRank": 30,
+    "stressComponents": {
+      "boundaryDistance": 0.0406,
+      "mertonOriented": 0.35,
+      "camelsComposite": 0.0325
+    },
+    "camelsDimensions": {
+      "Capital": 0.0009,
+      "AssetQuality": 0.0,
+      "Management": 0.0276,
+      "Earnings": 0.0595,
+      "Liquidity": 0.1546,
+      "Sensitivity": 0.0424
+    },
+    "merton": {
+      "distanceToDefault": 7.876019,
+      "dtdRank": 27
+    },
+    "kpcaEmbedding": [
+      -0.465742,
+      0.10079,
+      0.126317,
+      -0.136366,
+      -0.039678,
+      0.055651,
+      4e-05,
+      -0.03465,
+      0.004184,
+      -0.057488
+    ]
+  },
+  "PUNJAB AND SIND BANK": {
+    "stressScore": 0.2179,
+    "stressRank": 21,
+    "stressComponents": {
+      "boundaryDistance": 0.0978,
+      "mertonOriented": 0.475,
+      "camelsComposite": 0.0503
+    },
+    "camelsDimensions": {
+      "Capital": 0.0048,
+      "AssetQuality": 0.0251,
+      "Management": 0.03,
+      "Earnings": 0.1382,
+      "Liquidity": 0.0683,
+      "Sensitivity": 0.082
+    },
+    "merton": {
+      "distanceToDefault": 6.990171,
+      "dtdRank": 22
+    },
+    "kpcaEmbedding": [
+      -0.185913,
+      0.404597,
+      -0.066652,
+      -0.378288,
+      0.197691,
+      -0.218206,
+      0.027794,
+      0.016231,
+      0.015787,
+      -0.015704
+    ]
+  },
+  "PUNJAB NATIONAL BANK": {
+    "stressScore": 0.1787,
+    "stressRank": 26,
+    "stressComponents": {
+      "boundaryDistance": 0.0977,
+      "mertonOriented": 0.375,
+      "camelsComposite": 0.0334
+    },
+    "camelsDimensions": {
+      "Capital": 0.0123,
+      "AssetQuality": 0.0,
+      "Management": 0.0203,
+      "Earnings": 0.0741,
+      "Liquidity": 0.1082,
+      "Sensitivity": 0.053
+    },
+    "merton": {
+      "distanceToDefault": 7.574371,
+      "dtdRank": 26
+    },
+    "kpcaEmbedding": [
+      -0.133831,
+      0.582551,
+      0.060296,
+      0.301965,
+      0.08219,
+      -0.198098,
+      -0.001554,
+      -0.038752,
+      -0.003467,
+      -0.072509
+    ]
+  },
+  "STATE BANK OF INDIA": {
+    "stressScore": 0.1016,
+    "stressRank": 35,
+    "stressComponents": {
+      "boundaryDistance": 0.025,
+      "mertonOriented": 0.225,
+      "camelsComposite": 0.0516
+    },
+    "camelsDimensions": {
+      "Capital": 0.0847,
+      "AssetQuality": 0.0,
+      "Management": 0.0175,
+      "Earnings": 0.0579,
+      "Liquidity": 0.1451,
+      "Sensitivity": 0.0509
+    },
+    "merton": {
+      "distanceToDefault": 8.754391,
+      "dtdRank": 32
+    },
+    "kpcaEmbedding": [
+      0.411487,
+      0.208218,
+      -0.346365,
+      0.002035,
+      -0.267893,
+      0.228725,
+      -0.167656,
+      0.455174,
+      -0.681228,
+      -0.089791
+    ]
+  },
+  "UCO BANK": {
+    "stressScore": 0.1502,
+    "stressRank": 29,
+    "stressComponents": {
+      "boundaryDistance": 0.1319,
+      "mertonOriented": 0.25,
+      "camelsComposite": 0.0399
+    },
+    "camelsDimensions": {
+      "Capital": 0.0021,
+      "AssetQuality": 0.0,
+      "Management": 0.0449,
+      "Earnings": 0.0939,
+      "Liquidity": 0.1331,
+      "Sensitivity": 0.0548
+    },
+    "merton": {
+      "distanceToDefault": 8.673937,
+      "dtdRank": 31
+    },
+    "kpcaEmbedding": [
+      0.115144,
+      0.469473,
+      0.030928,
+      0.603963,
+      -0.085274,
+      -0.1063,
+      -0.091293,
+      -0.146735,
+      0.009513,
+      -0.032361
+    ]
+  },
+  "UNION BANK OF INDIA": {
+    "stressScore": 0.1881,
+    "stressRank": 25,
+    "stressComponents": {
+      "boundaryDistance": 0.0217,
+      "mertonOriented": 0.5,
+      "camelsComposite": 0.0176
+    },
+    "camelsDimensions": {
+      "Capital": 0.0028,
+      "AssetQuality": 0.0071,
+      "Management": 0.0161,
+      "Earnings": 0.0477,
+      "Liquidity": 0.01,
+      "Sensitivity": 0.0518
+    },
+    "merton": {
+      "distanceToDefault": 6.833484,
+      "dtdRank": 21
+    },
+    "kpcaEmbedding": [
+      -0.370162,
+      0.371582,
+      0.124026,
+      -0.321889,
+      0.063082,
+      -0.013292,
+      0.008826,
+      0.001719,
+      0.00988,
+      -0.131609
+    ]
+  },
+  "AXIS BANK LIMITED": {
+    "stressScore": 0.0886,
+    "stressRank": 36,
+    "stressComponents": {
+      "boundaryDistance": 0.0613,
+      "mertonOriented": 0.15,
+      "camelsComposite": 0.0464
+    },
+    "camelsDimensions": {
+      "Capital": 0.007,
+      "AssetQuality": 0.0,
+      "Management": 0.0527,
+      "Earnings": 0.0169,
+      "Liquidity": 0.3352,
+      "Sensitivity": 0.05
+    },
+    "merton": {
+      "distanceToDefault": 9.201786,
+      "dtdRank": 35
+    },
+    "kpcaEmbedding": [
+      -0.245656,
+      -0.38344,
+      -0.168676,
+      0.016634,
+      -0.227436,
+      -0.164178,
+      0.085892,
+      -0.060484,
+      -0.00801,
+      -0.144602
+    ]
+  },
+  "BANDHAN BANK LIMITED": {
+    "stressScore": 0.2703,
+    "stressRank": 16,
+    "stressComponents": {
+      "boundaryDistance": 0.1331,
+      "mertonOriented": 0.55,
+      "camelsComposite": 0.0984
+    },
+    "camelsDimensions": {
+      "Capital": 0.0011,
+      "AssetQuality": 0.0425,
+      "Management": 0.3304,
+      "Earnings": 0.0213,
+      "Liquidity": 0.3207,
+      "Sensitivity": 0.3208
+    },
+    "merton": {
+      "distanceToDefault": 6.725218,
+      "dtdRank": 19
+    },
+    "kpcaEmbedding": [
+      0.302065,
+      -0.372999,
+      0.169652,
+      0.040548,
+      -0.12975,
+      -0.343169,
+      -0.211511,
+      -0.027897,
+      -0.009555,
+      -0.200111
+    ]
+  },
+  "CITY UNION BANK LIMITED": {
+    "stressScore": 0.2669,
+    "stressRank": 17,
+    "stressComponents": {
+      "boundaryDistance": 0.0259,
+      "mertonOriented": 0.7,
+      "camelsComposite": 0.046
+    },
+    "camelsDimensions": {
+      "Capital": 0.0,
+      "AssetQuality": 0.0409,
+      "Management": 0.0271,
+      "Earnings": 0.0343,
+      "Liquidity": 0.2076,
+      "Sensitivity": 0.0683
+    },
+    "merton": {
+      "distanceToDefault": 5.925341,
+      "dtdRank": 13
+    },
+    "kpcaEmbedding": [
+      -0.404435,
+      -0.258982,
+      -0.031272,
+      -0.074017,
+      -0.145996,
+      -0.104789,
+      0.075589,
+      -0.042501,
+      0.001061,
+      -0.05391
+    ]
+  },
+  "CSB BANK LIMITED": {
+    "stressScore": 0.3912,
+    "stressRank": 7,
+    "stressComponents": {
+      "boundaryDistance": 0.0603,
+      "mertonOriented": 1.0,
+      "camelsComposite": 0.0681
+    },
+    "camelsDimensions": {
+      "Capital": 0.0001,
+      "AssetQuality": 0.0011,
+      "Management": 0.2918,
+      "Earnings": 0.0265,
+      "Liquidity": 0.281,
+      "Sensitivity": 0.1046
+    },
+    "merton": {
+      "distanceToDefault": 3.469676,
+      "dtdRank": 1
+    },
+    "kpcaEmbedding": [
+      -0.144444,
+      -0.493394,
+      -0.00937,
+      0.011519,
+      -0.071639,
+      -0.161854,
+      -0.070827,
+      -0.029263,
+      -0.001485,
+      -0.081486
+    ]
+  },
+  "DCB BANK LIMITED": {
+    "stressScore": 0.37,
+    "stressRank": 9,
+    "stressComponents": {
+      "boundaryDistance": 0.2183,
+      "mertonOriented": 0.75,
+      "camelsComposite": 0.081
+    },
+    "camelsDimensions": {
+      "Capital": 0.0115,
+      "AssetQuality": 0.0338,
+      "Management": 0.0715,
+      "Earnings": 0.0725,
+      "Liquidity": 0.3415,
+      "Sensitivity": 0.243
+    },
+    "merton": {
+      "distanceToDefault": 5.780636,
+      "dtdRank": 11
+    },
+    "kpcaEmbedding": [
+      0.043179,
+      -0.050335,
+      -0.185202,
+      0.325795,
+      0.236898,
+      -0.136183,
+      0.13875,
+      0.146231,
+      0.01234,
+      0.247551
+    ]
+  },
+  "DHANLAXMI BANK LIMITED": {
+    "stressScore": 0.0828,
+    "stressRank": 37,
+    "stressComponents": {
+      "boundaryDistance": 0.0651,
+      "mertonOriented": 0.1,
+      "camelsComposite": 0.0872
+    },
+    "camelsDimensions": {
+      "Capital": 0.0111,
+      "AssetQuality": 0.0267,
+      "Management": 0.1987,
+      "Earnings": 0.2078,
+      "Liquidity": 0.0289,
+      "Sensitivity": 0.2413
+    },
+    "merton": {
+      "distanceToDefault": 10.049556,
+      "dtdRank": 37
+    },
+    "kpcaEmbedding": [
+      0.384449,
+      0.22144,
+      -0.389675,
+      -0.151078,
+      -0.256223,
+      -0.10587,
+      -0.269853,
+      -0.398497,
+      0.010127,
+      0.598099
+    ]
+  },
+  "FEDERAL BANK LTD": {
+    "stressScore": 0.1406,
+    "stressRank": 32,
+    "stressComponents": {
+      "boundaryDistance": 0.0627,
+      "mertonOriented": 0.3,
+      "camelsComposite": 0.0421
+    },
+    "camelsDimensions": {
+      "Capital": 0.0099,
+      "AssetQuality": 0.0,
+      "Management": 0.0335,
+      "Earnings": 0.0494,
+      "Liquidity": 0.2189,
+      "Sensitivity": 0.0905
+    },
+    "merton": {
+      "distanceToDefault": 8.1951,
+      "dtdRank": 29
+    },
+    "kpcaEmbedding": [
+      -0.364084,
+      -0.136218,
+      -0.080655,
+      -0.038023,
+      0.175728,
+      0.050334,
+      0.149997,
+      0.138229,
+      0.002048,
+      0.117551
+    ]
+  },
+  "HDFC BANK LTD.": {
+    "stressScore": 0.0254,
+    "stressRank": 41,
+    "stressComponents": {
+      "boundaryDistance": 0.035,
+      "mertonOriented": 0.0,
+      "camelsComposite": 0.0455
+    },
+    "camelsDimensions": {
+      "Capital": 0.0007,
+      "AssetQuality": 0.0,
+      "Management": 0.0166,
+      "Earnings": 0.0222,
+      "Liquidity": 0.3599,
+      "Sensitivity": 0.0643
+    },
+    "merton": {
+      "distanceToDefault": 15.991226,
+      "dtdRank": 41
+    },
+    "kpcaEmbedding": [
+      -0.323942,
+      -0.331985,
+      -0.079588,
+      0.151561,
+      -0.113025,
+      -0.005997,
+      0.209757,
+      0.101774,
+      0.003645,
+      0.068529
+    ]
+  },
+  "ICICI BANK LIMITED": {
+    "stressScore": 0.0345,
+    "stressRank": 40,
+    "stressComponents": {
+      "boundaryDistance": 0.0221,
+      "mertonOriented": 0.05,
+      "camelsComposite": 0.0327
+    },
+    "camelsDimensions": {
+      "Capital": 0.0072,
+      "AssetQuality": 0.0,
+      "Management": 0.0301,
+      "Earnings": 0.0077,
+      "Liquidity": 0.2428,
+      "Sensitivity": 0.0409
+    },
+    "merton": {
+      "distanceToDefault": 13.329287,
+      "dtdRank": 39
+    },
+    "kpcaEmbedding": [
+      -0.354575,
+      -0.392444,
+      -0.078548,
+      0.023784,
+      -0.094759,
+      0.110616,
+      0.057619,
+      0.015606,
+      -0.010264,
+      0.037562
+    ]
+  },
+  "IDBI BANK LIMITED": {
+    "stressScore": 0.314,
+    "stressRank": 12,
+    "stressComponents": {
+      "boundaryDistance": 0.0752,
+      "mertonOriented": 0.8,
+      "camelsComposite": 0.0155
+    },
+    "camelsDimensions": {
+      "Capital": 0.0,
+      "AssetQuality": 0.0,
+      "Management": 0.0339,
+      "Earnings": 0.0179,
+      "Liquidity": 0.0661,
+      "Sensitivity": 0.0371
+    },
+    "merton": {
+      "distanceToDefault": 5.664173,
+      "dtdRank": 9
+    },
+    "kpcaEmbedding": [
+      -0.34747,
+      -0.008776,
+      0.145834,
+      -0.132932,
+      -0.089719,
+      0.337465,
+      -0.146959,
+      -0.038869,
+      -0.010975,
+      0.0932
+    ]
+  },
+  "IDFC FIRST BANK LIMITED": {
+    "stressScore": 0.4027,
+    "stressRank": 5,
+    "stressComponents": {
+      "boundaryDistance": 0.1267,
+      "mertonOriented": 0.9,
+      "camelsComposite": 0.1479
+    },
+    "camelsDimensions": {
+      "Capital": 0.0326,
+      "AssetQuality": 0.0016,
+      "Management": 0.4962,
+      "Earnings": 0.1305,
+      "Liquidity": 0.3536,
+      "Sensitivity": 0.5646
+    },
+    "merton": {
+      "distanceToDefault": 5.228241,
+      "dtdRank": 5
+    },
+    "kpcaEmbedding": [
+      0.448641,
+      -0.119438,
+      -0.267581,
+      0.071303,
+      0.484539,
+      0.195637,
+      -0.193427,
+      -0.189077,
+      0.008567,
+      -0.277022
+    ]
+  },
+  "INDUSIND BANK LTD": {
+    "stressScore": 0.1438,
+    "stressRank": 31,
+    "stressComponents": {
+      "boundaryDistance": 0.1309,
+      "mertonOriented": 0.2,
+      "camelsComposite": 0.0857
+    },
+    "camelsDimensions": {
+      "Capital": 0.0107,
+      "AssetQuality": 0.0245,
+      "Management": 0.1359,
+      "Earnings": 0.1372,
+      "Liquidity": 0.2465,
+      "Sensitivity": 0.1997
+    },
+    "merton": {
+      "distanceToDefault": 9.152175,
+      "dtdRank": 33
+    },
+    "kpcaEmbedding": [
+      0.005703,
+      -0.34912,
+      -0.233275,
+      0.038682,
+      0.383586,
+      0.049929,
+      0.053524,
+      -0.01616,
+      0.014705,
+      0.037335
+    ]
+  },
+  "JAMMU & KASHMIR BANK LTD": {
+    "stressScore": 0.3038,
+    "stressRank": 13,
+    "stressComponents": {
+      "boundaryDistance": 0.2373,
+      "mertonOriented": 0.575,
+      "camelsComposite": 0.0306
+    },
+    "camelsDimensions": {
+      "Capital": 0.0164,
+      "AssetQuality": 0.0158,
+      "Management": 0.058,
+      "Earnings": 0.0315,
+      "Liquidity": 0.0396,
+      "Sensitivity": 0.1129
+    },
+    "merton": {
+      "distanceToDefault": 6.58118,
+      "dtdRank": 18
+    },
+    "kpcaEmbedding": [
+      -0.093564,
+      0.154558,
+      0.142431,
+      0.026472,
+      0.057898,
+      0.224984,
+      -0.36008,
+      -0.079695,
+      -0.037399,
+      0.145339
+    ]
+  },
+  "KARNATAKA BANK LTD": {
+    "stressScore": 0.2985,
+    "stressRank": 14,
+    "stressComponents": {
+      "boundaryDistance": 0.1764,
+      "mertonOriented": 0.625,
+      "camelsComposite": 0.0368
+    },
+    "camelsDimensions": {
+      "Capital": 0.0005,
+      "AssetQuality": 0.0442,
+      "Management": 0.0437,
+      "Earnings": 0.071,
+      "Liquidity": 0.0071,
+      "Sensitivity": 0.082
+    },
+    "merton": {
+      "distanceToDefault": 6.355325,
+      "dtdRank": 16
+    },
+    "kpcaEmbedding": [
+      -0.097144,
+      0.16903,
+      -0.11868,
+      -0.3537,
+      -0.156497,
+      -0.2944,
+      -0.143619,
+      -0.274619,
+      0.006612,
+      -0.121617
+    ]
+  },
+  "KARUR VYSYA BANK LTD": {
+    "stressScore": 0.2186,
+    "stressRank": 20,
+    "stressComponents": {
+      "boundaryDistance": 0.0004,
+      "mertonOriented": 0.6,
+      "camelsComposite": 0.0338
+    },
+    "camelsDimensions": {
+      "Capital": 0.0019,
+      "AssetQuality": 0.0,
+      "Management": 0.0664,
+      "Earnings": 0.0124,
+      "Liquidity": 0.2073,
+      "Sensitivity": 0.0699
+    },
+    "merton": {
+      "distanceToDefault": 6.48046,
+      "dtdRank": 17
+    },
+    "kpcaEmbedding": [
+      -0.357364,
+      -0.39269,
+      0.006987,
+      0.022828,
+      -0.060174,
+      0.133617,
+      0.026185,
+      0.046647,
+      -0.006429,
+      0.104815
+    ]
+  },
+  "KOTAK MAHINDRA BANK LTD.": {
+    "stressScore": 0.0476,
+    "stressRank": 39,
+    "stressComponents": {
+      "boundaryDistance": 0.0244,
+      "mertonOriented": 0.075,
+      "camelsComposite": 0.0463
+    },
+    "camelsDimensions": {
+      "Capital": 0.0001,
+      "AssetQuality": 0.0,
+      "Management": 0.1164,
+      "Earnings": 0.0095,
+      "Liquidity": 0.3117,
+      "Sensitivity": 0.0325
+    },
+    "merton": {
+      "distanceToDefault": 10.872889,
+      "dtdRank": 38
+    },
+    "kpcaEmbedding": [
+      -0.248834,
+      -0.453463,
+      -0.078349,
+      0.000358,
+      -0.272576,
+      -0.099607,
+      0.002197,
+      -0.069125,
+      -0.009345,
+      -0.119842
+    ]
+  },
+  "RBL BANK LTD": {
+    "stressScore": 0.1926,
+    "stressRank": 22,
+    "stressComponents": {
+      "boundaryDistance": 0.0622,
+      "mertonOriented": 0.4,
+      "camelsComposite": 0.1111
+    },
+    "camelsDimensions": {
+      "Capital": 0.0218,
+      "AssetQuality": 0.0,
+      "Management": 0.4553,
+      "Earnings": 0.1236,
+      "Liquidity": 0.2394,
+      "Sensitivity": 0.2292
+    },
+    "merton": {
+      "distanceToDefault": 7.366645,
+      "dtdRank": 25
+    },
+    "kpcaEmbedding": [
+      0.246167,
+      -0.290183,
+      -0.273697,
+      0.065408,
+      0.531508,
+      0.167832,
+      -0.158174,
+      -0.143253,
+      0.011473,
+      -0.177081
+    ]
+  },
+  "SOUTH INDIAN BANK LTD": {
+    "stressScore": 0.3792,
+    "stressRank": 8,
+    "stressComponents": {
+      "boundaryDistance": 0.0677,
+      "mertonOriented": 0.975,
+      "camelsComposite": 0.0436
+    },
+    "camelsDimensions": {
+      "Capital": 0.0007,
+      "AssetQuality": 0.0229,
+      "Management": 0.0602,
+      "Earnings": 0.0519,
+      "Liquidity": 0.1673,
+      "Sensitivity": 0.0676
+    },
+    "merton": {
+      "distanceToDefault": 4.516775,
+      "dtdRank": 2
+    },
+    "kpcaEmbedding": [
+      -0.426876,
+      0.082449,
+      0.10629,
+      0.115101,
+      0.049246,
+      -0.007774,
+      0.050708,
+      0.029344,
+      0.007537,
+      0.074416
+    ]
+  },
+  "TAMILNAD MERCANTILE BANK LTD": {
+    "stressScore": 0.2571,
+    "stressRank": 19,
+    "stressComponents": {
+      "boundaryDistance": 0.031,
+      "mertonOriented": 0.675,
+      "camelsComposite": 0.0336
+    },
+    "camelsDimensions": {
+      "Capital": 0.0,
+      "AssetQuality": 0.0,
+      "Management": 0.0346,
+      "Earnings": 0.0193,
+      "Liquidity": 0.2255,
+      "Sensitivity": 0.0748
+    },
+    "merton": {
+      "distanceToDefault": 6.028082,
+      "dtdRank": 14
+    },
+    "kpcaEmbedding": [
+      -0.368487,
+      -0.324226,
+      -0.00011,
+      0.118886,
+      -0.136255,
+      -0.01663,
+      0.040719,
+      -0.009325,
+      -0.004343,
+      0.043108
+    ]
+  },
+  "YES BANK LTD.": {
+    "stressScore": 0.1752,
+    "stressRank": 27,
+    "stressComponents": {
+      "boundaryDistance": 0.2295,
+      "mertonOriented": 0.175,
+      "camelsComposite": 0.0886
+    },
+    "camelsDimensions": {
+      "Capital": 0.0259,
+      "AssetQuality": 0.0,
+      "Management": 0.0646,
+      "Earnings": 0.1932,
+      "Liquidity": 0.3072,
+      "Sensitivity": 0.1271
+    },
+    "merton": {
+      "distanceToDefault": 9.179658,
+      "dtdRank": 34
+    },
+    "kpcaEmbedding": [
+      0.254117,
+      0.268303,
+      -0.432534,
+      -0.166681,
+      0.144994,
+      -0.319163,
+      0.204068,
+      0.237603,
+      -0.022983,
+      0.222305
+    ]
+  },
+  "AU SMALL FINANCE BANK LIMITED": {
+    "stressScore": 0.1197,
+    "stressRank": 34,
+    "stressComponents": {
+      "boundaryDistance": 0.1256,
+      "mertonOriented": 0.125,
+      "camelsComposite": 0.1027
+    },
+    "camelsDimensions": {
+      "Capital": 0.0005,
+      "AssetQuality": 0.0131,
+      "Management": 0.4366,
+      "Earnings": 0.0155,
+      "Liquidity": 0.2919,
+      "Sensitivity": 0.4532
+    },
+    "merton": {
+      "distanceToDefault": 9.546157,
+      "dtdRank": 36
+    },
+    "kpcaEmbedding": [
+      0.360928,
+      -0.438228,
+      0.250668,
+      0.031982,
+      0.146772,
+      -0.137965,
+      -0.139098,
+      0.075378,
+      0.009119,
+      0.008863
+    ]
+  },
+  "CAPITAL SMALL FINANCE BANK LIMITED": {
+    "stressScore": 0.0655,
+    "stressRank": 38,
+    "stressComponents": {
+      "boundaryDistance": 0.092,
+      "mertonOriented": 0.025,
+      "camelsComposite": 0.0798
+    },
+    "camelsDimensions": {
+      "Capital": 0.0,
+      "AssetQuality": 0.0436,
+      "Management": 0.1783,
+      "Earnings": 0.0416,
+      "Liquidity": 0.2649,
+      "Sensitivity": 0.2815
+    },
+    "merton": {
+      "distanceToDefault": 13.596908,
+      "dtdRank": 40
+    },
+    "kpcaEmbedding": [
+      -0.0852,
+      -0.487736,
+      0.016413,
+      0.053429,
+      0.105602,
+      -0.024735,
+      -0.003779,
+      0.044819,
+      0.007899,
+      0.093036
+    ]
+  },
+  "EQUITAS SMALL FINANCE BANK LIMITED": {
+    "stressScore": 0.2782,
+    "stressRank": 15,
+    "stressComponents": {
+      "boundaryDistance": 0.207,
+      "mertonOriented": 0.45,
+      "camelsComposite": 0.1515
+    },
+    "camelsDimensions": {
+      "Capital": 0.0005,
+      "AssetQuality": 0.0262,
+      "Management": 0.4967,
+      "Earnings": 0.1726,
+      "Liquidity": 0.2424,
+      "Sensitivity": 0.7017
+    },
+    "merton": {
+      "distanceToDefault": 7.052709,
+      "dtdRank": 23
+    },
+    "kpcaEmbedding": [
+      0.678261,
+      -0.051012,
+      0.385396,
+      -0.107349,
+      0.044248,
+      0.074953,
+      0.159246,
+      0.00797,
+      -0.002073,
+      0.117314
+    ]
+  },
+  "ESAF SMALL FINANCE BANK LIMITED": {
+    "stressScore": 0.4677,
+    "stressRank": 2,
+    "stressComponents": {
+      "boundaryDistance": 0.2542,
+      "mertonOriented": 0.875,
+      "camelsComposite": 0.239
+    },
+    "camelsDimensions": {
+      "Capital": 0.0004,
+      "AssetQuality": 0.1358,
+      "Management": 0.5001,
+      "Earnings": 0.5058,
+      "Liquidity": 0.0897,
+      "Sensitivity": 0.7605
+    },
+    "merton": {
+      "distanceToDefault": 5.316228,
+      "dtdRank": 6
+    },
+    "kpcaEmbedding": [
+      0.451185,
+      0.185498,
+      -0.288384,
+      -0.034568,
+      -0.279611,
+      0.349188,
+      0.357735,
+      -0.334883,
+      -0.054139,
+      -0.225681
+    ]
+  },
+  "JANA SMALL FINANCE BANK LIMITED": {
+    "stressScore": 0.4543,
+    "stressRank": 3,
+    "stressComponents": {
+      "boundaryDistance": 0.3126,
+      "mertonOriented": 0.85,
+      "camelsComposite": 0.1272
+    },
+    "camelsDimensions": {
+      "Capital": 0.0002,
+      "AssetQuality": 0.024,
+      "Management": 0.4927,
+      "Earnings": 0.0188,
+      "Liquidity": 0.3288,
+      "Sensitivity": 0.6807
+    },
+    "merton": {
+      "distanceToDefault": 5.432044,
+      "dtdRank": 7
+    },
+    "kpcaEmbedding": [
+      0.576423,
+      0.000365,
+      0.218061,
+      -0.078536,
+      -0.245449,
+      -0.220383,
+      -0.182058,
+      0.095663,
+      -0.020266,
+      -0.20296
+    ]
+  },
+  "SURYODAY SMALL FINANCE BANK LIMITED": {
+    "stressScore": 0.4207,
+    "stressRank": 4,
+    "stressComponents": {
+      "boundaryDistance": 0.2038,
+      "mertonOriented": 0.825,
+      "camelsComposite": 0.2016
+    },
+    "camelsDimensions": {
+      "Capital": 0.0,
+      "AssetQuality": 0.2225,
+      "Management": 0.5003,
+      "Earnings": 0.0776,
+      "Liquidity": 0.34,
+      "Sensitivity": 0.7064
+    },
+    "merton": {
+      "distanceToDefault": 5.579433,
+      "dtdRank": 8
+    },
+    "kpcaEmbedding": [
+      0.646822,
+      -0.133795,
+      0.359519,
+      -0.076453,
+      0.062226,
+      0.005368,
+      0.197748,
+      -0.007787,
+      0.011991,
+      0.075976
+    ]
+  },
+  "UJJIVAN SMALL FINANCE BANK LIMITED": {
+    "stressScore": 0.3457,
+    "stressRank": 10,
+    "stressComponents": {
+      "boundaryDistance": 0.1587,
+      "mertonOriented": 0.725,
+      "camelsComposite": 0.1139
+    },
+    "camelsDimensions": {
+      "Capital": 0.0,
+      "AssetQuality": 0.0,
+      "Management": 0.5002,
+      "Earnings": 0.0183,
+      "Liquidity": 0.2437,
+      "Sensitivity": 0.716
+    },
+    "merton": {
+      "distanceToDefault": 5.914821,
+      "dtdRank": 12
+    },
+    "kpcaEmbedding": [
+      0.613817,
+      -0.118894,
+      0.436707,
+      -0.068284,
+      0.045947,
+      -0.03721,
+      -0.100296,
+      0.164976,
+      0.002579,
+      0.166115
+    ]
+  },
+  "UTKARSH SMALL FINANCE BANK LIMITED": {
+    "stressScore": 0.4759,
+    "stressRank": 1,
+    "stressComponents": {
+      "boundaryDistance": 0.2119,
+      "mertonOriented": 0.95,
+      "camelsComposite": 0.2345
+    },
+    "camelsDimensions": {
+      "Capital": 0.0004,
+      "AssetQuality": 0.2367,
+      "Management": 0.4991,
+      "Earnings": 0.2245,
+      "Liquidity": 0.2881,
+      "Sensitivity": 0.7951
+    },
+    "merton": {
+      "distanceToDefault": 4.671793,
+      "dtdRank": 3
+    },
+    "kpcaEmbedding": [
+      0.631996,
+      0.053236,
+      0.171281,
+      -0.109776,
+      -0.086974,
+      0.180353,
+      0.481906,
+      -0.189975,
+      -0.008801,
+      0.010761
+    ]
+  },
+  "FINO PAYMENTS BANK LIMITED": {
+    "stressScore": 0.3929,
+    "stressRank": 6,
+    "stressComponents": {
+      "boundaryDistance": 0.0,
+      "mertonOriented": 0.925,
+      "camelsComposite": 0.2765
+    },
+    "camelsDimensions": {
+      "Capital": 0.0,
+      "AssetQuality": 0.5,
+      "Management": 0.5001,
+      "Earnings": 0.046,
+      "Liquidity": 0.6667,
+      "Sensitivity": 0.0117
+    },
+    "merton": {
+      "distanceToDefault": 5.084842,
+      "dtdRank": 4
+    },
+    "kpcaEmbedding": [
+      0.416655,
+      0.190593,
+      -0.33212,
+      -0.013759,
+      -0.31509,
+      0.254324,
+      -0.148522,
+      0.409273,
+      0.726831,
+      -0.098395
+    ]
+  },
+  "_meta": {
+    "pipeline": "RKMSS v1.0",
+    "year": "2025",
+    "nBanks": 41,
+    "featuresUsed": [
+      "cashDepositRatio",
+      "creditDepositRatio",
+      "investmentDepositRatio",
+      "netInterestMargin",
+      "intermediationCostToTotalAssets",
+      "wageBillsToTotalExpense",
+      "burdenToTotalAssets",
+      "operatingProfitsToTotalAssets",
+      "returnOnAssets",
+      "returnOnEquity",
+      "costOfFunds",
+      "returnOnAdvances",
+      "returnOnInvestments",
+      "totalCAR",
+      "tier1CAR",
+      "netNPAToNetAdvances"
+    ],
+    "kpca": {
+      "kernel": "rbf",
+      "nComponents": 10,
+      "gamma": 0.068129
+    },
+    "blendWeights": {
+      "danger_boundary_distance": 0.4,
+      "merton_oriented_pc1": 0.35,
+      "camels_composite": 0.25
+    },
+    "camelsWeights": {
+      "Capital": 0.25,
+      "AssetQuality": 0.3,
+      "Management": 0.1,
+      "Earnings": 0.2,
+      "Liquidity": 0.1,
+      "Sensitivity": 0.05
+    },
+    "mertonFile": "D:\\Documents\\Coding Projects\\Capstone\\data_consolidation\\data\\outputs\\merton_soft_labels.json",
+    "mertonAvailable": true,
+    "computedAt": "2026-03-07T19:15:08.674793"
+  }
+}
