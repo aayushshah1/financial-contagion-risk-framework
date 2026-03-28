@@ -255,15 +255,16 @@ QUERIES: dict[str, dict] = {
             "A hidden cross-bank systemic linkage channel."
         ),
         "cypher": """
-            MATCH (bankA:Bank)-[l:LENDS_TO]->(c:Company)<-[rpt:RELATED_PARTY]-(bankB:Bank)
+            MATCH (bankA:Bank)-[l:LENDS_TO]->(c:Company)-[rpt:RELATED_PARTY]->(bankB:Bank)
             WHERE bankA <> bankB
             RETURN
                 bankA.bankSymbol                        AS lendingBank,
                 bankB.bankSymbol                        AS rptBank,
                 coalesce(c.mcaName, c.crisilName)       AS companyName,
                 c.cin                                   AS cin,
-                rpt.relationship                        AS rptRelationship,
-                round(l.totalAmount, 2)                 AS loanAmountINRCr
+                rpt.primaryRelationship                 AS rptRelationship,
+                round(l.totalAmount, 2)                 AS loanAmountINRCr,
+                round(rpt.netOutstandingUpCrores, 2)    AS rptExposureINRCr
             ORDER BY loanAmountINRCr DESC
         """,
         "network_config": {
@@ -277,50 +278,57 @@ QUERIES: dict[str, dict] = {
         },
     },
 
-    "Q6": {
-        "name": "Bank Lending to Its Own Subsidiaries",
-        "group": "table",
-        "description": "Intra-group exposure: Bank X lends to a company that is a subsidiary of Bank X.",
-        "cypher": """
-            MATCH (b:Bank)-[l:LENDS_TO]->(c:Company)-[:SUBSIDIARY_OF]->(b)
-            RETURN
-                b.bankSymbol                            AS bank,
-                coalesce(c.mcaName, c.crisilName)       AS subsidiary,
-                c.cin                                   AS cin,
-                round(l.totalAmount, 2)                 AS loanAmountINRCr,
-                l.facilityTypes                         AS facilityTypes
-            ORDER BY bank, loanAmountINRCr DESC
-        """,
-    },
+    # ═════════════════════════════════════════════════════════════════════════
+    # DEPRECATED: Q6 and Q7 use SUBSIDIARY_OF edges which have been merged
+    # into RELATED_PARTY. To re-enable these queries, update the patterns to:
+    #   MATCH (c:Company)-[rpt:RELATED_PARTY]->(b:Bank)
+    #   WHERE 'Subsidiary' IN rpt.relationships OR 'Associate' IN rpt.relationships
+    # ═════════════════════════════════════════════════════════════════════════
 
-    "Q7": {
-        "name": "2-Hop: Bank Lending to Subsidiary of Another Bank",
-        "group": "network",
-        "description": (
-            "Bank B lends to Company X, and Company X is a subsidiary of Bank A. "
-            "Indirect inter-bank exposure via a shared subsidiary."
-        ),
-        "cypher": """
-            MATCH (bankB:Bank)-[l:LENDS_TO]->(sub:Company)-[:SUBSIDIARY_OF]->(bankA:Bank)
-            WHERE bankA <> bankB
-            RETURN
-                bankA.bankSymbol                        AS parentBank,
-                bankB.bankSymbol                        AS lendingBank,
-                coalesce(sub.mcaName, sub.crisilName)   AS subsidiary,
-                sub.cin                                 AS cin,
-                round(l.totalAmount, 2)                 AS exposureINRCr
-            ORDER BY exposureINRCr DESC
-        """,
-        "network_config": {
-            "source_col": "lendingBank",
-            "target_col": "subsidiary",
-            "source_type": "Bank",
-            "target_type": "Company",
-            "edge_label_col": "exposureINRCr",
-            "edge_label_fmt": "₹{:.0f} Cr",
-            "extra_nodes": [{"col": "parentBank", "type": "Bank", "edge_to": "subsidiary", "edge_label": "SUBSIDIARY_OF"}],
-        },
-    },
+    # "Q6": {
+    #     "name": "Bank Lending to Its Own Subsidiaries",
+    #     "group": "table",
+    #     "description": "Intra-group exposure: Bank X lends to a company that is a subsidiary of Bank X.",
+    #     "cypher": """
+    #         MATCH (b:Bank)-[l:LENDS_TO]->(c:Company)-[:SUBSIDIARY_OF]->(b)
+    #         RETURN
+    #             b.bankSymbol                            AS bank,
+    #             coalesce(c.mcaName, c.crisilName)       AS subsidiary,
+    #             c.cin                                   AS cin,
+    #             round(l.totalAmount, 2)                 AS loanAmountINRCr,
+    #             l.facilityTypes                         AS facilityTypes
+    #         ORDER BY bank, loanAmountINRCr DESC
+    #     """,
+    # },
+
+    # "Q7": {
+    #     "name": "2-Hop: Bank Lending to Subsidiary of Another Bank",
+    #     "group": "network",
+    #     "description": (
+    #         "Bank B lends to Company X, and Company X is a subsidiary of Bank A. "
+    #         "Indirect inter-bank exposure via a shared subsidiary."
+    #     ),
+    #     "cypher": """
+    #         MATCH (bankB:Bank)-[l:LENDS_TO]->(sub:Company)-[:SUBSIDIARY_OF]->(bankA:Bank)
+    #         WHERE bankA <> bankB
+    #         RETURN
+    #             bankA.bankSymbol                        AS parentBank,
+    #             bankB.bankSymbol                        AS lendingBank,
+    #             coalesce(sub.mcaName, sub.crisilName)   AS subsidiary,
+    #             sub.cin                                 AS cin,
+    #             round(l.totalAmount, 2)                 AS exposureINRCr
+    #         ORDER BY exposureINRCr DESC
+    #     """,
+    #     "network_config": {
+    #         "source_col": "lendingBank",
+    #         "target_col": "subsidiary",
+    #         "source_type": "Bank",
+    #         "target_type": "Company",
+    #         "edge_label_col": "exposureINRCr",
+    #         "edge_label_fmt": "₹{:.0f} Cr",
+    #         "extra_nodes": [{"col": "parentBank", "type": "Bank", "edge_to": "subsidiary", "edge_label": "SUBSIDIARY_OF"}],
+    #     },
+    # },
 
     "Q8": {
         "name": "2-Hop: Bank → Borrower → Shareholder of Another Bank",
@@ -418,12 +426,12 @@ QUERIES: dict[str, dict] = {
         "cypher": """
             MATCH (b1:Bank)-[r:RELATED_PARTY]->(b2:Bank)
             RETURN
-                b1.bankSymbol           AS fromBank,
-                b2.bankSymbol           AS toBank,
-                r.relationship          AS relationship,
-                r.transactionType       AS transactionType,
-                r.reportingPeriod       AS period,
-                r.actualAmount          AS amountINRCr
+                b1.bankSymbol                     AS fromBank,
+                b2.bankSymbol                     AS toBank,
+                r.primaryRelationship             AS relationship,
+                r.reportingPeriods                AS periods,
+                r.netOutstandingUpCrores          AS amountINRCr,
+                r.transactionCount                AS txnCount
             ORDER BY b1.bankSymbol, amountINRCr DESC
         """,
         "network_config": {
@@ -431,7 +439,7 @@ QUERIES: dict[str, dict] = {
             "target_col": "toBank",
             "source_type": "Bank",
             "target_type": "Bank",
-            "edge_label_col": "transactionType",
+            "edge_label_col": "relationship",
         },
     },
 
@@ -443,7 +451,7 @@ QUERIES: dict[str, dict] = {
             "Dual exposure in different contract types."
         ),
         "cypher": """
-            MATCH (bankRPT:Bank)-[:RELATED_PARTY]->(c:Company)
+            MATCH (c:Company)-[rpt:RELATED_PARTY]->(bankRPT:Bank)
             MATCH (bankLend:Bank)-[l:LENDS_TO]->(c)
             RETURN
                 coalesce(c.mcaName, c.crisilName)       AS company,
@@ -451,6 +459,8 @@ QUERIES: dict[str, dict] = {
                 bankRPT.bankSymbol                      AS rptWithBank,
                 bankLend.bankSymbol                     AS borrowsFromBank,
                 round(l.totalAmount, 2)                 AS loanAmountINRCr,
+                rpt.primaryRelationship                 AS rptType,
+                round(rpt.netOutstandingUpCrores, 2)    AS rptExposureINRCr,
                 (bankRPT = bankLend)                    AS sameBank
             ORDER BY sameBank DESC, loanAmountINRCr DESC
         """,

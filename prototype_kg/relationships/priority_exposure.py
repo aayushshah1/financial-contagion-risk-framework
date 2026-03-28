@@ -21,6 +21,7 @@ MATCH (p:PrioritySector {rbiCategory: row.rbiCategory})
 MERGE (b)-[r:PRIORITY_EXPOSURE {rbiCategory: row.rbiCategory}]->(p)
 SET r.outstandingAmount = row.outstandingAmount,
     r.rbiCategoryLabel  = row.rbiCategoryLabel,
+    r.sectorWeight      = row.sectorWeight,
     r.source            = 'RBI_OutstandingAdvances',
     r.dataYear          = row.dataYear
 """
@@ -36,6 +37,7 @@ def _safe_float(val) -> float:
 def build_priority_exposure(driver: Driver, bank_docs: list[dict]) -> int:
     """
     Create PRIORITY_EXPOSURE edges for each bank → RBI priority sector.
+    sectorWeight = outstandingAmount / bank's total priority-sector outstanding.
     Returns total edges created/merged.
     """
     records: list[dict] = []
@@ -47,6 +49,15 @@ def build_priority_exposure(driver: Driver, bank_docs: list[dict]) -> int:
 
         if not bank_symbol or not oa:
             continue
+
+        # Compute total priority exposure for this bank (denominator)
+        total_priority = 0.0
+        for rbi_key in RBI_PRIORITY_CATEGORIES:
+            if rbi_key in SKIP_CATEGORIES:
+                continue
+            cat = oa.get(rbi_key)
+            if cat:
+                total_priority += _safe_float(cat.get("balanceOutstanding", 0))
 
         for rbi_key, rbi_label in RBI_PRIORITY_CATEGORIES.items():
             if rbi_key in SKIP_CATEGORIES:
@@ -60,11 +71,14 @@ def build_priority_exposure(driver: Driver, bank_docs: list[dict]) -> int:
             if outstanding <= 0:
                 continue
 
+            sector_weight = round(outstanding / total_priority, 6) if total_priority > 0 else None
+
             records.append({
                 "bankSymbol":        bank_symbol,
                 "rbiCategory":       rbi_key,
                 "rbiCategoryLabel":  rbi_label,
                 "outstandingAmount": round(outstanding, 4),
+                "sectorWeight":      sector_weight,
                 "dataYear":          data_year,
             })
 

@@ -38,7 +38,7 @@ from pathlib import Path
 # Ensure package root on PYTHONPATH when run directly
 sys.path.insert(0, str(Path(__file__).parent))
 
-from config import get_driver, get_mongo_client, get_bank_docs, get_company_docs, TARGET_BANK_SYMBOLS
+from config import get_driver, get_mongo_client, get_bank_docs, get_company_docs, get_sector_stress_map, TARGET_BANK_SYMBOLS
 from config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
 from neo4j import GraphDatabase
 from nodes.bank_node        import build_bank_nodes
@@ -260,6 +260,11 @@ def run(bank_symbols: list[str], skip_schema: bool):
         company_docs = get_company_docs(mongo_client)
         print(f"         Loaded {len(company_docs)} company document(s).")
 
+        # ── Load sector stress scores from MongoDB ───────────────────────────
+        print("\n[step load] Fetching sector stress scores from MongoDB …")
+        sector_stress_map = get_sector_stress_map(mongo_client)
+        print(f"         Loaded {len(sector_stress_map)} sector stress score(s).")
+
         # ── 1. Build Global Entity Registry ──────────────────────────────────
         print("\n[step 1] Building Global Entity Registry (GER) …")
         registry = GlobalEntityRegistry(bank_docs, company_docs)
@@ -278,7 +283,7 @@ def run(bank_symbols: list[str], skip_schema: bool):
 
         # ── 5. Company nodes ─────────────────────────────────────────────────
         print("\n[step 5] Building :Company nodes …")
-        _, industry_code_map = build_company_nodes(driver, bank_docs, company_docs)
+        _, industry_code_map = build_company_nodes(driver, bank_docs, company_docs, sector_stress_map)
 
         # ── 6. Shareholder nodes (bank SHP) ──────────────────────────────────
         print("\n[step 6] Building :Shareholder nodes (bank SHP) …")
@@ -294,11 +299,18 @@ def run(bank_symbols: list[str], skip_schema: bool):
 
         # ── 8B. LENDS_TO edges (company-side: bankFacilities, polymorphic) ──
         # Resolves each facility's lenderName against GER:
-        #   Bank   → (Bank)-[:LENDS_TO]->(Company)
-        #   Company→ (Company)-[:LENDS_TO]->(Company)
+        #   Bank   → (Bank)-[:LENDS_TO]->(Company)  — weighted by absorption
+        #   Company→ (Company)-[:LENDS_TO]->(Company) — weighted by transmittance
         #   Unknown→ stub :Company created, then (Company)-[:LENDS_TO]->(Company)
         print("\n[step 8B] Building LENDS_TO edges (company-side, polymorphic) …")
-        build_lends_to_from_companies(driver, company_docs, registry)
+        bank_tier1 = {
+            doc["bankSymbol"]: float(doc["tier1Capital"]["tier1CapitalCrores"])
+            for doc in bank_docs
+            if doc.get("bankSymbol")
+            and isinstance(doc.get("tier1Capital"), dict)
+            and doc["tier1Capital"].get("tier1CapitalCrores")
+        }
+        build_lends_to_from_companies(driver, company_docs, registry, bank_tier1=bank_tier1)
 
         # ── 9. BELONGS_TO edges  (Company → Industry) ───────────────────────
         print("\n[step 9] Building BELONGS_TO edges …")
@@ -313,8 +325,9 @@ def run(bank_symbols: list[str], skip_schema: bool):
         build_company_shareholder_of(driver, company_shareholders)
 
         # ── 12. SUBSIDIARY_OF edges  (data-driven from RPT) ──────────────────
-        print("\n[step 12] Building SUBSIDIARY_OF edges …")
-        build_subsidiary_of(driver, bank_docs, registry)
+        # DEPRECATED: SUBSIDIARY_OF functionality merged into RELATED_PARTY (step 14)
+        # print("\n[step 12] Building SUBSIDIARY_OF edges …")
+        # build_subsidiary_of(driver, bank_docs, registry)
 
         # ── 13. PRIORITY_EXPOSURE edges ──────────────────────────────────────
         print("\n[step 13] Building PRIORITY_EXPOSURE edges …")

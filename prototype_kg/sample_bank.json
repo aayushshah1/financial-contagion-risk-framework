@@ -24000,7 +24000,7 @@
     "year": 2025,
     "unit": "Percent (except productivity metrics which are in Rupees Lakh)"
   },
-  "lastUpdated": "2026-03-05T19:59:38.602727",
+  "lastUpdated": "2026-03-07T09:03:18.866052",
   "outstandingAdvances": {
     "bankName": "State Bank of India",
     "year": 2025,
@@ -25946,13 +25946,13 @@
     "Sensitivity": 0.0509
   },
   "stressComponents": {
-    "boundaryDistance": 0.7533,
+    "boundaryDistance": 0.025,
     "mertonOriented": 0.225,
     "camelsComposite": 0.0516
   },
-  "stressRank": 10,
-  "stressScore": 0.3929,
-  "stressUpdatedAt": "2026-03-05T21:04:24.324931",
+  "stressRank": 35,
+  "stressScore": 0.1016,
+  "stressUpdatedAt": "2026-03-07T13:45:11.917708",
   "performanceMetrics": {
     "2025": {
       "Advances": 4163312,
@@ -25981,5 +25981,6 @@
       "Total Expenditure": 413593,
       "Total Income": 524172
     }
-  }
+  },
+  "news_stress": 0.5555
 }

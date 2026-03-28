@@ -37,6 +37,7 @@ MONGO_URI         = os.getenv("db_cluster_link")
 MONGO_DB          = "financial_kg"
 MONGO_COLLECTION  = "banks"          # financial_kg/banks
 COMPANY_COLLECTION = "companies"      # financial_kg/companies
+SECTOR_COLLECTION  = "sectors"        # financial_kg/sectors
 
 CRISIL_DB         = "crisil_reports"
 CRISIL_COLLECTION = "crisil_reports_nic_ice_creams"
@@ -68,6 +69,29 @@ def get_company_docs(client: MongoClient) -> list[dict]:
     In practice we load all documents (the collection is already pre-filtered).
     """
     return list(client[MONGO_DB][COMPANY_COLLECTION].find({}))
+
+
+def get_sector_stress_map(client: MongoClient) -> dict[str, float]:
+    """
+    Return a mapping of macro_sector -> final_stress_score from financial_kg/sectors.
+    
+    Returns:
+        dict mapping sector names to their stress scores
+    """
+    sector_docs = list(client[MONGO_DB][SECTOR_COLLECTION].find({}))
+    sector_map = {}
+    
+    for doc in sector_docs:
+        macro_sector = doc.get("macro_sector")
+        final_stress = doc.get("final_stress_score")
+        
+        if macro_sector and final_stress is not None:
+            try:
+                sector_map[macro_sector] = float(final_stress)
+            except (TypeError, ValueError):
+                pass
+    
+    return sector_map
 
 
 # ---------------------------------------------------------------------------
@@ -610,3 +634,201 @@ GENERIC_NAME_TOKENS: frozenset[str] = frozenset({
     "credit", "leasing", "insurance",
     "asset", "assets", "fund", "funds",
 })
+
+"""
+prototype_kg/sector_taxonomy.py
+Maps CRISIL industry names to macro-sectors.
+Used to join company industryName → macro_sector → sector stress score.
+"""
+
+TAXONOMY: dict[str, str] = {
+    # Banking & Financial Services
+    "Private Sector Bank":                    "Banking & Financial Services",
+    "Non Banking Financial Company (NBFC)":   "Banking & Financial Services",
+    "Housing Finance Company":                "Banking & Financial Services",
+    "Microfinance Institutions":              "Banking & Financial Services",
+    "Financial Institution":                  "Banking & Financial Services",
+    "Asset Management Company":               "Banking & Financial Services",
+    "Stockbroking & Allied":                  "Banking & Financial Services",
+    "Other Capital Market related Services":  "Banking & Financial Services",
+    "Other Financial Services":               "Banking & Financial Services",
+    "Investment Company":                     "Banking & Financial Services",
+    # Energy
+    "Oil Exploration & Production":           "Energy",
+    "Refineries & Marketing":                 "Energy",
+    "Oil Equipment & Services":               "Energy",
+    "Oil Storage & Transportation":           "Energy",
+    "LPG/CNG/PNG/LNG Supplier":               "Energy",
+    "Power Generation":                       "Energy",
+    "Integrated Power Utilities":             "Energy",
+    "Power Distribution":                     "Energy",
+    "Power Trading":                          "Energy",
+    "Power - Transmission":                   "Energy",
+    "Other Utilities":                        "Energy",
+    "Offshore Support Solution Drilling":     "Energy",
+    # Metals & Mining
+    "Iron & Steel":                           "Metals & Mining",
+    "Iron & Steel Products":                  "Metals & Mining",
+    "Aluminium":                              "Metals & Mining",
+    "Copper":                                 "Metals & Mining",
+    "Zinc":                                   "Metals & Mining",
+    "Diversified Metals":                     "Metals & Mining",
+    "Ferro & Silica Manganese":               "Metals & Mining",
+    "Sponge Iron":                            "Metals & Mining",
+    "Pig Iron":                               "Metals & Mining",
+    "Precious Metals":                        "Metals & Mining",
+    "Coal":                                   "Metals & Mining",
+    "Trading - Metals":                       "Metals & Mining",
+    "Trading - Minerals":                     "Metals & Mining",
+    "Industrial Minerals":                    "Metals & Mining",
+    "Aluminium, Copper & Zinc Products":      "Metals & Mining",
+    "Trading - Coal":                         "Metals & Mining",
+    # Automobiles & Auto Components
+    "Passenger Cars & Utility Vehicles":      "Automobiles & Auto Components",
+    "Commercial Vehicles":                    "Automobiles & Auto Components",
+    "2/3 Wheelers":                           "Automobiles & Auto Components",
+    "Auto Components & Equipments":           "Automobiles & Auto Components",
+    "Tractors":                               "Automobiles & Auto Components",
+    "Auto Dealer":                            "Automobiles & Auto Components",
+    "Dealers-Commercial Vehicles, Tractors, Construction Vehicles": "Automobiles & Auto Components",
+    "Trading - Auto Components":              "Automobiles & Auto Components",
+    "Cycles":                                 "Automobiles & Auto Components",
+    "Tyres & Rubber Products":                "Automobiles & Auto Components",
+    # Pharmaceuticals & Healthcare
+    "Pharmaceuticals":                        "Pharmaceuticals & Healthcare",
+    "Biotechnology":                          "Pharmaceuticals & Healthcare",
+    "Healthcare Service Provider":            "Pharmaceuticals & Healthcare",
+    "Medical Equipment & Supplies":           "Pharmaceuticals & Healthcare",
+    "Healthcare Research, Analytics & Technology": "Pharmaceuticals & Healthcare",
+    "Hospital":                               "Pharmaceuticals & Healthcare",
+    # IT & Technology
+    "Computers - Software & Consulting":      "IT & Technology",
+    "IT Enabled Services":                    "IT & Technology",
+    "Business Process Outsourcing (BPO)/ Knowledge Process Outsourcing (KPO)": "IT & Technology",
+    "Data Processing Services":               "IT & Technology",
+    "Computers Hardware & Equipments":        "IT & Technology",
+    "Telecom - Equipment & Accessories":      "IT & Technology",
+    "Telecom - Cellular & Fixed line services": "IT & Technology",
+    "Telecom - Infrastructure":               "IT & Technology",
+    "Consulting Services":                    "IT & Technology",
+    # Chemicals & Petrochemicals
+    "Specialty Chemicals":                    "Chemicals & Petrochemicals",
+    "Commodity Chemicals":                    "Chemicals & Petrochemicals",
+    "Petrochemicals":                         "Chemicals & Petrochemicals",
+    "Dyes And Pigments":                      "Chemicals & Petrochemicals",
+    "Pesticides & Agrochemicals":             "Chemicals & Petrochemicals",
+    "Fertilizers":                            "Chemicals & Petrochemicals",
+    "Carbon Black":                           "Chemicals & Petrochemicals",
+    "Explosives":                             "Chemicals & Petrochemicals",
+    "Industrial Gases":                       "Chemicals & Petrochemicals",
+    "Lubricants":                             "Chemicals & Petrochemicals",
+    "Paints":                                 "Chemicals & Petrochemicals",
+    "Trading - Chemicals":                    "Chemicals & Petrochemicals",
+    # FMCG & Consumer Goods
+    "Diversified FMCG":                       "FMCG & Consumer Goods",
+    "Packaged Foods":                         "FMCG & Consumer Goods",
+    "Other Food Products":                    "FMCG & Consumer Goods",
+    "Personal Care":                          "FMCG & Consumer Goods",
+    "Household Products":                     "FMCG & Consumer Goods",
+    "Household Appliances":                   "FMCG & Consumer Goods",
+    "Consumer Electronics":                   "FMCG & Consumer Goods",
+    "Diversified Retail":                     "FMCG & Consumer Goods",
+    "Speciality Retail":                      "FMCG & Consumer Goods",
+    "Houseware":                              "FMCG & Consumer Goods",
+    "Stationary":                             "FMCG & Consumer Goods",
+    "Leisure Products":                       "FMCG & Consumer Goods",
+    # Infrastructure & Construction
+    "Civil Construction":                     "Infrastructure & Construction",
+    "Cement & Cement Products":               "Infrastructure & Construction",
+    "Road Assets-Toll, Annuity, Hybrid-Annuity": "Infrastructure & Construction",
+    "Road Transport":                         "Infrastructure & Construction",
+    "Other Construction Materials":           "Infrastructure & Construction",
+    "Airport & Airport services":             "Infrastructure & Construction",
+    "Railway Wagons":                         "Infrastructure & Construction",
+    "Water Supply & Management":              "Infrastructure & Construction",
+    "Dredging":                               "Infrastructure & Construction",
+    "Waste Management":                       "Infrastructure & Construction",
+    "Other Electrical Equipment":             "Infrastructure & Construction",
+    "Electrodes & Refractories":              "Infrastructure & Construction",
+    # Real Estate
+    "Real Estate Investment Trusts (REITs)":  "Real Estate",
+    "Real Estate related services":           "Real Estate",
+    "Residential, Commercial Projects":       "Real Estate",
+    "Furniture, Home Furnishing":             "Real Estate",
+    "Granites & Marbles":                     "Real Estate",
+    "Plywood Boards/ Laminates":              "Real Estate",
+    "Ceramics":                               "Real Estate",
+    # Media & Entertainment
+    "Media & Entertainment":                  "Media & Entertainment",
+    "TV Broadcasting & Software Production":  "Media & Entertainment",
+    "Film Production, Distribution & Exhibition": "Media & Entertainment",
+    "Print Media":                            "Media & Entertainment",
+    "Advertising & Media Agencies":           "Media & Entertainment",
+    "Printing & Publication":                 "Media & Entertainment",
+    "Amusement Parks/ Other Recreation":      "Media & Entertainment",
+    "Other Consumer Services":                "Media & Entertainment",
+    # Agriculture & Food Processing
+    "Sugar":                                  "Agriculture & Food Processing",
+    "Tea & Coffee":                           "Agriculture & Food Processing",
+    "Edible Oil":                             "Agriculture & Food Processing",
+    "Dairy Products":                         "Agriculture & Food Processing",
+    "Seafood":                                "Agriculture & Food Processing",
+    "Meat Products including Poultry":        "Agriculture & Food Processing",
+    "Animal Feed":                            "Agriculture & Food Processing",
+    "Other Agricultural Products":            "Agriculture & Food Processing",
+    "Other Beverages":                        "Agriculture & Food Processing",
+    "Breweries & Distilleries":               "Agriculture & Food Processing",
+    "Cigarettes & Tobacco Products":          "Agriculture & Food Processing",
+    "Restaurants":                            "Agriculture & Food Processing",
+    # Logistics & Transport
+    "Logistics Solution Provider":            "Logistics & Transport",
+    "Shipping":                               "Logistics & Transport",
+    "Transport Related Services":             "Logistics & Transport",
+    "Tour, Travel Related Services":          "Logistics & Transport",
+    "Airline":                                "Logistics & Transport",
+    # Textiles & Apparel
+    "Garments & Apparels":                    "Textiles & Apparel",
+    "Other Textile Products":                 "Textiles & Apparel",
+    "Trading - Textile Products":             "Textiles & Apparel",
+    "Leather And Leather Products":           "Textiles & Apparel",
+    "Jute & Jute Products":                   "Textiles & Apparel",
+    "Footwear":                               "Textiles & Apparel",
+    "Rubber":                                 "Textiles & Apparel",
+    # Capital Goods & Industrials
+    "Heavy Electrical Equipment":             "Capital Goods & Industrials",
+    "Compressors, Pumps & Diesel Engines":    "Capital Goods & Industrials",
+    "Castings & Forgings":                    "Capital Goods & Industrials",
+    "Abrasives & Bearings":                   "Capital Goods & Industrials",
+    "Industrial Products":                    "Capital Goods & Industrials",
+    "Other Industrial Products":              "Capital Goods & Industrials",
+    "Aerospace & Defense":                    "Capital Goods & Industrials",
+    "Plastic Products - Industrial":          "Capital Goods & Industrials",
+    "Plastic Products - Consumer":            "Capital Goods & Industrials",
+    "Packaging":                              "Capital Goods & Industrials",
+    "Paper & Paper Products":                 "Capital Goods & Industrials",
+    "Cables - Electricals":                   "Capital Goods & Industrials",
+    # Gems, Jewellery & Luxury
+    "Gems, Jewellery And Watches":            "Gems, Jewellery & Luxury",
+    "Hotels & Resorts":                       "Gems, Jewellery & Luxury",
+    "Education":                              "Gems, Jewellery & Luxury",
+    # Diversified / Conglomerates
+    "Diversified":                            "Diversified / Conglomerates",
+    "Diversified Commercial Services":        "Diversified / Conglomerates",
+    "Trading & Distributors":                 "Diversified / Conglomerates",
+    "Distributors":                           "Diversified / Conglomerates",
+}
+
+
+def get_macro_sector(industry_name: str) -> str | None:
+    """
+    Map a CRISIL industry name to its macro sector.
+    
+    Args:
+        industry_name: CRISIL industry name from company document
+        
+    Returns:
+        Macro sector name if found, None otherwise
+    """
+    if not industry_name:
+        return None
+    return TAXONOMY.get(industry_name.strip())

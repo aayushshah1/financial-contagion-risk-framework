@@ -156,7 +156,8 @@ SET r.totalAmount    = coalesce(r.totalAmount, 0.0) + row.totalAmount,
     r.source         = 'CRISIL_CO',
     r.dataYear       = row.dataYear,
     r.lenderRawName  = row.lenderRawName,
-    r.resolutionConf = row.resolutionConf
+    r.resolutionConf = row.resolutionConf,
+    r.absorption     = row.absorption
 """
 
 # Company → Company  (resolved lender is another company, or a stub)
@@ -172,7 +173,8 @@ SET r.totalAmount    = coalesce(r.totalAmount, 0.0) + row.totalAmount,
     r.source         = 'CRISIL_CO',
     r.dataYear       = row.dataYear,
     r.lenderRawName  = row.lenderRawName,
-    r.resolutionConf = row.resolutionConf
+    r.resolutionConf = row.resolutionConf,
+    r.transmittance  = row.transmittance
 """
 
 _SLUG_RE = re.compile(r"[^a-z0-9]+")
@@ -195,6 +197,7 @@ def build_lends_to_from_companies(
     company_docs: list[dict],
     registry,           # GlobalEntityRegistry
     *,
+    bank_tier1: dict[str, float] | None = None,
     data_year: int = 2025,
     batch_size: int = 500,
 ) -> int:
@@ -208,6 +211,9 @@ def build_lends_to_from_companies(
     Returns total number of edges created/merged.
     """
     from resolution.entity_resolver import _normalize   # local import to avoid circular
+
+    if bank_tier1 is None:
+        bank_tier1 = {}
 
     bank_edge_records:    list[dict] = []
     company_edge_records: list[dict] = []
@@ -244,6 +250,9 @@ def build_lends_to_from_companies(
             if facility_type:
                 lender_agg[raw_lender]["types"].add(facility_type)
 
+        # Total borrowing across ALL lenders for this company (denominator for transmittance)
+        total_for_borrower = sum(a["total"] for a in lender_agg.values())
+
         # Resolve each aggregated lender
         for raw_lender, agg in lender_agg.items():
             node_type, canonical_id, confidence = registry.resolve(raw_lender)
@@ -259,10 +268,23 @@ def build_lends_to_from_companies(
             }
 
             if node_type == "Bank":
-                bank_edge_records.append({**edge_base, "lenderBankSymbol": canonical_id})
+                # absorption = this facility / bank's Tier 1 Capital
+                t1 = bank_tier1.get(canonical_id)
+                absorption = round(agg["total"] / t1, 6) if t1 else None
+                bank_edge_records.append({
+                    **edge_base,
+                    "lenderBankSymbol": canonical_id,
+                    "absorption":       absorption,
+                })
 
             elif node_type == "Company":
-                company_edge_records.append({**edge_base, "lenderCin": canonical_id})
+                # transmittance = this lender's share of borrower's total facilities
+                transmittance = round(agg["total"] / total_for_borrower, 6) if total_for_borrower > 0 else None
+                company_edge_records.append({
+                    **edge_base,
+                    "lenderCin":     canonical_id,
+                    "transmittance": transmittance,
+                })
 
             else:
                 # Unresolved → create a stable stub CIN
@@ -272,7 +294,12 @@ def build_lends_to_from_companies(
                         "cin":        stub_cin,
                         "crisilName": raw_lender,
                     }
-                company_edge_records.append({**edge_base, "lenderCin": stub_cin})
+                transmittance = round(agg["total"] / total_for_borrower, 6) if total_for_borrower > 0 else None
+                company_edge_records.append({
+                    **edge_base,
+                    "lenderCin":     stub_cin,
+                    "transmittance": transmittance,
+                })
 
     stub_records = list(stub_records_seen.values())
 
