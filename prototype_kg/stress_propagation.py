@@ -7,18 +7,25 @@ Model choices for v1:
 - Active node labels: Bank, Company, Shareholder
 - Round update rule: next = min(1, base + incoming_from_prev_round)
 - LENDS_TO flow: reverse stored edge direction (Borrower -> Lender)
+    with effective weight = base_weight * lgdMultiplier * tMultiplier
 - RELATED_PARTY flow:
     Company -> Bank uses stressWeightUp
     Bank -> Company uses stressWeightDown
 - SHAREHOLDER_OF flow: Target -> Owner using shareholdingPercentage / 100
 - Missing/invalid weights are skipped
+- Optional debug mode captures all incoming transmission transactions
+    for one bank symbol (for example SBIN) and writes artifacts to disk.
 """
 
 from __future__ import annotations
 
+import csv
+import json
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from math import isfinite
+from pathlib import Path
 
 from neo4j import Driver
 
@@ -29,18 +36,29 @@ ACTIVE_NODE_FILTER = "n:Bank OR n:Company OR n:Shareholder"
 FETCH_ACTIVE_NODES = f"""
 MATCH (n)
 WHERE {ACTIVE_NODE_FILTER}
-RETURN elementId(n) AS nodeId, labels(n) AS labels, coalesce(n.stress, 0.0) AS baseStress
+RETURN elementId(n) AS nodeId,
+       labels(n) AS labels,
+       coalesce(n.stress, 0.0) AS baseStress,
+       n.bankSymbol AS bankSymbol,
+       n.cin AS cin,
+       n.shareholderName AS shareholderName,
+       n.mcaName AS mcaName,
+       n.crisilName AS crisilName
 """
 
 
 FETCH_TRANSMISSION_EDGES = """
-CALL {
+CALL () {
     MATCH (lender)-[r:LENDS_TO]->(borrower)
     WHERE (lender:Bank OR lender:Company OR lender:Shareholder)
       AND (borrower:Bank OR borrower:Company OR borrower:Shareholder)
     RETURN elementId(borrower) AS srcId,
            elementId(lender) AS dstId,
-           coalesce(r.absorption, r.transmittance) AS weight,
+                     (
+                             coalesce(r.absorption, r.transmittance)
+                             * coalesce(r.lgdMultiplier, 1.0)
+                             * coalesce(r.tMultiplier, 1.0)
+                     ) AS weight,
            'LENDS_TO' AS channel
 
     UNION ALL
@@ -82,12 +100,27 @@ SET n.stressBase = row.baseStress,
 """
 
 
+RESET_TO_BASE_FOR_DEBUG = f"""
+MATCH (n)
+WHERE {ACTIVE_NODE_FILTER}
+SET n.stressBase = CASE
+    WHEN n:Bank OR n:Company THEN coalesce(n.stress, 0.0)
+    ELSE coalesce(n.stressBase, 0.0)
+END
+WITH n
+SET n.stress = n.stressBase
+RETURN count(n) AS resetCount
+"""
+
+
 @dataclass(slots=True)
 class PropagationConfig:
     max_iterations: int = 20
-    epsilon: float = 1e-3
+    epsilon: float = 1e-4
     write_batch_size: int = 1000
     clamp_weights: bool = True
+    debug_target_bank_symbol: str | None = None
+    debug_output_dir: str = "logs"
 
 
 @dataclass(slots=True)
@@ -98,6 +131,14 @@ class PropagationResult:
     node_count: int
     edge_count: int
     skipped_edges: int
+    debug_artifacts: list[str] = field(default_factory=list)
+
+
+@dataclass(slots=True)
+class NodeMeta:
+    label: str
+    identifier: str
+    display_name: str
 
 
 def _safe_float(value) -> float | None:
@@ -122,15 +163,33 @@ def _normalize_weight(raw_weight, clamp_weights: bool) -> float | None:
     return weight
 
 
-def _fetch_active_nodes(driver: Driver) -> tuple[dict[str, float], dict[str, str]]:
+def _build_node_meta(rec) -> NodeMeta:
+    labels = rec["labels"] or []
+    label = labels[0] if labels else "Unknown"
+
+    if label == "Bank":
+        identifier = str(rec.get("bankSymbol") or "UNKNOWN_BANK")
+        display_name = identifier
+    elif label == "Company":
+        identifier = str(rec.get("cin") or "UNKNOWN_CIN")
+        display_name = str(rec.get("mcaName") or rec.get("crisilName") or identifier)
+    elif label == "Shareholder":
+        identifier = str(rec.get("shareholderName") or "UNKNOWN_SHAREHOLDER")
+        display_name = identifier
+    else:
+        identifier = str(rec.get("nodeId") or "UNKNOWN_NODE")
+        display_name = identifier
+
+    return NodeMeta(label=label, identifier=identifier, display_name=display_name)
+
+
+def _fetch_active_nodes(driver: Driver) -> tuple[dict[str, float], dict[str, NodeMeta]]:
     base_stress: dict[str, float] = {}
-    node_kind: dict[str, str] = {}
+    node_meta: dict[str, NodeMeta] = {}
 
     with driver.session() as session:
         for rec in session.run(FETCH_ACTIVE_NODES):
             node_id = rec["nodeId"]
-            labels = rec["labels"] or []
-            first_label = labels[0] if labels else "Unknown"
             base = _safe_float(rec["baseStress"]) or 0.0
             if base < 0:
                 base = 0.0
@@ -138,13 +197,17 @@ def _fetch_active_nodes(driver: Driver) -> tuple[dict[str, float], dict[str, str
                 base = 1.0
 
             base_stress[node_id] = base
-            node_kind[node_id] = first_label
+            node_meta[node_id] = _build_node_meta(rec)
 
-    return base_stress, node_kind
+    return base_stress, node_meta
 
 
-def _fetch_edges(driver: Driver, active_node_ids: set[str], clamp_weights: bool) -> tuple[list[tuple[str, str, float]], int, dict[str, int]]:
-    edges: list[tuple[str, str, float]] = []
+def _fetch_edges(
+    driver: Driver,
+    active_node_ids: set[str],
+    clamp_weights: bool,
+) -> tuple[list[tuple[str, str, float, str]], int, dict[str, int]]:
+    edges: list[tuple[str, str, float, str]] = []
     skipped = 0
     channel_counts: dict[str, int] = defaultdict(int)
 
@@ -163,10 +226,170 @@ def _fetch_edges(driver: Driver, active_node_ids: set[str], clamp_weights: bool)
                 skipped += 1
                 continue
 
-            edges.append((src_id, dst_id, weight))
+            edges.append((src_id, dst_id, weight, channel))
             channel_counts[channel] += 1
 
     return edges, skipped, dict(channel_counts)
+
+
+def _resolve_output_dir(configured_dir: str) -> Path:
+    path = Path(configured_dir)
+    if not path.is_absolute():
+        path = Path(__file__).parent / path
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def _write_debug_artifacts(
+    *,
+    bank_symbol: str,
+    bank_node_id: str,
+    output_dir: str,
+    converged: bool,
+    iterations_run: int,
+    epsilon: float,
+    max_iterations: int,
+    base_stress: float,
+    final_stress: float,
+    final_round_incoming: float,
+    final_round_by_src: dict[str, float],
+    final_round_by_channel: dict[str, float],
+    cumulative_by_src: dict[str, float],
+    round_rows: list[dict],
+    transaction_rows: list[dict],
+    node_meta: dict[str, NodeMeta],
+) -> list[str]:
+    out_dir = _resolve_output_dir(output_dir)
+    ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    prefix = f"stress_debug_{bank_symbol}_{ts}"
+
+    tx_path = out_dir / f"{prefix}_transactions.csv"
+    rounds_path = out_dir / f"{prefix}_rounds.csv"
+    summary_path = out_dir / f"{prefix}_summary.json"
+
+    if transaction_rows:
+        with tx_path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=[
+                    "round",
+                    "channel",
+                    "sourceNodeId",
+                    "sourceLabel",
+                    "sourceIdentifier",
+                    "sourceDisplayName",
+                    "sourceStressPrev",
+                    "weight",
+                    "contribution",
+                ],
+            )
+            writer.writeheader()
+            writer.writerows(transaction_rows)
+    else:
+        with tx_path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=[
+                    "round",
+                    "channel",
+                    "sourceNodeId",
+                    "sourceLabel",
+                    "sourceIdentifier",
+                    "sourceDisplayName",
+                    "sourceStressPrev",
+                    "weight",
+                    "contribution",
+                ],
+            )
+            writer.writeheader()
+
+    if round_rows:
+        with rounds_path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=[
+                    "round",
+                    "targetPrevStress",
+                    "targetIncoming",
+                    "targetNextStress",
+                    "targetDelta",
+                    "targetIncreaseOverBase",
+                ],
+            )
+            writer.writeheader()
+            writer.writerows(round_rows)
+    else:
+        with rounds_path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=[
+                    "round",
+                    "targetPrevStress",
+                    "targetIncoming",
+                    "targetNextStress",
+                    "targetDelta",
+                    "targetIncreaseOverBase",
+                ],
+            )
+            writer.writeheader()
+
+    increase = max(0.0, final_stress - base_stress)
+    scale = 1.0
+    if final_round_incoming > 0.0 and increase < final_round_incoming:
+        scale = increase / final_round_incoming
+
+    by_source = []
+    for src_id, final_contrib in sorted(final_round_by_src.items(), key=lambda kv: kv[1], reverse=True):
+        meta = node_meta.get(src_id, NodeMeta(label="Unknown", identifier=src_id, display_name=src_id))
+        attributed = final_contrib * scale
+        pct = (attributed / increase * 100.0) if increase > 0.0 else 0.0
+        by_source.append(
+            {
+                "sourceNodeId": src_id,
+                "sourceLabel": meta.label,
+                "sourceIdentifier": meta.identifier,
+                "sourceDisplayName": meta.display_name,
+                "finalRoundContribution": final_contrib,
+                "attributedIncrease": attributed,
+                "percentageOfIncrease": pct,
+                "cumulativeContribution": cumulative_by_src.get(src_id, 0.0),
+            }
+        )
+
+    by_channel = []
+    for channel, final_contrib in sorted(final_round_by_channel.items(), key=lambda kv: kv[1], reverse=True):
+        attributed = final_contrib * scale
+        pct = (attributed / increase * 100.0) if increase > 0.0 else 0.0
+        by_channel.append(
+            {
+                "channel": channel,
+                "finalRoundContribution": final_contrib,
+                "attributedIncrease": attributed,
+                "percentageOfIncrease": pct,
+            }
+        )
+
+    summary = {
+        "targetBankSymbol": bank_symbol,
+        "targetNodeId": bank_node_id,
+        "converged": converged,
+        "iterationsRun": iterations_run,
+        "epsilon": epsilon,
+        "maxIterations": max_iterations,
+        "baseStress": base_stress,
+        "finalStress": final_stress,
+        "increaseFromBase": increase,
+        "finalRoundIncoming": final_round_incoming,
+        "capAppliedOnFinalRound": final_round_incoming > increase,
+        "finalRoundScaleFactor": scale,
+        "percentageDistributionBySource": by_source,
+        "percentageDistributionByChannel": by_channel,
+    }
+
+    with summary_path.open("w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2)
+
+    return [str(tx_path), str(rounds_path), str(summary_path)]
 
 
 def _write_final_stress(driver: Driver, final_stress: dict[str, float], base_stress: dict[str, float], batch_size: int) -> None:
@@ -184,13 +407,29 @@ def _write_final_stress(driver: Driver, final_stress: dict[str, float], base_str
             session.run(WRITE_FINAL_STRESS, batch=records[i : i + batch_size])
 
 
+def _reset_stress_to_base_for_debug(driver: Driver) -> int:
+    with driver.session() as session:
+        record = session.run(RESET_TO_BASE_FOR_DEBUG).single()
+    if not record:
+        return 0
+    return int(record["resetCount"] or 0)
+
+
 def run_stress_propagation(driver: Driver, config: PropagationConfig | None = None) -> PropagationResult:
     """
     Execute synchronous iterative stress transmission and persist final stress.
     """
     cfg = config or PropagationConfig()
 
-    base_stress, node_kind = _fetch_active_nodes(driver)
+    debug_bank_symbol = (cfg.debug_target_bank_symbol or "").strip().upper()
+    if debug_bank_symbol:
+        reset_count = _reset_stress_to_base_for_debug(driver)
+        print(
+            "[propagation][debug] Reset stress to base baseline before propagation "
+            f"for {reset_count} active node(s)."
+        )
+
+    base_stress, node_meta = _fetch_active_nodes(driver)
     active_node_ids = set(base_stress.keys())
 
     if not active_node_ids:
@@ -202,6 +441,7 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
             node_count=0,
             edge_count=0,
             skipped_edges=0,
+            debug_artifacts=[],
         )
 
     edges, skipped_edges, channel_counts = _fetch_edges(
@@ -211,8 +451,8 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
     )
 
     label_counts: dict[str, int] = defaultdict(int)
-    for kind in node_kind.values():
-        label_counts[kind] += 1
+    for meta in node_meta.values():
+        label_counts[meta.label] += 1
 
     print(
         "[propagation] Active nodes: "
@@ -230,19 +470,64 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
         f"SHAREHOLDER_OF={channel_counts.get('SHAREHOLDER_OF', 0)}"
     )
 
+    debug_target_node_id: str | None = None
+    if debug_bank_symbol:
+        for node_id, meta in node_meta.items():
+            if meta.label == "Bank" and meta.identifier.upper() == debug_bank_symbol:
+                debug_target_node_id = node_id
+                break
+        if debug_target_node_id is None:
+            print(
+                f"[propagation][debug] Bank symbol '{debug_bank_symbol}' was not found in active nodes. "
+                "Skipping debug artifact generation."
+            )
+        else:
+            print(
+                f"[propagation][debug] Capturing incoming stress transactions for bank {debug_bank_symbol}."
+            )
+
     prev = dict(base_stress)
     converged = False
     max_delta = 0.0
     iterations_run = 0
+    debug_round_rows: list[dict] = []
+    debug_tx_rows: list[dict] = []
+    cumulative_by_src: dict[str, float] = defaultdict(float)
+    final_round_by_src: dict[str, float] = {}
+    final_round_by_channel: dict[str, float] = {}
+    final_round_incoming = 0.0
 
     for iteration in range(1, cfg.max_iterations + 1):
         incoming: dict[str, float] = defaultdict(float)
+        round_by_src: dict[str, float] = defaultdict(float)
+        round_by_channel: dict[str, float] = defaultdict(float)
 
-        for src_id, dst_id, weight in edges:
+        for src_id, dst_id, weight, channel in edges:
             src_stress = prev.get(src_id, 0.0)
             if src_stress <= 0.0:
                 continue
-            incoming[dst_id] += src_stress * weight
+
+            contribution = src_stress * weight
+            incoming[dst_id] += contribution
+
+            if debug_target_node_id and dst_id == debug_target_node_id and contribution > 0.0:
+                src_meta = node_meta.get(src_id, NodeMeta(label="Unknown", identifier=src_id, display_name=src_id))
+                round_by_src[src_id] += contribution
+                round_by_channel[channel] += contribution
+                cumulative_by_src[src_id] += contribution
+                debug_tx_rows.append(
+                    {
+                        "round": iteration,
+                        "channel": channel,
+                        "sourceNodeId": src_id,
+                        "sourceLabel": src_meta.label,
+                        "sourceIdentifier": src_meta.identifier,
+                        "sourceDisplayName": src_meta.display_name,
+                        "sourceStressPrev": src_stress,
+                        "weight": weight,
+                        "contribution": contribution,
+                    }
+                )
 
         nxt: dict[str, float] = {}
         max_delta = 0.0
@@ -267,6 +552,27 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
             total_stress += updated
 
         avg_stress = total_stress / len(base_stress)
+
+        if debug_target_node_id:
+            target_prev = prev.get(debug_target_node_id, 0.0)
+            target_next = nxt.get(debug_target_node_id, 0.0)
+            target_incoming = incoming.get(debug_target_node_id, 0.0)
+            target_delta = target_next - target_prev
+            target_increase = target_next - base_stress[debug_target_node_id]
+            debug_round_rows.append(
+                {
+                    "round": iteration,
+                    "targetPrevStress": target_prev,
+                    "targetIncoming": target_incoming,
+                    "targetNextStress": target_next,
+                    "targetDelta": target_delta,
+                    "targetIncreaseOverBase": target_increase,
+                }
+            )
+            final_round_by_src = dict(round_by_src)
+            final_round_by_channel = dict(round_by_channel)
+            final_round_incoming = target_incoming
+
         print(
             f"[propagation] round={iteration:02d} "
             f"max_delta={max_delta:.8f} "
@@ -294,6 +600,30 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
         batch_size=cfg.write_batch_size,
     )
 
+    debug_artifacts: list[str] = []
+    if debug_target_node_id and debug_bank_symbol:
+        debug_artifacts = _write_debug_artifacts(
+            bank_symbol=debug_bank_symbol,
+            bank_node_id=debug_target_node_id,
+            output_dir=cfg.debug_output_dir,
+            converged=converged,
+            iterations_run=iterations_run,
+            epsilon=cfg.epsilon,
+            max_iterations=cfg.max_iterations,
+            base_stress=base_stress[debug_target_node_id],
+            final_stress=prev[debug_target_node_id],
+            final_round_incoming=final_round_incoming,
+            final_round_by_src=final_round_by_src,
+            final_round_by_channel=final_round_by_channel,
+            cumulative_by_src=dict(cumulative_by_src),
+            round_rows=debug_round_rows,
+            transaction_rows=debug_tx_rows,
+            node_meta=node_meta,
+        )
+        print("[propagation][debug] Saved debug artifacts:")
+        for path in debug_artifacts:
+            print(f"  - {path}")
+
     return PropagationResult(
         converged=converged,
         iterations_run=iterations_run,
@@ -301,4 +631,5 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
         node_count=len(active_node_ids),
         edge_count=len(edges),
         skipped_edges=skipped_edges,
+        debug_artifacts=debug_artifacts,
     )

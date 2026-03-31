@@ -1,0 +1,17 @@
+{
+  "_id": {
+    "$oid": "69c76a52d9d9aefa12704a06"
+  },
+  "macro_sector": "Automobiles & Auto Components",
+  "articles_used": 6,
+  "drawdown_from_52w_high": 0.158,
+  "final_stress_score": 0.5779,
+  "market_return_30d": -0.1287,
+  "market_score": 0.6558,
+  "market_volatility_30d": 0.3991,
+  "news_score": 0.5,
+  "risk_tier": "Elevated",
+  "scored_at": "2026-03-28 05:42:41 UTC",
+  "top_headline": "West Asia Tensions: Fuel Crunch Hits India’s Auto Industry - autocarpro.in",
+  "updated_at": "2026-03-28T05:42:42.179085"
+}

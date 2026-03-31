@@ -9,6 +9,7 @@ Usage:
     python update_stress_scores.py
     python update_stress_scores.py --no-propagation
     python update_stress_scores.py --prop-max-iter 30 --prop-epsilon 1e-5
+    python update_stress_scores.py --prop-debug-bank SBIN
 
 Purpose:
     - Updates existing :Bank nodes with stress scores calculated from 
@@ -250,6 +251,8 @@ def main(
     prop_max_iter: int = 20,
     prop_epsilon: float = 1e-4,
     prop_batch_size: int = 1000,
+    prop_debug_bank: str | None = None,
+    prop_debug_dir: str = "logs",
 ):
     """
     Main execution: update stress scores on all Bank and Company nodes.
@@ -296,6 +299,8 @@ def main(
                     max_iterations=prop_max_iter,
                     epsilon=prop_epsilon,
                     write_batch_size=prop_batch_size,
+                    debug_target_bank_symbol=prop_debug_bank,
+                    debug_output_dir=prop_debug_dir,
                 ),
             )
             print(
@@ -307,6 +312,10 @@ def main(
                 f"edges={result.edge_count}, "
                 f"skipped_edges={result.skipped_edges}"
             )
+            if result.debug_artifacts:
+                print("[update_stress] Debug artifacts:")
+                for path in result.debug_artifacts:
+                    print(f"               - {path}")
 
         print("\n✓ Stress score update complete!")
 
@@ -342,6 +351,18 @@ if __name__ == "__main__":
         default=1000,
         help="Batch size used to write final propagated stress values.",
     )
+    parser.add_argument(
+        "--prop-debug-bank",
+        type=str,
+        default=None,
+        help="Capture per-round incoming stress transactions for one bank symbol (example: SBIN).",
+    )
+    parser.add_argument(
+        "--prop-debug-dir",
+        type=str,
+        default="logs",
+        help="Directory for propagation debug artifacts.",
+    )
     args = parser.parse_args()
 
     main(
@@ -349,4 +370,6 @@ if __name__ == "__main__":
         prop_max_iter=max(1, args.prop_max_iter),
         prop_epsilon=max(0.0, args.prop_epsilon),
         prop_batch_size=max(1, args.prop_batch_size),
+        prop_debug_bank=args.prop_debug_bank,
+        prop_debug_dir=args.prop_debug_dir,
     )
