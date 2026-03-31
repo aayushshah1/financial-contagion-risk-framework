@@ -952,28 +952,42 @@ def push_stress_scores_to_mongodb(results: Dict,
     """
     try:
         from pymongo import MongoClient
-        from task10_merton_soft_labels import NSE_TICKER_MAP
     except ImportError as e:
         print(f"MongoDB push failed: {e}")
         return
 
-    # Build excel_name → bankSymbol mapping from task10's ticker map
-    # (approximate — uses bankName matching)
+    # Build normalized excel_name → bankSymbol mapping.
+    # task11 bank keys come from RBI Excel and may differ in case/suffix/punctuation
+    # from SCB_NSE_TICKER_MAP canonical names.
     if bank_symbol_map is None:
-        bank_symbol_map = {name: symbol for name, symbol in NSE_TICKER_MAP.items()}
+        bank_symbol_map = SCB_NSE_TICKER_MAP.copy()
+
+    bank_symbol_map_norm = {
+        _normalize_bank_name(name): symbol
+        for name, symbol in bank_symbol_map.items()
+    }
 
     client = MongoClient(MONGODB_URI)
     db = client[DB_NAME]
     collection = db[COLLECTION_NAME]
 
-    updated = 0
+    processed = 0
+    mapped = 0
+    matched = 0
+    modified = 0
+    missing_symbol = []
+    missing_doc = []
+
     for bank_excel_name, data in results.items():
         if bank_excel_name == "_meta":
             continue
+        processed += 1
 
-        symbol = bank_symbol_map.get(bank_excel_name)
+        symbol = bank_symbol_map_norm.get(_normalize_bank_name(bank_excel_name))
         if not symbol:
+            missing_symbol.append(bank_excel_name)
             continue
+        mapped += 1
 
         update_doc = {
             "$set": {
@@ -985,11 +999,29 @@ def push_stress_scores_to_mongodb(results: Dict,
             }
         }
         res = collection.update_one({"bankSymbol": symbol}, update_doc)
-        if res.modified_count > 0 or res.upserted_id:
-            updated += 1
+        if res.matched_count > 0:
+            matched += 1
+        else:
+            missing_doc.append(symbol)
+        if res.modified_count > 0:
+            modified += 1
 
     client.close()
-    print(f"MongoDB: updated {updated} bank documents with stress scores.")
+    print(
+        f"MongoDB stress push summary: processed={processed}, mapped={mapped}, "
+        f"matched={matched}, modified={modified}, missingDocs={len(missing_doc)}, "
+        f"unmapped={len(missing_symbol)}"
+    )
+
+    if missing_symbol:
+        sample = ", ".join(missing_symbol[:5])
+        suffix = f" ... +{len(missing_symbol)-5} more" if len(missing_symbol) > 5 else ""
+        print(f"  Unmapped bank names (sample): {sample}{suffix}")
+
+    if missing_doc:
+        sample = ", ".join(missing_doc[:5])
+        suffix = f" ... +{len(missing_doc)-5} more" if len(missing_doc) > 5 else ""
+        print(f"  Symbols not found in MongoDB (sample): {sample}{suffix}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

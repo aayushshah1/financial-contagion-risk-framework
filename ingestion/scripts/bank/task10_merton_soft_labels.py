@@ -32,6 +32,7 @@ import os
 import sys
 import json
 import math
+import argparse
 import warnings
 from datetime import datetime, timedelta
 from typing import Dict, Optional, Tuple
@@ -83,9 +84,26 @@ def _import_yfinance():
         )
 
 
-def fetch_market_data(nse_ticker: str) -> Optional[Dict]:
+def _parse_date(value: Optional[str], field_name: str) -> Optional[datetime]:
+    """Parse YYYY-MM-DD date strings used for market data filtering."""
+    if value is None:
+        return None
+    try:
+        return datetime.strptime(value, "%Y-%m-%d")
+    except ValueError as exc:
+        raise ValueError(f"{field_name} must be in YYYY-MM-DD format, got: {value}") from exc
+
+
+def fetch_market_data(
+    nse_ticker: str,
+    market_start_date: Optional[datetime] = None,
+    market_end_date: Optional[datetime] = None,
+) -> Optional[Dict]:
     """
     Fetch equity price history and balance sheet from NSE via yfinance.
+
+    Market data can be filtered by date range. If dates are not provided,
+    defaults to [today - 430 days, today] to preserve existing behavior.
 
     Returns dict with:
       - prices:         pd.Series of adjusted close prices (1-year history)
@@ -99,12 +117,19 @@ def fetch_market_data(nse_ticker: str) -> Optional[Dict]:
     yf = _import_yfinance()
     ticker_str = f"{nse_ticker}.NS"
 
+    end_date = market_end_date or datetime.today()
+    start_date = market_start_date or (end_date - timedelta(days=430))
+
+    if start_date >= end_date:
+        raise ValueError(
+            f"Invalid market data range for {nse_ticker}: "
+            f"start ({start_date.date()}) must be before end ({end_date.date()})"
+        )
+
     try:
         ticker = yf.Ticker(ticker_str)
 
         # --- Price history: 14 months to ensure 63 trading-day window + buffer ---
-        end_date = datetime.today()
-        start_date = end_date - timedelta(days=430)
         hist = ticker.history(start=start_date.strftime("%Y-%m-%d"),
                                end=end_date.strftime("%Y-%m-%d"),
                                auto_adjust=True)
@@ -425,7 +450,11 @@ def _validate_merton_vs_npa(results: Dict) -> Dict:
 # Main: Compute DTD for All Banks
 # ─────────────────────────────────────────────────────────────────────────────
 
-def compute_merton_soft_labels(verbose: bool = True) -> Dict:
+def compute_merton_soft_labels(
+    verbose: bool = True,
+    market_start_date: Optional[str] = None,
+    market_end_date: Optional[str] = None,
+) -> Dict:
     """
     Compute Merton DTD for all NSE-listed Indian banks.
 
@@ -459,6 +488,20 @@ def compute_merton_soft_labels(verbose: bool = True) -> Dict:
           "_meta": { validation stats, model params, ... }
         }
     """
+    start_dt = _parse_date(market_start_date, "market_start_date")
+    end_dt = _parse_date(market_end_date, "market_end_date")
+
+    if end_dt is None:
+        end_dt = datetime.today()
+    if start_dt is None:
+        start_dt = end_dt - timedelta(days=430)
+
+    if start_dt >= end_dt:
+        raise ValueError(
+            f"Invalid market data range: start ({start_dt.date()}) "
+            f"must be before end ({end_dt.date()})"
+        )
+
     results = {}
     failed = []
     compute_time = datetime.now().isoformat()
@@ -466,6 +509,7 @@ def compute_merton_soft_labels(verbose: bool = True) -> Dict:
     total = len(NSE_TICKER_MAP)
     if verbose:
         print(f"\nMerton DTD Computation — {total} banks, T={MERTON_T}, r={MERTON_r}")
+        print(f"Market data filter: {start_dt.date()} to {end_dt.date()} (end-exclusive in yfinance)")
         print("=" * 65)
 
     for i, (bank_name, nse_ticker) in enumerate(NSE_TICKER_MAP.items(), 1):
@@ -473,7 +517,11 @@ def compute_merton_soft_labels(verbose: bool = True) -> Dict:
             print(f"[{i:02d}/{total}] {nse_ticker:<15} | {bank_name[:45]:<45}", end=" ... ")
 
         # 1. Fetch market data
-        mkt = fetch_market_data(nse_ticker)
+        mkt = fetch_market_data(
+            nse_ticker,
+            market_start_date=start_dt,
+            market_end_date=end_dt,
+        )
         if mkt is None:
             failed.append({"bank": bank_name, "ticker": nse_ticker, "reason": "no market data"})
             if verbose:
@@ -557,6 +605,10 @@ def compute_merton_soft_labels(verbose: bool = True) -> Dict:
             "marketCap_avg_days": MARKET_CAP_DAYS,
             "debtFormula":        "Deposits + 0.5*Borrowings (KMV); fallback: 0.9*TotalLiabilities",
         },
+        "marketDataFilter": {
+            "startDate": start_dt.strftime("%Y-%m-%d"),
+            "endDate": end_dt.strftime("%Y-%m-%d"),
+        },
         "totalBanks":      total,
         "computed":        len(results) - 1,  # subtract _meta
         "failed":          failed,
@@ -625,7 +677,36 @@ def load_merton_soft_labels() -> Optional[Dict]:
 # ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    results = compute_merton_soft_labels(verbose=True)
+    parser = argparse.ArgumentParser(
+        description="Compute Merton DTD soft labels for NSE-listed banks."
+    )
+    parser.add_argument(
+        "--market-start-date",
+        type=str,
+        default=None,
+        help="Market data start date in YYYY-MM-DD. Default: end date minus 430 days.",
+    )
+    parser.add_argument(
+        "--market-end-date",
+        type=str,
+        default=None,
+        help="Market data end date in YYYY-MM-DD (end-exclusive in yfinance). Default: today.",
+    )
+    parser.add_argument(
+        "--as-of-date",
+        type=str,
+        default=None,
+        help="Alias for --market-end-date, useful for point-in-time backtests.",
+    )
+    args = parser.parse_args()
+
+    selected_end_date = args.market_end_date or args.as_of_date
+
+    results = compute_merton_soft_labels(
+        verbose=True,
+        market_start_date=args.market_start_date,
+        market_end_date=selected_end_date,
+    )
 
     # Print rank table
     print("\n" + "=" * 65)
