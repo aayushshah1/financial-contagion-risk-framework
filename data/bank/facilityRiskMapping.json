@@ -1,0 +1,54 @@
+{
+  "canonicalDefaults": {
+    "Bills Purchased & Discounted": {
+      "tCategory": "CP",
+      "lgdCategory": "Senior"
+    },
+    "Cash Credits, Overdrafts & Loans": {
+      "tCategory": "WC",
+      "lgdCategory": "Secured"
+    },
+    "Term Loans": {
+      "tCategory": "TermLoan",
+      "lgdCategory": "Secured"
+    }
+  },
+  "keywordOverrides": [
+    {
+      "containsAny": ["subordinated", "tier ii", "tier 2", "lower tier"],
+      "lgdCategory": "Subordinated"
+    },
+    {
+      "containsAny": ["senior"],
+      "lgdCategory": "Senior"
+    },
+    {
+      "containsAny": ["unsecured", "clean"],
+      "lgdCategory": "Unsecured"
+    },
+    {
+      "containsAny": ["secured", "hypothecation", "mortgage", "pledge"],
+      "lgdCategory": "Secured"
+    },
+    {
+      "containsAny": ["external commercial", "ecb"],
+      "tCategory": "ECB"
+    },
+    {
+      "containsAny": ["guarantee", "letter of credit", "standby", "non fund"],
+      "tCategory": "Guarantee"
+    },
+    {
+      "containsAny": ["bill", "discount", "factoring", "forfaiting", "cheque purchase"],
+      "tCategory": "CP"
+    },
+    {
+      "containsAny": ["working capital", "cash credit", "overdraft", "packing credit", "pre shipment", "post shipment"],
+      "tCategory": "WC"
+    },
+    {
+      "containsAny": ["term loan", "rupee term", "long term"],
+      "tCategory": "TermLoan"
+    }
+  ]
+}

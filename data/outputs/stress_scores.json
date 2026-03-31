@@ -1,10 +1,10 @@
 {
   "BANK OF BARODA": {
-    "stressScore": 0.1896,
-    "stressRank": 24,
+    "stressScore": 0.1196,
+    "stressRank": 35,
     "stressComponents": {
       "boundaryDistance": 0.0736,
-      "mertonOriented": 0.425,
+      "mertonOriented": 0.225,
       "camelsComposite": 0.0458
     },
     "camelsDimensions": {
@@ -16,8 +16,8 @@
       "Sensitivity": 0.0432
     },
     "merton": {
-      "distanceToDefault": 7.252105,
-      "dtdRank": 24
+      "distanceToDefault": 9.24579,
+      "dtdRank": 32
     },
     "kpcaEmbedding": [
       -0.033303,
@@ -33,11 +33,11 @@
     ]
   },
   "BANK OF INDIA": {
-    "stressScore": 0.319,
-    "stressRank": 11,
+    "stressScore": 0.2578,
+    "stressRank": 17,
     "stressComponents": {
       "boundaryDistance": 0.0931,
-      "mertonOriented": 0.775,
+      "mertonOriented": 0.6,
       "camelsComposite": 0.0421
     },
     "camelsDimensions": {
@@ -49,8 +49,8 @@
       "Sensitivity": 0.0533
     },
     "merton": {
-      "distanceToDefault": 5.716783,
-      "dtdRank": 10
+      "distanceToDefault": 7.239391,
+      "dtdRank": 17
     },
     "kpcaEmbedding": [
       -0.288352,
@@ -66,11 +66,11 @@
     ]
   },
   "BANK OF MAHARASHTRA": {
-    "stressScore": 0.1921,
-    "stressRank": 23,
+    "stressScore": 0.1484,
+    "stressRank": 29,
     "stressComponents": {
       "boundaryDistance": 0.0134,
-      "mertonOriented": 0.525,
+      "mertonOriented": 0.4,
       "camelsComposite": 0.0122
     },
     "camelsDimensions": {
@@ -82,8 +82,8 @@
       "Sensitivity": 0.0266
     },
     "merton": {
-      "distanceToDefault": 6.783208,
-      "dtdRank": 20
+      "distanceToDefault": 8.352394,
+      "dtdRank": 25
     },
     "kpcaEmbedding": [
       -0.428541,
@@ -99,11 +99,11 @@
     ]
   },
   "CANARA BANK": {
-    "stressScore": 0.152,
-    "stressRank": 28,
+    "stressScore": 0.1695,
+    "stressRank": 27,
     "stressComponents": {
       "boundaryDistance": 0.0796,
-      "mertonOriented": 0.325,
+      "mertonOriented": 0.375,
       "camelsComposite": 0.0256
     },
     "camelsDimensions": {
@@ -115,8 +115,8 @@
       "Sensitivity": 0.0618
     },
     "merton": {
-      "distanceToDefault": 7.89603,
-      "dtdRank": 28
+      "distanceToDefault": 8.384545,
+      "dtdRank": 26
     },
     "kpcaEmbedding": [
       -0.200129,
@@ -132,11 +132,11 @@
     ]
   },
   "CENTRAL BANK OF INDIA": {
-    "stressScore": 0.132,
-    "stressRank": 33,
+    "stressScore": 0.1232,
+    "stressRank": 34,
     "stressComponents": {
       "boundaryDistance": 0.0686,
-      "mertonOriented": 0.275,
+      "mertonOriented": 0.25,
       "camelsComposite": 0.0332
     },
     "camelsDimensions": {
@@ -148,8 +148,8 @@
       "Sensitivity": 0.0576
     },
     "merton": {
-      "distanceToDefault": 8.404665,
-      "dtdRank": 30
+      "distanceToDefault": 9.050722,
+      "dtdRank": 31
     },
     "kpcaEmbedding": [
       -0.329303,
@@ -165,11 +165,11 @@
     ]
   },
   "INDIAN BANK": {
-    "stressScore": 0.259,
-    "stressRank": 18,
+    "stressScore": 0.2502,
+    "stressRank": 19,
     "stressComponents": {
       "boundaryDistance": 0.0633,
-      "mertonOriented": 0.65,
+      "mertonOriented": 0.625,
       "camelsComposite": 0.0246
     },
     "camelsDimensions": {
@@ -181,8 +181,8 @@
       "Sensitivity": 0.04
     },
     "merton": {
-      "distanceToDefault": 6.101367,
-      "dtdRank": 15
+      "distanceToDefault": 7.113605,
+      "dtdRank": 16
     },
     "kpcaEmbedding": [
       -0.289688,
@@ -198,11 +198,11 @@
     ]
   },
   "INDIAN OVERSEAS BANK": {
-    "stressScore": 0.1469,
-    "stressRank": 30,
+    "stressScore": 0.1906,
+    "stressRank": 25,
     "stressComponents": {
       "boundaryDistance": 0.0406,
-      "mertonOriented": 0.35,
+      "mertonOriented": 0.475,
       "camelsComposite": 0.0325
     },
     "camelsDimensions": {
@@ -214,8 +214,8 @@
       "Sensitivity": 0.0424
     },
     "merton": {
-      "distanceToDefault": 7.876019,
-      "dtdRank": 27
+      "distanceToDefault": 8.066278,
+      "dtdRank": 22
     },
     "kpcaEmbedding": [
       -0.465742,
@@ -231,11 +231,11 @@
     ]
   },
   "PUNJAB AND SIND BANK": {
-    "stressScore": 0.2179,
-    "stressRank": 21,
+    "stressScore": 0.2792,
+    "stressRank": 15,
     "stressComponents": {
       "boundaryDistance": 0.0978,
-      "mertonOriented": 0.475,
+      "mertonOriented": 0.65,
       "camelsComposite": 0.0503
     },
     "camelsDimensions": {
@@ -247,8 +247,8 @@
       "Sensitivity": 0.082
     },
     "merton": {
-      "distanceToDefault": 6.990171,
-      "dtdRank": 22
+      "distanceToDefault": 7.073141,
+      "dtdRank": 15
     },
     "kpcaEmbedding": [
       -0.185913,
@@ -264,11 +264,11 @@
     ]
   },
   "PUNJAB NATIONAL BANK": {
-    "stressScore": 0.1787,
-    "stressRank": 26,
+    "stressScore": 0.1962,
+    "stressRank": 24,
     "stressComponents": {
       "boundaryDistance": 0.0977,
-      "mertonOriented": 0.375,
+      "mertonOriented": 0.425,
       "camelsComposite": 0.0334
     },
     "camelsDimensions": {
@@ -280,8 +280,8 @@
       "Sensitivity": 0.053
     },
     "merton": {
-      "distanceToDefault": 7.574371,
-      "dtdRank": 26
+      "distanceToDefault": 8.23199,
+      "dtdRank": 24
     },
     "kpcaEmbedding": [
       -0.133831,
@@ -297,11 +297,11 @@
     ]
   },
   "STATE BANK OF INDIA": {
-    "stressScore": 0.1016,
-    "stressRank": 35,
+    "stressScore": 0.0404,
+    "stressRank": 39,
     "stressComponents": {
       "boundaryDistance": 0.025,
-      "mertonOriented": 0.225,
+      "mertonOriented": 0.05,
       "camelsComposite": 0.0516
     },
     "camelsDimensions": {
@@ -313,8 +313,8 @@
       "Sensitivity": 0.0509
     },
     "merton": {
-      "distanceToDefault": 8.754391,
-      "dtdRank": 32
+      "distanceToDefault": 14.65461,
+      "dtdRank": 39
     },
     "kpcaEmbedding": [
       0.411487,
@@ -330,11 +330,11 @@
     ]
   },
   "UCO BANK": {
-    "stressScore": 0.1502,
-    "stressRank": 29,
+    "stressScore": 0.1327,
+    "stressRank": 31,
     "stressComponents": {
       "boundaryDistance": 0.1319,
-      "mertonOriented": 0.25,
+      "mertonOriented": 0.2,
       "camelsComposite": 0.0399
     },
     "camelsDimensions": {
@@ -346,8 +346,8 @@
       "Sensitivity": 0.0548
     },
     "merton": {
-      "distanceToDefault": 8.673937,
-      "dtdRank": 31
+      "distanceToDefault": 9.511243,
+      "dtdRank": 33
     },
     "kpcaEmbedding": [
       0.115144,
@@ -363,11 +363,11 @@
     ]
   },
   "UNION BANK OF INDIA": {
-    "stressScore": 0.1881,
-    "stressRank": 25,
+    "stressScore": 0.2143,
+    "stressRank": 22,
     "stressComponents": {
       "boundaryDistance": 0.0217,
-      "mertonOriented": 0.5,
+      "mertonOriented": 0.575,
       "camelsComposite": 0.0176
     },
     "camelsDimensions": {
@@ -379,8 +379,8 @@
       "Sensitivity": 0.0518
     },
     "merton": {
-      "distanceToDefault": 6.833484,
-      "dtdRank": 21
+      "distanceToDefault": 7.352941,
+      "dtdRank": 18
     },
     "kpcaEmbedding": [
       -0.370162,
@@ -396,11 +396,11 @@
     ]
   },
   "AXIS BANK LIMITED": {
-    "stressScore": 0.0886,
+    "stressScore": 0.0974,
     "stressRank": 36,
     "stressComponents": {
       "boundaryDistance": 0.0613,
-      "mertonOriented": 0.15,
+      "mertonOriented": 0.175,
       "camelsComposite": 0.0464
     },
     "camelsDimensions": {
@@ -412,8 +412,8 @@
       "Sensitivity": 0.05
     },
     "merton": {
-      "distanceToDefault": 9.201786,
-      "dtdRank": 35
+      "distanceToDefault": 10.954795,
+      "dtdRank": 34
     },
     "kpcaEmbedding": [
       -0.245656,
@@ -429,11 +429,11 @@
     ]
   },
   "BANDHAN BANK LIMITED": {
-    "stressScore": 0.2703,
-    "stressRank": 16,
+    "stressScore": 0.3403,
+    "stressRank": 11,
     "stressComponents": {
       "boundaryDistance": 0.1331,
-      "mertonOriented": 0.55,
+      "mertonOriented": 0.75,
       "camelsComposite": 0.0984
     },
     "camelsDimensions": {
@@ -445,8 +445,8 @@
       "Sensitivity": 0.3208
     },
     "merton": {
-      "distanceToDefault": 6.725218,
-      "dtdRank": 19
+      "distanceToDefault": 6.715134,
+      "dtdRank": 11
     },
     "kpcaEmbedding": [
       0.302065,
@@ -462,11 +462,11 @@
     ]
   },
   "CITY UNION BANK LIMITED": {
-    "stressScore": 0.2669,
-    "stressRank": 17,
+    "stressScore": 0.3194,
+    "stressRank": 13,
     "stressComponents": {
       "boundaryDistance": 0.0259,
-      "mertonOriented": 0.7,
+      "mertonOriented": 0.85,
       "camelsComposite": 0.046
     },
     "camelsDimensions": {
@@ -478,8 +478,8 @@
       "Sensitivity": 0.0683
     },
     "merton": {
-      "distanceToDefault": 5.925341,
-      "dtdRank": 13
+      "distanceToDefault": 5.590445,
+      "dtdRank": 7
     },
     "kpcaEmbedding": [
       -0.404435,
@@ -496,7 +496,7 @@
   },
   "CSB BANK LIMITED": {
     "stressScore": 0.3912,
-    "stressRank": 7,
+    "stressRank": 6,
     "stressComponents": {
       "boundaryDistance": 0.0603,
       "mertonOriented": 1.0,
@@ -511,7 +511,7 @@
       "Sensitivity": 0.1046
     },
     "merton": {
-      "distanceToDefault": 3.469676,
+      "distanceToDefault": 3.820218,
       "dtdRank": 1
     },
     "kpcaEmbedding": [
@@ -528,11 +528,11 @@
     ]
   },
   "DCB BANK LIMITED": {
-    "stressScore": 0.37,
-    "stressRank": 9,
+    "stressScore": 0.4138,
+    "stressRank": 4,
     "stressComponents": {
       "boundaryDistance": 0.2183,
-      "mertonOriented": 0.75,
+      "mertonOriented": 0.875,
       "camelsComposite": 0.081
     },
     "camelsDimensions": {
@@ -544,8 +544,8 @@
       "Sensitivity": 0.243
     },
     "merton": {
-      "distanceToDefault": 5.780636,
-      "dtdRank": 11
+      "distanceToDefault": 5.578772,
+      "dtdRank": 6
     },
     "kpcaEmbedding": [
       0.043179,
@@ -561,11 +561,11 @@
     ]
   },
   "DHANLAXMI BANK LIMITED": {
-    "stressScore": 0.0828,
-    "stressRank": 37,
+    "stressScore": 0.1441,
+    "stressRank": 30,
     "stressComponents": {
       "boundaryDistance": 0.0651,
-      "mertonOriented": 0.1,
+      "mertonOriented": 0.275,
       "camelsComposite": 0.0872
     },
     "camelsDimensions": {
@@ -577,8 +577,8 @@
       "Sensitivity": 0.2413
     },
     "merton": {
-      "distanceToDefault": 10.049556,
-      "dtdRank": 37
+      "distanceToDefault": 9.002173,
+      "dtdRank": 30
     },
     "kpcaEmbedding": [
       0.384449,
@@ -594,11 +594,11 @@
     ]
   },
   "FEDERAL BANK LTD": {
-    "stressScore": 0.1406,
-    "stressRank": 32,
+    "stressScore": 0.1581,
+    "stressRank": 28,
     "stressComponents": {
       "boundaryDistance": 0.0627,
-      "mertonOriented": 0.3,
+      "mertonOriented": 0.35,
       "camelsComposite": 0.0421
     },
     "camelsDimensions": {
@@ -610,8 +610,8 @@
       "Sensitivity": 0.0905
     },
     "merton": {
-      "distanceToDefault": 8.1951,
-      "dtdRank": 29
+      "distanceToDefault": 8.602711,
+      "dtdRank": 27
     },
     "kpcaEmbedding": [
       -0.364084,
@@ -643,7 +643,7 @@
       "Sensitivity": 0.0643
     },
     "merton": {
-      "distanceToDefault": 15.991226,
+      "distanceToDefault": 19.563849,
       "dtdRank": 41
     },
     "kpcaEmbedding": [
@@ -660,11 +660,11 @@
     ]
   },
   "ICICI BANK LIMITED": {
-    "stressScore": 0.0345,
+    "stressScore": 0.0258,
     "stressRank": 40,
     "stressComponents": {
       "boundaryDistance": 0.0221,
-      "mertonOriented": 0.05,
+      "mertonOriented": 0.025,
       "camelsComposite": 0.0327
     },
     "camelsDimensions": {
@@ -676,8 +676,8 @@
       "Sensitivity": 0.0409
     },
     "merton": {
-      "distanceToDefault": 13.329287,
-      "dtdRank": 39
+      "distanceToDefault": 14.676274,
+      "dtdRank": 40
     },
     "kpcaEmbedding": [
       -0.354575,
@@ -693,11 +693,11 @@
     ]
   },
   "IDBI BANK LIMITED": {
-    "stressScore": 0.314,
-    "stressRank": 12,
+    "stressScore": 0.3052,
+    "stressRank": 14,
     "stressComponents": {
       "boundaryDistance": 0.0752,
-      "mertonOriented": 0.8,
+      "mertonOriented": 0.775,
       "camelsComposite": 0.0155
     },
     "camelsDimensions": {
@@ -709,8 +709,8 @@
       "Sensitivity": 0.0371
     },
     "merton": {
-      "distanceToDefault": 5.664173,
-      "dtdRank": 9
+      "distanceToDefault": 6.042001,
+      "dtdRank": 10
     },
     "kpcaEmbedding": [
       -0.34747,
@@ -726,11 +726,11 @@
     ]
   },
   "IDFC FIRST BANK LIMITED": {
-    "stressScore": 0.4027,
-    "stressRank": 5,
+    "stressScore": 0.1314,
+    "stressRank": 32,
     "stressComponents": {
       "boundaryDistance": 0.1267,
-      "mertonOriented": 0.9,
+      "mertonOriented": 0.125,
       "camelsComposite": 0.1479
     },
     "camelsDimensions": {
@@ -742,8 +742,8 @@
       "Sensitivity": 0.5646
     },
     "merton": {
-      "distanceToDefault": 5.228241,
-      "dtdRank": 5
+      "distanceToDefault": 11.509732,
+      "dtdRank": 36
     },
     "kpcaEmbedding": [
       0.448641,
@@ -759,11 +759,11 @@
     ]
   },
   "INDUSIND BANK LTD": {
-    "stressScore": 0.1438,
-    "stressRank": 31,
+    "stressScore": 0.1788,
+    "stressRank": 26,
     "stressComponents": {
       "boundaryDistance": 0.1309,
-      "mertonOriented": 0.2,
+      "mertonOriented": 0.3,
       "camelsComposite": 0.0857
     },
     "camelsDimensions": {
@@ -775,8 +775,8 @@
       "Sensitivity": 0.1997
     },
     "merton": {
-      "distanceToDefault": 9.152175,
-      "dtdRank": 33
+      "distanceToDefault": 8.702732,
+      "dtdRank": 29
     },
     "kpcaEmbedding": [
       0.005703,
@@ -792,11 +792,11 @@
     ]
   },
   "JAMMU & KASHMIR BANK LTD": {
-    "stressScore": 0.3038,
-    "stressRank": 13,
+    "stressScore": 0.26,
+    "stressRank": 16,
     "stressComponents": {
       "boundaryDistance": 0.2373,
-      "mertonOriented": 0.575,
+      "mertonOriented": 0.45,
       "camelsComposite": 0.0306
     },
     "camelsDimensions": {
@@ -808,8 +808,8 @@
       "Sensitivity": 0.1129
     },
     "merton": {
-      "distanceToDefault": 6.58118,
-      "dtdRank": 18
+      "distanceToDefault": 8.222813,
+      "dtdRank": 23
     },
     "kpcaEmbedding": [
       -0.093564,
@@ -825,11 +825,11 @@
     ]
   },
   "KARNATAKA BANK LTD": {
-    "stressScore": 0.2985,
-    "stressRank": 14,
+    "stressScore": 0.3598,
+    "stressRank": 9,
     "stressComponents": {
       "boundaryDistance": 0.1764,
-      "mertonOriented": 0.625,
+      "mertonOriented": 0.8,
       "camelsComposite": 0.0368
     },
     "camelsDimensions": {
@@ -841,8 +841,8 @@
       "Sensitivity": 0.082
     },
     "merton": {
-      "distanceToDefault": 6.355325,
-      "dtdRank": 16
+      "distanceToDefault": 5.96191,
+      "dtdRank": 9
     },
     "kpcaEmbedding": [
       -0.097144,
@@ -858,11 +858,11 @@
     ]
   },
   "KARUR VYSYA BANK LTD": {
-    "stressScore": 0.2186,
-    "stressRank": 20,
+    "stressScore": 0.2536,
+    "stressRank": 18,
     "stressComponents": {
       "boundaryDistance": 0.0004,
-      "mertonOriented": 0.6,
+      "mertonOriented": 0.7,
       "camelsComposite": 0.0338
     },
     "camelsDimensions": {
@@ -874,8 +874,8 @@
       "Sensitivity": 0.0699
     },
     "merton": {
-      "distanceToDefault": 6.48046,
-      "dtdRank": 17
+      "distanceToDefault": 6.997825,
+      "dtdRank": 13
     },
     "kpcaEmbedding": [
       -0.357364,
@@ -892,7 +892,7 @@
   },
   "KOTAK MAHINDRA BANK LTD.": {
     "stressScore": 0.0476,
-    "stressRank": 39,
+    "stressRank": 38,
     "stressComponents": {
       "boundaryDistance": 0.0244,
       "mertonOriented": 0.075,
@@ -907,7 +907,7 @@
       "Sensitivity": 0.0325
     },
     "merton": {
-      "distanceToDefault": 10.872889,
+      "distanceToDefault": 14.144821,
       "dtdRank": 38
     },
     "kpcaEmbedding": [
@@ -924,11 +924,11 @@
     ]
   },
   "RBL BANK LTD": {
-    "stressScore": 0.1926,
-    "stressRank": 22,
+    "stressScore": 0.2276,
+    "stressRank": 21,
     "stressComponents": {
       "boundaryDistance": 0.0622,
-      "mertonOriented": 0.4,
+      "mertonOriented": 0.5,
       "camelsComposite": 0.1111
     },
     "camelsDimensions": {
@@ -940,8 +940,8 @@
       "Sensitivity": 0.2292
     },
     "merton": {
-      "distanceToDefault": 7.366645,
-      "dtdRank": 25
+      "distanceToDefault": 7.873423,
+      "dtdRank": 21
     },
     "kpcaEmbedding": [
       0.246167,
@@ -958,7 +958,7 @@
   },
   "SOUTH INDIAN BANK LTD": {
     "stressScore": 0.3792,
-    "stressRank": 8,
+    "stressRank": 7,
     "stressComponents": {
       "boundaryDistance": 0.0677,
       "mertonOriented": 0.975,
@@ -973,7 +973,7 @@
       "Sensitivity": 0.0676
     },
     "merton": {
-      "distanceToDefault": 4.516775,
+      "distanceToDefault": 4.120707,
       "dtdRank": 2
     },
     "kpcaEmbedding": [
@@ -990,11 +990,11 @@
     ]
   },
   "TAMILNAD MERCANTILE BANK LTD": {
-    "stressScore": 0.2571,
-    "stressRank": 19,
+    "stressScore": 0.2133,
+    "stressRank": 23,
     "stressComponents": {
       "boundaryDistance": 0.031,
-      "mertonOriented": 0.675,
+      "mertonOriented": 0.55,
       "camelsComposite": 0.0336
     },
     "camelsDimensions": {
@@ -1006,8 +1006,8 @@
       "Sensitivity": 0.0748
     },
     "merton": {
-      "distanceToDefault": 6.028082,
-      "dtdRank": 14
+      "distanceToDefault": 7.543147,
+      "dtdRank": 19
     },
     "kpcaEmbedding": [
       -0.368487,
@@ -1023,11 +1023,11 @@
     ]
   },
   "YES BANK LTD.": {
-    "stressScore": 0.1752,
-    "stressRank": 27,
+    "stressScore": 0.2277,
+    "stressRank": 20,
     "stressComponents": {
       "boundaryDistance": 0.2295,
-      "mertonOriented": 0.175,
+      "mertonOriented": 0.325,
       "camelsComposite": 0.0886
     },
     "camelsDimensions": {
@@ -1039,8 +1039,8 @@
       "Sensitivity": 0.1271
     },
     "merton": {
-      "distanceToDefault": 9.179658,
-      "dtdRank": 34
+      "distanceToDefault": 8.676402,
+      "dtdRank": 28
     },
     "kpcaEmbedding": [
       0.254117,
@@ -1056,11 +1056,11 @@
     ]
   },
   "AU SMALL FINANCE BANK LIMITED": {
-    "stressScore": 0.1197,
-    "stressRank": 34,
+    "stressScore": 0.1284,
+    "stressRank": 33,
     "stressComponents": {
       "boundaryDistance": 0.1256,
-      "mertonOriented": 0.125,
+      "mertonOriented": 0.15,
       "camelsComposite": 0.1027
     },
     "camelsDimensions": {
@@ -1072,8 +1072,8 @@
       "Sensitivity": 0.4532
     },
     "merton": {
-      "distanceToDefault": 9.546157,
-      "dtdRank": 36
+      "distanceToDefault": 11.021721,
+      "dtdRank": 35
     },
     "kpcaEmbedding": [
       0.360928,
@@ -1089,11 +1089,11 @@
     ]
   },
   "CAPITAL SMALL FINANCE BANK LIMITED": {
-    "stressScore": 0.0655,
-    "stressRank": 38,
+    "stressScore": 0.0918,
+    "stressRank": 37,
     "stressComponents": {
       "boundaryDistance": 0.092,
-      "mertonOriented": 0.025,
+      "mertonOriented": 0.1,
       "camelsComposite": 0.0798
     },
     "camelsDimensions": {
@@ -1105,8 +1105,8 @@
       "Sensitivity": 0.2815
     },
     "merton": {
-      "distanceToDefault": 13.596908,
-      "dtdRank": 40
+      "distanceToDefault": 12.779509,
+      "dtdRank": 37
     },
     "kpcaEmbedding": [
       -0.0852,
@@ -1122,11 +1122,11 @@
     ]
   },
   "EQUITAS SMALL FINANCE BANK LIMITED": {
-    "stressScore": 0.2782,
-    "stressRank": 15,
+    "stressScore": 0.3744,
+    "stressRank": 8,
     "stressComponents": {
       "boundaryDistance": 0.207,
-      "mertonOriented": 0.45,
+      "mertonOriented": 0.725,
       "camelsComposite": 0.1515
     },
     "camelsDimensions": {
@@ -1138,8 +1138,8 @@
       "Sensitivity": 0.7017
     },
     "merton": {
-      "distanceToDefault": 7.052709,
-      "dtdRank": 23
+      "distanceToDefault": 6.810357,
+      "dtdRank": 12
     },
     "kpcaEmbedding": [
       0.678261,
@@ -1155,11 +1155,11 @@
     ]
   },
   "ESAF SMALL FINANCE BANK LIMITED": {
-    "stressScore": 0.4677,
-    "stressRank": 2,
+    "stressScore": 0.4764,
+    "stressRank": 1,
     "stressComponents": {
       "boundaryDistance": 0.2542,
-      "mertonOriented": 0.875,
+      "mertonOriented": 0.9,
       "camelsComposite": 0.239
     },
     "camelsDimensions": {
@@ -1171,8 +1171,8 @@
       "Sensitivity": 0.7605
     },
     "merton": {
-      "distanceToDefault": 5.316228,
-      "dtdRank": 6
+      "distanceToDefault": 5.447394,
+      "dtdRank": 5
     },
     "kpcaEmbedding": [
       0.451185,
@@ -1188,11 +1188,11 @@
     ]
   },
   "JANA SMALL FINANCE BANK LIMITED": {
-    "stressScore": 0.4543,
-    "stressRank": 3,
+    "stressScore": 0.3406,
+    "stressRank": 10,
     "stressComponents": {
       "boundaryDistance": 0.3126,
-      "mertonOriented": 0.85,
+      "mertonOriented": 0.525,
       "camelsComposite": 0.1272
     },
     "camelsDimensions": {
@@ -1204,8 +1204,8 @@
       "Sensitivity": 0.6807
     },
     "merton": {
-      "distanceToDefault": 5.432044,
-      "dtdRank": 7
+      "distanceToDefault": 7.871403,
+      "dtdRank": 20
     },
     "kpcaEmbedding": [
       0.576423,
@@ -1222,7 +1222,7 @@
   },
   "SURYODAY SMALL FINANCE BANK LIMITED": {
     "stressScore": 0.4207,
-    "stressRank": 4,
+    "stressRank": 3,
     "stressComponents": {
       "boundaryDistance": 0.2038,
       "mertonOriented": 0.825,
@@ -1237,7 +1237,7 @@
       "Sensitivity": 0.7064
     },
     "merton": {
-      "distanceToDefault": 5.579433,
+      "distanceToDefault": 5.925095,
       "dtdRank": 8
     },
     "kpcaEmbedding": [
@@ -1254,11 +1254,11 @@
     ]
   },
   "UJJIVAN SMALL FINANCE BANK LIMITED": {
-    "stressScore": 0.3457,
-    "stressRank": 10,
+    "stressScore": 0.3282,
+    "stressRank": 12,
     "stressComponents": {
       "boundaryDistance": 0.1587,
-      "mertonOriented": 0.725,
+      "mertonOriented": 0.675,
       "camelsComposite": 0.1139
     },
     "camelsDimensions": {
@@ -1270,8 +1270,8 @@
       "Sensitivity": 0.716
     },
     "merton": {
-      "distanceToDefault": 5.914821,
-      "dtdRank": 12
+      "distanceToDefault": 7.03746,
+      "dtdRank": 14
     },
     "kpcaEmbedding": [
       0.613817,
@@ -1288,7 +1288,7 @@
   },
   "UTKARSH SMALL FINANCE BANK LIMITED": {
     "stressScore": 0.4759,
-    "stressRank": 1,
+    "stressRank": 2,
     "stressComponents": {
       "boundaryDistance": 0.2119,
       "mertonOriented": 0.95,
@@ -1303,7 +1303,7 @@
       "Sensitivity": 0.7951
     },
     "merton": {
-      "distanceToDefault": 4.671793,
+      "distanceToDefault": 4.377878,
       "dtdRank": 3
     },
     "kpcaEmbedding": [
@@ -1321,7 +1321,7 @@
   },
   "FINO PAYMENTS BANK LIMITED": {
     "stressScore": 0.3929,
-    "stressRank": 6,
+    "stressRank": 5,
     "stressComponents": {
       "boundaryDistance": 0.0,
       "mertonOriented": 0.925,
@@ -1336,7 +1336,7 @@
       "Sensitivity": 0.0117
     },
     "merton": {
-      "distanceToDefault": 5.084842,
+      "distanceToDefault": 4.950849,
       "dtdRank": 4
     },
     "kpcaEmbedding": [
@@ -1392,8 +1392,8 @@
       "Liquidity": 0.1,
       "Sensitivity": 0.05
     },
-    "mertonFile": "D:\\Documents\\Coding Projects\\Capstone\\data_consolidation\\data\\outputs\\merton_soft_labels.json",
+    "mertonFile": "D:\\Documents\\Coding Projects\\financial-contagion-risk-framework\\data\\outputs\\merton_soft_labels.json",
     "mertonAvailable": true,
-    "computedAt": "2026-03-07T19:15:08.674793"
+    "computedAt": "2026-03-31T16:27:31.268930"
   }
 }
