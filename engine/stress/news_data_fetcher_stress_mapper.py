@@ -1,3 +1,4 @@
+import argparse
 import requests
 import feedparser
 import re
@@ -5,7 +6,7 @@ import csv
 import numpy as np
 import os
 from pymongo import MongoClient
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
 from urllib.parse import quote
 from tqdm import tqdm
 
@@ -15,7 +16,8 @@ from tqdm import tqdm
 MONGO_URI       = os.environ.get("MONGO_URI", "mongodb://localhost:27017")
 DB_NAME         = os.environ.get("DB_NAME", "financial_kg")
 COLLECTION_NAME = os.environ.get("COLLECTION_NAME", "companies")
-OUTPUT_CSV      = "stress_scores.csv"
+OUTPUT_CSV      = os.environ.get("OUTPUT_CSV", "stress_scores.csv")
+NEWS_BEFORE_DATE = os.environ.get("NEWS_BEFORE_DATE", "").strip() or None
 
 CSV_COLUMNS = [
     "company_code", "company_name", "listing_status", "industry",
@@ -46,7 +48,7 @@ def _get_finbert():
             "sentiment-analysis", model=model, tokenizer=tokenizer,
             top_k=None, truncation=True, max_length=512,
         )
-        tqdm.write("[finbert] Model loaded ✓\n")
+        tqdm.write("[finbert] Model loaded successfully\n")
     return _finbert_pipeline
 
 
@@ -79,7 +81,40 @@ def get_all_companies() -> list[dict]:
 # ─────────────────────────────────────────────
 #  Google News RSS
 # ─────────────────────────────────────────────
-def fetch_news(company_name: str, max_articles: int = 10) -> list[dict]:
+def parse_before_date(value: str | None) -> date | None:
+    """Parse YYYY-MM-DD to a date. Empty value means no filter."""
+    if value is None:
+        return None
+
+    cleaned = value.strip()
+    if not cleaned:
+        return None
+
+    try:
+        return datetime.strptime(cleaned, "%Y-%m-%d").date()
+    except ValueError as exc:
+        raise ValueError(
+            f"Invalid --before-date '{value}'. Expected format YYYY-MM-DD."
+        ) from exc
+
+
+def _is_entry_on_or_before(entry: dict, before_date: date | None) -> bool:
+    if before_date is None:
+        return True
+
+    parsed = entry.get("published_parsed") or entry.get("updated_parsed")
+    if not parsed:
+        return False
+
+    try:
+        entry_date = datetime(*parsed[:6]).date()
+    except (TypeError, ValueError):
+        return False
+
+    return entry_date <= before_date
+
+
+def fetch_news(company_name: str, max_articles: int = 10, before_date: date | None = None) -> list[dict]:
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -96,14 +131,19 @@ def fetch_news(company_name: str, max_articles: int = 10) -> list[dict]:
     ).strip()
 
     for _, query in [("exact", f'"{company_name}"'), ("short", short_name)]:
+        query_text = f"{query} before:{before_date.isoformat()}" if before_date else query
         url = (
             "https://news.google.com/rss/search"
-            f"?q={quote(query)}&hl=en-IN&gl=IN&ceid=IN:en"
+            f"?q={quote(query_text)}&hl=en-IN&gl=IN&ceid=IN:en"
         )
         try:
             resp = requests.get(url, headers=headers, timeout=15, allow_redirects=True)
             feed = feedparser.parse(resp.text)
-            if feed.entries:
+            filtered_entries = [
+                e for e in feed.entries
+                if _is_entry_on_or_before(e, before_date)
+            ]
+            if filtered_entries:
                 return [
                     {
                         "title":     e.get("title", ""),
@@ -112,7 +152,7 @@ def fetch_news(company_name: str, max_articles: int = 10) -> list[dict]:
                         "published": e.get("published", ""),
                         "summary":   re.sub(r"<[^>]+>", "", e.get("summary", "")).strip(),
                     }
-                    for e in feed.entries[:max_articles]
+                    for e in filtered_entries[:max_articles]
                 ]
         except requests.exceptions.RequestException:
             pass
@@ -201,47 +241,76 @@ def score_with_finbert(company: dict, articles: list[dict]) -> dict:
 # ─────────────────────────────────────────────
 #  Build CSV row
 # ─────────────────────────────────────────────
+def _sanitize_text(text: str) -> str:
+    """Remove/replace problematic Unicode characters for CSV output."""
+    if not text:
+        return ""
+    # Replace common problematic Unicode characters with ASCII equivalents
+    replacements = {
+        "\u2713": "[OK]",  # Checkmark → ASCII equivalent
+        "\u2014": "-",  # Em dash
+        "\u2013": "-",  # En dash
+        "\u201c": '"',  # Left double quote
+        "\u201d": '"',  # Right double quote
+        "\u2018": "'",  # Left single quote
+        "\u2019": "'",  # Right single quote
+        "\u2026": "...",  # Ellipsis
+    }
+    for unicode_char, ascii_char in replacements.items():
+        text = text.replace(unicode_char, ascii_char)
+    # Remove any remaining non-ASCII characters
+    text = text.encode("ascii", "ignore").decode("ascii")
+    return text
+
 def build_csv_row(company: dict, articles: list[dict], result: dict, error: str = "") -> dict:
     name = company.get("crisilName") or company.get("mcaName") or "Unknown"
     row  = {
         "company_code":   company.get("companyCode", ""),
-        "company_name":   name,
-        "listing_status": company.get("listingStatus", ""),
-        "industry":       company.get("industryName", ""),
+        "company_name":   _sanitize_text(name),
+        "listing_status": _sanitize_text(company.get("listingStatus", "")),
+        "industry":       _sanitize_text(company.get("industryName", "")),
         "stress_score":   result.get("score", ""),
-        "stress_band":    result.get("stress_band", ""),
-        "confidence":     result.get("confidence", ""),
-        "key_drivers":    " | ".join(result.get("key_drivers", [])),
-        "summary":        result.get("summary", ""),
+        "stress_band":    _sanitize_text(str(result.get("stress_band", ""))),
+        "confidence":     _sanitize_text(str(result.get("confidence", ""))),
+        "key_drivers":    " | ".join(_sanitize_text(d) for d in result.get("key_drivers", [])),
+        "summary":        _sanitize_text(result.get("summary", "")),
         "news_used":      len(articles),
         "scored_at":      datetime.now(timezone.utc).isoformat(),
-        "error":          error,
+        "error":          _sanitize_text(error),
     }
     for i in range(1, 6):
         a = articles[i - 1] if i <= len(articles) else {}
-        row[f"article_{i}_title"]  = a.get("title", "")
+        row[f"article_{i}_title"]  = _sanitize_text(a.get("title", ""))
         row[f"article_{i}_link"]   = a.get("link", "")
-        row[f"article_{i}_source"] = a.get("source", "")
+        row[f"article_{i}_source"] = _sanitize_text(a.get("source", ""))
     return row
 
 
 # ─────────────────────────────────────────────
 #  Main
 # ─────────────────────────────────────────────
-def run_all():
+def run_all(before_date: date | None = None):
     print(f"\n{'='*60}")
     print(f"  Bulk News Stress Scorer  (FinBERT)")
+    if before_date:
+        print(f"  News filter: only articles on or before {before_date.isoformat()}")
     print(f"{'='*60}\n")
 
     companies = get_all_companies()
 
     file_exists  = os.path.isfile(OUTPUT_CSV)
-    already_done = set()
+    already_done = {}  # Maps company_code -> stress_score (only if non-empty)
     if file_exists:
         with open(OUTPUT_CSV, newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
-                already_done.add(r.get("company_code", ""))
-        print(f"[resume] {len(already_done)} already scored — skipping.\n")
+                code = r.get("company_code", "")
+                stress_score = r.get("stress_score", "").strip()
+                # Only mark as done if it has a valid stress_score
+                if code and stress_score:
+                    already_done[code] = stress_score
+
+        skipped = len(already_done)
+        print(f"[resume] {skipped} already scored with valid stress_score — skipping.\n")
 
     csv_file = open(OUTPUT_CSV, "a", newline="", encoding="utf-8")
     writer   = csv.DictWriter(csv_file, fieldnames=CSV_COLUMNS, extrasaction="ignore")
@@ -262,7 +331,7 @@ def run_all():
             pbar.set_postfix_str(f"-> {name[:33]}")
 
             try:
-                articles = fetch_news(name)
+                articles = fetch_news(name, before_date=before_date)
                 result   = score_with_finbert(company, articles)
                 row      = build_csv_row(company, articles, result)
             except Exception as e:
@@ -281,4 +350,17 @@ def run_all():
 
 
 if __name__ == "__main__":
-    run_all()
+    parser = argparse.ArgumentParser(description="Bulk news stress scorer (FinBERT)")
+    parser.add_argument(
+        "--before-date",
+        default=NEWS_BEFORE_DATE,
+        help="Only include Google RSS articles published on or before YYYY-MM-DD (default: no date filter)",
+    )
+    args = parser.parse_args()
+
+    try:
+        before_date = parse_before_date(args.before_date)
+    except ValueError as exc:
+        raise SystemExit(str(exc))
+
+    run_all(before_date=before_date)

@@ -24,6 +24,7 @@ Usage:
     python sectoral_stress_pipeline.py --dry-run      # dummy scores, no API calls
     python sectoral_stress_pipeline.py --model llama-3.3-70b-versatile
     python sectoral_stress_pipeline.py --output march_scores.csv
+    python sectoral_stress_pipeline.py --before-date 2026-01-31
 
 Requirements:
     pip install requests yfinance python-dotenv
@@ -38,7 +39,8 @@ import random
 import re
 import time
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
+from email.utils import parsedate_to_datetime
 
 import requests
 import yfinance as yf
@@ -51,6 +53,7 @@ from dotenv import load_dotenv
 CALL_DELAY: float = 2.0
 
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+NEWS_BEFORE_DATE = os.environ.get("NEWS_BEFORE_DATE", "").strip() or None
 
 # ---- 1. TAXONOMY: granular industry -> macro sector --------------------------
 
@@ -299,15 +302,53 @@ def score_to_tier(score: float) -> str:
 
 RSS_URL = "https://news.google.com/rss/search?q={query}+India&hl=en-IN&gl=IN&ceid=IN:en"
 
-def fetch_headlines(keywords: list[str], max_articles: int = 6) -> list[str]:
+def parse_before_date(value: str | None) -> date | None:
+    """Parse YYYY-MM-DD to a date. Empty value means no filter."""
+    if value is None:
+        return None
+
+    cleaned = value.strip()
+    if not cleaned:
+        return None
+
+    try:
+        return datetime.strptime(cleaned, "%Y-%m-%d").date()
+    except ValueError as exc:
+        raise ValueError(
+            f"Invalid --before-date '{value}'. Expected format YYYY-MM-DD."
+        ) from exc
+
+
+def _is_item_on_or_before(item: ET.Element, before_date: date | None) -> bool:
+    if before_date is None:
+        return True
+
+    pub_date = (item.findtext("pubDate") or "").strip()
+    if not pub_date:
+        return False
+
+    try:
+        return parsedate_to_datetime(pub_date).date() <= before_date
+    except (TypeError, ValueError):
+        return False
+
+
+def fetch_headlines(
+    keywords: list[str],
+    max_articles: int = 6,
+    before_date: date | None = None,
+) -> list[str]:
     headlines, seen = [], set()
     for kw in keywords:
         try:
-            url  = RSS_URL.format(query=requests.utils.quote(kw))
+            query = f"{kw} before:{before_date.isoformat()}" if before_date else kw
+            url  = RSS_URL.format(query=requests.utils.quote(query))
             resp = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
             resp.raise_for_status()
             root = ET.fromstring(resp.content)
             for item in root.findall(".//item"):
+                if not _is_item_on_or_before(item, before_date):
+                    continue
                 t = (item.findtext("title") or "").strip()
                 if t and t not in seen:
                     seen.add(t)
@@ -465,6 +506,7 @@ def run_pipeline(
     output:  str  = "sectoral_stress_scores.csv",
     api_key: str  = "",
     dry_run: bool = False,
+    before_date: date | None = None,
 ):
     macro_sectors = list(MACRO_KEYWORDS.keys())
     scored_sectors: dict[str, dict] = {}
@@ -475,6 +517,7 @@ def run_pipeline(
     print(f"  Mode      : {'DRY RUN' if dry_run else f'Groq ({model}) + yfinance'}")
     print(f"  Sectors   : {len(macro_sectors)}")
     print(f"  Call delay: {CALL_DELAY}s  (30 RPM Groq limit)")
+    print(f"  News filter: {'on or before ' + before_date.isoformat() if before_date else 'none'}")
     print(f"  Est. time : ~{est_mins} min")
     print(f"  Output    : {output}")
     print(f"{'='*64}\n")
@@ -491,7 +534,11 @@ def run_pipeline(
             reasoning  = "Dry-run dummy score"
         else:
             print(f"    -> Fetching news ...")
-            headlines = fetch_headlines(MACRO_KEYWORDS[sector], max_articles=6)
+            headlines = fetch_headlines(
+                MACRO_KEYWORDS[sector],
+                max_articles=6,
+                before_date=before_date,
+            )
             print(f"    -> {len(headlines)} headlines fetched")
 
             elapsed = time.time() - last_groq_call
@@ -601,7 +648,17 @@ if __name__ == "__main__":
     parser.add_argument("--model",   default="llama-3.1-8b-instant",       help="Groq model (default: llama-3.1-8b-instant)")
     parser.add_argument("--output",  default="sectoral_stress_scores.csv", help="Output CSV path")
     parser.add_argument("--dry-run", action="store_true",                  help="Skip all API calls, use dummy scores")
+    parser.add_argument(
+        "--before-date",
+        default=NEWS_BEFORE_DATE,
+        help="Only include Google RSS articles published on or before YYYY-MM-DD (default: no date filter)",
+    )
     args = parser.parse_args()
+
+    try:
+        before_date = parse_before_date(args.before_date)
+    except ValueError as exc:
+        raise SystemExit(str(exc))
 
     load_dotenv()
     api_key = os.environ.get("GROQ_API_KEY", "")
@@ -613,4 +670,5 @@ if __name__ == "__main__":
         output  = args.output,
         api_key = api_key,
         dry_run = args.dry_run,
+        before_date = before_date,
     )
