@@ -1,0 +1,402 @@
+
+%% ==================== SECTION 5: DATA ======================
+\section{Data}
+
+A robust contagion framework is only as strong as its data architecture. The project encountered four structural constraints at the start: limited credible sources, sparse entity-level disclosures, machine-parsing challenges, and weak cross-source referential consistency. To address these, the framework integrates official and market-facing sources with explicit entity normalization.
+
+Primary sources used:
+
+\begin{itemize}
+  \item NSE corporate disclosures \cite{ref1}
+  \item MCA master data through India's Open Government Data platform \cite{ref2}
+  \item CRISIL rating reports \cite{ref3}
+  \item RBI DBIE statistical banking tables \cite{ref4}
+\end{itemize}
+
+\subsection{Bank}
+
+For 41 scheduled commercial banks, the pipeline aggregates:
+
+\begin{itemize}
+  \item Annual balance-sheet structure (assets and liabilities) \cite{ref4}
+  \item Outstanding advances to RBI priority sectors \cite{ref4}
+  \item Supervisory and performance ratios \cite{ref4}
+  \item Related-party transactions from integrated filings \cite{ref1}
+  \item Shareholding pattern disclosures \cite{ref1}
+\end{itemize}
+
+This is economically motivated. A large share of Indian banks' asset books is credit exposure, so contagion modeling must prioritize lender-borrower channels and sectoral concentration channels. Priority-sector lending is included because it is both policy-mandated and risk-relevant for stress transmission \cite{ref5}.
+
+To sharpen this motivation, the RBI distribution table by bank type was integrated as a structural prior. Four patterns are especially relevant \cite{ref27}:
+
+\begin{table}[h]
+\centering
+\caption{\textit{Distribution of Assets and Liabilities of Scheduled Commercial Banks}}
+\vspace{0.5em}
+\begin{tabular}{lrrrr}
+  \toprule
+  Bank Group
+    & \begin{tabular}[c]{@{}r@{}}Advances\\(\% of Assets)\end{tabular}
+    & \begin{tabular}[c]{@{}r@{}}Investments\\(\% of Assets)\end{tabular}
+    & \begin{tabular}[c]{@{}r@{}}Deposits\\(\% of Liabilities)\end{tabular}
+    & \begin{tabular}[c]{@{}r@{}}Borrowings\\(\% of Liabilities)\end{tabular} \\
+  \midrule
+  Public Sector Banks  & 62.71 & 24.90 & 82.82 &  6.91 \\
+  Private Sector Banks & 64.55 & 22.77 & 73.40 & 10.05 \\
+  Foreign Banks        & 30.21 & 45.17 & 54.01 & 16.45 \\
+  Small Finance Banks  & 67.20 & 21.53 & 77.79 &  7.40 \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+This heterogeneity directly motivates a non-linear stress model instead of a single linear rule across all bank types.
+
+\subsection{Company}
+
+For companies, the system consolidates:
+
+\begin{itemize}
+  \item Lender-facility information from CRISIL rating reports \cite{ref3}
+  \item MCA identity and classification fields (including NIC-linked industrial metadata) \cite{ref2}
+  \item NSE shareholding structure for ownership-based dependence channels \cite{ref1}
+\end{itemize}
+
+The lender-facility layer is the most important bridge between company stress and bank stress because it yields direct exposure pathways in the graph.
+
+%% ==================== SECTION 6: MODEL =====================
+\section{Model}
+
+The framework represents the system as a directed, weighted graph in which each node carries a stress state and each edge carries transmission semantics. This produces a dynamic map of potential financial contagion pathways.
+
+Core modeling questions:
+
+\begin{enumerate}
+  \item What is financial stress, and how should it be quantified?
+  \item Which real-world relationships should be represented as edges?
+  \item How should edge weights encode transmission intensity?
+\end{enumerate}
+
+\subsection{Stress}
+
+Financial stress is modeled as the deterioration of an entity's capacity to absorb losses while maintaining obligations, proxied through a bounded risk score in $[0,1]$ where higher values indicate greater fragility. In this work, stress is treated as a latent state estimated from supervisory ratios, rating-based default information, market-implied signals, and adverse information flow \cite{ref6} \cite{ref7}.
+
+\subsubsection{Overview of Risk Prediction Problems}
+
+The initial problem framing identified two gaps in conventional credit-risk systems:
+
+\begin{enumerate}
+  \item \textbf{Low explainability}: highly mathematical outputs are difficult to defend in supervisory or policy settings.
+  \item \textbf{Weak realism under regime shifts}: historical-fit models may understate current risk when structure changes faster than historical data windows.
+\end{enumerate}
+
+This is why the framework combines interpretable supervisory anchors with data-driven non-linear representation learning \cite{ref28}.
+
+\subsubsection{Spheres of Affect (Initial Conceptual Model)}
+
+The original conceptual model defined five spheres, ordered from high control to low control \cite{ref28}:
+
+\begin{table}[h]
+\centering
+\caption{\textit{Spheres of Affect}}
+\vspace{0.5em}
+\begin{tabular}{p{3.8cm}p{6.5cm}p{2.8cm}}
+  \toprule
+  Sphere & Scope & Control Level \\
+  \midrule
+  Internal Factors        & Firm microstructure                                                                      & High control       \\
+  Transactors             & Immediate network (lenders, suppliers, customers, auditors)                     & Direct interaction \\
+  Competitive Environment & Industry and peer structure                                                              & External            \\
+  Macro Environment       & Regulation, inflation, FX, political stability                               & External            \\
+  Global \& Systemic      & Geopolitics, global supply chains, cross-border contagion, climate extremes & External            \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+Because of data availability constraints, the implemented model only operationalizes a subset at high reliability:
+
+\begin{enumerate}
+  \item \textbf{Internal}: ratios, ratings, and exposure quality.
+  \item \textbf{Transactors}: lending, ownership, and related-party network channels.
+  \item \textbf{Competitive/Macro proxy}: sector-level stress feature merged from the \texttt{financial\_kg.sectors} collection.
+  \item \textbf{Global/Systemic proxy}: event transmission through news signals rather than full macrofactor decomposition.
+\end{enumerate}
+
+This preserves the conceptual breadth while keeping the production model data-faithful.
+
+\subsubsection{Bank}
+
+Bank stress is computed using an RBI-anchored kernel manifold pipeline implemented as \textbf{RKMSS} (RBI-Anchored Kernel Manifold Stress Score). It is explicitly designed for small-$N$, high-nonlinearity supervisory settings \cite{ref8} \cite{ref9}.
+
+\paragraph{Step 1: RBI-anchored non-linear transforms}
+Raw ratios are converted to health scores in $[0,1]$ using direction-aware transforms. Official PCA trigger structure anchors the major pillars:
+
+\begin{enumerate}
+  \item \texttt{totalCAR}: RT1/RT2/RT3 = 11.5/9.0/7.5
+  \item \texttt{tier1CAR}: RT1/RT2/RT3 = 9.5/7.0/5.5
+  \item \texttt{netNPAToNetAdvances}: RT1/RT2/RT3 = 6/9/12
+\end{enumerate}
+
+For asset quality, a piecewise function encodes cliff behavior around 6-9-12\% NPA bands, rather than assuming smooth linear deterioration.
+
+\paragraph{Step 2: Kernel manifold construction}
+The transformed matrix is standardized and embedded with RBF Kernel PCA (\texttt{n\_components=10}, \texttt{gamma=0.068129\dots}) to capture non-linear dependence across liquidity, capital, quality, cost, and profitability dimensions.
+
+\paragraph{Step 3: Market orientation via Merton soft labels}
+The latent manifold is oriented using Merton Distance-to-Default ranks, where DTD is obtained from the classic KMV two-equation structure:
+
+\begin{equation}
+  E = V_A N(d_1) - D e^{-rT} N(d_2), \quad
+  \sigma_E E = N(d_1)\,\sigma_A V_A, \quad
+  DTD = d_2
+\end{equation}
+
+with short-horizon calibration ($T=0.25$) and ordinal usage (ranking, not raw implied PD) \cite{ref9}.
+
+\paragraph{Step 4: Regulatory danger boundary projection}
+A danger vector is built in transformed feature space using PCA-trigger pillars and projected into KPCA space. Each bank's boundary-relative location yields a structural fragility signal.
+
+\paragraph{Step 5: Final blended bank stress}
+The production blend is:
+
+\begin{equation}
+  \text{stressScore} = 0.40\,B_d + 0.35\,B_m + 0.25\,B_c
+\end{equation}
+
+where $B_d$ is danger-boundary distance signal, $B_m$ is Merton-oriented manifold signal, and $B_c$ is CAMELS-style composite baseline \cite{ref8}.
+
+At graph materialization time, bank node stress is further fused with bank-level news stress where available:
+
+\begin{equation}
+  \text{bank\_stress} =
+  \begin{cases}
+    0.7\;\text{stressScore} + 0.3\;\text{news\_stress}, & \text{if news exists}\\
+    \text{stressScore},                                   & \text{otherwise}
+  \end{cases}
+\end{equation}
+
+\cite{ref10}
+
+\subsubsection{Company}
+
+Company stress is decomposed into three components:
+
+\begin{enumerate}
+  \item \textbf{Fundamental stress (\texttt{entity\_stress\_fundamental})} derived from CRISIL-informed default-risk structure.
+  \item \textbf{Company news stress (\texttt{news\_stress})} from financial-news sentiment.
+  \item \textbf{Sector stress} mapped from industry to macro sector.
+\end{enumerate}
+
+The fundamental engine computes a weighted composite over nine components (primary PD, exposure-weighted PD, downgrade risk, heterogeneity, exposure size, coverage gap, staleness, concentration, and short-term penalty) with dynamic renormalization over available components \cite{ref11}.
+
+During KG node construction, company stress is assembled with adaptive weights:
+
+\begin{equation}
+  \text{company\_stress} =
+  \begin{cases}
+    0.7E + 0.2N + 0.1S, & E,\,N,\,S\ \text{available}\\
+    0.8E + 0.2N,         & S\ \text{missing}\\
+    0.8E + 0.2S,         & N\ \text{missing}\\
+    E,                   & N,\,S\ \text{missing}
+  \end{cases}
+\end{equation}
+
+where $E$ is normalized fundamental stress, $N$ is news stress, and $S$ is sector stress \cite{ref12}.
+
+\subsubsection{News Pipeline}
+
+The news pipeline is designed for high-frequency risk updates:
+
+\begin{enumerate}
+  \item Pull recent articles using Google News RSS queries on company names.
+  \item Build scoring snippets from headline + summary (and rating-action text when present).
+  \item Score each snippet using FinBERT sentiment probabilities.
+  \item Convert sentiment to stress using:
+        \begin{equation}
+          \text{snippet\_stress} = P(\text{negative}) + 0.5\,P(\text{neutral})
+        \end{equation}
+  \item Aggregate via weighted average (news snippets receive higher weight than fallback text), then map to stress bands (Minimal to Severe).
+\end{enumerate}
+
+This converts unstructured narrative flow into a numeric risk update signal \cite{ref13}.
+
+\subsection{Nodes}
+
+\subsubsection{Bank}
+
+\texttt{:Bank} nodes are keyed by \texttt{bankSymbol} and include identity, shareholding aggregates, and stress attributes. Stress is populated from bank stress outputs and optionally fused with bank-news stress at load time \cite{ref10} \cite{ref14}.
+
+\subsubsection{Company}
+
+\texttt{:Company} nodes are keyed by \texttt{cin} and preserve both CRISIL and MCA identity fields (\texttt{crisilName}, \texttt{mcaName}, \texttt{companyCode}, \texttt{industryCode}, etc.).
+
+Node variations:
+
+\begin{itemize}
+  \item \textbf{Canonical company nodes} from consolidated company documents.
+  \item \textbf{Synthetic/dummy CIN nodes} where source systems require stable placeholders.
+  \item \textbf{Stub company nodes} created during lender or related-party resolution when an entity is unresolved but must remain in the topology (\texttt{isStub=true}, unresolved metadata retained).
+\end{itemize}
+
+Related-party and subsidiary semantics are encoded as relationships derived from transaction records; unresolved counterparties are not dropped but represented as explicit stubs to preserve potential contagion pathways \cite{ref12} \cite{ref15} \cite{ref16}.
+
+\subsubsection{Industry}
+
+\texttt{:Industry} nodes represent CRISIL industry taxonomy and are keyed by \texttt{industryCode}. They serve as the target for \texttt{(:Company)-[:BELONGS\_TO]->(:Industry)} classification edges \cite{ref17} \cite{ref18}.
+
+\subsubsection{Sector Stress (Current Architecture)}
+
+The current design no longer relies on dedicated \texttt{:Sector} nodes for macro-sector stress propagation. Sector stress now lives in the \texttt{financial\_kg.sectors} collection and is injected as a scalar feature during company stress assembly \cite{ref12} \cite{ref22}.
+
+\subsection{Relationships}
+
+The graph uses relationship types with explicit economic semantics:
+
+\begin{enumerate}
+  \item \textbf{\texttt{LENDS\_TO}}
+  \begin{itemize}
+    \item \texttt{Bank -> Company} from bank-side advances
+    \item \texttt{Bank -> Company} and \texttt{Company -> Company} from company-side bank-facility lender resolution
+    \item unresolved lenders become stub companies so credit chains remain traversable
+    \item edge properties include exposure amount, facility count/types, and direction-specific transmission fields such as \texttt{absorption} or \texttt{transmittance} \cite{ref15}
+  \end{itemize}
+
+  \item \textbf{\texttt{BELONGS\_TO}}
+  \begin{itemize}
+    \item \texttt{Company -> Industry} for CRISIL industry mapping \cite{ref18}
+  \end{itemize}
+
+  \item \textbf{Priority-sector exposure channels}
+  \begin{itemize}
+    \item RBI priority-sector composition is retained as structured exposure data and used in stress feature engineering.
+    \item Macro-sector stress is consumed from MongoDB (\texttt{sectors}) rather than from graph-native \texttt{:Sector} nodes \cite{ref22} \cite{ref23}
+  \end{itemize}
+
+  \item \textbf{\texttt{SHAREHOLDER\_OF}}
+  \begin{itemize}
+    \item supports six ownership patterns across shareholder stubs, banks, and companies
+    \item captures number of shares and shareholding percentages for ownership-contagion and influence pathways \cite{ref21}
+  \end{itemize}
+
+  \item \textbf{\texttt{RELATED\_PARTY}}
+  \begin{itemize}
+    \item consolidated from transaction-level related-party disclosures
+    \item includes both \texttt{Company -> Bank} and \texttt{Bank -> Bank}
+    \item stores directional outstanding flows, contingent exposures, and stress-weight fields (\texttt{stressWeightUp}, \texttt{stressWeightDown}) \cite{ref16}
+  \end{itemize}
+
+  \item \textbf{\texttt{SUBSIDIARY\_OF}}
+  \begin{itemize}
+    \item retained as a dedicated relation path in the loader for subsidiary dependence derivation from transaction context \cite{ref14}
+  \end{itemize}
+\end{enumerate}
+
+%% ==================== SECTION 7: TECHNICAL ARCHITECTURE ====
+\section{Technical Architecture}
+
+\subsection{MongoDB}
+
+MongoDB is the operational source-of-truth cluster for consolidated entities and stress layers. In the current setup, the primary collections are \texttt{financial\_kg.banks}, \texttt{financial\_kg.companies}, and \texttt{financial\_kg.sectors} \cite{ref22}.
+
+This separation keeps extraction and stress engineering decoupled from graph persistence while preserving traceability \cite{ref14}.
+
+\subsubsection{High-Level Collection Snippets}
+
+\texttt{financial\_kg.banks} (high-level shape)
+
+\begin{lstlisting}[style=json]
+{
+   "bankSymbol": "SBIN",
+   "advances": {
+      "totalCompanies": 839,
+      "totalExposure": 697395.14,
+      "companies": [{ "companyCode": "INDOIL", "cin": "...",
+                      "facilities": [{ "amount": 2970,
+                                       "rating": "Crisil AAA/Stable" }] }]
+   },
+   "outstandingAdvances": { "agriculture": { "balanceOutstanding": 0.0 } },
+   "relatedPartyTransactions": { "relatedPartyTransactions": [] },
+   "shareholdingPattern": { "promoters": [], "public": [] },
+   "stressScore": 0.0,
+   "news_stress": 0.0
+}
+\end{lstlisting}
+
+\texttt{financial\_kg.companies} (high-level shape)
+
+\begin{lstlisting}[style=json]
+{
+   "companyCode": "AIRINAR",
+   "crisilName": "Air India Limited",
+   "cin": "U62200HR2007PLC111539",
+   "industryCode": "125",
+   "industryName": "Airline",
+   "bankFacilities": [{ "lenderName": "State Bank of India",
+                         "amount": 18500, "rating": "Crisil AAA/Stable" }],
+   "crisilRatings": [{ "rating": "Crisil A1+", "outlook": "Stable" }],
+   "entity_stress_fundamental": 14.62,
+   "news_stress": 0.4775
+}
+\end{lstlisting}
+
+\texttt{financial\_kg.sectors} (high-level shape)
+
+\begin{lstlisting}[style=json]
+{
+   "macro_sector": "Automobiles & Auto Components",
+   "final_stress_score": 0.5779,
+   "risk_tier": "Elevated",
+   "news_score": 0.5,
+   "market_score": 0.6558,
+   "market_return_30d": -0.1287,
+   "market_volatility_30d": 0.3991,
+   "drawdown_from_52w_high": 0.158,
+   "articles_used": 6,
+   "top_headline": "West Asia Tensions: Fuel Crunch Hits India's Auto Industry"
+}
+\end{lstlisting}
+
+\subsection{Neo4j}
+
+Neo4j materializes the contagion graph for structural analysis, traversal, and simulation. The loader pipeline applies schema, purges stale state, builds nodes, and then builds relationships in an ordered sequence \cite{ref14}.
+
+\textbf{Deduplication and entity resolution are centralized through the Global Entity Registry (GER).}
+
+GER performs a four-pass resolution:
+
+\begin{enumerate}
+  \item canonical exact matching,
+  \item normalized exact matching,
+  \item constrained fuzzy company matching with generic-token veto,
+  \item abbreviation expansion for bank aliases.
+\end{enumerate}
+
+A critical design choice is exact-only behavior for bank resolution to avoid false merges between parent banks and similarly named affiliates. Unresolved entities are surfaced as explicit stubs rather than silently dropped, preserving graph completeness and auditability \cite{ref22}.
+
+\subsubsection{Example De-duplication Walkthrough}
+
+Assume three facility records enter ingestion with lender names:
+
+\begin{enumerate}
+  \item \texttt{HDFC Bank Limited}
+  \item \texttt{HDFC Bank Ltd.}
+  \item \texttt{HDFCBANK}
+\end{enumerate}
+
+GER resolves all three to the same canonical bank symbol (\texttt{HDFCBANK}) through exact + normalized passes, so only one bank node identity is used downstream.
+
+Now consider \texttt{State Bank of India (UK) Limited}. The resolver deliberately avoids fuzzy bank matching and does not collapse this into parent \texttt{SBIN}; it remains unresolved (or stubbed) unless explicit canonical evidence exists. This prevents over-merging and false contagion paths \cite{ref26}.
+
+\subsection{Visualizer}
+
+The frontend visualizer (React + Three.js stack) turns Neo4j graph data into an interactive 3D exploration interface. Its capabilities include:
+
+\begin{enumerate}
+  \item \textbf{Live Neo4j graph loading} and demo fallback mode.
+  \item \textbf{Bank-centric neighborhood discovery} via BFS with depth control.
+  \item \textbf{Bank-to-bank path extraction} from discovered subgraphs.
+  \item \textbf{Topology-aware rendering} (centralized/decentralized layouts with smooth interpolation).
+  \item \textbf{Interactive graph analytics UX}: node/edge hover cards, filtering, node-limit and camera controls.
+  \item \textbf{Gesture-enabled interaction} through MediaPipe hand tracking (point, orbit), enabling touchless exploratory analysis.
+\end{enumerate}
+
+The visual layer is therefore not decorative; it is the analyst-facing interface for tracing potential contagion channels in high-dimensional relationship data \cite{ref23} \cite{ref24} \cite{ref25} \cite{ref26}.
