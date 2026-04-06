@@ -42,25 +42,52 @@ SET b.bankName             = $bankName,
 
 def _calculate_bank_stress(doc: dict) -> float | None:
     """
-    Calculate bank stress with dynamic weighting:
-    - If news_stress available: 0.7 * stressScore + 0.3 * news_stress
-    - If news_stress missing:   1.0 * stressScore
-    
-    Returns None if stressScore is missing.
+    Calculate bank stress using component-based weighting:
+
+    0.23 * boundaryDistance
+    + 0.23 * camelsComposite
+    + 0.27 * mertonOriented
+    + 0.27 * news_stress
+
+    Components are read from:
+    - stressComponents.boundaryDistance
+    - stressComponents.camelsComposite
+    - stressComponents.mertonOriented
+    - news_stress
+
+    Fallback behavior:
+    - If any component is missing, use stressScore plus news_stress blend
+      with the updated news weight: 0.73 * stressScore + 0.27 * news_stress.
+    - If news_stress is also missing, return stressScore.
+    - If stressScore is missing in fallback path, return None.
     """
-    stress_score = _safe_float(doc.get("stressScore"))
+    stress_components = doc.get("stressComponents") or {}
+
+    boundary_distance = _safe_float(stress_components.get("boundaryDistance"))
+    camels_score = _safe_float(stress_components.get("camelsComposite"))
+    merton_oriented = _safe_float(stress_components.get("mertonOriented"))
     news_stress = _safe_float(doc.get("news_stress"))
-    
+
+    if (
+        boundary_distance is not None
+        and camels_score is not None
+        and merton_oriented is not None
+        and news_stress is not None
+    ):
+        return (
+            0.23 * boundary_distance
+            + 0.23 * camels_score
+            + 0.27 * merton_oriented
+            + 0.27 * news_stress
+        )
+
+    stress_score = _safe_float(doc.get("stressScore"))
     if stress_score is None:
         return None
-    
-    # Dynamic weighting based on available components
+
     if news_stress is not None:
-        # Both components available: 0.7 stress + 0.3 news
-        return 0.7 * stress_score + 0.3 * news_stress
-    else:
-        # Only stress available: use full weight
-        return stress_score
+        return 0.73 * stress_score + 0.27 * news_stress
+    return stress_score
 
 
 def build_bank_nodes(driver: Driver, bank_docs: list[dict]) -> int:
@@ -84,7 +111,7 @@ def build_bank_nodes(driver: Driver, bank_docs: list[dict]) -> int:
             total_shares = _safe_int(shp_outer.get("totalShares"))
             total_sh     = _safe_int(shp_outer.get("totalShareholders"))
 
-            # Calculate combined stress score (stressScore + news_stress)
+            # Calculate combined stress using component-weighted formula.
             stress_combined = _calculate_bank_stress(doc)
 
             session.run(

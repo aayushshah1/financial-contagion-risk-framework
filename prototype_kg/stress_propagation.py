@@ -119,6 +119,7 @@ class PropagationConfig:
     epsilon: float = 1e-4
     write_batch_size: int = 1000
     clamp_weights: bool = True
+    max_stress: float = 1.0
     debug_target_bank_symbol: str | None = None
     debug_output_dir: str = "logs"
 
@@ -163,6 +164,15 @@ def _normalize_weight(raw_weight, clamp_weights: bool) -> float | None:
     return weight
 
 
+def _clamp_stress(value: float, *, max_stress: float = 1.0) -> float:
+    upper = max_stress if isfinite(max_stress) and max_stress > 0.0 else 1.0
+    if value < 0.0:
+        return 0.0
+    if value > upper:
+        return upper
+    return value
+
+
 def _build_node_meta(rec) -> NodeMeta:
     labels = rec["labels"] or []
     label = labels[0] if labels else "Unknown"
@@ -172,7 +182,7 @@ def _build_node_meta(rec) -> NodeMeta:
         display_name = identifier
     elif label == "Company":
         identifier = str(rec.get("cin") or "UNKNOWN_CIN")
-        display_name = str(rec.get("mcaName") or rec.get("crisilName") or identifier)
+        display_name = str(rec.get("crisilName") or identifier)
     elif label == "Shareholder":
         identifier = str(rec.get("shareholderName") or "UNKNOWN_SHAREHOLDER")
         display_name = identifier
@@ -415,6 +425,206 @@ def _reset_stress_to_base_for_debug(driver: Driver) -> int:
     return int(record["resetCount"] or 0)
 
 
+def _run_propagation_iterations(
+    *,
+    base_stress: dict[str, float],
+    edges: list[tuple[str, str, float, str]],
+    cfg: PropagationConfig,
+    debug_target_node_id: str | None,
+    node_meta: dict[str, NodeMeta] | None,
+    source_stress_overrides: dict[str, float] | None,
+    log_progress: bool,
+) -> tuple[
+    dict[str, float],
+    bool,
+    int,
+    float,
+    list[dict],
+    list[dict],
+    dict[str, float],
+    dict[str, float],
+    float,
+    dict[str, float],
+]:
+    if not base_stress:
+        return {}, True, 0, 0.0, [], [], {}, {}, 0.0, {}
+
+    prev = dict(base_stress)
+    converged = False
+    max_delta = 0.0
+    iterations_run = 0
+    debug_round_rows: list[dict] = []
+    debug_tx_rows: list[dict] = []
+    cumulative_by_src: dict[str, float] = defaultdict(float)
+    final_round_by_src: dict[str, float] = {}
+    final_round_by_channel: dict[str, float] = {}
+    final_round_incoming = 0.0
+    meta_by_id = node_meta or {}
+    overrides = source_stress_overrides or {}
+
+    for iteration in range(1, cfg.max_iterations + 1):
+        incoming: dict[str, float] = defaultdict(float)
+        round_by_src: dict[str, float] = defaultdict(float)
+        round_by_channel: dict[str, float] = defaultdict(float)
+
+        for src_id, dst_id, weight, channel in edges:
+            override_val = overrides.get(src_id)
+            if override_val is not None:
+                src_stress = max(0.0, float(override_val))
+            else:
+                src_stress = prev.get(src_id, 0.0)
+            if src_stress <= 0.0:
+                continue
+
+            contribution = src_stress * weight
+            incoming[dst_id] += contribution
+
+            if debug_target_node_id and dst_id == debug_target_node_id and contribution > 0.0:
+                src_meta = meta_by_id.get(src_id, NodeMeta(label="Unknown", identifier=src_id, display_name=src_id))
+                round_by_src[src_id] += contribution
+                round_by_channel[channel] += contribution
+                cumulative_by_src[src_id] += contribution
+                debug_tx_rows.append(
+                    {
+                        "round": iteration,
+                        "channel": channel,
+                        "sourceNodeId": src_id,
+                        "sourceLabel": src_meta.label,
+                        "sourceIdentifier": src_meta.identifier,
+                        "sourceDisplayName": src_meta.display_name,
+                        "sourceStressPrev": src_stress,
+                        "weight": weight,
+                        "contribution": contribution,
+                    }
+                )
+
+        nxt: dict[str, float] = {}
+        max_delta = 0.0
+        changed = 0
+        total_stress = 0.0
+
+        for node_id, base in base_stress.items():
+            updated = _clamp_stress(base + incoming.get(node_id, 0.0), max_stress=cfg.max_stress)
+
+            prev_val = prev[node_id]
+            delta = abs(updated - prev_val)
+            if delta > max_delta:
+                max_delta = delta
+            if delta > 0.0:
+                changed += 1
+
+            nxt[node_id] = updated
+            total_stress += updated
+
+        avg_stress = total_stress / len(base_stress)
+
+        if debug_target_node_id:
+            target_prev = prev.get(debug_target_node_id, 0.0)
+            target_next = nxt.get(debug_target_node_id, 0.0)
+            target_incoming = incoming.get(debug_target_node_id, 0.0)
+            target_delta = target_next - target_prev
+            target_increase = target_next - base_stress[debug_target_node_id]
+            debug_round_rows.append(
+                {
+                    "round": iteration,
+                    "targetPrevStress": target_prev,
+                    "targetIncoming": target_incoming,
+                    "targetNextStress": target_next,
+                    "targetDelta": target_delta,
+                    "targetIncreaseOverBase": target_increase,
+                }
+            )
+            final_round_by_src = dict(round_by_src)
+            final_round_by_channel = dict(round_by_channel)
+            final_round_incoming = target_incoming
+
+        if log_progress:
+            print(
+                f"[propagation] round={iteration:02d} "
+                f"max_delta={max_delta:.8f} "
+                f"changed={changed} "
+                f"avg_stress={avg_stress:.6f}"
+            )
+
+        prev = nxt
+        iterations_run = iteration
+
+        if max_delta < cfg.epsilon:
+            converged = True
+            break
+
+    return (
+        prev,
+        converged,
+        iterations_run,
+        max_delta,
+        debug_round_rows,
+        debug_tx_rows,
+        final_round_by_src,
+        final_round_by_channel,
+        final_round_incoming,
+        dict(cumulative_by_src),
+    )
+
+
+def run_stress_propagation_in_memory(
+    *,
+    base_stress: dict[str, float],
+    edges: list[tuple[str, str, float, str]],
+    config: PropagationConfig | None = None,
+    source_stress_overrides: dict[str, float] | None = None,
+    skipped_edges: int = 0,
+    log_progress: bool = False,
+) -> tuple[dict[str, float], PropagationResult]:
+    """
+    Execute iterative stress transmission on in-memory graph data.
+    """
+    cfg = config or PropagationConfig()
+    normalized_base: dict[str, float] = {}
+    normalized_overrides: dict[str, float] = {}
+
+    for node_id, raw_stress in base_stress.items():
+        stress = _safe_float(raw_stress)
+        normalized_base[str(node_id)] = _clamp_stress(
+            stress if stress is not None else 0.0,
+            max_stress=cfg.max_stress,
+        )
+
+    if source_stress_overrides:
+        for node_id, raw_stress in source_stress_overrides.items():
+            stress = _safe_float(raw_stress)
+            if stress is None or stress <= 0.0:
+                continue
+            normalized_overrides[str(node_id)] = stress
+
+    final_stress, converged, iterations_run, max_delta, *_ = _run_propagation_iterations(
+        base_stress=normalized_base,
+        edges=edges,
+        cfg=cfg,
+        debug_target_node_id=None,
+        node_meta=None,
+        source_stress_overrides=normalized_overrides,
+        log_progress=log_progress,
+    )
+
+    if not converged and iterations_run >= cfg.max_iterations and log_progress:
+        print(
+            "[propagation] Reached max iterations "
+            f"({cfg.max_iterations}) before epsilon convergence ({cfg.epsilon})."
+        )
+
+    result = PropagationResult(
+        converged=converged,
+        iterations_run=iterations_run,
+        max_delta=max_delta,
+        node_count=len(normalized_base),
+        edge_count=len(edges),
+        skipped_edges=max(0, int(skipped_edges)),
+        debug_artifacts=[],
+    )
+    return final_stress, result
+
+
 def run_stress_propagation(driver: Driver, config: PropagationConfig | None = None) -> PropagationResult:
     """
     Execute synchronous iterative stress transmission and persist final stress.
@@ -486,106 +696,26 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
                 f"[propagation][debug] Capturing incoming stress transactions for bank {debug_bank_symbol}."
             )
 
-    prev = dict(base_stress)
-    converged = False
-    max_delta = 0.0
-    iterations_run = 0
-    debug_round_rows: list[dict] = []
-    debug_tx_rows: list[dict] = []
-    cumulative_by_src: dict[str, float] = defaultdict(float)
-    final_round_by_src: dict[str, float] = {}
-    final_round_by_channel: dict[str, float] = {}
-    final_round_incoming = 0.0
-
-    for iteration in range(1, cfg.max_iterations + 1):
-        incoming: dict[str, float] = defaultdict(float)
-        round_by_src: dict[str, float] = defaultdict(float)
-        round_by_channel: dict[str, float] = defaultdict(float)
-
-        for src_id, dst_id, weight, channel in edges:
-            src_stress = prev.get(src_id, 0.0)
-            if src_stress <= 0.0:
-                continue
-
-            contribution = src_stress * weight
-            incoming[dst_id] += contribution
-
-            if debug_target_node_id and dst_id == debug_target_node_id and contribution > 0.0:
-                src_meta = node_meta.get(src_id, NodeMeta(label="Unknown", identifier=src_id, display_name=src_id))
-                round_by_src[src_id] += contribution
-                round_by_channel[channel] += contribution
-                cumulative_by_src[src_id] += contribution
-                debug_tx_rows.append(
-                    {
-                        "round": iteration,
-                        "channel": channel,
-                        "sourceNodeId": src_id,
-                        "sourceLabel": src_meta.label,
-                        "sourceIdentifier": src_meta.identifier,
-                        "sourceDisplayName": src_meta.display_name,
-                        "sourceStressPrev": src_stress,
-                        "weight": weight,
-                        "contribution": contribution,
-                    }
-                )
-
-        nxt: dict[str, float] = {}
-        max_delta = 0.0
-        changed = 0
-        total_stress = 0.0
-
-        for node_id, base in base_stress.items():
-            updated = base + incoming.get(node_id, 0.0)
-            if updated > 1.0:
-                updated = 1.0
-            elif updated < 0.0:
-                updated = 0.0
-
-            prev_val = prev[node_id]
-            delta = abs(updated - prev_val)
-            if delta > max_delta:
-                max_delta = delta
-            if delta > 0.0:
-                changed += 1
-
-            nxt[node_id] = updated
-            total_stress += updated
-
-        avg_stress = total_stress / len(base_stress)
-
-        if debug_target_node_id:
-            target_prev = prev.get(debug_target_node_id, 0.0)
-            target_next = nxt.get(debug_target_node_id, 0.0)
-            target_incoming = incoming.get(debug_target_node_id, 0.0)
-            target_delta = target_next - target_prev
-            target_increase = target_next - base_stress[debug_target_node_id]
-            debug_round_rows.append(
-                {
-                    "round": iteration,
-                    "targetPrevStress": target_prev,
-                    "targetIncoming": target_incoming,
-                    "targetNextStress": target_next,
-                    "targetDelta": target_delta,
-                    "targetIncreaseOverBase": target_increase,
-                }
-            )
-            final_round_by_src = dict(round_by_src)
-            final_round_by_channel = dict(round_by_channel)
-            final_round_incoming = target_incoming
-
-        print(
-            f"[propagation] round={iteration:02d} "
-            f"max_delta={max_delta:.8f} "
-            f"changed={changed} "
-            f"avg_stress={avg_stress:.6f}"
-        )
-
-        prev = nxt
-        iterations_run = iteration
-
-        if max_delta < cfg.epsilon:
-            converged = True
-            break
+    (
+        final_stress,
+        converged,
+        iterations_run,
+        max_delta,
+        debug_round_rows,
+        debug_tx_rows,
+        final_round_by_src,
+        final_round_by_channel,
+        final_round_incoming,
+        cumulative_by_src,
+    ) = _run_propagation_iterations(
+        base_stress=base_stress,
+        edges=edges,
+        cfg=cfg,
+        debug_target_node_id=debug_target_node_id,
+        node_meta=node_meta,
+        source_stress_overrides=None,
+        log_progress=True,
+    )
 
     if not converged and iterations_run >= cfg.max_iterations:
         print(
@@ -595,7 +725,7 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
 
     _write_final_stress(
         driver,
-        final_stress=prev,
+        final_stress=final_stress,
         base_stress=base_stress,
         batch_size=cfg.write_batch_size,
     )
@@ -611,11 +741,11 @@ def run_stress_propagation(driver: Driver, config: PropagationConfig | None = No
             epsilon=cfg.epsilon,
             max_iterations=cfg.max_iterations,
             base_stress=base_stress[debug_target_node_id],
-            final_stress=prev[debug_target_node_id],
+            final_stress=final_stress[debug_target_node_id],
             final_round_incoming=final_round_incoming,
             final_round_by_src=final_round_by_src,
             final_round_by_channel=final_round_by_channel,
-            cumulative_by_src=dict(cumulative_by_src),
+            cumulative_by_src=cumulative_by_src,
             round_rows=debug_round_rows,
             transaction_rows=debug_tx_rows,
             node_meta=node_meta,

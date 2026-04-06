@@ -623,15 +623,15 @@ def _tier(r: str) -> str:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def run(mongo_uri, db_name, col_name, out_csv, limit=0):
-    print(f"[INFO] Connecting → {mongo_uri}  db={db_name}  col={col_name}")
+    print(f"[INFO] Connecting -> {mongo_uri}  db={db_name}  col={col_name}")
     client = MongoClient(mongo_uri)
 
     def get_cursor():
         c = client[db_name][col_name].find({})
         return c.limit(limit) if limit else c
 
-    # ── Pass 1: compute stress + find max array lengths ─────────────────────
-    print("[INFO] Pass 1 — computing stress scores...")
+    # Pass 1: compute stress + find max array lengths
+    print("[INFO] Pass 1 - computing stress scores...")
     rows, errors = [], 0
     max_fac  = 0
     max_inst = 0
@@ -657,8 +657,8 @@ def run(mongo_uri, db_name, col_name, out_csv, limit=0):
         print("[WARN] No rows produced.")
         return
 
-    # ── Pass 2: flatten and write ─────────────────────────────────────────────
-    print("[INFO] Pass 2 — writing flat CSV...")
+    # Pass 2: flatten and write
+    print("[INFO] Pass 2 - writing flat CSV...")
     flat_rows = [flatten_row(r, max_fac, max_inst) for r in rows]
 
     os.makedirs(os.path.dirname(out_csv) or ".", exist_ok=True)
@@ -667,20 +667,20 @@ def run(mongo_uri, db_name, col_name, out_csv, limit=0):
         w.writeheader()
         w.writerows(flat_rows)
 
-    print(f"\n✅  {len(rows)} entities written → {out_csv}  (errors: {errors})\n")
+    print(f"\n[OK] {len(rows)} entities written -> {out_csv}  (errors: {errors})\n")
 
     from collections import Counter
     for title, key in [("Stress Label", "stressLabel"), ("Risk Tier", "riskTier")]:
         dist = Counter(r[key] for r in rows)
         print(f"{title} Distribution:")
         for k, v in sorted(dist.items(), key=lambda x: -x[1]):
-            print(f"  {k:<28} {v:>5}  {'█' * min(v, 40)}")
+            print(f"  {k:<28} {v:>5}  {'#' * min(v, 40)}")
         print()
 
     scores = [float(r["stressScore"]) for r in rows if r["stressScore"] != ""]
     if scores:
         print(
-            f"Score stats → min={min(scores):.1f}  max={max(scores):.1f}  "
+            f"Score stats -> min={min(scores):.1f}  max={max(scores):.1f}  "
             f"mean={statistics.mean(scores):.1f}  "
             f"median={statistics.median(scores):.1f}"
         )

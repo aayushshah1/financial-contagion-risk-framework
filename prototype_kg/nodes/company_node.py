@@ -123,7 +123,8 @@ _UPSERT_COMPANY = """
 UNWIND $batch AS row
 MERGE (c:Company {cin: row.cin})
 ON CREATE SET
-    c.name                        = CASE WHEN row.crisilName <> '' THEN row.crisilName ELSE row.mcaName END,
+    c.name                        = CASE WHEN row.crisilName <> '' THEN row.crisilName ELSE row.cin END,
+    c.displayName                 = CASE WHEN row.crisilName <> '' THEN row.crisilName ELSE row.cin END,
     c.companyCode                 = row.companyCode,
     c.crisilName                  = row.crisilName,
     c.mcaName                     = row.mcaName,
@@ -138,7 +139,8 @@ ON CREATE SET
     c.shpTotalShareholders        = row.shpTotalShareholders,
     c.stress                      = row.stress
 ON MATCH SET
-    c.name                        = CASE WHEN row.crisilName <> '' THEN row.crisilName WHEN row.mcaName <> '' THEN row.mcaName ELSE c.name END,
+    c.name                        = CASE WHEN row.crisilName <> '' THEN row.crisilName ELSE coalesce(c.crisilName, c.name, c.cin, row.cin) END,
+    c.displayName                 = CASE WHEN row.crisilName <> '' THEN row.crisilName ELSE coalesce(c.crisilName, c.displayName, c.cin, row.cin) END,
     c.companyCode                 = CASE WHEN row.companyCode <> ''  THEN row.companyCode  ELSE c.companyCode  END,
     c.crisilName                  = CASE WHEN row.crisilName <> ''   THEN row.crisilName   ELSE c.crisilName   END,
     c.mcaName                     = CASE WHEN row.mcaName <> ''      THEN row.mcaName      ELSE c.mcaName      END,

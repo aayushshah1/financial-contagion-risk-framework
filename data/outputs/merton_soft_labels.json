@@ -1,741 +1,741 @@
 {
   "Bank of Baroda": {
     "nseTickerUsed": "BANKBARODA.NS",
-    "marketCap7dAvgCr": 155782.12,
-    "equityVolatility63d": 0.226404,
+    "marketCap7dAvgCr": 158786.68,
+    "equityVolatility63d": 0.26902,
     "debtProxy_D_Cr": 1624977.12,
     "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 1754566.7447,
-      "assetVolatility": 0.020102,
-      "d1": 9.255841,
-      "d2": 9.24579,
-      "distanceToDefault": 9.24579,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 32,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Bank of India": {
-    "nseTickerUsed": "BANKINDIA.NS",
-    "marketCap7dAvgCr": 74588.18,
-    "equityVolatility63d": 0.28701,
-    "debtProxy_D_Cr": 930728.92,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 990314.972,
-      "assetVolatility": 0.021617,
-      "d1": 7.2502,
-      "d2": 7.239391,
-      "distanceToDefault": 7.239391,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 17,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Bank of Maharashtra": {
-    "nseTickerUsed": "MAHABANK.NS",
-    "marketCap7dAvgCr": 50322.77,
-    "equityVolatility63d": 0.257164,
-    "debtProxy_D_Cr": 323915.52,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 369017.1919,
-      "assetVolatility": 0.035069,
-      "d1": 8.369928,
-      "d2": 8.352394,
-      "distanceToDefault": 8.352394,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 25,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Canara Bank": {
-    "nseTickerUsed": "CANBK.NS",
-    "marketCap7dAvgCr": 138238.54,
-    "equityVolatility63d": 0.248957,
-    "debtProxy_D_Cr": 1538038.56,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 1651485.9452,
-      "assetVolatility": 0.020839,
-      "d1": 8.394965,
-      "d2": 8.384545,
-      "distanceToDefault": 8.384545,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 26,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Central Bank of India": {
-    "nseTickerUsed": "CENTRALBK.NS",
-    "marketCap7dAvgCr": 33243.99,
-    "equityVolatility63d": 0.229068,
-    "debtProxy_D_Cr": 444521.54,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 470600.4236,
-      "assetVolatility": 0.016182,
-      "d1": 9.058813,
-      "d2": 9.050722,
-      "distanceToDefault": 9.050722,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 31,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Indian Bank": {
-    "nseTickerUsed": "INDIANB.NS",
-    "marketCap7dAvgCr": 120491.32,
-    "equityVolatility63d": 0.301647,
-    "debtProxy_D_Cr": 782764.2,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 890638.3898,
-      "assetVolatility": 0.040809,
-      "d1": 7.13401,
-      "d2": 7.113605,
-      "distanceToDefault": 7.113605,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 16,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Indian Overseas Bank": {
-    "nseTickerUsed": "IOB.NS",
-    "marketCap7dAvgCr": 67174.69,
-    "equityVolatility63d": 0.269146,
-    "debtProxy_D_Cr": 370676.8,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 431876.6665,
-      "assetVolatility": 0.041863,
-      "d1": 8.08721,
-      "d2": 8.066278,
-      "distanceToDefault": 8.066278,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 22,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Punjab & Sind Bank": {
-    "nseTickerUsed": "PSB.NS",
-    "marketCap7dAvgCr": 19427.71,
-    "equityVolatility63d": 0.302353,
-    "debtProxy_D_Cr": 133083.24,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 150365.8289,
-      "assetVolatility": 0.039065,
-      "d1": 7.092673,
-      "d2": 7.073141,
-      "distanceToDefault": 7.073141,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 15,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Punjab National Bank": {
-    "nseTickerUsed": "PNB.NS",
-    "marketCap7dAvgCr": 142061.97,
-    "equityVolatility63d": 0.253167,
-    "debtProxy_D_Cr": 1643961.38,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 1759524.8593,
-      "assetVolatility": 0.02044,
-      "d1": 8.24221,
-      "d2": 8.23199,
-      "distanceToDefault": 8.23199,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 24,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "State Bank of India": {
-    "nseTickerUsed": "SBIN.NS",
-    "marketCap7dAvgCr": 976507.03,
-    "equityVolatility63d": 0.146292,
-    "debtProxy_D_Cr": 6542862.28,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 7413907.0063,
-      "assetVolatility": 0.019269,
-      "d1": 14.664244,
-      "d2": 14.65461,
-      "distanceToDefault": 14.65461,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 39,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "UCO Bank": {
-    "nseTickerUsed": "UCOBANK.NS",
-    "marketCap7dAvgCr": 36189.17,
-    "equityVolatility63d": 0.222595,
-    "debtProxy_D_Cr": 298328.59,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 329709.0892,
-      "assetVolatility": 0.024432,
-      "d1": 9.523459,
-      "d2": 9.511243,
-      "distanceToDefault": 9.511243,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 33,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Union Bank of India": {
-    "nseTickerUsed": "UNIONBANK.NS",
-    "marketCap7dAvgCr": 135894.97,
-    "equityVolatility63d": 0.286428,
-    "debtProxy_D_Cr": 1231842.53,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 1347881.8251,
-      "assetVolatility": 0.028878,
-      "d1": 7.36738,
-      "d2": 7.352941,
-      "distanceToDefault": 7.352941,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 18,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Axis Bank": {
-    "nseTickerUsed": "AXISBANK.NS",
-    "marketCap7dAvgCr": 411967.07,
-    "equityVolatility63d": 0.206627,
-    "debtProxy_D_Cr": 1440732.56,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 1829476.9211,
-      "assetVolatility": 0.046529,
-      "d1": 10.97806,
-      "d2": 10.954795,
-      "distanceToDefault": 10.954795,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 34,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Bandhan Bank": {
-    "nseTickerUsed": "BANDHANBNK.NS",
-    "marketCap7dAvgCr": 24433.3,
-    "equityVolatility63d": 0.320661,
-    "debtProxy_D_Cr": 150184.15,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 172196.6782,
-      "assetVolatility": 0.045499,
-      "d1": 6.737883,
-      "d2": 6.715134,
-      "distanceToDefault": 6.715134,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 11,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "City Union Bank": {
-    "nseTickerUsed": "CUB.NS",
-    "marketCap7dAvgCr": 21495.61,
-    "equityVolatility63d": 0.41301,
-    "debtProxy_D_Cr": 61340.94,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 81847.8173,
-      "assetVolatility": 0.108468,
-      "d1": 5.644679,
-      "d2": 5.590445,
-      "distanceToDefault": 5.590445,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 7,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "CSB Bank": {
-    "nseTickerUsed": "CSBBANK.NS",
-    "marketCap7dAvgCr": 7734.45,
-    "equityVolatility63d": 0.567579,
-    "debtProxy_D_Cr": 40788.19,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 47865.1598,
-      "assetVolatility": 0.091719,
-      "d1": 3.866078,
-      "d2": 3.820218,
-      "distanceToDefault": 3.820218,
-      "impliedPD": 6.7e-05,
-      "converged": true
-    },
-    "dtdRank": 1,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "DCB Bank": {
-    "nseTickerUsed": "DCBBANK.NS",
-    "marketCap7dAvgCr": 6329.1,
-    "equityVolatility63d": 0.375365,
-    "debtProxy_D_Cr": 64007.19,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 69304.5831,
-      "assetVolatility": 0.034279,
-      "d1": 5.595912,
-      "d2": 5.578772,
-      "distanceToDefault": 5.578772,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 6,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Dhanlaxmi Bank": {
-    "nseTickerUsed": "DHANBANK.NS",
-    "marketCap7dAvgCr": 948.62,
-    "equityVolatility63d": 0.228318,
-    "debtProxy_D_Cr": 16879.12,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 17555.672,
-      "assetVolatility": 0.012337,
-      "d1": 9.008341,
-      "d2": 9.002173,
-      "distanceToDefault": 9.002173,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 30,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Federal Bank": {
-    "nseTickerUsed": "FEDERALBNK.NS",
-    "marketCap7dAvgCr": 70130.93,
-    "equityVolatility63d": 0.258398,
-    "debtProxy_D_Cr": 292228.93,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 357649.5107,
-      "assetVolatility": 0.050669,
-      "d1": 8.628046,
-      "d2": 8.602711,
-      "distanceToDefault": 8.602711,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 27,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "HDFC Bank": {
-    "nseTickerUsed": "HDFCBANK.NS",
-    "marketCap7dAvgCr": 1428482.73,
-    "equityVolatility63d": 0.120918,
-    "debtProxy_D_Cr": 3503610.31,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 4875619.4599,
-      "assetVolatility": 0.035427,
-      "d1": 19.581562,
-      "d2": 19.563849,
-      "distanceToDefault": 19.563849,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 41,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "ICICI Bank": {
-    "nseTickerUsed": "ICICIBANK.NS",
-    "marketCap7dAvgCr": 975327.27,
-    "equityVolatility63d": 0.163606,
-    "debtProxy_D_Cr": 2149015.11,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 3089703.0933,
-      "assetVolatility": 0.051646,
-      "d1": 14.702096,
-      "d2": 14.676274,
-      "distanceToDefault": 14.676274,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 40,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "IDBI Bank": {
-    "nseTickerUsed": "IDBI.NS",
-    "marketCap7dAvgCr": 105736.97,
-    "equityVolatility63d": 0.379951,
-    "debtProxy_D_Cr": 318552.1,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 419154.4337,
-      "assetVolatility": 0.095847,
-      "d1": 6.089924,
-      "d2": 6.042001,
-      "distanceToDefault": 6.042001,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 10,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "IDFC First Bank": {
-    "nseTickerUsed": "IDFCFIRSTB.NS",
-    "marketCap7dAvgCr": 71646.99,
-    "equityVolatility63d": 0.193763,
-    "debtProxy_D_Cr": 290464.08,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 357429.179,
-      "assetVolatility": 0.03884,
-      "d1": 11.529152,
-      "d2": 11.509732,
-      "distanceToDefault": 11.509732,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 36,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "IndusInd Bank": {
-    "nseTickerUsed": "INDUSINDBK.NS",
-    "marketCap7dAvgCr": 69860.89,
-    "equityVolatility63d": 0.247175,
-    "debtProxy_D_Cr": 440344.29,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 503107.4024,
-      "assetVolatility": 0.034322,
-      "d1": 8.719893,
-      "d2": 8.702732,
-      "distanceToDefault": 8.702732,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 29,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Jammu & Kashmir Bank": {
-    "nseTickerUsed": "J&KBANK.NS",
-    "marketCap7dAvgCr": 11497.45,
-    "equityVolatility63d": 0.252594,
-    "debtProxy_D_Cr": 145556.34,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 154707.6127,
-      "assetVolatility": 0.018772,
-      "d1": 8.232199,
-      "d2": 8.222813,
-      "distanceToDefault": 8.222813,
+      "assetValue": 1757571.3049,
+      "assetVolatility": 0.024304,
+      "d1": 7.798013,
+      "d2": 7.785861,
+      "distanceToDefault": 7.785861,
       "impliedPD": 0.0,
       "converged": true
     },
     "dtdRank": 23,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
-  "Karnataka Bank": {
-    "nseTickerUsed": "KTKBANK.NS",
-    "marketCap7dAvgCr": 6876.71,
-    "equityVolatility63d": 0.347107,
-    "debtProxy_D_Cr": 95486.48,
+  "Bank of India": {
+    "nseTickerUsed": "BANKINDIA.NS",
+    "marketCap7dAvgCr": 78101.02,
+    "equityVolatility63d": 0.348356,
+    "debtProxy_D_Cr": 930728.92,
     "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 100824.0739,
-      "assetVolatility": 0.023674,
-      "d1": 5.973747,
-      "d2": 5.96191,
-      "distanceToDefault": 5.96191,
+      "assetValue": 993827.8121,
+      "assetVolatility": 0.027376,
+      "d1": 5.986244,
+      "d2": 5.972556,
+      "distanceToDefault": 5.972556,
       "impliedPD": 0.0,
       "converged": true
     },
-    "dtdRank": 9,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "dtdRank": 10,
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
-  "Karur Vysya Bank": {
-    "nseTickerUsed": "KARURVYSYA.NS",
-    "marketCap7dAvgCr": 28135.63,
-    "equityVolatility63d": 0.32357,
-    "debtProxy_D_Cr": 96694.09,
+  "Bank of Maharashtra": {
+    "nseTickerUsed": "MAHABANK.NS",
+    "marketCap7dAvgCr": 52722.53,
+    "equityVolatility63d": 0.269971,
+    "debtProxy_D_Cr": 323915.52,
     "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 123271.1397,
-      "assetVolatility": 0.073852,
-      "d1": 7.034751,
-      "d2": 6.997825,
-      "distanceToDefault": 6.997825,
+      "assetValue": 371416.9592,
+      "assetVolatility": 0.038322,
+      "d1": 7.99931,
+      "d2": 7.980148,
+      "distanceToDefault": 7.980148,
       "impliedPD": 0.0,
       "converged": true
     },
-    "dtdRank": 13,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "dtdRank": 24,
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
-  "Kotak Mahindra Bank": {
-    "nseTickerUsed": "KOTAKBANK.NS",
-    "marketCap7dAvgCr": 410609.62,
-    "equityVolatility63d": 0.148312,
-    "debtProxy_D_Cr": 4106096.21,
-    "debtSource": "estimated (10x equity \u2014 fallback)",
+  "Canara Bank": {
+    "nseTickerUsed": "CANBK.NS",
+    "marketCap7dAvgCr": 138066.2,
+    "equityVolatility63d": 0.255994,
+    "debtProxy_D_Cr": 1538038.56,
+    "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 4450520.9709,
-      "assetVolatility": 0.013683,
-      "d1": 14.151662,
-      "d2": 14.144821,
-      "distanceToDefault": 14.144821,
+      "assetValue": 1651313.6006,
+      "assetVolatility": 0.021404,
+      "d1": 8.164059,
+      "d2": 8.153357,
+      "distanceToDefault": 8.153357,
       "impliedPD": 0.0,
       "converged": true
     },
-    "dtdRank": 38,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "dtdRank": 26,
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
-  "RBL Bank": {
-    "nseTickerUsed": "RBLBANK.NS",
-    "marketCap7dAvgCr": 18249.74,
-    "equityVolatility63d": 0.272694,
-    "debtProxy_D_Cr": 117992.33,
+  "Central Bank of India": {
+    "nseTickerUsed": "CENTRALBK.NS",
+    "marketCap7dAvgCr": 34656.0,
+    "equityVolatility63d": 0.21437,
+    "debtProxy_D_Cr": 444521.54,
     "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 134340.1872,
-      "assetVolatility": 0.037045,
-      "d1": 7.891945,
-      "d2": 7.873423,
-      "distanceToDefault": 7.873423,
+      "assetValue": 472012.4421,
+      "assetVolatility": 0.015739,
+      "d1": 9.693857,
+      "d2": 9.685987,
+      "distanceToDefault": 9.685987,
       "impliedPD": 0.0,
       "converged": true
     },
-    "dtdRank": 21,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "dtdRank": 34,
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
-  "South Indian Bank": {
-    "nseTickerUsed": "SOUTHBANK.NS",
-    "marketCap7dAvgCr": 11329.88,
-    "equityVolatility63d": 0.507501,
-    "debtProxy_D_Cr": 114726.98,
+  "Indian Bank": {
+    "nseTickerUsed": "INDIANB.NS",
+    "marketCap7dAvgCr": 127020.05,
+    "equityVolatility63d": 0.374715,
+    "debtProxy_D_Cr": 782764.2,
     "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 124207.6006,
-      "assetVolatility": 0.046294,
-      "d1": 4.143854,
-      "d2": 4.120707,
-      "distanceToDefault": 4.120707,
-      "impliedPD": 1.9e-05,
-      "converged": true
-    },
-    "dtdRank": 2,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Tamilnad Mercantile Bank": {
-    "nseTickerUsed": "TMB.NS",
-    "marketCap7dAvgCr": 9173.77,
-    "equityVolatility63d": 0.286115,
-    "debtProxy_D_Cr": 54822.65,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 63112.7509,
-      "assetVolatility": 0.041588,
-      "d1": 7.563941,
-      "d2": 7.543147,
-      "distanceToDefault": 7.543147,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 19,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Yes Bank": {
-    "nseTickerUsed": "YESBANK.NS",
-    "marketCap7dAvgCr": 66612.95,
-    "equityVolatility63d": 0.251805,
-    "debtProxy_D_Cr": 339403.73,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 400545.9325,
-      "assetVolatility": 0.041877,
-      "d1": 8.697341,
-      "d2": 8.676402,
-      "distanceToDefault": 8.676402,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 28,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "AU Small Finance Bank": {
-    "nseTickerUsed": "AUBANK.NS",
-    "marketCap7dAvgCr": 72659.59,
-    "equityVolatility63d": 0.225905,
-    "debtProxy_D_Cr": 126611.45,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 197230.2245,
-      "assetVolatility": 0.083223,
-      "d1": 11.063333,
-      "d2": 11.021721,
-      "distanceToDefault": 11.021721,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 35,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Capital Small Finance Bank": {
-    "nseTickerUsed": "CAPITALSFB.NS",
-    "marketCap7dAvgCr": 1162.27,
-    "equityVolatility63d": 0.165702,
-    "debtProxy_D_Cr": 9596.15,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 10603.7401,
-      "assetVolatility": 0.018162,
-      "d1": 12.78859,
-      "d2": 12.779509,
-      "distanceToDefault": 12.779509,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 37,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Equitas Small Finance Bank": {
-    "nseTickerUsed": "EQUITASBNK.NS",
-    "marketCap7dAvgCr": 7986.62,
-    "equityVolatility63d": 0.319721,
-    "debtProxy_D_Cr": 42086.8,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 49395.0358,
-      "assetVolatility": 0.051695,
-      "d1": 6.836205,
-      "d2": 6.810357,
-      "distanceToDefault": 6.810357,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 12,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "ESAF Small Finance Bank": {
-    "nseTickerUsed": "ESAFSFB.NS",
-    "marketCap7dAvgCr": 1461.7,
-    "equityVolatility63d": 0.378438,
-    "debtProxy_D_Cr": 22837.81,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 23931.3879,
-      "assetVolatility": 0.023114,
-      "d1": 5.458951,
-      "d2": 5.447394,
-      "distanceToDefault": 5.447394,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 5,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Jana Small Finance Bank": {
-    "nseTickerUsed": "JSFB.NS",
-    "marketCap7dAvgCr": 3845.4,
-    "equityVolatility63d": 0.269252,
-    "debtProxy_D_Cr": 30910.74,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 34257.9029,
-      "assetVolatility": 0.030223,
-      "d1": 7.886515,
-      "d2": 7.871403,
-      "distanceToDefault": 7.871403,
-      "impliedPD": 0.0,
-      "converged": true
-    },
-    "dtdRank": 20,
-    "computedAt": "2026-03-31T16:21:05.731166"
-  },
-  "Suryoday Small Finance Bank": {
-    "nseTickerUsed": "SURYODAY.NS",
-    "marketCap7dAvgCr": 1422.99,
-    "equityVolatility63d": 0.354491,
-    "debtProxy_D_Cr": 13509.01,
-    "debtSource": "balance sheet (KMV formula)",
-    "merton": {
-      "assetValue": 14714.2485,
-      "assetVolatility": 0.034282,
-      "d1": 5.942236,
-      "d2": 5.925095,
-      "distanceToDefault": 5.925095,
+      "assetValue": 897167.1236,
+      "assetVolatility": 0.053052,
+      "d1": 5.768416,
+      "d2": 5.74189,
+      "distanceToDefault": 5.74189,
       "impliedPD": 0.0,
       "converged": true
     },
     "dtdRank": 8,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
-  "Ujjivan Small Finance Bank": {
-    "nseTickerUsed": "UJJIVANSFB.NS",
-    "marketCap7dAvgCr": 12277.57,
-    "equityVolatility63d": 0.326076,
-    "debtProxy_D_Cr": 37445.17,
+  "Indian Overseas Bank": {
+    "nseTickerUsed": "IOB.NS",
+    "marketCap7dAvgCr": 69766.63,
+    "equityVolatility63d": 0.264017,
+    "debtProxy_D_Cr": 370676.8,
     "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 49119.1702,
-      "assetVolatility": 0.081504,
-      "d1": 7.078212,
-      "d2": 7.03746,
-      "distanceToDefault": 7.03746,
+      "assetValue": 434468.6033,
+      "assetVolatility": 0.042396,
+      "d1": 8.268188,
+      "d2": 8.24699,
+      "distanceToDefault": 8.24699,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 27,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Punjab & Sind Bank": {
+    "nseTickerUsed": "PSB.NS",
+    "marketCap7dAvgCr": 19387.98,
+    "equityVolatility63d": 0.297246,
+    "debtProxy_D_Cr": 133083.24,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 150326.0938,
+      "assetVolatility": 0.038337,
+      "d1": 7.213243,
+      "d2": 7.194075,
+      "distanceToDefault": 7.194075,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 19,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Punjab National Bank": {
+    "nseTickerUsed": "PNB.NS",
+    "marketCap7dAvgCr": 146868.32,
+    "equityVolatility63d": 0.271606,
+    "debtProxy_D_Cr": 1643961.38,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 1764331.2073,
+      "assetVolatility": 0.022609,
+      "d1": 7.693887,
+      "d2": 7.682582,
+      "distanceToDefault": 7.682582,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 22,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "State Bank of India": {
+    "nseTickerUsed": "SBIN.NS",
+    "marketCap7dAvgCr": 1122793.87,
+    "equityVolatility63d": 0.238908,
+    "debtProxy_D_Cr": 6542862.28,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 7560193.8383,
+      "assetVolatility": 0.035481,
+      "d1": 9.071255,
+      "d2": 9.053515,
+      "distanceToDefault": 9.053515,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 30,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "UCO Bank": {
+    "nseTickerUsed": "UCOBANK.NS",
+    "marketCap7dAvgCr": 36362.21,
+    "equityVolatility63d": 0.21565,
+    "debtProxy_D_Cr": 298328.59,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 329882.1353,
+      "assetVolatility": 0.023771,
+      "d1": 9.832343,
+      "d2": 9.820458,
+      "distanceToDefault": 9.820458,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 36,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Union Bank of India": {
+    "nseTickerUsed": "UNIONBANK.NS",
+    "marketCap7dAvgCr": 147065.99,
+    "equityVolatility63d": 0.301543,
+    "debtProxy_D_Cr": 1231842.53,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 1359052.8432,
+      "assetVolatility": 0.032631,
+      "d1": 7.027763,
+      "d2": 7.011448,
+      "distanceToDefault": 7.011448,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 18,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Axis Bank": {
+    "nseTickerUsed": "AXISBANK.NS",
+    "marketCap7dAvgCr": 425558.56,
+    "equityVolatility63d": 0.242152,
+    "debtProxy_D_Cr": 1440732.56,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 1843068.4157,
+      "assetVolatility": 0.055912,
+      "d1": 9.404777,
+      "d2": 9.376821,
+      "distanceToDefault": 9.376821,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 32,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Bandhan Bank": {
+    "nseTickerUsed": "BANDHANBNK.NS",
+    "marketCap7dAvgCr": 27536.03,
+    "equityVolatility63d": 0.299454,
+    "debtProxy_D_Cr": 150184.15,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 175299.4105,
+      "assetVolatility": 0.047038,
+      "d1": 7.277471,
+      "d2": 7.253952,
+      "distanceToDefault": 7.253952,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 20,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "City Union Bank": {
+    "nseTickerUsed": "CUB.NS",
+    "marketCap7dAvgCr": 21111.46,
+    "equityVolatility63d": 0.373423,
+    "debtProxy_D_Cr": 61340.94,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 81463.6614,
+      "assetVolatility": 0.096773,
+      "d1": 6.223415,
+      "d2": 6.175028,
+      "distanceToDefault": 6.175028,
       "impliedPD": 0.0,
       "converged": true
     },
     "dtdRank": 14,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
-  "Utkarsh Small Finance Bank": {
-    "nseTickerUsed": "UTKARSHBNK.NS",
-    "marketCap7dAvgCr": 2447.2,
-    "equityVolatility63d": 0.479908,
-    "debtProxy_D_Cr": 22491.19,
+  "CSB Bank": {
+    "nseTickerUsed": "CSBBANK.NS",
+    "marketCap7dAvgCr": 6640.77,
+    "equityVolatility63d": 0.607216,
+    "debtProxy_D_Cr": 40788.19,
     "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 24575.8626,
-      "assetVolatility": 0.047788,
-      "d1": 4.401772,
-      "d2": 4.377878,
-      "distanceToDefault": 4.377878,
-      "impliedPD": 6e-06,
+      "assetValue": 46771.4143,
+      "assetVolatility": 0.08623,
+      "d1": 3.57322,
+      "d2": 3.530105,
+      "distanceToDefault": 3.530105,
+      "impliedPD": 0.000208,
       "converged": true
     },
-    "dtdRank": 3,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "dtdRank": 1,
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
-  "Fino Payments Bank": {
-    "nseTickerUsed": "FINOPB.NS",
-    "marketCap7dAvgCr": 1808.09,
-    "equityVolatility63d": 0.500207,
-    "debtProxy_D_Cr": 3113.15,
+  "DCB Bank": {
+    "nseTickerUsed": "DCBBANK.NS",
+    "marketCap7dAvgCr": 6218.43,
+    "equityVolatility63d": 0.349993,
+    "debtProxy_D_Cr": 64007.19,
     "debtSource": "balance sheet (KMV formula)",
     "merton": {
-      "assetValue": 4871.0561,
-      "assetVolatility": 0.185672,
-      "d1": 5.043685,
-      "d2": 4.950849,
-      "distanceToDefault": 4.950849,
+      "assetValue": 69193.9134,
+      "assetVolatility": 0.031454,
+      "d1": 5.995534,
+      "d2": 5.979807,
+      "distanceToDefault": 5.979807,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 11,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Dhanlaxmi Bank": {
+    "nseTickerUsed": "DHANBANK.NS",
+    "marketCap7dAvgCr": 945.7,
+    "equityVolatility63d": 0.210846,
+    "debtProxy_D_Cr": 16879.12,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 17552.7513,
+      "assetVolatility": 0.01136,
+      "d1": 9.753511,
+      "d2": 9.747832,
+      "distanceToDefault": 9.747832,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 35,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Federal Bank": {
+    "nseTickerUsed": "FEDERALBNK.NS",
+    "marketCap7dAvgCr": 71781.59,
+    "equityVolatility63d": 0.267078,
+    "debtProxy_D_Cr": 292228.93,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 359300.1719,
+      "assetVolatility": 0.053357,
+      "d1": 8.367236,
+      "d2": 8.340557,
+      "distanceToDefault": 8.340557,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 28,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "HDFC Bank": {
+    "nseTickerUsed": "HDFCBANK.NS",
+    "marketCap7dAvgCr": 1416629.87,
+    "equityVolatility63d": 0.139872,
+    "debtProxy_D_Cr": 3503610.31,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 4863766.6011,
+      "assetVolatility": 0.040739,
+      "d1": 16.91124,
+      "d2": 16.89087,
+      "distanceToDefault": 16.89087,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 41,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "ICICI Bank": {
+    "nseTickerUsed": "ICICIBANK.NS",
+    "marketCap7dAvgCr": 1002148.02,
+    "equityVolatility63d": 0.168187,
+    "debtProxy_D_Cr": 2149015.11,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 3116523.8485,
+      "assetVolatility": 0.054082,
+      "d1": 14.360559,
+      "d2": 14.333518,
+      "distanceToDefault": 14.333518,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 40,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "IDBI Bank": {
+    "nseTickerUsed": "IDBI.NS",
+    "marketCap7dAvgCr": 121336.56,
+    "equityVolatility63d": 0.405027,
+    "debtProxy_D_Cr": 318552.1,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 434754.0189,
+      "assetVolatility": 0.11304,
+      "d1": 5.818154,
+      "d2": 5.761635,
+      "distanceToDefault": 5.761635,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 9,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "IDFC First Bank": {
+    "nseTickerUsed": "IDFCFIRSTB.NS",
+    "marketCap7dAvgCr": 69586.03,
+    "equityVolatility63d": 0.411432,
+    "debtProxy_D_Cr": 290464.08,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 355368.2125,
+      "assetVolatility": 0.080564,
+      "d1": 5.430114,
+      "d2": 5.389832,
+      "distanceToDefault": 5.389832,
       "impliedPD": 0.0,
       "converged": true
     },
     "dtdRank": 4,
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "IndusInd Bank": {
+    "nseTickerUsed": "INDUSINDBK.NS",
+    "marketCap7dAvgCr": 72637.62,
+    "equityVolatility63d": 0.223516,
+    "debtProxy_D_Cr": 440344.29,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 505884.1358,
+      "assetVolatility": 0.032094,
+      "d1": 9.667318,
+      "d2": 9.651271,
+      "distanceToDefault": 9.651271,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 33,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Jammu & Kashmir Bank": {
+    "nseTickerUsed": "J&KBANK.NS",
+    "marketCap7dAvgCr": 11520.79,
+    "equityVolatility63d": 0.256162,
+    "debtProxy_D_Cr": 145556.34,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 154730.9579,
+      "assetVolatility": 0.019073,
+      "d1": 8.118269,
+      "d2": 8.108732,
+      "distanceToDefault": 8.108732,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 25,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Karnataka Bank": {
+    "nseTickerUsed": "KTKBANK.NS",
+    "marketCap7dAvgCr": 7735.92,
+    "equityVolatility63d": 0.342691,
+    "debtProxy_D_Cr": 95486.48,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 101683.2844,
+      "assetVolatility": 0.026071,
+      "d1": 6.076623,
+      "d2": 6.063587,
+      "distanceToDefault": 6.063587,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 12,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Karur Vysya Bank": {
+    "nseTickerUsed": "KARURVYSYA.NS",
+    "marketCap7dAvgCr": 31284.15,
+    "equityVolatility63d": 0.335186,
+    "debtProxy_D_Cr": 96694.09,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 126419.6562,
+      "assetVolatility": 0.082946,
+      "d1": 6.875906,
+      "d2": 6.834432,
+      "distanceToDefault": 6.834432,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 16,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Kotak Mahindra Bank": {
+    "nseTickerUsed": "KOTAKBANK.NS",
+    "marketCap7dAvgCr": 421539.73,
+    "equityVolatility63d": 0.181734,
+    "debtProxy_D_Cr": 4215397.26,
+    "debtSource": "estimated (10x equity \u2014 fallback)",
+    "merton": {
+      "assetValue": 4568990.3402,
+      "assetVolatility": 0.016767,
+      "d1": 11.550489,
+      "d2": 11.542105,
+      "distanceToDefault": 11.542105,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 38,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "RBL Bank": {
+    "nseTickerUsed": "RBLBANK.NS",
+    "marketCap7dAvgCr": 20156.61,
+    "equityVolatility63d": 0.290006,
+    "debtProxy_D_Cr": 117992.33,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 136247.0601,
+      "assetVolatility": 0.042904,
+      "d1": 7.473907,
+      "d2": 7.452455,
+      "distanceToDefault": 7.452455,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 21,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "South Indian Bank": {
+    "nseTickerUsed": "SOUTHBANK.NS",
+    "marketCap7dAvgCr": 10595.91,
+    "equityVolatility63d": 0.461361,
+    "debtProxy_D_Cr": 114726.98,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 123473.644,
+      "assetVolatility": 0.039592,
+      "d1": 4.542263,
+      "d2": 4.522467,
+      "distanceToDefault": 4.522467,
+      "impliedPD": 3e-06,
+      "converged": true
+    },
+    "dtdRank": 2,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Tamilnad Mercantile Bank": {
+    "nseTickerUsed": "TMB.NS",
+    "marketCap7dAvgCr": 10898.7,
+    "equityVolatility63d": 0.354684,
+    "debtProxy_D_Cr": 54822.65,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 64837.6734,
+      "assetVolatility": 0.05962,
+      "d1": 6.188497,
+      "d2": 6.158688,
+      "distanceToDefault": 6.158688,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 13,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Yes Bank": {
+    "nseTickerUsed": "YESBANK.NS",
+    "marketCap7dAvgCr": 66029.28,
+    "equityVolatility63d": 0.240662,
+    "debtProxy_D_Cr": 339403.73,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 399962.2688,
+      "assetVolatility": 0.039731,
+      "d1": 9.092616,
+      "d2": 9.072751,
+      "distanceToDefault": 9.072751,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 31,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "AU Small Finance Bank": {
+    "nseTickerUsed": "AUBANK.NS",
+    "marketCap7dAvgCr": 75354.67,
+    "equityVolatility63d": 0.245002,
+    "debtProxy_D_Cr": 126611.45,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 199925.3059,
+      "assetVolatility": 0.092345,
+      "d1": 10.26886,
+      "d2": 10.222687,
+      "distanceToDefault": 10.222687,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 37,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Capital Small Finance Bank": {
+    "nseTickerUsed": "CAPITALSFB.NS",
+    "marketCap7dAvgCr": 1197.92,
+    "equityVolatility63d": 0.152611,
+    "debtProxy_D_Cr": 9596.15,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 10639.3938,
+      "assetVolatility": 0.017183,
+      "d1": 13.907852,
+      "d2": 13.899261,
+      "distanceToDefault": 13.899261,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 39,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Equitas Small Finance Bank": {
+    "nseTickerUsed": "EQUITASBNK.NS",
+    "marketCap7dAvgCr": 7712.77,
+    "equityVolatility63d": 0.260108,
+    "debtProxy_D_Cr": 42086.8,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 49121.1854,
+      "assetVolatility": 0.040841,
+      "d1": 8.374679,
+      "d2": 8.354259,
+      "distanceToDefault": 8.354259,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 29,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "ESAF Small Finance Bank": {
+    "nseTickerUsed": "ESAFSFB.NS",
+    "marketCap7dAvgCr": 1431.89,
+    "equityVolatility63d": 0.380329,
+    "debtProxy_D_Cr": 22837.81,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 23901.5826,
+      "assetVolatility": 0.022785,
+      "d1": 5.428406,
+      "d2": 5.417013,
+      "distanceToDefault": 5.417013,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 5,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Jana Small Finance Bank": {
+    "nseTickerUsed": "JSFB.NS",
+    "marketCap7dAvgCr": 4060.89,
+    "equityVolatility63d": 0.382527,
+    "debtProxy_D_Cr": 30910.74,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 34473.397,
+      "assetVolatility": 0.045061,
+      "d1": 5.57414,
+      "d2": 5.551609,
+      "distanceToDefault": 5.551609,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 7,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Suryoday Small Finance Bank": {
+    "nseTickerUsed": "SURYODAY.NS",
+    "marketCap7dAvgCr": 1307.22,
+    "equityVolatility63d": 0.301847,
+    "debtProxy_D_Cr": 13509.01,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 14598.4776,
+      "assetVolatility": 0.027029,
+      "d1": 6.948271,
+      "d2": 6.934757,
+      "distanceToDefault": 6.934757,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 17,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Ujjivan Small Finance Bank": {
+    "nseTickerUsed": "UJJIVANSFB.NS",
+    "marketCap7dAvgCr": 12133.03,
+    "equityVolatility63d": 0.354981,
+    "debtProxy_D_Cr": 37445.17,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 48974.632,
+      "assetVolatility": 0.087943,
+      "d1": 6.496031,
+      "d2": 6.452059,
+      "distanceToDefault": 6.452059,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 15,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Utkarsh Small Finance Bank": {
+    "nseTickerUsed": "UTKARSHBNK.NS",
+    "marketCap7dAvgCr": 2467.13,
+    "equityVolatility63d": 0.378988,
+    "debtProxy_D_Cr": 22491.19,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 24595.794,
+      "assetVolatility": 0.038015,
+      "d1": 5.57054,
+      "d2": 5.551532,
+      "distanceToDefault": 5.551532,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 6,
+    "computedAt": "2026-04-05T14:31:24.434018"
+  },
+  "Fino Payments Bank": {
+    "nseTickerUsed": "FINOPB.NS",
+    "marketCap7dAvgCr": 1792.11,
+    "equityVolatility63d": 0.504851,
+    "debtProxy_D_Cr": 3113.15,
+    "debtSource": "balance sheet (KMV formula)",
+    "merton": {
+      "assetValue": 4855.0782,
+      "assetVolatility": 0.186351,
+      "d1": 4.990386,
+      "d2": 4.89721,
+      "distanceToDefault": 4.89721,
+      "impliedPD": 0.0,
+      "converged": true
+    },
+    "dtdRank": 3,
+    "computedAt": "2026-04-05T14:31:24.434018"
   },
   "_meta": {
     "modelParams": {
@@ -746,62 +746,62 @@
       "debtFormula": "Deposits + 0.5*Borrowings (KMV); fallback: 0.9*TotalLiabilities"
     },
     "marketDataFilter": {
-      "startDate": "2024-11-27",
-      "endDate": "2026-01-31"
+      "startDate": "2024-12-21",
+      "endDate": "2026-02-24"
     },
     "totalBanks": 41,
     "computed": 40,
     "failed": [],
     "dtdRankMap": {
-      "Bank of Baroda": 32,
-      "Bank of India": 17,
-      "Bank of Maharashtra": 25,
+      "Bank of Baroda": 23,
+      "Bank of India": 10,
+      "Bank of Maharashtra": 24,
       "Canara Bank": 26,
-      "Central Bank of India": 31,
-      "Indian Bank": 16,
-      "Indian Overseas Bank": 22,
-      "Punjab & Sind Bank": 15,
-      "Punjab National Bank": 24,
-      "State Bank of India": 39,
-      "UCO Bank": 33,
+      "Central Bank of India": 34,
+      "Indian Bank": 8,
+      "Indian Overseas Bank": 27,
+      "Punjab & Sind Bank": 19,
+      "Punjab National Bank": 22,
+      "State Bank of India": 30,
+      "UCO Bank": 36,
       "Union Bank of India": 18,
-      "Axis Bank": 34,
-      "Bandhan Bank": 11,
-      "City Union Bank": 7,
+      "Axis Bank": 32,
+      "Bandhan Bank": 20,
+      "City Union Bank": 14,
       "CSB Bank": 1,
-      "DCB Bank": 6,
-      "Dhanlaxmi Bank": 30,
-      "Federal Bank": 27,
+      "DCB Bank": 11,
+      "Dhanlaxmi Bank": 35,
+      "Federal Bank": 28,
       "HDFC Bank": 41,
       "ICICI Bank": 40,
-      "IDBI Bank": 10,
-      "IDFC First Bank": 36,
-      "IndusInd Bank": 29,
-      "Jammu & Kashmir Bank": 23,
-      "Karnataka Bank": 9,
-      "Karur Vysya Bank": 13,
+      "IDBI Bank": 9,
+      "IDFC First Bank": 4,
+      "IndusInd Bank": 33,
+      "Jammu & Kashmir Bank": 25,
+      "Karnataka Bank": 12,
+      "Karur Vysya Bank": 16,
       "Kotak Mahindra Bank": 38,
       "RBL Bank": 21,
       "South Indian Bank": 2,
-      "Tamilnad Mercantile Bank": 19,
-      "Yes Bank": 28,
-      "AU Small Finance Bank": 35,
-      "Capital Small Finance Bank": 37,
-      "Equitas Small Finance Bank": 12,
+      "Tamilnad Mercantile Bank": 13,
+      "Yes Bank": 31,
+      "AU Small Finance Bank": 37,
+      "Capital Small Finance Bank": 39,
+      "Equitas Small Finance Bank": 29,
       "ESAF Small Finance Bank": 5,
-      "Jana Small Finance Bank": 20,
-      "Suryoday Small Finance Bank": 8,
-      "Ujjivan Small Finance Bank": 14,
-      "Utkarsh Small Finance Bank": 3,
-      "Fino Payments Bank": 4
+      "Jana Small Finance Bank": 7,
+      "Suryoday Small Finance Bank": 17,
+      "Ujjivan Small Finance Bank": 15,
+      "Utkarsh Small Finance Bank": 6,
+      "Fino Payments Bank": 3
     },
     "validation": {
-      "spearmanRho": -0.3729,
-      "pValue": 0.0178,
+      "spearmanRho": -0.1892,
+      "pValue": 0.2422,
       "nCommon": 40,
-      "interpretation": "MODERATE signal: Merton partially captures fundamentals",
+      "interpretation": "WEAK signal: Merton mostly reflects market sentiment \u2014 use with caution",
       "expectedSign": "negative (more DTD = less stressed = lower NPA)"
     },
-    "computedAt": "2026-03-31T16:21:05.731166"
+    "computedAt": "2026-04-05T14:31:24.434018"
   }
 }

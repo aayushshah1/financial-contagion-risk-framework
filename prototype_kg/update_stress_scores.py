@@ -48,29 +48,52 @@ def _safe_float(val) -> float | None:
         return None
 
 
+def _safe_str(val) -> str:
+    return str(val).strip() if val is not None else ""
+
+
 def _calculate_bank_stress(doc: dict) -> float | None:
     """
-    Calculate bank stress with dynamic weighting.
-    
-    Formula:
-    - If news_stress available: 0.7 * stressScore + 0.3 * news_stress
-    - If news_stress missing:   1.0 * stressScore
+    Calculate bank stress using component-based weighting.
 
-    Returns None if stressScore is missing.
+    Primary formula:
+    0.23 * boundaryDistance
+    + 0.23 * camelsComposite
+    + 0.27 * mertonOriented
+    + 0.27 * news_stress
+
+    Fallback behavior when any component is missing:
+    - 0.73 * stressScore + 0.27 * news_stress (if news exists)
+    - stressScore (if news missing)
+    - None (if stressScore missing)
     """
-    stress_score = _safe_float(doc.get("stressScore"))
+    stress_components = doc.get("stressComponents") or {}
+
+    boundary_distance = _safe_float(stress_components.get("boundaryDistance"))
+    camels_score = _safe_float(stress_components.get("camelsComposite"))
+    merton_oriented = _safe_float(stress_components.get("mertonOriented"))
     news_stress = _safe_float(doc.get("news_stress"))
-    
+
+    if (
+        boundary_distance is not None
+        and camels_score is not None
+        and merton_oriented is not None
+        and news_stress is not None
+    ):
+        return (
+            0.23 * boundary_distance
+            + 0.23 * camels_score
+            + 0.27 * merton_oriented
+            + 0.27 * news_stress
+        )
+
+    stress_score = _safe_float(doc.get("stressScore"))
     if stress_score is None:
         return None
-    
-    # Dynamic weighting based on available components
+
     if news_stress is not None:
-        # Both components available: 0.7 stress + 0.3 news
-        return 0.7 * stress_score + 0.3 * news_stress
-    else:
-        # Only stress available: use full weight
-        return stress_score
+        return 0.73 * stress_score + 0.27 * news_stress
+    return stress_score
 
 
 def _calculate_company_stress(doc: dict, sector_stress_map: dict[str, float]) -> float | None:
@@ -178,7 +201,9 @@ def update_bank_stress(driver: Driver, bank_docs: list[dict]) -> int:
 UPDATE_COMPANY_STRESS = """
 UNWIND $batch AS row
 MATCH (c:Company {cin: row.cin})
-SET c.stress = row.stress
+SET c.stress = row.stress,
+    c.name = CASE WHEN row.crisilName <> '' THEN row.crisilName ELSE coalesce(c.crisilName, c.name, c.cin, row.cin) END,
+    c.displayName = CASE WHEN row.crisilName <> '' THEN row.crisilName ELSE coalesce(c.crisilName, c.displayName, c.cin, row.cin) END
 """
 
 
@@ -187,7 +212,7 @@ def update_company_stress(driver: Driver, company_docs: list[dict], sector_stres
     Update stress attribute on existing :Company nodes.
 
     Calculates stress from entity_stress_fundamental, news_stress, and sector_stress
-    with dynamic weighting.
+    with dynamic weighting, and refreshes display naming to CRISIL when available.
     
     Returns number of companies processed.
     """
@@ -200,10 +225,12 @@ def update_company_stress(driver: Driver, company_docs: list[dict], sector_stres
 
         # Calculate company stress with all three components
         stress_score = _calculate_company_stress(doc, sector_stress_map)
+        crisil_name = _safe_str(doc.get("crisilName"))
 
         records.append({
             "cin": cin,
             "stress": stress_score,
+            "crisilName": crisil_name,
         })
 
     BATCH_SIZE = 500
@@ -253,6 +280,7 @@ def main(
     prop_batch_size: int = 1000,
     prop_debug_bank: str | None = None,
     prop_debug_dir: str = "logs",
+    update_company_stress_enabled: bool = True,
 ):
     """
     Main execution: update stress scores on all Bank and Company nodes.
@@ -274,22 +302,25 @@ def main(
         print("\n[step 2] Updating :Bank nodes with stress scores...")
         update_bank_stress(driver, bank_docs)
 
-        # Step 2: Load sector stress scores
-        print("\n[step 3] Fetching sector stress scores from MongoDB...")
-        sector_stress_map = get_sector_stress_map(mongo_client)
-        print(f"         Loaded {len(sector_stress_map)} sector stress score(s).")
+        if update_company_stress_enabled:
+            # Step 3: Load sector stress scores
+            print("\n[step 3] Fetching sector stress scores from MongoDB...")
+            sector_stress_map = get_sector_stress_map(mongo_client)
+            print(f"         Loaded {len(sector_stress_map)} sector stress score(s).")
 
-        # Step 3: Update Company stress scores
-        print("\n[step 4] Fetching company documents from MongoDB...")
-        company_docs = get_company_docs(mongo_client)
-        print(f"         Loaded {len(company_docs)} company document(s).")
+            # Step 4: Update Company stress scores
+            print("\n[step 4] Fetching company documents from MongoDB...")
+            company_docs = get_company_docs(mongo_client)
+            print(f"         Loaded {len(company_docs)} company document(s).")
 
-        print("\n[step 5] Updating :Company nodes with calculated stress scores...")
-        update_company_stress(driver, company_docs, sector_stress_map)
+            print("\n[step 5] Updating :Company nodes with calculated stress scores...")
+            update_company_stress(driver, company_docs, sector_stress_map)
 
-        # Step 4: Remove obsolete crisilStressScore attribute
-        print("\n[step 6] Removing obsolete crisilStressScore attribute...")
-        remove_crisil_stress_attribute(driver)
+            # Step 6: Remove obsolete crisilStressScore attribute
+            print("\n[step 6] Removing obsolete crisilStressScore attribute...")
+            remove_crisil_stress_attribute(driver)
+        else:
+            print("\n[step 3] Skipping company stress updates (--skip-company-stress enabled).")
 
         if run_propagation:
             print("\n[step 7] Propagating stress via transmission ...")
@@ -363,6 +394,11 @@ if __name__ == "__main__":
         default="logs",
         help="Directory for propagation debug artifacts.",
     )
+    parser.add_argument(
+        "--skip-company-stress",
+        action="store_true",
+        help="Skip refreshing :Company stress fields from MongoDB for faster test runs.",
+    )
     args = parser.parse_args()
 
     main(
@@ -372,4 +408,5 @@ if __name__ == "__main__":
         prop_batch_size=max(1, args.prop_batch_size),
         prop_debug_bank=args.prop_debug_bank,
         prop_debug_dir=args.prop_debug_dir,
+        update_company_stress_enabled=not args.skip_company_stress,
     )
