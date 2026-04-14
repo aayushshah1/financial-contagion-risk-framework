@@ -22,8 +22,6 @@ We construct a unified network of 2,858 entities from CRISIL's FY2024-25 rated u
 
 Three constituencies stand to benefit. For regulators—RBI, SEBI—it offers an early warning layer complementing entity-level supervision. For bank risk teams calculating Expected Credit Loss under Ind AS 109, network maps reveal counterparty exposures that internal models currently miss. For institutional investors, stress scores provide independent signals where rating agency assessments have demonstrably lagged.
 
-The remainder proceeds as follows. Section 3 reviews systemic risk literature and identifies research gaps. Section 4 articulates problem statement and research questions. Sections 5-9 detail data sources, architecture, stress scoring, graph construction, and contagion propagation. Section 10 presents results. Section 11 validates through IL&FS case study simulation. Section 12 discusses policy implications. Section 13 acknowledges limitations. Section 14 concludes.
-
 ---
 
 ## 3. Literature Review (~450 words)
@@ -44,7 +42,7 @@ Knowledge graphs have recently entered financial risk literature. Chen and Zhang
 
 ---
 
-## 4. Research Motivation and Problem Statement (~450 words)
+## 4. Research Motivation and Problem Statement
 
 ### Why India, Why Now
 
