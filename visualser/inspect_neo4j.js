@@ -1,8 +1,11 @@
 import neo4j from 'neo4j-driver';
+import dotenv from 'dotenv';
 
-const URI = 'neo4j+s://fc737d33.databases.neo4j.io';
-const USER = 'fc737d33';
-const PASSWORD = 'FZS4rdROGKegmOf4alPuxy3S6c0231DCNKatkwngxtM';
+dotenv.config();
+
+const URI = process.env.NEO4J_URI || process.env.VITE_NEO4J_URI;
+const USER = process.env.NEO4J_USERNAME || process.env.VITE_NEO4J_USERNAME;
+const PASSWORD = process.env.NEO4J_PASSWORD || process.env.VITE_NEO4J_PASSWORD;
 
 const driver = neo4j.driver(URI, neo4j.auth.basic(USER, PASSWORD));
 

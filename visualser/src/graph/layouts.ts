@@ -1,7 +1,8 @@
 import * as THREE from 'three';
-import type { GraphNode, GraphEdge } from './demoData';
+import type { GraphEdge, GraphNode } from './types';
+import { isBankNode, isNbfcNode } from './bankLeafView';
 
-export type Topology = 'centralized' | 'decentralized';
+export type Topology = 'centralized' | 'decentralized' | 'separated';
 
 function fibonacciSphere(n: number, radius = 1.0): THREE.Vector3[] {
     const pts: THREE.Vector3[] = [];
@@ -16,18 +17,17 @@ function fibonacciSphere(n: number, radius = 1.0): THREE.Vector3[] {
 }
 
 export function computeLayouts(nodes: GraphNode[], edges: GraphEdge[]) {
-    // 1. degree array
+    // Degree map
     const deg: Record<number, number> = {};
     nodes.forEach(n => deg[n.id] = 0);
     edges.forEach(e => { deg[e.source]++; deg[e.target]++; });
 
-    // Centralized
+    // ─── Centralized ───
     const layoutC: Record<number, THREE.Vector3> = {};
     if (nodes.length > 0) {
-        let hubId = nodes.reduce((a, b) => deg[a.id] > deg[b.id] ? a : b).id;
+        const hubId = nodes.reduce((a, b) => deg[a.id] > deg[b.id] ? a : b).id;
         layoutC[hubId] = new THREE.Vector3(0, 0, 0);
 
-        // simple BFS dist
         const dist: Record<number, number> = { [hubId]: 0 };
         const q = [hubId];
         while (q.length > 0) {
@@ -50,12 +50,12 @@ export function computeLayouts(nodes: GraphNode[], edges: GraphEdge[]) {
         });
     }
 
-    // Decentralized
+    // ─── Decentralized ───
     const layoutD: Record<number, THREE.Vector3> = {};
     if (nodes.length > 0) {
         const groups: Record<string, GraphNode[]> = {};
         nodes.forEach(n => {
-            const lb = n.labels[0] || "_";
+            const lb = n.labels[0] || '_';
             if (!groups[lb]) groups[lb] = [];
             groups[lb].push(n);
         });
@@ -78,24 +78,65 @@ export function computeLayouts(nodes: GraphNode[], edges: GraphEdge[]) {
         });
     }
 
-    // Normalise
-    const norm = (pos: Record<number, THREE.Vector3>) => {
-        let min = new THREE.Vector3(Infinity, Infinity, Infinity);
-        let max = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
-        Object.values(pos).forEach(p => {
-            min.min(p); max.max(p);
+    // ─── Separated ───
+    // Banks: tight inner cluster at center
+    // NBFCs: mid-distance ring
+    // Leaf / other nodes: outer shell, sub-grouped by label type
+    const layoutS: Record<number, THREE.Vector3> = {};
+    if (nodes.length > 0) {
+        const banks = nodes.filter(n => isBankNode(n));
+        const nbfcs = nodes.filter(n => isNbfcNode(n) && !isBankNode(n));
+        const others = nodes.filter(n => !isBankNode(n) && !isNbfcNode(n));
+
+        // Banks: inner sphere radius 0.3, sorted most-connected first
+        const sortedBanks = [...banks].sort((a, b) => (deg[b.id] || 0) - (deg[a.id] || 0));
+        const bankPts = fibonacciSphere(Math.max(sortedBanks.length, 1), 0.3);
+        sortedBanks.forEach((n, i) => {
+            layoutS[n.id] = bankPts[i % bankPts.length].clone();
         });
+
+        // NBFCs: mid-shell radius 0.75
+        const sortedNbfc = [...nbfcs].sort((a, b) => (deg[b.id] || 0) - (deg[a.id] || 0));
+        const nbfcPts = fibonacciSphere(Math.max(sortedNbfc.length, 1), 0.75);
+        sortedNbfc.forEach((n, i) => {
+            layoutS[n.id] = nbfcPts[i % nbfcPts.length].clone();
+        });
+
+        // Others: outer clusters per label type
+        const otherGroups: Record<string, GraphNode[]> = {};
+        others.forEach(n => {
+            const lb = n.labels[0] || '_';
+            if (!otherGroups[lb]) otherGroups[lb] = [];
+            otherGroups[lb].push(n);
+        });
+        const outerGroupKeys = Object.keys(otherGroups);
+        const outerGroupPts = fibonacciSphere(Math.max(outerGroupKeys.length, 1), 1.3);
+        outerGroupKeys.forEach((lb, gi) => {
+            const members = otherGroups[lb];
+            const groupCenter = outerGroupPts[gi % outerGroupPts.length].clone();
+            const memberPts = fibonacciSphere(Math.max(members.length, 1), 0.2);
+            members.forEach((n, mi) => {
+                layoutS[n.id] = groupCenter.clone().add(memberPts[mi % memberPts.length]);
+            });
+        });
+    }
+
+    // Normalise all layouts to -2..2 range
+    const norm = (pos: Record<number, THREE.Vector3>) => {
+        const min = new THREE.Vector3(Infinity, Infinity, Infinity);
+        const max = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
+        Object.values(pos).forEach(p => { min.min(p); max.max(p); });
         const range = Math.max(max.x - min.x, max.y - min.y, max.z - min.z) || 1;
         const res: Record<number, THREE.Vector3> = {};
         Object.entries(pos).forEach(([id, p]) => {
             res[parseInt(id)] = p.clone().sub(min).divideScalar(range).multiplyScalar(4).subScalar(2);
-            // -2 to 2 scale
         });
         return res;
     };
 
     return {
         centralized: norm(layoutC),
-        decentralized: norm(layoutD)
+        decentralized: norm(layoutD),
+        separated: norm(layoutS),
     };
 }

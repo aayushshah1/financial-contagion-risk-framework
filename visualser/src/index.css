@@ -62,7 +62,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 2;
   pointer-events: none;
 }
@@ -233,3 +233,210 @@ kbd {
   width: 1px;
   height: 50px;
 }
+
+/* ─── Simulation UI ─── */
+
+.sim-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 60, 60, 0.06);
+  border: 1px solid rgba(255, 80, 80, 0.2);
+}
+
+.sim-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sim-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ff8866;
+  letter-spacing: 0.5px;
+}
+
+.sim-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #888;
+  border-radius: 100px;
+  padding: 3px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sim-toggle:hover {
+  background: rgba(255, 80, 80, 0.15);
+  border-color: rgba(255, 80, 80, 0.4);
+  color: #fff;
+}
+
+.sim-toggle-on {
+  background: rgba(255, 60, 60, 0.25);
+  border-color: rgba(255, 80, 80, 0.5);
+  color: #ff8866;
+}
+
+.sim-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #4ade80, #facc15, #ff4d6d);
+  outline: none;
+  cursor: pointer;
+}
+
+.sim-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #ff4d6d;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(255, 77, 109, 0.4);
+}
+
+.sim-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #ff4d6d;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(255, 77, 109, 0.4);
+}
+
+.sim-badge {
+  font-size: 10px;
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 100px;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.3px;
+}
+
+.sim-card-section {
+  margin-top: 4px;
+}
+
+.sim-card-divider {
+  height: 1px;
+  background: rgba(255, 80, 80, 0.25);
+  margin: 10px 0;
+}
+
+.sim-contributors-label {
+  font-size: 11px;
+  color: #ff8866;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.sim-impact-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.sim-impact-panel::-webkit-scrollbar {
+  width: 3px;
+}
+
+.sim-impact-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sim-impact-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.sim-impact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  gap: 8px;
+}
+
+.sim-impact-row:hover {
+  background: rgba(255, 80, 80, 0.1);
+  border-color: rgba(255, 80, 80, 0.25);
+}
+
+.sim-impact-rank {
+  font-size: 10px;
+  color: #666;
+  font-family: 'Space Mono', monospace;
+  min-width: 20px;
+}
+
+.sim-impact-name {
+  font-size: 11px;
+  color: #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.sim-type-badge {
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.sim-type-bank {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+.sim-type-company {
+  background: rgba(255, 255, 255, 0.08);
+  color: #aaa;
+}
+
+.sim-delta-bar {
+  height: 4px;
+  border-radius: 2px;
+  min-width: 3px;
+  flex-shrink: 0;
+}
+
+.sim-impact-footer {
+  font-size: 10px;
+  color: #666;
+  text-align: center;
+  padding: 4px 0 0;
+  font-family: 'Space Mono', monospace;
+}
+
+.sim-stress-indicator {
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+}
+
