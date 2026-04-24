@@ -10,15 +10,15 @@ import { computeLayouts } from './layouts';
 // Colour helpers for simulation heat overlay
 // ---------------------------------------------------------------------------
 
-const BASE_BLUE = new THREE.Color('#3b82f6');
-const BASE_YELLOW = new THREE.Color('#facc15');
-const BASE_WHITE = new THREE.Color('#ffffff');
-const HEAT_RED = new THREE.Color('#ff2d2d');
+const BASE_BLUE   = new THREE.Color('#3b82f6');
+const BASE_WHITE  = new THREE.Color('#e0e0e0');
+const BASE_NBFC   = new THREE.Color('#a78bfa'); // purple for NBFC — distinct from banks
+const HEAT_RED    = new THREE.Color('#ff2d2d');
 
 function getBaseColor(node: GraphNode): THREE.Color {
-    if (isNbfcNode(node)) return BASE_YELLOW.clone();
-    if (isBankNode(node)) return BASE_BLUE.clone();
-    return BASE_WHITE.clone();
+    if (isNbfcNode(node))  return BASE_NBFC.clone();
+    if (isBankNode(node))  return BASE_BLUE.clone();
+    return BASE_WHITE.clone();  // leaf / company nodes
 }
 
 function blendHeat(base: THREE.Color, delta: number): THREE.Color {
@@ -28,17 +28,66 @@ function blendHeat(base: THREE.Color, delta: number): THREE.Color {
 }
 
 // ---------------------------------------------------------------------------
+// Flowing stress particle — animated dot travelling source → target
+// ---------------------------------------------------------------------------
+
+const PARTICLE_COLOR_LOW  = '#ffaa44';
+const PARTICLE_COLOR_HIGH = '#ff4444';
+
+const FlowParticle = ({
+    sourcePos, targetPos, phase, stress,
+}: {
+    sourcePos: THREE.Vector3;
+    targetPos: THREE.Vector3;
+    phase: number;   // 0‒1 initial offset so particles are staggered
+    stress: number;  // 0‒1, controls color
+}) => {
+    const ref   = useRef<THREE.Mesh>(null);
+    const matRef = useRef<THREE.MeshBasicMaterial>(null);
+    const t = useRef(phase);
+
+    useFrame((_state, delta) => {
+        // Speed proportional to stress intensity
+        t.current = (t.current + delta * (0.35 + stress * 0.45)) % 1;
+        if (ref.current) {
+            ref.current.position.lerpVectors(sourcePos, targetPos, t.current);
+        }
+        if (matRef.current) {
+            // Fade near ends, bright in middle
+            const fade = Math.sin(t.current * Math.PI);
+            matRef.current.opacity = fade * (0.55 + stress * 0.4);
+        }
+    });
+
+    const color = stress > 0.3 ? PARTICLE_COLOR_HIGH : PARTICLE_COLOR_LOW;
+
+    return (
+        <mesh ref={ref}>
+            <sphereGeometry args={[0.014, 6, 6]} />
+            <meshBasicMaterial
+                ref={matRef}
+                color={color}
+                transparent
+                opacity={0.7}
+                blending={THREE.AdditiveBlending}
+                depthWrite={false}
+            />
+        </mesh>
+    );
+};
+
+// ---------------------------------------------------------------------------
 // Node
 // ---------------------------------------------------------------------------
 
 const NodeView = ({
     node, pos, isHub, isSelected, isHovered, deltaStress, isShockedBank,
-    isFocused, hasFocusMode,
+    isFocused, hasFocusMode, isSimulator,
     onClick, onPointerOver, onPointerOut,
 }: {
     node: GraphNode; pos: THREE.Vector3; isHub: boolean; isSelected: boolean; isHovered: boolean;
     deltaStress: number; isShockedBank: boolean;
-    isFocused: boolean; hasFocusMode: boolean;
+    isFocused: boolean; hasFocusMode: boolean; isSimulator: boolean;
     onClick: () => void; onPointerOver: () => void; onPointerOut: () => void;
 }) => {
     const meshRef = useRef<THREE.Mesh>(null);
@@ -66,20 +115,30 @@ const NodeView = ({
     });
 
     const sz = isHub ? 0.08 : 0.05;
-    const baseColor = getBaseColor(node);
+    const baseColor   = getBaseColor(node);
     const displayColor = blendHeat(baseColor, deltaStress);
 
-    // Out-of-focus dimming
-    const dimmed = hasFocusMode && !isFocused;
+    // In simulator mode, never dim nodes — every node shown is part of the subgraph
+    const dimmed  = !isSimulator && hasFocusMode && !isFocused;
     const opacity = dimmed ? 0.08 : 1;
 
-    const showGlow = !dimmed && (isSelected || isHovered || isHub || isShockedBank || deltaStress > 0.001);
-    const glowColor = isShockedBank
-        ? '#ff4444'
-        : deltaStress > 0.001
-            ? '#ff6644'
-            : (isSelected || isHovered) ? '#aaaaaa' : '#555555';
-    const glowOpacity = isShockedBank ? 0.5 : deltaStress > 0.001 ? (0.2 + deltaStress * 0.5) : 0.3;
+    // Show glow for: shocked bank, stressed, selected, hovered, hub — AND in simulator mode always
+    const showGlow = !dimmed && (
+        isSimulator ||
+        isSelected || isHovered || isHub || isShockedBank || deltaStress > 0.001
+    );
+    const glowColor =
+        isShockedBank         ? '#ff4444' :
+        deltaStress > 0.15    ? '#ff6644' :
+        deltaStress > 0.001   ? '#ffaa44' :
+        isNbfcNode(node)      ? '#a78bfa' :
+        isBankNode(node)      ? '#3b82f6' :
+        (isSelected || isHovered) ? '#aaaaaa' : '#444455';
+    const glowOpacity =
+        isShockedBank       ? 0.55 :
+        deltaStress > 0.001 ? (0.18 + deltaStress * 0.5) :
+        isSimulator         ? 0.12 :   // soft ambient glow for all sim nodes
+        0.3;
 
     return (
         <group
@@ -161,7 +220,7 @@ export const GraphCanvas = ({
     nodes, edges, topology, onSelectNode, selectedNodeId, onHoverNode, hoveredNodeId,
     onHoverEdge, hoveredEdgeId, gesturePointer,
     simulationResults, simulationActiveEdgeIds, shockedBankId,
-    focusNodeIds,
+    focusNodeIds, isSimulator, nodeDepths,
 }: {
     nodes: GraphNode[]; edges: GraphEdge[]; topology: Topology;
     onSelectNode: (n: GraphNode | null) => void; selectedNodeId: number | null;
@@ -172,9 +231,15 @@ export const GraphCanvas = ({
     simulationActiveEdgeIds?: Set<string>;
     shockedBankId?: number | null;
     focusNodeIds?: Set<number> | null;
+    /** When true: no dimming, ambient glow on all nodes, NBFC shown purple */
+    isSimulator?: boolean;
+    /** Depth-from-center map used to determine particle flow direction */
+    nodeDepths?: Record<number, number>;
 }) => {
-    const layouts = useMemo(() => computeLayouts(nodes, edges), [nodes, edges]);
-    const hasFocusMode = Boolean(focusNodeIds && focusNodeIds.size > 0);
+    const layouts    = useMemo(() => computeLayouts(nodes, edges), [nodes, edges]);
+    const simMode    = Boolean(isSimulator);
+    // In simulator mode, never apply focus-dimming — every node in the subgraph is shown
+    const hasFocusMode = !simMode && Boolean(focusNodeIds && focusNodeIds.size > 0);
 
     const { camera, scene } = useThree();
     const raycaster = useRef(new THREE.Raycaster());
@@ -273,28 +338,49 @@ export const GraphCanvas = ({
                 const sp = activePos.current[Number(e.source)] || new THREE.Vector3(0, 0, 0);
                 const tp = activePos.current[Number(e.target)] || new THREE.Vector3(0, 0, 0);
                 const edgeFocused = !hasFocusMode || (focusNodeIds!.has(e.source) && focusNodeIds!.has(e.target));
+                const isActive = simulationActiveEdgeIds?.has(e.id) ?? false;
+
+                // Determine stress propagation direction from depth map
+                // Particles flow from the shallower-depth node to the deeper one
+                const srcDepth = nodeDepths?.[e.source] ?? 0;
+                const tgtDepth = nodeDepths?.[e.target] ?? 0;
+                const flowSrc = srcDepth <= tgtDepth ? sp : tp;
+                const flowTgt = srcDepth <= tgtDepth ? tp : sp;
+                // Stress of the source node to size/color the particles
+                const flowNodeId = srcDepth <= tgtDepth ? e.source : e.target;
+                const flowStress = simulationResults?.[flowNodeId]?.deltaStress ?? 0;
+
                 return (
-                    <EdgeView
-                        key={`e-${e.id}`}
-                        edge={e}
-                        sourcePos={sp}
-                        targetPos={tp}
-                        isSelected={selectedNodeId === e.source || selectedNodeId === e.target}
-                        isHovered={hoveredNodeId === e.source || hoveredNodeId === e.target || hoveredEdgeId === e.id}
-                        isHubEdge={hubs.has(e.source) || hubs.has(e.target)}
-                        isActiveChannel={simulationActiveEdgeIds?.has(e.id) ?? false}
-                        isFocused={edgeFocused}
-                        hasFocusMode={hasFocusMode}
-                        onPointerOver={() => onHoverEdge(e)}
-                        onPointerOut={() => onHoverEdge(null)}
-                    />
+                    <group key={`e-${e.id}`}>
+                        <EdgeView
+                            edge={e}
+                            sourcePos={sp}
+                            targetPos={tp}
+                            isSelected={selectedNodeId === e.source || selectedNodeId === e.target}
+                            isHovered={hoveredNodeId === e.source || hoveredNodeId === e.target || hoveredEdgeId === e.id}
+                            isHubEdge={hubs.has(e.source) || hubs.has(e.target)}
+                            isActiveChannel={isActive}
+                            isFocused={edgeFocused}
+                            hasFocusMode={hasFocusMode}
+                            onPointerOver={() => onHoverEdge(e)}
+                            onPointerOut={() => onHoverEdge(null)}
+                        />
+                        {/* Flowing stress particles in simulator mode */}
+                        {simMode && (
+                            <>
+                                <FlowParticle sourcePos={flowSrc} targetPos={flowTgt} phase={0}    stress={flowStress} />
+                                <FlowParticle sourcePos={flowSrc} targetPos={flowTgt} phase={0.33} stress={flowStress} />
+                                <FlowParticle sourcePos={flowSrc} targetPos={flowTgt} phase={0.66} stress={flowStress} />
+                            </>
+                        )}
+                    </group>
                 );
             })}
 
             {nodes.map(n => {
                 const isConnectedToSelected = edges.some(e => (e.source === selectedNodeId && e.target === n.id) || (e.target === selectedNodeId && e.source === n.id));
-                const isConnectedToHovered = edges.some(e => (e.source === hoveredNodeId && e.target === n.id) || (e.target === hoveredNodeId && e.source === n.id));
-                const simResult = simulationResults?.[n.id];
+                const isConnectedToHovered  = edges.some(e => (e.source === hoveredNodeId  && e.target === n.id) || (e.target === hoveredNodeId  && e.source === n.id));
+                const simResult   = simulationResults?.[n.id];
                 const nodeFocused = !hasFocusMode || focusNodeIds!.has(n.id);
 
                 return (
@@ -309,6 +395,7 @@ export const GraphCanvas = ({
                         isShockedBank={shockedBankId === n.id}
                         isFocused={nodeFocused}
                         hasFocusMode={hasFocusMode}
+                        isSimulator={simMode}
                         onClick={() => onSelectNode(n)}
                         onPointerOver={() => onHoverNode(n)}
                         onPointerOut={() => onHoverNode(null)}

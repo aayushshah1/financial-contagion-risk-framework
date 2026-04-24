@@ -1,6 +1,7 @@
 import type { GraphData, GraphEdge, GraphNode } from './types';
 
 export const MAX_LEAVES_PER_BANK = 5;
+export const DEFAULT_NBFC_LIMIT = 20;
 
 interface CandidateLeaf {
   leafId: number;
@@ -37,7 +38,8 @@ export function isNbfcNode(node: GraphNode): boolean {
 export function isBankNode(node: GraphNode): boolean {
   const hasBankLabel = node.labels.some((label) => label.toLowerCase().includes('bank'));
   const hasBankType = typeof node.type === 'string' && node.type.toLowerCase().includes('bank');
-  return hasBankLabel || hasBankType || isNbfcNode(node);
+  // NOTE: NBFCs are NOT banks — isNbfcNode is intentionally excluded here
+  return (hasBankLabel || hasBankType) && !isNbfcNode(node);
 }
 
 function clamp(value: number, min: number, max: number): number {
@@ -214,6 +216,7 @@ export function buildBankLeafGraph(
   graphData: GraphData,
   requestedBlueCount: number,
   requestedWhiteCount: number,
+  nbfcLimit = DEFAULT_NBFC_LIMIT,
 ): BankLeafGraph {
   const banks = graphData.nodes.filter(isBankNode).sort((left, right) => left.id - right.id);
   if (banks.length === 0) {
@@ -238,10 +241,20 @@ export function buildBankLeafGraph(
   const activeSelection = runLeafSelection(selectedBanks, candidatesByBank, clampedWhiteCount);
 
   const nodeById = new Map(graphData.nodes.map((node) => [node.id, node]));
-  const selectedLeaves = [...activeSelection.leafIds]
+  let selectedLeaves = [...activeSelection.leafIds]
     .map((leafId) => nodeById.get(leafId))
     .filter((node): node is GraphNode => Boolean(node))
     .sort((left, right) => left.id - right.id);
+
+  // Cap NBFC nodes independently
+  let nbfcCount = 0;
+  selectedLeaves = selectedLeaves.filter((node) => {
+    if (isNbfcNode(node)) {
+      if (nbfcCount >= nbfcLimit) return false;
+      nbfcCount++;
+    }
+    return true;
+  });
 
   const nodes = [...selectedBanks, ...selectedLeaves];
   const visibleNodeIds = new Set(nodes.map((node) => node.id));
