@@ -13,6 +13,6 @@
     "rootDir": ".",
     "noEmitOnError": true
   },
-  "include": ["server/**/*.ts", "src/graph/types.ts"],
-  "exclude": ["server/**/*.test.ts"]
+  "include": ["server/**/*.ts", "api/**/*.ts", "src/graph/types.ts"],
+  "exclude": ["server/**/*.test.ts", "api/**/*.test.ts"]
 }

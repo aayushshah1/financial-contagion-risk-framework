@@ -1,12 +1,10 @@
 {
-  "buildCommand": "vite build",
-  "outputDirectory": "dist",
   "functions": {
-    "server/index.ts": {
-      "runtime": "@vercel/node"
+    "api/index.ts": {
+      "includeFiles": "neo4j_export.json"
     }
   },
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/server/index.ts" }
+    { "source": "/api/(.*)", "destination": "/api/index.ts" }
   ]
 }
