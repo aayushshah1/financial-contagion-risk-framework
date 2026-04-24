@@ -13,8 +13,9 @@ export interface TweakSettings {
   threeDLayout: 'centralized' | 'decentralized' | 'separated';
   cameraZoom: number;
   cameraAutoRotate: boolean;
-  simDepth: number;       // BFS depth for simulator page
-  simMaxNodes: number;    // max neighbor nodes returned per bank in simulator
+  cameraEnabled: boolean;   // webcam hand-tracking on/off (persists across pages)
+  simDepth: number;         // BFS depth for simulator page
+  simMaxNodes: number;      // max neighbor nodes returned per bank in simulator
 }
 
 const STORAGE_KEY = 'fcrf_tweaks_v2';
@@ -26,6 +27,7 @@ const DEFAULTS: TweakSettings = {
   threeDLayout: 'centralized',
   cameraZoom: 5,
   cameraAutoRotate: true,
+  cameraEnabled: true,
   simDepth: 2,
   simMaxNodes: 10,
 };

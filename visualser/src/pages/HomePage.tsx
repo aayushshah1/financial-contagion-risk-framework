@@ -3,7 +3,6 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
@@ -72,14 +71,16 @@ function getNodeTextProp(node: GraphNode, key: string): string | null {
 export function HomePage() {
   const videoRef = useRef<HTMLVideoElement>(null!);
   const handState = useHandTracking(videoRef);
-  const { tweaks } = useTweaks();
+  const { tweaks, setTweak } = useTweaks();
 
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
   const [hoveredNode, setHoveredNode] = useState<GraphNode | null>(null);
   const [hoveredEdge, setHoveredEdge] = useState<GraphEdge | null>(null);
   const [graphData, setGraphData] = useState<GraphData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [isCameraEnabled, setIsCameraEnabled] = useState(true);
+  // Camera toggle — persists across pages via tweaks
+  const isCameraEnabled = tweaks.cameraEnabled;
+  const toggleCamera = () => setTweak('cameraEnabled', !isCameraEnabled);
 
   // Derived slider state from tweaks (tweak slider values)
   const [bankLimit, setBankLimit] = useState(tweaks.bankLimit);
@@ -107,8 +108,6 @@ export function HomePage() {
       if (e.key === ' ') {
         setSelectedNode(null);
         setHoveredEdge(null);
-      } else if (e.key.toLowerCase() === 'c') {
-        setIsCameraEnabled((v) => !v);
       }
     };
     window.addEventListener('keydown', handleKey);
@@ -228,21 +227,6 @@ export function HomePage() {
         <div className="cursor-crosshair" style={{ left: pointerPos.x, top: pointerPos.y, zIndex: 100 }} />
       )}
 
-      {/* Nav bar */}
-      <nav className="app-nav">
-        <div className="nav-logo">⚠️ FCRF</div>
-        <div className="nav-links">
-          <Link to="/" className="nav-link nav-link-active">Home</Link>
-          <Link to="/simulator" className="nav-link">Simulator</Link>
-          <Link to="/tweaks" className="nav-link">Tweaks</Link>
-        </div>
-        <div className="nav-meta">
-          {filteredGraph
-            ? `${filteredGraph.appliedBlueCount} banks · ${filteredGraph.appliedWhiteCount} leaves · ${displayEdges.length} edges`
-            : loading ? 'Loading…' : '—'}
-        </div>
-      </nav>
-
       {/* 3D Canvas */}
       <Canvas style={{ position:'absolute',top:0,left:0,zIndex:3,width:'100%',height:'100%' }}>
         <PerspectiveCamera makeDefault position={[0, 0, tweaks.cameraZoom]} fov={50} />
@@ -272,6 +256,21 @@ export function HomePage() {
           </mesh>
         )}
       </Canvas>
+
+      {/* Camera toggle — fixed top-right */}
+      <button
+        onClick={toggleCamera}
+        style={{
+          position: 'fixed', top: 16, right: 16, zIndex: 200,
+          background: isCameraEnabled ? 'rgba(59,130,246,0.2)' : 'rgba(30,30,40,0.7)',
+          border: `1px solid ${isCameraEnabled ? 'rgba(59,130,246,0.5)' : 'rgba(255,255,255,0.1)'}`,
+          borderRadius: 8, padding: '6px 12px', cursor: 'pointer',
+          color: isCameraEnabled ? '#93c5fd' : '#888', fontSize: 12, fontWeight: 600,
+          backdropFilter: 'blur(8px)',
+        }}
+      >
+        {isCameraEnabled ? '📷 Cam On' : '📷 Cam Off'}
+      </button>
 
       {/* Top-right info overlay */}
       <div className="overlay">
@@ -353,7 +352,7 @@ export function HomePage() {
           />
         </div>
         <div className="quick-ctrl-hint">
-          Full settings → <Link to="/tweaks" style={{ color:'#60a5fa' }}>Tweaks</Link>
+          Full settings → hover bottom of screen to open dock
         </div>
       </div>
 

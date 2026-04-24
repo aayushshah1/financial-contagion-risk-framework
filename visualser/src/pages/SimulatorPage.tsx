@@ -9,7 +9,6 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
@@ -79,12 +78,14 @@ function stressColor(delta: number) {
 }
 
 export function SimulatorPage() {
-  const { tweaks } = useTweaks();
+  const { tweaks, setTweak } = useTweaks();
 
   // ── Camera / gesture ──
   const videoRef = useRef<HTMLVideoElement>(null!);
   const handState = useHandTracking(videoRef);
-  const [isCameraEnabled, setIsCameraEnabled] = useState(true);
+  // Camera state persisted across pages via tweaks
+  const isCameraEnabled = tweaks.cameraEnabled;
+  const toggleCamera = () => setTweak('cameraEnabled', !isCameraEnabled);
 
   useEffect(() => {
     let stream: MediaStream | null = null;
@@ -98,7 +99,9 @@ export function SimulatorPage() {
 
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      if (e.key.toLowerCase() === 'c') setIsCameraEnabled(v => !v);
+      if (e.key === ' ') {
+        // space = reset selection
+      }
     };
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
@@ -230,44 +233,25 @@ export function SimulatorPage() {
     setShockValue(50);
   }, []);
 
-  // ── Loading: bank list ──
-  if (bankListLoading) {
-    return (
-      <div className="sim-loading-screen">
-        <NavBar />
-        <div className="sim-loading-content">
-          <div className="sim-loading-spinner" />
-          <div className="sim-loading-text">Loading bank list…</div>
-          <div className="sim-loading-sub">Fetching bank index from server</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (bankListError) {
-    return (
-      <div className="sim-loading-screen">
-        <NavBar />
-        <div className="sim-loading-content">
-          <div style={{ fontSize:'48px' }}>⚠️</div>
-          <div className="sim-loading-text">Error loading banks</div>
-          <div className="sim-loading-sub" style={{ color:'#ff4d6d' }}>{bankListError}</div>
-        </div>
-      </div>
-    );
-  }
+  // Determine what to show in the panel
+  const showBankListLoading = bankListLoading;
+  const showBankListError   = !bankListLoading && !!bankListError;
 
   return (
     <div className="sim-page">
-      <NavBar />
 
-      {/* Webcam + hand skeleton overlays */}
-      {isCameraEnabled && (
-        <>
-          <video ref={videoRef} autoPlay playsInline muted className="video-background" />
-          <div className="video-overlay" />
-        </>
-      )}
+      {/* Webcam ALWAYS in DOM so videoRef is assigned before camera effect fires */}
+      <video
+        ref={videoRef}
+        autoPlay
+        playsInline
+        muted
+        className="video-background"
+        style={{ display: isCameraEnabled ? undefined : 'none' }}
+      />
+      {isCameraEnabled && <div className="video-overlay" />}
+
+      {/* Hand skeleton overlay */}
       {isCameraEnabled && handState.landmarks && (
         <svg style={{ position:'fixed', top:0, left:0, width:'100%', height:'100%', pointerEvents:'none', zIndex:99 }}>
           {connections.map(([s, e], i) => {
@@ -283,7 +267,22 @@ export function SimulatorPage() {
         <div className="cursor-crosshair" style={{ left: pointerScreen.x, top: pointerScreen.y, zIndex: 100, position:'fixed' }} />
       )}
 
-      {/* Left panel */}
+      {/* Full-screen loading overlay (bank list) */}
+      {showBankListLoading && (
+        <div style={{ position:'fixed', inset:0, zIndex:200, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'14px', background:'rgba(0,0,0,0.85)', backdropFilter:'blur(8px)' }}>
+          <div className="sim-loading-spinner" />
+          <div className="sim-loading-text">Loading bank list…</div>
+          <div className="sim-loading-sub">Fetching bank index from server</div>
+        </div>
+      )}
+      {showBankListError && (
+        <div style={{ position:'fixed', inset:0, zIndex:200, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'12px', background:'rgba(0,0,0,0.85)', backdropFilter:'blur(8px)' }}>
+          <div style={{ fontSize:'48px' }}>⚠️</div>
+          <div className="sim-loading-text">Error loading banks</div>
+          <div className="sim-loading-sub" style={{ color:'#ff4d6d' }}>{bankListError}</div>
+        </div>
+      )}
+
       <div className="sim-panel">
         <div className="sim-panel-header">
           <span className="sim-panel-title">⚡ Stress Simulator</span>
@@ -422,6 +421,21 @@ export function SimulatorPage() {
           </div>
         )}
       </div>
+
+      {/* Camera toggle — fixed top-right */}
+      <button
+        onClick={toggleCamera}
+        style={{
+          position: 'fixed', top: 16, right: 16, zIndex: 200,
+          background: isCameraEnabled ? 'rgba(59,130,246,0.2)' : 'rgba(30,30,40,0.7)',
+          border: `1px solid ${isCameraEnabled ? 'rgba(59,130,246,0.5)' : 'rgba(255,255,255,0.1)'}`,
+          borderRadius: 8, padding: '6px 12px', cursor: 'pointer',
+          color: isCameraEnabled ? '#93c5fd' : '#888', fontSize: 12, fontWeight: 600,
+          backdropFilter: 'blur(8px)',
+        }}
+      >
+        {isCameraEnabled ? '📷 Cam On' : '📷 Cam Off'}
+      </button>
 
       {/* 3D canvas */}
       <div className="sim-canvas-area">
@@ -582,16 +596,3 @@ export function SimulatorPage() {
   );
 }
 
-function NavBar() {
-  return (
-    <nav className="app-nav">
-      <div className="nav-logo">⚠️ FCRF</div>
-      <div className="nav-links">
-        <Link to="/"          className="nav-link">Home</Link>
-        <Link to="/simulator" className="nav-link nav-link-active">Simulator</Link>
-        <Link to="/tweaks"    className="nav-link">Tweaks</Link>
-      </div>
-      <div className="nav-meta" />
-    </nav>
-  );
-}

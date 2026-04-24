@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
+import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { isBankNode, isNbfcNode } from './bankLeafView';
 import type { GraphEdge, GraphNode, SimulationResultByNode } from './types';
@@ -25,6 +26,19 @@ function blendHeat(base: THREE.Color, delta: number): THREE.Color {
     if (delta <= 0) return base;
     const t = Math.min(delta * 2.5, 1);
     return base.clone().lerp(HEAT_RED, t);
+}
+
+/** Extract a short display name from node props for the label overlay */
+function getShortLabel(node: GraphNode): string {
+    const p = node.props;
+    const raw =
+        (typeof p.bankSymbol  === 'string' && p.bankSymbol.trim()  ? p.bankSymbol.trim()  : null) ??
+        (typeof p.bankName    === 'string' && p.bankName.trim()    ? p.bankName.trim()    : null) ??
+        (typeof p.crisilName  === 'string' && p.crisilName.trim()  ? p.crisilName.trim()  : null) ??
+        (typeof p.name        === 'string' && p.name.trim()        ? p.name.trim()        : null) ??
+        (typeof p.displayName === 'string' && p.displayName.trim() ? p.displayName.trim() : null) ??
+        `${node.labels[0] ?? 'Node'}`;
+    return raw.length > 18 ? raw.slice(0, 16) + '…' : raw;
 }
 
 // ---------------------------------------------------------------------------
@@ -156,6 +170,21 @@ const NodeView = ({
                 <sphereGeometry args={[sz, 32, 32]} />
                 <meshBasicMaterial color={`#${displayColor.getHexString()}`} transparent opacity={opacity} depthWrite={!dimmed} />
             </mesh>
+            {/* Floating name label — always visible, fades with node */}
+            {!dimmed && (
+                <Text
+                    position={[pos.x, pos.y + sz + 0.06, pos.z]}
+                    fontSize={isHub ? 0.042 : 0.034}
+                    color={isShockedBank ? '#ff8888' : deltaStress > 0.1 ? '#ffcc66' : isNbfcNode(node) ? '#c4b5fd' : isBankNode(node) ? '#93c5fd' : '#cccccc'}
+                    anchorX="center"
+                    anchorY="bottom"
+                    outlineWidth={0.005}
+                    outlineColor="#000000"
+                    depthOffset={-1}
+                >
+                    {getShortLabel(node)}
+                </Text>
+            )}
         </group>
     );
 };

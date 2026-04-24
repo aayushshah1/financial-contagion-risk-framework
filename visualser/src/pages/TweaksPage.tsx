@@ -2,7 +2,6 @@
  * TweaksPage — all visualiser settings stored in localStorage via useTweaks.
  */
 
-import { Link } from 'react-router-dom';
 import { useTweaks } from '../store/useTweaks';
 import { useMemo, useState, useEffect } from 'react';
 import { fetchGraphFromNeo4j } from '../graph/neo4jData';
@@ -80,19 +79,6 @@ export function TweaksPage() {
 
   return (
     <div className="tweaks-page">
-      {/* Nav */}
-      <nav className="app-nav">
-        <div className="nav-logo">⚠️ FCRF</div>
-        <div className="nav-links">
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/simulator" className="nav-link">Simulator</Link>
-          <Link to="/tweaks" className="nav-link nav-link-active">Tweaks</Link>
-        </div>
-        <div className="nav-meta">
-          {stats ? `${stats.totalBanks} banks · ${stats.totalLeaves} leaf nodes in dataset` : 'Loading…'}
-        </div>
-      </nav>
-
       <div className="tweaks-content">
         <div className="tweaks-header">
           <div>
